@@ -1,0 +1,28 @@
+name: Deploy Documentation and Blog
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Setup Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      - name: Install Site Compiler Plugins
+        run: |
+          uv pip install mkdocs-material
+
+      - name: Build and deploy to Github Pages
+        run: |
+          mkdocs gh-deploy --force 

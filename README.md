@@ -1,4 +1,4 @@
-# AI Systems Design from Scratch
+# AI Systems Design From Scratch
 
 A comprehensive, zero-dependency implementation of artificial intelligence components and enterprise systems design patterns, built completely from first principles.
 
@@ -160,7 +160,9 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **ServiceNow** (Enterprise ticketing management and tracking simulation dashboard)
 * [ ] **VSCode** (Internal project text editing workspaces mapping configuration files)
 
-### And Much more to come!
+### Other and Much more to come!
+
+* [ ] **MkDocs** (static sites generators in Python)
 
 ---
 

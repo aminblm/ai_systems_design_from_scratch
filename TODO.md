@@ -24,3 +24,4 @@ A list of tasks todos for this repository.
 - [ ] Make tutorials and blog posts
 - [ ] Share work with the community on Github, Linkedin, Twitter, Discord, Youtube
 - [ ] Add Fault tolerance over the codebase
+- [ ] Clean gitflow principles for collaboration
