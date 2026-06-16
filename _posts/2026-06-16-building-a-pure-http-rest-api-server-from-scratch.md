@@ -1,15 +1,10 @@
-Here is a comprehensive engineering blog post tailored for your Jekyll static architecture. Save this markdown file into your repository as `_posts/2026-06-16-building-a-pure-http-rest-api-server-from-scratch.md`.
-
----
-
-```markdown
 ---
 layout: default
 title: "Building a Pure HTTP REST API Server From Scratch"
 description: "Demystifying application-layer routing infrastructure: Implementing an HTTP/1.1 protocol engine, text payload string parser, and RESTful router in pure Python."
 ---
 
-# Building a Pure HTTP REST API Server From Scratch
+#  Building a Relational SQL Database Engine Abstraction From Scratch
 
 Every time a web browser or client application fetches data from a backend service, it relies on an application-layer network protocol: **Hypertext Transfer Protocol (HTTP)**. In standard development, web servers like NGINX, Apache, or Python frameworks like Flask and FastPI capture these requests automatically. They shield engineers from raw TCP/IP data buffers by providing pre-parsed request parameters and automated status routing abstractions.
 
@@ -203,13 +198,3 @@ To scale this infrastructure module into a reliable, concurrent application-tier
 * **Asynchronous Selector Engine:** Integrating Python's native `selectors` or `threading` module library to spin out distinct worker processes for client connections, freeing the core loop to instantly intercept secondary incoming sockets.
 * **Regular Expression URI Tree Matching:** Upgrading path lookups from simple string comparisons to a compiled Regex Route Tree, enabling dynamic route parameters (e.g., parsing `/users/<user_id>`).
 * **Stream Buffer Body Splitting:** Refactoring the payload receiver to scan for the `Content-Length` header, enabling the server to dynamically buffer and parse multi-line JSON dictionaries passed during high-density `POST` and `PUT` transactions.
-
-```
----
-
-### Tips for deployment:
-* Save this text content inside your `_posts/` layout tree directory.
-* Verify your post tags match your repository roadmap layout checkboxes (`[x] REST Server`).
-* Commit changes to your main branch to trigger the automated Jekyll static compilation loop on GitHub Pages.
-
-```

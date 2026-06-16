@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: "Building a Stateless Lexical Reply Engine From Scratch"

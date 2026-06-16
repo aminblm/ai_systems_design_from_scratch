@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: "Building a Custom Airflow DAG Scheduler in Pure Python"

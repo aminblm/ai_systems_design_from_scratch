@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: "Building a Fault-Tolerant Load Balancer From Scratch"

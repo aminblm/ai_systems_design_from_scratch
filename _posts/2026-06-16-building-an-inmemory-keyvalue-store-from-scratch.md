@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: "Building an In-Memory Key-Value Store From Scratch"

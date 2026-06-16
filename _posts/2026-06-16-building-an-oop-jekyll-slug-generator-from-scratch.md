@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: "Building an OOP Jekyll Slug Generator From Scratch"

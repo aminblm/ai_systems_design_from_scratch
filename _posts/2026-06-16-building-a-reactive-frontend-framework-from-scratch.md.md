@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: "Building a Reactive Frontend Framework from Scratch"

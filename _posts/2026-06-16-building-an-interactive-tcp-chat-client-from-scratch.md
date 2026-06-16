@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: "Building an Interactive TCP Chat Client From Scratch"

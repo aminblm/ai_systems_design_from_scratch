@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: "Building a Pure HTTP Client over Raw Sockets"

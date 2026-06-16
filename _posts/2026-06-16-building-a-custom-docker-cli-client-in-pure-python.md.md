@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: "Building a Custom Docker CLI Client in Pure Python"

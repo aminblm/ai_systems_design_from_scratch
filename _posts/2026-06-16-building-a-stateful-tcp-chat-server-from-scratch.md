@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: "Building a Stateful TCP Chat Server From Scratch"

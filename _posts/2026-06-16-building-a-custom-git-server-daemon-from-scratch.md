@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: "Building a Custom Git Server Daemon From Scratch"

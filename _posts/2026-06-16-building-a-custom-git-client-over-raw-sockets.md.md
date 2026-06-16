@@ -1,8 +1,3 @@
-Here is a comprehensive engineering blog post tailored for your Jekyll static architecture. Save this markdown file into your repository as `_posts/2026-06-16-building-a-custom-git-client-over-raw-sockets.md`.
-
----
-
-```markdown
 ---
 layout: default
 title: "Building a Custom Git Client over Raw Sockets"
@@ -161,13 +156,3 @@ To bridge the gap between this client and our repository's long-term infrastruct
 * **Binary Packfile Streaming:** Upgrading the byte parsing loop from a static `1024` buffer constraint to a continuous chunked stream handler capable of downloading large raw binary compressed repository blobs.
 * **Smart Git Protocol Handshaking:** Refactoring string fields to support authentic reference discovery sequences (`git-upload-pack`), identifying upstream commit hashes over raw network buffers.
 * **Local Filesystem Hydration:** Integrating a pure Python compression hook module to unpack byte streams straight into physical, tracked project workspaces.
-
-```
----
-
-### Tips for deployment:
-* Verify that file naming formats precisely reflect your automated Jekyll script definitions (`YYYY-MM-DD-slug.md`).
-* Ensure code strings align with your target repository registry checkboxes (`[x] Git client`).
-* Push changes to your main branch to trigger automatic GitHub Pages recompilation.
-
-```
