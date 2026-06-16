@@ -20,3 +20,7 @@ Welcome to the first-principles systems design log. Below is a dynamically gener
         </li>
     {% endfor %}
 </ul>
+
+---
+
+[Back to Documentation Hub]( {{ site.baseurl }} )

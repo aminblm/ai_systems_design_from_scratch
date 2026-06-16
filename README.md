@@ -1,3 +1,5 @@
+[Back to Documentation Hub]( {{ site.baseurl }} ) | [Engineering Blog]({{ site.baseurl }}/blog) | [Github Repository]({{ https://github.com/aminblm/ai_systems_design_from_scratch }})
+
 # AI Systems Design From Scratch 
 
 *Zero-Dependency Engineering*

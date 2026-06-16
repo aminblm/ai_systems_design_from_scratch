@@ -21,6 +21,9 @@ description: "A deep dive into parsing JSON DSL queries, aggregations, and distr
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+[Back to Documentation Hub]( {{ site.baseurl }} ) | [Engineering Blog]({{ site.baseurl }}/blog) | [Github Repository]({{ https://github.com/aminblm/ai_systems_design_from_scratch }})
+
+
 # Building a Custom ElasticSearch Clone in Pure Python
 
 When scaling distributed systems, search engines like ElasticSearch often feel like magic. They parse complex JSON DSL queries, execute rapid aggregations across millions of documents, and distribute datasets across shards seamlessly. 
