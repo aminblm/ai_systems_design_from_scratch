@@ -21,7 +21,7 @@ jobs:
 
       - name: Install Site Compiler Plugins
         run: |
-          uv pip install mkdocs-material
+          pip install mkdocs-material
 
       - name: Build and deploy to Github Pages
         run: |
