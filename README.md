@@ -14,6 +14,8 @@
 [![System Modules Count](https://img.shields.io/badge/implemented%20systems-17%20Total-blueviolet?style=flat-square)](#matrix-of-technologies)
 [![Architecture Framework](https://img.shields.io/badge/platform-GitHub%20Pages%20%2B%20Jekyll%20Pages%20%2B%20Python-orange?logo=jekyll&logoColor=white&style=flat-square)](https://github.com/aminblm/ai_systems_design_from_scratch)
 
+<a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
+
 > *(Star⭐ our Repo)*
 ---
 
