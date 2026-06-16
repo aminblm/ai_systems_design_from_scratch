@@ -1,4 +1,6 @@
-# AI Systems Design From Scratch | Zero-Dependency Engineering
+# AI Systems Design From Scratch 
+
+*Zero-Dependency Engineering*
 
 A comprehensive, zero-dependency implementation of artificial intelligence components and enterprise systems design patterns, built completely from first principles.
 
