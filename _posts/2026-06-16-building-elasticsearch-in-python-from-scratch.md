@@ -21,8 +21,11 @@ description: "A deep dive into parsing JSON DSL queries, aggregations, and distr
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
-[Back to Documentation Hub]( {{ site.baseurl }} ) | [Engineering Blog]({{ site.baseurl }}/blog) | [Github Repository]({{ https://github.com/aminblm/ai_systems_design_from_scratch }})
-
+<div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
+  <a href="{{ site.baseurl }}/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem;">🏠 Documentation Hub</a>
+  <a href="{{ site.baseurl }}/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem;">📝 Engineering Blog</a>
+  <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
+</div>
 
 # Building a Custom ElasticSearch Clone in Pure Python
 
