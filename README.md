@@ -16,6 +16,11 @@
 
 ---
 
+<div class="author-card">
+    <h4>Amin Boulouma</h4>
+    <p>Author of your own destruction</p>
+</div>
+
 A comprehensive, zero-dependency implementation of artificial intelligence components and enterprise systems design patterns, built completely from first principles.
 
 ---

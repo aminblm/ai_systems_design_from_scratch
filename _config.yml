@@ -4,6 +4,9 @@ description: Rebuilding enterprise systems and AI from first principles.
 theme: jekyll-theme-cayman
 permalink: /:title/
 baseurl: "/ai_systems_design_from_scratch"
+author: 
+  name: "Amin Boulouma"
+  bio: "Architect of your own destruction"
 
 defaults:
   - scope:
