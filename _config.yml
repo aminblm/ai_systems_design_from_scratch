@@ -6,7 +6,7 @@ permalink: /:title/
 baseurl: "/ai_systems_design_from_scratch"
 author: 
   name: "Amin Boulouma"
-  bio: "Architect of your own destruction"
+  bio: "Software Engineer"
 
 defaults:
   - scope:

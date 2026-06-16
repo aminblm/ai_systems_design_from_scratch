@@ -7,8 +7,7 @@
 # Engineering Blog Archive
 
 <div class="author-card">
-    <h4>{{ site.author.name }}</h4>
-    <p>{{ site.author.bio }}</p>
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
 
 Welcome to the first-principles systems design log. Below is a dynamically generted index of all architectural breakdowns implemented so far:
