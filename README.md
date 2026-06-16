@@ -11,8 +11,8 @@
 [![License](https://img.shields.io/badge/license-MIT-red?style=flat-square)](https://opensource.org/licenses/MIT)
 
 [![GitHub Pages Deployment](https://img.shields.io/github/actions/workflow/status/aminblm/ai_systems_design_from_scratch/pages%2Fpages-build-deployment?label=docs%20deployment&logo=github&style=flat-square)](https://github.com/aminblm/ai_systems_design_from_scratch/actions)
-[![System Modules Count](https://img.shields.io/badge/implemented%20systems-72%20Total-blueviolet?style=flat-square)](#matrix-of-technologies)
-[![Architecture Framework](https://img.shields.io/badge/platform-GitHub%20Pages%20%2B%20Jekyll-orange?logo=jekyll&logoColor=white&style=flat-square)](https://github.com/aminblm/ai_systems_design_from_scratch)
+[![System Modules Count](https://img.shields.io/badge/implemented%20systems-15%20Total-blueviolet?style=flat-square)](#matrix-of-technologies)
+[![Architecture Framework](https://img.shields.io/badge/platform-GitHub%20Pages%20%2B%20Jekyll%20Pages%20%2B%20Python-orange?logo=jekyll&logoColor=white&style=flat-square)](https://github.com/aminblm/ai_systems_design_from_scratch)
 
 ---
 
