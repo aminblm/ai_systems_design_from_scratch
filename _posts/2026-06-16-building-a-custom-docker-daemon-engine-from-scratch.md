@@ -21,6 +21,14 @@ description: "Demystifying container orchestration backends: Implementing a stat
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
 <a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
 
 <div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
@@ -212,3 +220,11 @@ To transform this system into a high-throughput runtime simulator, our upcoming 
 * **Non-Blocking Selectors / Threading:** Refactoring `start_server` to dispatch client connections onto individual `threading.Thread` loops or a non-blocking `selectors` module array to support dozens of concurrent client CLI processes.
 * **OS Namespace Process Spawning:** Upgrading the `_run` strategy to dynamically spawn physical, isolated OS subprocesses using Python's `subprocess.Popen`, allowing for authentic process life-cycle monitoring.
 * **Persistent Local Storage:** Transitioning the in-memory dictionary to write state change files continuously to disk, protecting your cluster's metadata from resetting if the server drops.
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>

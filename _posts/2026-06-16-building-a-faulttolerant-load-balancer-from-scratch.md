@@ -21,6 +21,14 @@ description: "Demystifying distributed systems infrastructure: Implementing a fa
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
 <a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
 
 <div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
@@ -183,3 +191,11 @@ To evolve this architecture into a production-ready edge layer tool, our reposit
 * **True Round-Robin Scheduling State:** Restructuring the `handle_requests` engine to remember the index pointer of the previously selected node, ensuring requests distribute evenly across backends rather than always choking `server1` first.
 * **Asynchronous TCP Socket Server Integration:** Merging this structural abstraction directly into our native `py_socket_server` module, mapping raw network client connections across physical async backend ports.
 * **Active Health Probe Check Daemon:** Writing a background helper thread that continuously dispatches lightweight poll messages down to the registered servers, dynamically dropping non-responsive nodes from the live tracking cluster pool before incoming requests arrive.
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
