@@ -21,6 +21,14 @@ description: "Demystifying high-performance data structures: Implementing a stat
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
 <a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
 
 
@@ -245,3 +253,11 @@ To expand this script into an enterprise-ready cache engine, our long-term proje
 * **Tokenized String Argument Parsing:** Refactoring the `process_command` routine to split input lines cleanly via white-space delimiters (e.g., parsing `"SET user:100 alice"` into a target method execution token coupled with real keyword arguments).
 * **True Non-Blocking TTL Expiration Daemons:** Upgrading key lifespan variables (`EXPIRE`) to track real timestamp values (`time.time() + duration`), backed by an asynchronous cleanup loop that sweeps and purges expired nodes from memory.
 * **Raw Network Socket Interfacing:** Binding the internal command dispatcher directly to our core `py_socket_server` module to handle remote application connections over a clean custom TCP text protocol layer.
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>

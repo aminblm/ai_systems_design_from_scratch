@@ -21,6 +21,14 @@ description: "Demystifying static site data pipelines: Implementing a text token
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
 <a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
 
 
@@ -212,3 +220,11 @@ To scale this pipeline toward a fully featured static blogging helper, our repos
 * **Automated Hard Disk Workspace Creation:** Upgrading the `process_input` method to use Python's built-in `os` system modules to automatically write an empty starter Markdown template file inside your local `_posts/` folder upon text confirmation.
 * **Front Matter Header Generation:** Expanding the file builder to inject standard Jekyll metadata syntax blocks (such as YAML front matter like `--- layout: post ---`) directly into newly generated post files.
 * **Unicode Diacritic Translation:** Integrating a text transformation lookup table to map accent characters across international datasets safely (e.g., automatically converting `"Café"` into its web-safe URL token form `"cafe"`).
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>

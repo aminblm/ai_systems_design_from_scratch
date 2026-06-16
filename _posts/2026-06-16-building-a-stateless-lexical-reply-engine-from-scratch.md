@@ -21,6 +21,14 @@ description: "Demystifying natural language interfaces: Implementing an in-memor
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
 <a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
 
 
@@ -157,3 +165,11 @@ To scale this script module toward an intelligent NLP processing runtime tool, o
 * **Normalizing Normalization Pipes:** Injecting a preprocessing worker that forces lowercase conversion and purges extraneous punctuation characters before the hash checking routine triggers.
 * **Tokenization and Levenshtein Distance:** Upgrading the lookup mechanism to split queries into token arrays and compute edit-distance scores, allowing the bot to recognize approximate matches or handle typos seamlessly.
 * **Regular Expression Route Trees:** Replacing the rigid hash map with a sequential compiled regex dictionary array to support dynamic phrase parsing and variable extraction (e.g., matching `"my name is (.*)"`).
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>

@@ -21,6 +21,14 @@ description: "Demystifying storage-layer gateways: Implementing a stateful relat
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
 <a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
 
 
@@ -237,3 +245,11 @@ To scale this module into an authentic, production-grade storage system, our upc
 * **True SQLite Filystem Storage Interfacing:** Replacing the internal mock `self._conn` lambda dictionary with real, standard-library `sqlite3.connect(self.db_name)` socket descriptors.
 * **Regular Expression Query AST Parsing:** Building a mini lexical tokenizer engine that parses input queries, identifies command verbs like `SELECT`, and matches records against in-memory dictionary tables.
 * **Thread-Safe Connection Pooling:** Engineering a concurrent coordinator module that pre-allocates an array of open `SQLEngine` instances, checking them out to active multi-threaded workers to minimize connection overhead across network loops.
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>

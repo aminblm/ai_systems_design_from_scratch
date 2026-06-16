@@ -21,6 +21,14 @@ description: "Demystifying network layer fundamentals: Implementing an event-dri
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
 <a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
 
 
@@ -182,3 +190,11 @@ To transform this script module into a concurrent, high-scale chat platform, our
 * **Multi-Threaded Worker Pools:** Updating the execution loop to hand off incoming `client_socket` objects directly to dedicated background threads using Python's `threading` library, allowing the server to manage dozens of chats at once.
 * **Centralized Broadcast Bus:** Implementing a tracking array to log active client connections, enabling a broadcast system that forwards a message from one user out to every other client connected to the socket pool.
 * **Structured Protocol Serialization:** Upgrading raw string formatting to use organized JSON packet validation frames (`{"sender": "user1", "payload": "text"}`), perfectly aligning with our frontend components layout.
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>

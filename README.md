@@ -31,6 +31,7 @@
 A comprehensive, zero-dependency implementation of artificial intelligence components and enterprise systems design patterns, built completely from first principles.
 
 **Amin Boulouma** — *Software Engineer*
+
 ---
 
 ## Repository Philosophy

@@ -21,6 +21,14 @@ description: "Demystifying application-layer routing infrastructure: Implementin
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
 <a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
 
 
@@ -225,3 +233,11 @@ To scale this infrastructure module into a reliable, concurrent application-tier
 * **Asynchronous Selector Engine:** Integrating Python's native `selectors` or `threading` module library to spin out distinct worker processes for client connections, freeing the core loop to instantly intercept secondary incoming sockets.
 * **Regular Expression URI Tree Matching:** Upgrading path lookups from simple string comparisons to a compiled Regex Route Tree, enabling dynamic route parameters (e.g., parsing `/users/<user_id>`).
 * **Stream Buffer Body Splitting:** Refactoring the payload receiver to scan for the `Content-Length` header, enabling the server to dynamically buffer and parse multi-line JSON dictionaries passed during high-density `POST` and `PUT` transactions.
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>

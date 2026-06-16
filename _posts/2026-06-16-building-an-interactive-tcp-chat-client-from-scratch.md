@@ -21,8 +21,15 @@ description: "Demystifying network communications: Implementing a streaming sock
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
-<a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
 
+<a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
 
 
 <div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
@@ -157,3 +164,11 @@ To evolve this client script into a production-ready, real-time messaging applic
 * **Asynchronous Duplex Threading Loops:** Splitting the network layer into two independent execution threads—one dedicated solely to capturing incoming server bytes and another continuously polling standard input, allowing for uninterrupted, simultaneous two-way chatting.
 * **Structured Packet Length Framing:** Upgrading the byte stream protocol to prefix messages with length-encoded header markers (like length-prefixed text blocks), ensuring the client parses high-density text files perfectly without slicing multi-line message boundaries.
 * **Graceful Remote Disconnection Handling:** Refining the reading mechanism to safely catch empty server bytes (`b""`), allowing the client to instantly detect if the remote server crashes and close out local system resources gracefully.
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
