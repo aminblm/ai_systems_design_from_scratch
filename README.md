@@ -5,11 +5,6 @@ description: "Rebuilding enterprise storage, machine learning layers, container 
 ---
 
 <head>
-  <meta charset="utf-8">
-  <title>{{ site.title }} | Zero-Dependency Engineering</title>
-  <meta name="description" content="{{ site.description }}">
-  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}/">
-  
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ site.title }}">
   <meta property="og:description" content="{{ site.description }}">
