@@ -25,6 +25,28 @@ A comprehensive, zero-dependency implementation of artificial intelligence compo
 > *Zero-Dependency Engineering* > — Core Philosophy
 > **What I cannot create, I do not understand.** > — Richard Feynman
 
+## Getting started 
+
+To clone and use the repository, execute:
+
+```
+git clone https://github.com/aminblm/ai_systems_design_from_scratch.git
+cd ai_systems_design_from_scratch
+```
+
+Run any core system directly from ``src/`:
+
+```
+# Run the key-value cache store
+python3 src/py_redis.py
+
+# Run the task scheduler engine
+python3 src/py_airflow.py
+
+# Run the REST API backend framework
+python3 src/py_REST_API.py
+```
+
 This repository sits at the exact intersection of deep education and production-grade implementation. The ultimate goal is to demystify the inner workings of complex enterprise software, cloud infrastructure, and machine learning ecosystems by rebuilding them atom by atom.
 
 ### The Zero-Dependency Mandate
