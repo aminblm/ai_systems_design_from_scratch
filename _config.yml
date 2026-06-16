@@ -1,0 +1,5 @@
+title: AI Systems Design From Scratch
+url: https://aminblm.github.io/ai_systems_design_from_scratch
+description: Rebuilding enterprise systems and AI from first principles.
+theme: jekyll-theme-cayman
+permalink: /blog/:title/
