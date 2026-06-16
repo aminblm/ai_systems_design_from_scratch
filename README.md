@@ -2,7 +2,6 @@
 
 # AI Systems Design From Scratch 
 
-*Zero-Dependency Engineering*
 
 A comprehensive, zero-dependency implementation of artificial intelligence components and enterprise systems design patterns, built completely from first principles.
 
@@ -10,6 +9,7 @@ A comprehensive, zero-dependency implementation of artificial intelligence compo
 
 ## Repository Philosophy
 
+> *Zero-Dependency Engineering* > — Core Philosophy
 > **What I cannot create, I do not understand.** > — Richard Feynman
 
 This repository sits at the exact intersection of deep education and production-grade implementation. The ultimate goal is to demystify the inner workings of complex enterprise software, cloud infrastructure, and machine learning ecosystems by rebuilding them atom by atom.
