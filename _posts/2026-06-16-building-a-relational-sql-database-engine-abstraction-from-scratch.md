@@ -4,6 +4,29 @@ title: "Building a Relational SQL Database Engine Abstraction From Scratch"
 description: "Demystifying storage-layer gateways: Implementing a stateful relational database manager and virtual cursor orchestration interface in pure Python."
 ---
 
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.description | default: site.description }}">
+</head>
+
+<div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
+  <a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
+  <a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a>
+  <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
+</div>
+
 # Building a Relational SQL Database Engine Abstraction From Scratch
 
 In backend engineering, interacting with data-tier systems typically involves abstract client interfaces or Object-Relational Mappers (ORMs). When using libraries like Python's built-in `sqlite3`, PostgreSQL drivers, or MySQL connectors, your code relies on an architectural pattern known as the **Database Gateway and Cursor Lifecycle**. This manager maintains the file socket state, coordinates atomicity boundaries (`COMMIT` and `ROLLBACK`), and abstracts lower-level low-density table parsing routines into explicit application-layer primitives.
