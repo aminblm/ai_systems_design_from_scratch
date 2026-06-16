@@ -14,6 +14,7 @@
 [![System Modules Count](https://img.shields.io/badge/implemented%20systems-17%20Total-blueviolet?style=flat-square)](#matrix-of-technologies)
 [![Architecture Framework](https://img.shields.io/badge/platform-GitHub%20Pages%20%2B%20Jekyll%20Pages%20%2B%20Python-orange?logo=jekyll&logoColor=white&style=flat-square)](https://github.com/aminblm/ai_systems_design_from_scratch)
 
+> *(Star⭐ our Repo)*
 ---
 
 A comprehensive, zero-dependency implementation of artificial intelligence components and enterprise systems design patterns, built completely from first principles.
@@ -74,8 +75,8 @@ To enforce genuine first-principles learning, this repository maintains a strict
 
 * **Runtime:** Python 3.14.5 (Standard Library Only)
 
----
 
+---
 ## Technical Roadmap
 
 ### Code Base Standardization
@@ -206,7 +207,7 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **MkDocs** (static sites generators in Python)
 * [x] [**Slug Generator**](src/py_slug_generator.py) (generate blop url slugs from blog titles)
 * [x] [**Utility library**](src/utils.py) (utility library for reusable components)
-
+* [ ] **LinkTree clone** (web links in one webpage)
 ---
 
 ### Integration Architecture Checklists
