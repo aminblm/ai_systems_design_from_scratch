@@ -6,6 +6,15 @@
 
 # AI Systems Design From Scratch 
 
+[![Python Version](https://img.shields.io/badge/python-3.14.5-blue?logo=python&logoColor=white&style=flat-square)](https://www.python.org/)
+[![Dependencies](https://img.shields.io/badge/dependencies-zero--mandate-success?style=flat-square)](#the-zero-dependency-mandate)
+[![License](https://img.shields.io/badge/license-MIT-red?style=flat-square)](https://opensource.org/licenses/MIT)
+
+[![GitHub Pages Deployment](https://img.shields.io/github/actions/workflow/status/aminblm/ai_systems_design_from_scratch/pages%2Fpages-build-deployment?label=docs%20deployment&logo=github&style=flat-square)](https://github.com/aminblm/ai_systems_design_from_scratch/actions)
+[![System Modules Count](https://img.shields.io/badge/implemented%20systems-72%20Total-blueviolet?style=flat-square)](#matrix-of-technologies)
+[![Architecture Framework](https://img.shields.io/badge/platform-GitHub%20Pages%20%2B%20Jekyll-orange?logo=jekyll&logoColor=white&style=flat-square)](https://github.com/aminblm/ai_systems_design_from_scratch)
+
+---
 
 A comprehensive, zero-dependency implementation of artificial intelligence components and enterprise systems design patterns, built completely from first principles.
 
