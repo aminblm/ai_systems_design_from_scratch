@@ -1,10 +1,4 @@
----
-layout: default
-title: "AI Systems Design From Scratch | Zero-Dependency Engineering"
-description: "Rebuilding enterprise storage, machine learning layers, container virtualizers, and distributed networks using only the Python standard library."
----
-
-# AI Systems Design From Scratch
+# AI Systems Design From Scratch | Zero-Dependency Engineering
 
 A comprehensive, zero-dependency implementation of artificial intelligence components and enterprise systems design patterns, built completely from first principles.
 
