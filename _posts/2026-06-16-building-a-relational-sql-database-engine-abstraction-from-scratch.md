@@ -49,6 +49,21 @@ class SQLEngine:
         """Commit the transaction"""
         self._conn['cursor']['execute']("COMMIT")
 
+    def rollback(self):
+        pass
+
+    def create_table(self, table_sql):
+        pass 
+
+    def insert_data(self, table_name, data):
+        pass 
+
+    def query(self, sql, params=None):
+        pass 
+
+    def close(self):
+        pass 
+
 
 if __name__ == "__main__":
     engine = SQLEngine()
