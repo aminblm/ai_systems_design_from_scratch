@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Ai Systems Design From First Principles </title>
+        <title> AI Systems Design From First Principles </title>
         <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
         <div class="hero">
             <header>
-                <h1>Ai Systems Design From First Principles</h1>
+                <h1>AI Systems Design From First Principles</h1>
                 <p>Rebuilding enterprise systems and AI from first principles.</p>
             </header>
         </div>
         
         <main>
             <div class="container">
-                <p>---</p>
-<p>layout: default</p>
-<p>title: "Building a Custom Docker Daemon Engine From Scratch"</p>
-<p>description: "Demystifying container orchestration backends: Implementing a stateful, stream-oriented orchestration server with custom command processing in pure Python."</p>
-<p>---</p>
-<p></p>
+                <p></p>
 <head>
 <meta charset="utf-8">
 <title>{{ page.title }} | {{ site.title }}</title>
@@ -38,10 +33,6 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -62,7 +53,7 @@ When you execute a command through a client CLI tool, it communicates directly w
 <p></p>
 To satisfy our repository's <strong>strict zero-dependency constraint</strong>, we will build a stateful, socket-multiplexed container virtualization coordinator server completely from scratch, relying solely on the Python standard library runtime.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>The Container Daemon Architecture</h2
 <p></p>
@@ -84,7 +75,6 @@ Our engine implementation relies on the `ContainerManager` class. This component
 <p>self.host = host</p>
 <p></p>
 <p>def start_server(self):</p>
-<p>"""Initializes the listener socket pool and triggers the main listener loop."""</p>
 <p>self.server_socket = utils.create_socket_server(self.host, self.listen_port, 'Container Manager')</p>
 <p></p>
 <p>while True:</p>
@@ -94,7 +84,6 @@ Our engine implementation relies on the `ContainerManager` class. This component
 <p>self._handle_client()</p>
 <p></p>
 <p>def _handle_client(self):</p>
-<p>"""Processes incoming data frames from an active connection pipe sequentially."""</p>
 <p>while True:</p>
 <p>data = self.client_socket.recv(1024).decode('utf-8')</p>
 <p>if not data:</p>
@@ -127,7 +116,6 @@ Our engine implementation relies on the `ContainerManager` class. This component
 <p>self.client_socket.close()</p>
 <p></p>
 <p>def _run(self, parts):</p>
-<p>"""Allocates resources and assigns an initial active status structure."""</p>
 <p>container_name = parts[1]</p>
 <p>self.containers[container_name] = {</p>
 <p>'status': 'created',</p>
@@ -137,7 +125,6 @@ Our engine implementation relies on the `ContainerManager` class. This component
 <p>self.client_socket.sendall(f"Container '{container_name}' created at '{self.containers[container_name]['file']}'".encode('utf-8'))</p>
 <p></p>
 <p>def _stop(self, parts):</p>
-<p>"""Alters container state mappings to reflect runtime termination."""</p>
 <p>container_name = parts[1]</p>
 <p>if container_name in self.containers:</p>
 <p>self.containers[container_name]['status'] = 'stopped'</p>
@@ -146,7 +133,6 @@ Our engine implementation relies on the `ContainerManager` class. This component
 <p>self.client_socket.sendall('Container not found'.encode('utf-8'))</p>
 <p></p>
 <p>def _list(self):</p>
-<p>"""Compiles a complete serialization snapshot of active data fields."""</p>
 <p>clients = []</p>
 <p>for name, info in self.containers.items():</p>
 <p>clients.append(f"{name} - {info['status']}")</p>
@@ -158,7 +144,7 @@ Our engine implementation relies on the `ContainerManager` class. This component
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Architectural Mechanisms Breakdown</h2
 <p></p>
@@ -182,7 +168,7 @@ Unlike stateless API microservices, our daemon acts as a single source of truth 
 <p></p>
 When the client disconnects or an empty data string block (`if not data: break`) hits the transport layer, the controller drops out of its command handler loop and drops down to clean up socket allocations. Explicitly closing `self.client_socket` is crucial for production reliability; without it, file handles remain locked, slowly degrading system resources.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Integration and Network Testing</h2
 <p></p>
@@ -196,7 +182,6 @@ Ensure `utils.py` contains the matching server initialization routine:
 <p>import socket</p>
 <p></p>
 <p>def create_socket_server(host, port, service_name):</p>
-<p>"""Initializes and returns a reusable standard TCP server socket."""</p>
 <p>s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</p>
 <p>s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)</p>
 <p>s.bind((host, port))</p>
@@ -225,7 +210,7 @@ Now, fire commands using your previously engineered command line interface tool 
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Infrastructure Scaling Roadmap</h2
 <p></p>
@@ -238,10 +223,6 @@ Now, fire commands using your previously engineered command line interface tool 
 <li><strong>Persistent Local Storage:</strong> Transitioning the in-memory dictionary to write state change files continuously to disk, protecting your cluster's metadata from resetting if the server drops.</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
             </div>
@@ -249,8 +230,7 @@ Now, fire commands using your previously engineered command line interface tool 
 
         <footer>
             <div class="container">
-                Ai Systems Design From First Principles Footer
-                https://aminblm.github.io/ai_systems_design_from_scratch
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
             </div>
         </footer>
     </body>

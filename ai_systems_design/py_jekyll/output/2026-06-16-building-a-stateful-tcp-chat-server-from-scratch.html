@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Ai Systems Design From First Principles </title>
+        <title> AI Systems Design From First Principles </title>
         <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
         <div class="hero">
             <header>
-                <h1>Ai Systems Design From First Principles</h1>
+                <h1>AI Systems Design From First Principles</h1>
                 <p>Rebuilding enterprise systems and AI from first principles.</p>
             </header>
         </div>
         
         <main>
             <div class="container">
-                <p>---</p>
-<p>layout: default</p>
-<p>title: "Building a Stateful TCP Chat Server From Scratch"</p>
-<p>description: "Demystifying network layer fundamentals: Implementing an event-driven master socket socket server listener and greeting dispatch engine in pure Python."</p>
-<p>---</p>
-<p></p>
+                <p></p>
 <head>
 <meta charset="utf-8">
 <title>{{ page.title }} | {{ site.title }}</title>
@@ -38,10 +33,6 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -62,7 +53,7 @@ At the bedrock of every real-time messaging network, multiplayer gaming engine, 
 <p></p>
 Following our repository's <strong>strict zero-dependency constraint</strong>, we will build an interactive, bidirectional TCP socket server from first principles using nothing but pure Python standard library modules.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>The Persistent Socket Server Blueprint</h2
 <p></p>
@@ -74,10 +65,8 @@ Following our repository's <strong>strict zero-dependency constraint</strong>, w
 <p>import socket</p>
 <p></p>
 <p>def start_server():</p>
-<p>"""</p>
 <p>Initializes a master TCP listening socket, binds to loopback configurations,</p>
 <p>and handles stateful bidirectional string trades with incoming clients.</p>
-<p>"""</p>
 <h1>1. Instantiate an IPv4, Stream-oriented TCP master listening socket</h1
 <p>server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</p>
 <p></p>
@@ -99,7 +88,6 @@ Following our repository's <strong>strict zero-dependency constraint</strong>, w
 <p>print(f'Connection established from hardware address: {addr}')</p>
 <p></p>
 <h1>5. Compile and flush an immediate greeting message frame over the wire</h1
-<p>message = "Hey What's up?"</p>
 <p>client_socket.sendall(message.encode('utf-8'))</p>
 <p></p>
 <h1>6. Suspend the loop to capture the incoming client response payload</h1
@@ -126,7 +114,7 @@ Following our repository's <strong>strict zero-dependency constraint</strong>, w
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Architectural Mechanisms Breakdown</h2
 <p></p>
@@ -161,7 +149,7 @@ In socket programming, abruptly shutting down a server script leaves the underly
 <p></p>
 <p>This configuration tells the kernel's network stack to bypass the standard safety hold, letting you stop and start the master server daemon instantly during testing.</p>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>End-to-End Integration Testing</h2
 <p></p>
@@ -195,7 +183,7 @@ To verify this backend chat coordinator framework, connect to it locally using y
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Next Evolutionary Milestones</h2
 <p></p>
@@ -208,10 +196,6 @@ To verify this backend chat coordinator framework, connect to it locally using y
 <li><strong>Structured Protocol Serialization:</strong> Upgrading raw string formatting to use organized JSON packet validation frames (`{"sender": "user1", "payload": "text"}`), perfectly aligning with our frontend components layout.</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
             </div>
@@ -219,8 +203,7 @@ To verify this backend chat coordinator framework, connect to it locally using y
 
         <footer>
             <div class="container">
-                Ai Systems Design From First Principles Footer
-                https://aminblm.github.io/ai_systems_design_from_scratch
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
             </div>
         </footer>
     </body>

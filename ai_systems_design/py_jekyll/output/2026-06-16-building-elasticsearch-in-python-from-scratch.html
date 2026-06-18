@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Ai Systems Design From First Principles </title>
+        <title> AI Systems Design From First Principles </title>
         <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
         <div class="hero">
             <header>
-                <h1>Ai Systems Design From First Principles</h1>
+                <h1>AI Systems Design From First Principles</h1>
                 <p>Rebuilding enterprise systems and AI from first principles.</p>
             </header>
         </div>
         
         <main>
             <div class="container">
-                <p>---</p>
-<p>layout: default</p>
-<p>title: "Building a Custom ElasticSearch Clone in Pure Python"</p>
-<p>description: "A deep dive into parsing JSON DSL queries, aggregations, and distributed sharding algorithms using only the Python standard library."</p>
-<p>---</p>
-<p></p>
+                <p></p>
 <head>
 <meta charset="utf-8">
 <title>{{ page.title }} | {{ site.title }}</title>
@@ -38,10 +33,6 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -78,7 +69,7 @@
 <p></p>
 In alignment with our repository's <strong>strict zero-dependency mandate</strong>, we are going to look under the hood of a custom ElasticSearch clone built completely from scratch using nothing but the native Python standard library.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>The Core Blueprint: Anatomy of an Index</h2
 <p></p>
@@ -101,14 +92,11 @@ Our implementation mirrors this architecture by introducing an encapsulated `Ind
 <p>self.shards = []</p>
 <p></p>
 <p>def add_document(self, document):</p>
-<p>"""Ingests a document directly into the index storage pool."""</p>
 <p>self.documents.append(document)</p>
 <p></p>
 <p>def search(self, query):</p>
-<p>"""</p>
 <p>Executes a basic Domain Specific Language (DSL) search.</p>
 <p>Evaluates mappings and performs linear scanning for strict matching terms.</p>
-<p>"""</p>
 <p>results = []</p>
 <p>if query.get("term"):</p>
 <p>if "author" in self.mapping["properties"]:</p>
@@ -118,10 +106,8 @@ Our implementation mirrors this architecture by introducing an encapsulated `Ind
 <p>return results</p>
 <p></p>
 <p>def aggregate(self, aggregation):</p>
-<p>"""</p>
 <p>Calculates buckets and counts metrics across unique values.</p>
 <p>Simulates an ElasticSearch 'terms' aggregation.</p>
-<p>"""</p>
 <p>if aggregation.get("term"):</p>
 <p>if "author" in self.mapping["properties"]:</p>
 <p>if self.mapping["properties"]["author"]["type"] == "text":</p>
@@ -132,17 +118,15 @@ Our implementation mirrors this architecture by introducing an encapsulated `Ind
 <p>}</p>
 <p></p>
 <p>def allocate_shards(self, num_shards):</p>
-<p>"""</p>
 <p>Simulates document allocation across a specified partition space</p>
 <p>using a simplified round-robin distribution strategy.</p>
-<p>"""</p>
 <p>if not self.documents:</p>
 <p>return</p>
 <p>self.shards = [self.documents[i % len(self.documents)] for i in range(num_shards)]</p>
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Architectural Breakdown</h2
 <p></p>
@@ -167,7 +151,7 @@ ElasticSearch scales horizontally by breaking an index apart into discrete units
 <p></p>
 Our custom `allocate_shards` engine uses a deterministic modulo loop logic layer. By taking the loop counter index and applying a modulus operation against the length of the document store (`i % len(self.documents)`), it evenly assigns data records into distinct, segmented processing slots. This forms the foundational framework for building fully distributed MapReduce query processing paths down the road.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Running the Engine</h2
 <p></p>
@@ -188,13 +172,11 @@ Our custom `allocate_shards` engine uses a deterministic modulo loop logic layer
 <p>index.add_document({</p>
 <p>"title": "Sample Document One",</p>
 <p>"author": "John Doe",</p>
-<p>"date": "2026-04-01"</p>
 <p>})</p>
 <p></p>
 <p>index.add_document({</p>
 <p>"title": "Sample Document Two",</p>
 <p>"author": "John Pie",</p>
-<p>"date": "2026-06-16"</p>
 <p>})</p>
 <p></p>
 <h1>1. Execute a strict 'term' query match</h1
@@ -228,7 +210,7 @@ Our custom `allocate_shards` engine uses a deterministic modulo loop logic layer
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Next Evolutionary Steps</h2
 <p></p>
@@ -241,10 +223,6 @@ Our custom `allocate_shards` engine uses a deterministic modulo loop logic layer
 <li><strong>True Process Sharding:</strong> Binding distinct shard allocations to dedicated local network socket ports using our internal `py_socket_server` implementation.</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
             </div>
@@ -252,8 +230,7 @@ Our custom `allocate_shards` engine uses a deterministic modulo loop logic layer
 
         <footer>
             <div class="container">
-                Ai Systems Design From First Principles Footer
-                https://aminblm.github.io/ai_systems_design_from_scratch
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
             </div>
         </footer>
     </body>

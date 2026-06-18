@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Ai Systems Design From First Principles </title>
+        <title> AI Systems Design From First Principles </title>
         <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
         <div class="hero">
             <header>
-                <h1>Ai Systems Design From First Principles</h1>
+                <h1>AI Systems Design From First Principles</h1>
                 <p>Rebuilding enterprise systems and AI from first principles.</p>
             </header>
         </div>
         
         <main>
             <div class="container">
-                <p>---</p>
-<p>layout: default</p>
-<p>title: "Building a NoSQL Document Store From Scratch"</p>
-<p>description: "Demystifying unstructured data systems: Implementing a stateful database engine, document collection structures, and collection sharding mechanics in pure Python."</p>
-<p>---</p>
-<p></p>
+                <p></p>
 <head>
 <meta charset="utf-8">
 <title>{{ page.title }} | {{ site.title }}</title>
@@ -38,10 +33,6 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -64,7 +55,7 @@ To handle massive write volumes and analytical workloads at scale, these engines
 <p></p>
 Following our repository's <strong>strict zero-dependency constraint</strong>, we will implement an in-memory document database engine complete with data aggregation and data routing mechanics using nothing but pure Python standard constructs.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>The Document Store Architecture</h2
 <p></p>
@@ -87,23 +78,18 @@ Our NoSQL architecture coordinates independent structural layers: `Database` ser
 <p>self.indexes = []</p>
 <p></p>
 <p>def insert(self, document):</p>
-<p>"""Appends a raw document object or data dict into the collection storage array."""</p>
 <p>self.documents.append(document)</p>
 <p></p>
 <p>def find(self, filter=None):</p>
-<p>"""Scans internal documents. Currently runs a basic lookup pass matching active blocks."""</p>
 <p>return [doc for doc in self.documents if filter]</p>
 <p></p>
 <p>def aggregate(self, pipeline):</p>
-<p>"""Executes an analytics pipeline pass to compute document frequency counts over schemas."""</p>
 <p>return {field: len([doc for doc in self.documents if doc.get(field)]) for field in self.fields}</p>
 <p></p>
 <p>def create_index(self, index):</p>
-<p>"""Registers a lookup index structure across targeted fields."""</p>
 <p>self.indexes.append(index)</p>
 <p></p>
 <p>def shard(self, num_shards):</p>
-<p>"""Simulates horizontal clustering mechanics by distributing documents across shard fields."""</p>
 <p>if not self.documents:</p>
 <p>self.shards = []</p>
 <p>return</p>
@@ -164,7 +150,7 @@ Our NoSQL architecture coordinates independent structural layers: `Database` ser
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Architectural Mechanisms Breakdown</h2
 <p></p>
@@ -187,7 +173,7 @@ In production systems, aggregation engines process high-density datasets through
 <p></p>
 When document collections grow too large for a single machine's storage limits, database systems distribute the write load across separate servers via <strong>Sharding</strong>. Our prototype implements an authentic data partitioning pattern by applying a deterministic mathematical modulo loop (`i % len(self.documents)`) over incoming collections. This strategy breaks a single unified collection down into independent balanced data shards, laying the structural groundwork for distributed scale.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Verifying the Engine</h2
 <p></p>
@@ -207,7 +193,7 @@ When document collections grow too large for a single machine's storage limits, 
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Upcoming Engineering Sprints</h2
 <p></p>
@@ -220,10 +206,6 @@ When document collections grow too large for a single machine's storage limits, 
 <li><strong>Persistent JSON Disks:</strong> Writing automated transaction workers that serialize memory dictionary adjustments directly to non-volatile storage files, safeguarding data across engine restarts.</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
             </div>
@@ -231,8 +213,7 @@ When document collections grow too large for a single machine's storage limits, 
 
         <footer>
             <div class="container">
-                Ai Systems Design From First Principles Footer
-                https://aminblm.github.io/ai_systems_design_from_scratch
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
             </div>
         </footer>
     </body>

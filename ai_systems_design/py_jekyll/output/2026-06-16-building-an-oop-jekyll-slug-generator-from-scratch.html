@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Ai Systems Design From First Principles </title>
+        <title> AI Systems Design From First Principles </title>
         <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
         <div class="hero">
             <header>
-                <h1>Ai Systems Design From First Principles</h1>
+                <h1>AI Systems Design From First Principles</h1>
                 <p>Rebuilding enterprise systems and AI from first principles.</p>
             </header>
         </div>
         
         <main>
             <div class="container">
-                <p>---</p>
-<p>layout: default</p>
-<p>title: "Building an OOP Jekyll Slug Generator From Scratch"</p>
-<p>description: "Demystifying static site data pipelines: Implementing a text tokenization pipe and clean URL filename compiler using Object-Oriented Design in pure Python."</p>
-<p>---</p>
-<p></p>
+                <p></p>
 <head>
 <meta charset="utf-8">
 <title>{{ page.title }} | {{ site.title }}</title>
@@ -38,10 +33,6 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -64,7 +55,7 @@ While modern content management systems (CMS) hide string formatting behind heav
 <p></p>
 Adhering to our repository's <strong>strict zero-dependency constraint</strong>, we will use <strong>Object-Oriented Programming (OOP)</strong> principles to separate raw text cleanup pipelines from interactive console interface controllers using nothing but pure Python.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>The OOP Content Pipeline Architecture</h2
 <p></p>
@@ -77,29 +68,24 @@ Our platform design breaks responsibilities down into two independent classes. T
 <p>import string</p>
 <p></p>
 <p>class SlugGenerator:</p>
-<p>"""Handles the transformation of raw text titles into clean, web-safe SEO slugs."""</p>
 <p></p>
 <p>def __init__(self, punctuation_mask=None):</p>
 <h1>Allow custom punctuation masks, defaulting to standard string punctuation</h1
 <p>self.punctuation_mask = punctuation_mask if punctuation_mask is not None else string.punctuation</p>
 <p></p>
 <p>def clean_title(self, title: str) -> str:</p>
-<p>"""Forces lowercase normalization and purges masked punctuation characters."""</p>
 <p>if not title:</p>
-<p>return ""</p>
 <p>lowercase_title = title.lower()</p>
 <h1>Filter technique strips matching punctuation markers in a single pass</h1
 <p>return "".join(char for char in lowercase_title if char not in self.punctuation_mask)</p>
 <p></p>
 <p>def build_slug(self, title: str) -> str:</p>
-<p>"""Transforms a raw title into a standard hyphenated url token block."""</p>
 <p>cleaned = self.clean_title(title)</p>
 <p>tokens = cleaned.split()</p>
 <p>return "-".join(tokens)</p>
 <p></p>
 <p></p>
 <p>class TerminalInterface:</p>
-<p>"""Manages the terminal input/output state machine and interactive loop logic."""</p>
 <p></p>
 <p>def __init__(self, generator: SlugGenerator):</p>
 <h1>Explicit Dependency Injection of our logic engine worker</h1
@@ -108,17 +94,14 @@ Our platform design breaks responsibilities down into two independent classes. T
 <p>self.date_prefix = datetime.date.today().strftime("%Y-%m-%d")</p>
 <p></p>
 <p>def display_header(self):</p>
-<p>"""Renders the standard UI layout system boundaries."""</p>
 <p>print("=========================================================")</p>
 <p>print("    OOP Jekyll Blog Post Filename Generator Engine       ")</p>
 <p>print("        Type 'exit' or 'quit' to terminate.              ")</p>
 <p>print("=========================================================\n")</p>
 <p></p>
 <p>def process_input(self, user_input: str) -> bool:</p>
-<p>"""</p>
 <p>Evaluates input tokens. Returns False if a shutdown token is</p>
 <p>received, otherwise processes text parameters and returns True.</p>
-<p>"""</p>
 <p>cleaned_input = user_input.strip()</p>
 <p></p>
 <p>if cleaned_input.lower() in ['exit', 'quit']:</p>
@@ -130,7 +113,6 @@ Our platform design breaks responsibilities down into two independent classes. T
 <p></p>
 <h1>Invoke the aggregated generator service dependency</h1
 <p>slug = self.generator.build_slug(cleaned_input)</p>
-<p>filename = f"{self.date_prefix}-{slug}.md"</p>
 <p></p>
 print("-" <em> 60)</em>
 <p>print(f"Target Slug    : {slug}")</p>
@@ -139,7 +121,6 @@ print("-" <em> 60 + "\n")</em>
 <p>return True</p>
 <p></p>
 <p>def run(self):</p>
-<p>"""Ignites the infinite polling loop execution layer."""</p>
 <p>self.display_header()</p>
 <p></p>
 <p>while True:</p>
@@ -165,7 +146,7 @@ print("-" <em> 60 + "\n")</em>
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Architectural Mechanisms Breakdown</h2
 <p></p>
@@ -194,7 +175,7 @@ The `SlugGenerator` transforms raw human titles into clean, web-safe strings thr
 <p></p>
 The interface class utilizes instance caching to optimize resource consumption. Instead of repeatedly creating `datetime` instances and hitting kernel time subroutines on every individual user input pass, the system computes and saves the prefix token string (`self.date_prefix = ...`) once during constructor setup. This keeps string concatenation operations ultra-lean and incredibly efficient inside the endless interactive processing loop.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Verifying the Generation Engine</h2
 <p></p>
@@ -214,10 +195,10 @@ The interface class utilizes instance caching to optimize resource consumption. 
 <p>=========================================================</p>
 <p></p>
 <p>Enter Blog Title -> Building a Core REST API Server from Scratch!!</p>
-<p>------------------------------------------------------------</p>
+<br>
 <p>Target Slug    : building-a-core-rest-api-server-from-scratch</p>
 <p>Jekyll File    : _posts/2026-06-16-building-a-core-rest-api-server-from-scratch.md</p>
-<p>------------------------------------------------------------</p>
+<br>
 <p></p>
 <p>Enter Blog Title -> quit</p>
 <p></p>
@@ -225,7 +206,7 @@ The interface class utilizes instance caching to optimize resource consumption. 
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Upcoming Engineering Sprints</h2
 <p></p>
@@ -238,10 +219,6 @@ The interface class utilizes instance caching to optimize resource consumption. 
 <li><strong>Unicode Diacritic Translation:</strong> Integrating a text transformation lookup table to map accent characters across international datasets safely (e.g., automatically converting `"Café"` into its web-safe URL token form `"cafe"`).</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
             </div>
@@ -249,8 +226,7 @@ The interface class utilizes instance caching to optimize resource consumption. 
 
         <footer>
             <div class="container">
-                Ai Systems Design From First Principles Footer
-                https://aminblm.github.io/ai_systems_design_from_scratch
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
             </div>
         </footer>
     </body>

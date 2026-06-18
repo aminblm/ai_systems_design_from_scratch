@@ -91,7 +91,7 @@ Because the platform maintains zero dependencies, initializing and stress-testin
 
 ### 1. Clone the Source Tree
 ```bash
-git clone [https://github.com/aminblm/ai_systems_design_from_scratch.git](https://github.com/aminblm/ai_systems_design_from_scratch.git)
+git clone https://github.com/aminblm/ai_systems_design_from_scratch.git
 cd ai_systems_design_from_scratch
 
 ```

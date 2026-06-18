@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Ai Systems Design From First Principles </title>
+        <title> AI Systems Design From First Principles </title>
         <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
         <div class="hero">
             <header>
-                <h1>Ai Systems Design From First Principles</h1>
+                <h1>AI Systems Design From First Principles</h1>
                 <p>Rebuilding enterprise systems and AI from first principles.</p>
             </header>
         </div>
         
         <main>
             <div class="container">
-                <p>---</p>
-<p>layout: default</p>
-<p>title: "Building a Custom Git Client over Raw Sockets"</p>
-<p>description: "Demystifying distributed version control network layers: Implementing a lightweight, wire-serialized Git client using pure Python socket subsystems."</p>
-<p>---</p>
-<p></p>
+                <p></p>
 <head>
 <meta charset="utf-8">
 <title>{{ page.title }} | {{ site.title }}</title>
@@ -38,10 +33,6 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -61,7 +52,7 @@ When you run an operation like `git clone`, your local machine handles much more
 <p></p>
 Following our repository's <strong>strict zero-dependency constraint</strong>, we will pull back the abstraction layer of network transport. We will construct a lightweight Git network client prototype that communicates with a remote repository daemon using raw TCP streams and structured JSON payload frames.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>The Socket-Driven Git Client Blueprint</h2
 <p></p>
@@ -74,10 +65,8 @@ Our implementation abstracts network operations into a streamlined execution wor
 <p>import json</p>
 <p></p>
 <p>def start_client():</p>
-<p>"""</p>
 <p>Initializes a raw TCP/IP stream socket connection, serializes</p>
 <p>a version control primitive, and dispatches it to the remote Git daemon.</p>
-<p>"""</p>
 <h1>1. Initialize an IPv4, Stream-oriented TCP socket descriptor</h1
 <p>client_socket = socket.AF_INET, socket.SOCK_STREAM)</p>
 <p></p>
@@ -86,7 +75,6 @@ Our implementation abstracts network operations into a streamlined execution wor
 <p>print("Connected to the Git Server")</p>
 <p></p>
 <h1>3. Construct the targeted version control operation string</h1
-<p>command = "git clone [https://github.com/user/repo.git](https://github.com/user/repo.git)"</p>
 <p></p>
 <h1>4. Marshal data fields into a strict structural JSON protocol frame</h1
 <p>payload = {</p>
@@ -109,7 +97,7 @@ Our implementation abstracts network operations into a streamlined execution wor
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Architectural Mechanisms Breakdown</h2
 <p></p>
@@ -132,7 +120,7 @@ The client's network loop implements a synchronous execution profile. Calling `c
 <p></p>
 Similarly, `recv(1024)` places the process into a waiting state until data frames cross the network buffer. This is the optimal architecture for linear orchestration operations like cloning, where moving forward depends entirely on receiving a confirmation frame from the server.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>End-to-End Environment Validation</h2
 <p></p>
@@ -194,7 +182,7 @@ Create a transient test server file (`py_git_server.py`) to intercept your clien
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Upcoming Engineering Sprints</h2
 <p></p>
@@ -207,10 +195,6 @@ Create a transient test server file (`py_git_server.py`) to intercept your clien
 <li><strong>Local Filesystem Hydration:</strong> Integrating a pure Python compression hook module to unpack byte streams straight into physical, tracked project workspaces.</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
             </div>
@@ -218,8 +202,7 @@ Create a transient test server file (`py_git_server.py`) to intercept your clien
 
         <footer>
             <div class="container">
-                Ai Systems Design From First Principles Footer
-                https://aminblm.github.io/ai_systems_design_from_scratch
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
             </div>
         </footer>
     </body>

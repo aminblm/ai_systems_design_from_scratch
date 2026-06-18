@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Ai Systems Design From First Principles </title>
+        <title> AI Systems Design From First Principles </title>
         <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
         <div class="hero">
             <header>
-                <h1>Ai Systems Design From First Principles</h1>
+                <h1>AI Systems Design From First Principles</h1>
                 <p>Rebuilding enterprise systems and AI from first principles.</p>
             </header>
         </div>
         
         <main>
             <div class="container">
-                <p>---</p>
-<p>layout: default</p>
-<p>title: "Building an Interactive TCP Chat Client From Scratch"</p>
-<p>description: "Demystifying network communications: Implementing a streaming socket descriptor, raw byte encoder, and standard IO interface in pure Python."</p>
-<p>---</p>
-<p></p>
+                <p></p>
 <head>
 <meta charset="utf-8">
 <title>{{ page.title }} | {{ site.title }}</title>
@@ -38,10 +33,6 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -63,7 +54,7 @@ Every high-level chat application, terminal-based remote shell, or realtime stre
 <p></p>
 Adhering to our repository's <strong>strict zero-dependency mandate</strong>, we will implement an interactive TCP network communication client entirely from first principles using nothing but the Python standard library.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>The Streaming TCP Client Architecture</h2
 <p></p>
@@ -75,10 +66,8 @@ Our script establishes an explicit network communication channel. It initializes
 <p>import socket</p>
 <p></p>
 <p>def start_client():</p>
-<p>"""</p>
 <p>Initializes an IPv4 TCP socket connection, handles incoming greeting streams,</p>
 <p>and flushes interactive user text strings to the target server daemon.</p>
-<p>"""</p>
 <h1>1. Instantiate an IPv4, Stream-oriented TCP socket interface</h1
 <p>client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</p>
 <p></p>
@@ -111,7 +100,7 @@ Our script establishes an explicit network communication channel. It initializes
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Architectural Mechanisms Breakdown</h2
 <p></p>
@@ -134,7 +123,7 @@ When this line executes, the client thread goes to sleep, relinquishing CPU cycl
 <p></p>
 Sockets are tracked by operating system kernels as physical, system-wide resource handles called file descriptors. If an application repeatedly opens network channels without calling `.close()`, the kernel will eventually exhaust its allocation pool, throwing errors that block other services. Our updated code structures these socket lifecycles inside a robust `try/finally` block. This guarantees that even if a user abruptly exits the script using a terminal break signal (`Ctrl+C`), the file handle safely unbinds, leaving system resources completely clean.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>End-to-End Network Testing</h2
 <p></p>
@@ -169,7 +158,7 @@ Open your primary terminal shell and bind a local utility listener to capture da
 <p></p>
 <p>The target message string will instantly print out inside your first terminal window, proving that raw byte streams are migrating across your machine's loopback interface successfully.</p>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Network Engineering Roadmap</h2
 <p></p>
@@ -182,10 +171,6 @@ Open your primary terminal shell and bind a local utility listener to capture da
 <li><strong>Graceful Remote Disconnection Handling:</strong> Refining the reading mechanism to safely catch empty server bytes (`b""`), allowing the client to instantly detect if the remote server crashes and close out local system resources gracefully.</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
             </div>
@@ -193,8 +178,7 @@ Open your primary terminal shell and bind a local utility listener to capture da
 
         <footer>
             <div class="container">
-                Ai Systems Design From First Principles Footer
-                https://aminblm.github.io/ai_systems_design_from_scratch
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
             </div>
         </footer>
     </body>

@@ -55,16 +55,27 @@ class MarkdownToHTML:
     def _parse_markdown(self):
         self.html_lines = []
         lines = self._read_markdown_file().split("\n") if self.markdown_file_path != '' else self.markdown_text.split("\n")
+        if lines[0].startswith('---'): lines = self._ignore_metadata_line(lines[1:])
         for line in lines:
             line = line.strip()
             if line.startswith('#'): self._parse_header(line)
+            elif line.startswith('---'): self.html_lines.append('<br>')
             elif line.startswith("<"): self._parse_html(line)
             elif line.startswith(">"): self._parse_quote(line)
+            elif line.endswith('"') or line.endswith('">'): continue #TODO Multi-line HTML
+            elif line.startswith('[') or line.startswith('!'): continue #TODO Links and images
             elif line.startswith("* ") or line.startswith("- "): self._parse_bullet_point(line)
             elif line.startswith(self.MD_SPECIALS['MULTILINE_CODE']): self._parse_multi_line_code(line)
+            elif line.startswith(self.MD_SPECIALS['INLINE_CODE']): self._parse_inline_code(line)
             elif self._is_pure_text(line): self._parse_pure_text_line(line)
             else: self.html_lines.append(self._parse_markdown_specials(line))
-                
+
+    def _ignore_metadata_line(self, lines):
+        # TODO process metadata into dynamic variables
+        for i, line in enumerate(lines):
+            if line.startswith('---'): return lines[i+1:]
+        return lines
+                            
     def _parse_markdown_specials(self, markdown_content):
         html_content = ""
         if len(markdown_content.split(self.MD_SPECIALS['BOLD'])) % 2 != 0:
@@ -120,6 +131,10 @@ class MarkdownToHTML:
     def _parse_multi_line_code(self, line):
         # TODO support multi-line code
         self.html_lines.append(f'<pre><code>{ line.split(self.MD_SPECIALS['MULTILINE_CODE'])[1] }</code></pre>')
+
+    def _parse_inline_code(self, line):
+        # TODO support multi-line code
+        self.html_lines.append(f'<pre><code>{ line.split(self.MD_SPECIALS['INLINE_CODE'])[1] }</code></pre>')
 
     def _is_pure_text(self, text):
         return not any(special in text for special in self.MD_SPECIALS.values())

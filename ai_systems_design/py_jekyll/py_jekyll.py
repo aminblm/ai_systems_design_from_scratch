@@ -44,13 +44,14 @@ class Jekyll:
             html_file_path = os.path.join(self.output_folder, f"{ md_file.split('.md')[0] }.html")
             html_content = HTMLContent(md_file_path).get_html_content()
             if os.path.isfile(md_file_path): self._generate_html_page(layout, config, html_content, html_file_path)
+        print("Site generated.")
 
     def _generate_html_page(self, layout, config, html_content, html_file_path):
         layout = layout.replace('{{ site.title }}', config['title'])
         layout = layout.replace('{{ site.description }}', config['description'])
         layout = layout.replace('{{ site.css }}', config['css'])
-        print("hi", html_content)
         layout = layout.replace('{{ content }}', html_content)
         layout = layout.replace('{{ site.footer_text }}', config['footer_text'])
         layout = layout.replace('{{ site.url }}', config['url'])
+        layout = layout.replace('{{ site.author }}', config['author'])
         with open(html_file_path, 'wb') as html: html.write(layout.encode('utf-8'))

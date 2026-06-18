@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Ai Systems Design From First Principles </title>
+        <title> AI Systems Design From First Principles </title>
         <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
         <div class="hero">
             <header>
-                <h1>Ai Systems Design From First Principles</h1>
+                <h1>AI Systems Design From First Principles</h1>
                 <p>Rebuilding enterprise systems and AI from first principles.</p>
             </header>
         </div>
         
         <main>
             <div class="container">
-                <p>---</p>
-<p>layout: default</p>
-<p>title: "Building a Stateless Lexical Reply Engine From Scratch"</p>
-<p>description: "Demystifying natural language interfaces: Implementing an in-memory dictionary routing matrix and standard input loop in pure Python."</p>
-<p>---</p>
-<p></p>
+                <p></p>
 <head>
 <meta charset="utf-8">
 <title>{{ page.title }} | {{ site.title }}</title>
@@ -38,10 +33,6 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -65,7 +56,7 @@ While enterprise-grade rule systems leverage tokenization pipelines, regular exp
 <p></p>
 Following our repository's <strong>strict zero-dependency constraint</strong>, we will implement a lightweight, localized chatbot reply engine complete with an interactive runtime stream loop using nothing but pure Python standard library types.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>The Chatbot Response Loop Architecture</h2
 <p></p>
@@ -86,18 +77,14 @@ Our layout uses an isolated class wrapper (`SimpleChatbot`) that encapsulates ou
 <p>"what is your name?": "I'm a simple chatbot. I don't have a name.",</p>
 <p>"what can you do?": "I can answer questions and chat with you.",</p>
 <p>"thank you": "You're welcome! 😊",</p>
-<p>"how to get started?": "You can ask me anything, and I'll try my best to help!"</p>
 <p>}</p>
 <p></p>
 <p>def get_response(self, user_input):</p>
-<p>"""</p>
 <p>Interrogates the response table matrix using a strict key lookup.</p>
 <p>Returns the matching mapped string, or falls back to an explicit catch-all error block.</p>
-<p>"""</p>
 <p>if user_input in self.responses:</p>
 <p>return self.responses[user_input]</p>
 <p>else:</p>
-<p>return "Sorry, I can't help with that!"</p>
 <p></p>
 <p></p>
 <p>if __name__ == "__main__":</p>
@@ -129,7 +116,7 @@ Our layout uses an isolated class wrapper (`SimpleChatbot`) that encapsulates ou
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Architectural Mechanisms Breakdown</h2
 <p></p>
@@ -145,7 +132,7 @@ When a human operator submits an unrecognized input pattern down the terminal te
 <p></p>
 The script handles data processing inside an infinite interactive `while True` loop driven by the standard input utility channel. By wrapping the line processing block with explicit `.strip()` invocations, we prune trailing carriage returns (`\n`) and leading empty space cells. This step guarantees that input strings precisely match our clean dictionary keys.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Verifying the Reply Engine</h2
 <p></p>
@@ -170,7 +157,7 @@ The script handles data processing inside an infinite interactive `while True` l
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Intent Optimization Roadmap</h2
 <p></p>
@@ -183,10 +170,6 @@ The script handles data processing inside an infinite interactive `while True` l
 <li><strong>Regular Expression Route Trees:</strong> Replacing the rigid hash map with a sequential compiled regex dictionary array to support dynamic phrase parsing and variable extraction (e.g., matching `"my name is (.<em>)"`).</em></li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
             </div>
@@ -194,8 +177,7 @@ The script handles data processing inside an infinite interactive `while True` l
 
         <footer>
             <div class="container">
-                Ai Systems Design From First Principles Footer
-                https://aminblm.github.io/ai_systems_design_from_scratch
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
             </div>
         </footer>
     </body>

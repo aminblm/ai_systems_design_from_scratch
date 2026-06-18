@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Ai Systems Design From First Principles </title>
+        <title> AI Systems Design From First Principles </title>
         <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
         <div class="hero">
             <header>
-                <h1>Ai Systems Design From First Principles</h1>
+                <h1>AI Systems Design From First Principles</h1>
                 <p>Rebuilding enterprise systems and AI from first principles.</p>
             </header>
         </div>
         
         <main>
             <div class="container">
-                <p>---</p>
-<p>layout: default</p>
-<p>title: "Building a Pure HTTP REST API Server From Scratch"</p>
-<p>description: "Demystifying application-layer routing infrastructure: Implementing an HTTP/1.1 protocol engine, text payload string parser, and RESTful router in pure Python."</p>
-<p>---</p>
-<p></p>
+                <p></p>
 <head>
 <meta charset="utf-8">
 <title>{{ page.title }} | {{ site.title }}</title>
@@ -38,10 +33,6 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -63,7 +54,7 @@ Every time a web browser or client application fetches data from a backend servi
 <p></p>
 Adhering to our repository's <strong>strict zero-dependency mandate</strong>, we will engineer a robust HTTP/1.1 web server from first principles using nothing but the Python standard library.
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>The Networked REST API Architecture</h2
 <p></p>
@@ -81,7 +72,6 @@ Our backend routing engine is encapsulated inside a unified controller class: `R
 <p>self.port = port</p>
 <p></p>
 <p>def start_server(self):</p>
-<p>"""Initializes the master server socket and boots the connection-polling interface loop."""</p>
 <p>server_socket = utils.create_socket_server(self.host, self.port, 'REST API')</p>
 <p></p>
 <p>while True:</p>
@@ -123,41 +113,31 @@ Our backend routing engine is encapsulated inside a unified controller class: `R
 <p>pass</p>
 <p></p>
 <p>def _parse_request(self, request):</p>
-<p>"""Deconstructs the raw HTTP header stream to isolate the Method Verb and Target Path URL."""</p>
 <h1>HTTP Standard isolates the request line as the absolute first row of the packet buffer</h1
 <p>first_line = request.splitlines()[0]</p>
 <p>parts = first_line.split()</p>
 <p></p>
 <h1>Guardrail check for minimal valid HTTP request formatting (Method, Path, Protocol Version)</h1
 <p>if len(parts) < 2:</p>
-<p>return "GET", "/"</p>
 <p></p>
 <p>return parts[0], parts[1]</p>
 <p></p>
 <p>def _handle_request(self, method, path):</p>
-<p>"""Evaluates REST verbs and URI tokens to compile a strict HTTP compliance plain-text response."""</p>
 <h1>Note: Crucial HTTP specification compliance requires separating headers from bodies via double newlines (\r\n\r\n)</h1
 <p>if method == 'GET':</p>
 <p>if path == '/':</p>
-<p>response = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nHello, World!"</p>
 <p>elif path == '/hello':</p>
-<p>response = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nHello from the server!"</p>
 <p>else:</p>
-<p>response = "HTTP/1.1 404 Not Found\r\nContent-Type: text/plain\r\n\r\nFile not found!"</p>
 <p></p>
 <p>elif method == 'POST':</p>
 <p>print("Received POST data payload frame.")</p>
-<p>response = "HTTP/1.1 201 Created\r\nContent-Type: application/json\r\n\r\n{\"message\": \"Data Received\"}"</p>
 <p></p>
 <p>elif method == 'PUT':</p>
 <p>print("Data update request received!")</p>
-<p>response = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n{\"message\": \"Data Updated!\"}"</p>
 <p></p>
 <p>elif method == 'DELETE':</p>
-<p>response = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nData Deleted!"</p>
 <p></p>
 <p>else:</p>
-<p>response = "HTTP/1.1 405 Method Not Allowed\r\nContent-Type: text/plain\r\n\r\nMethod not allowed!"</p>
 <p></p>
 <p>return response</p>
 <p></p>
@@ -167,7 +147,7 @@ Our backend routing engine is encapsulated inside a unified controller class: `R
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Architectural Mechanisms Breakdown</h2
 <p></p>
@@ -190,7 +170,6 @@ In the original protocol template structures, responses were compiled using sing
 Furthermore, separating functional network headers (like `Content-Type`) from the raw data body requires an explicit empty line transition (`\r\n\r\n`). Our updated architecture implements this standard across all routing blocks:
 <p></p>
 <pre><code>python</code></pre>
-<p>response = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nHello, World!"</p>
 <p></p>
 <pre><code></code></pre>
 <p></p>
@@ -205,7 +184,7 @@ Furthermore, separating functional network headers (like `Content-Type`) from th
 <li>`404 Not Found`: Triggered to gracefully alert the client if an unconfigured resource path is hit.</li>
 <li>`405 Method Not Allowed`: Acts as an explicit validation guardrail if an unknown system verb tries to communicate with our socket channel.</li>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Verifying the REST API Backend</h2
 <p></p>
@@ -238,7 +217,7 @@ To test this backend microservice engine, execute it locally inside your primary
 <p></p>
 <pre><code></code></pre>
 <p></p>
-<p>---</p>
+<br>
 <p></p>
 <h2>Infrastructure Scaling Roadmap</h2
 <p></p>
@@ -251,10 +230,6 @@ To test this backend microservice engine, execute it locally inside your primary
 <li><strong>Stream Buffer Body Splitting:</strong> Refactoring the payload receiver to scan for the `Content-Length` header, enabling the server to dynamically buffer and parse multi-line JSON dictionaries passed during high-density `POST` and `PUT` transactions.</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
-<p>target="_blank"</p>
-<p>rel="noopener noreferrer"</p>
-<p>class="btn-primary"</p>
-<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
 <p>Connect with Amin Boulouma Official</p>
 </a>
             </div>
@@ -262,8 +237,7 @@ To test this backend microservice engine, execute it locally inside your primary
 
         <footer>
             <div class="container">
-                Ai Systems Design From First Principles Footer
-                https://aminblm.github.io/ai_systems_design_from_scratch
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
             </div>
         </footer>
     </body>

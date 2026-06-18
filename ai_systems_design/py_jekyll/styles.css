@@ -32,11 +32,13 @@ body {
     font-size: 2.5rem;
     margin-bottom: 10px;
     animation: fadeIn is ease forwards;
+    text-align: center;
 }
 
 .hero p {
     font-size: 1.1rem;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 @keyframes fadeIn {
