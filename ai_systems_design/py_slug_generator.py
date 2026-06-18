@@ -23,6 +23,12 @@ class SlugGenerator:
 
 class TerminalInterface:
     """Manages the terminal input/output state machine and interactive loop logic."""
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls, *args, **kwargs)
+        return cls._instance
     
     def __init__(self, generator: SlugGenerator):
         self.generator = generator

@@ -1,10 +1,4 @@
 class Component:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self, name, data=None, methods=None):
         self.name = name
         self.data = data if data is not None else {}
@@ -16,12 +10,6 @@ class Component:
 
 
 class DataBinder:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self):
         self.components = {}
         self.rendered = []
@@ -42,12 +30,6 @@ class DataBinder:
 
 
 class EventDispatcher:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self):
         self.listeners = {}
 
@@ -60,12 +42,6 @@ class EventDispatcher:
     
 
 class UI:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self):
         self.data_binder = DataBinder()
         self.event_dispatcher = EventDispatcher()

@@ -1,22 +1,10 @@
 class Database:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self, name):
         self.name = name
         self.collections = []
 
 
 class Collection:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self, name, fields=None):
         self.name = name
         self.fields = fields or {} 
@@ -41,35 +29,17 @@ class Collection:
 
 
 class Document:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self, data):
         self.data = data
 
     
 class Index:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self, name, fields):
         self.name = name
         self.fields = fields
 
 
 class Query:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self, filter=None, sort=None, limit=None):
         self.filter = filter
         self.sort = sort 
@@ -77,12 +47,6 @@ class Query:
 
     
 class Aggregation:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self, pipeline):
         self.pipeline = pipeline
 

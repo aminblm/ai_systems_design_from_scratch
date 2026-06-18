@@ -2,12 +2,6 @@ import ai_systems_design.utils as utils
 
 
 class Container_Manager_CLI_client:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self, container_manager_server_host, container_manager_server_port):
         self.container_manager_server_host = container_manager_server_host
         self.container_manager_server_port = container_manager_server_port

@@ -1,12 +1,6 @@
 import time
 
 class AirflowDAG:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self, name, default_args=None):
         self.name = name 
         self.default_args = default_args or {}
@@ -20,12 +14,6 @@ class AirflowDAG:
         self.tasks.append(task)
 
 class Task:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self, name, execute_func, schedule=None, dependencies=None):
         self.name = name
         self.execute_func = execute_func 
@@ -40,12 +28,6 @@ class Task:
     
 
 class Scheduler:
-    _instance = None 
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-    
     def __init__(self, dag):
         self.dag = dag
         self.current_time = 0
