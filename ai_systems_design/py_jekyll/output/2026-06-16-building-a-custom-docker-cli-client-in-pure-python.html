@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Ai Systems Design From First Principles </title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="hero">
+            <header>
+                <h1>Ai Systems Design From First Principles</h1>
+                <p>Rebuilding enterprise systems and AI from first principles.</p>
+            </header>
+        </div>
+        
+        <main>
+            <div class="container">
+                <p>---</p>
+<p>layout: default</p>
+<p>title: "Building a Custom Docker CLI Client in Pure Python"</p>
+<p>description: "Demystifying container virtualization orchestration: Implementing a low-level, socket-multiplexed command line interface client from first principles."</p>
+<p>---</p>
+<p></p>
+<head>
+<meta charset="utf-8">
+<title>{{ page.title }} | {{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<p></p>
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<p></p>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.description | default: site.description }}">
+</head>
+<p></p>
+<a href="https://linktr.ee/aminboulouma"
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+</a>
+<p></p>
+<a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
+<p></p>
+<div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
+<a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
+<a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a>
+<a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
+</div>
+<p></p>
+<p></p>
+<h1>Building a Custom Docker CLI Client in Pure Python</h1
+<p></p>
+When you run commands like `docker run`, `docker stop`, or `docker ps`, you aren't interacting directly with Linux kernel cgroups or namespaces. Instead, you are executing commands via a lightweight text-based client that serializes your intent and ships it over a Unix domain socket or a TCP network port to a background daemon (`dockerd`).
+<p></p>
+<p>To fully understand container runtime orchestration, we must look at both sides of this network boundary.</p>
+<p></p>
+In keeping with our repository's <strong>strict zero-dependency mandate</strong>, we are pulling back the curtain on the client-side interaction layer. We will implement a custom, text-driven Docker-like CLI client using pure Python socket streams to pilot our backend container engine server (`py_container_manager`).
+<p></p>
+<p>---</p>
+<p></p>
+<h2>The First-Principles CLI Client Blueprint</h2
+<p></p>
+The architecture is encapsulated within a decoupled controller class: `Container_Manager_CLI_client`. It manages state validation, translates terminal input string configurations into protocol tokens, and streams serialized byte frames over a persistent raw TCP/IP connection socket.
+<p></p>
+<p>Here is the complete codebase block matching our strict standard-library requirements:</p>
+<p></p>
+<pre><code>python</code></pre>
+<p>import utils</p>
+<p></p>
+<p>class Container_Manager_CLI_client:</p>
+<p>def __init__(self, container_manager_server_host, container_manager_server_port):</p>
+<p>self.container_manager_server_host = container_manager_server_host</p>
+<p>self.container_manager_server_port = container_manager_server_port</p>
+<p></p>
+<p>def start_CLI_interface(self):</p>
+<p>"""</p>
+<p>Establishes a persistent TCP connection handshake to the orchestrator daemon</p>
+<p>and boots the infinite user interactive input polling loop.</p>
+<p>"""</p>
+<p>client_socket = utils.connect_to_socket_server(</p>
+<p>self.container_manager_server_host,</p>
+<p>self.container_manager_server_port,</p>
+<p>'Container Manager'</p>
+<p>)</p>
+<p></p>
+<p>while True:</p>
+<p>try:</p>
+<h1>Polling user commands via the standard console input channel</h1
+<p>command = input("Enter command (run, stop or list), exit to quit interface: ").strip()</p>
+<p></p>
+<h1>Graceful termination trap</h1
+<p>if command == "quit" or command == "exit":</p>
+<p>client_socket.sendall("exit".encode('utf-8'))</p>
+<p>break</p>
+<p></p>
+<p>if command == 'run':</p>
+<p>container_name = input("Enter container name: ").strip()</p>
+<p>if len(container_name) < 1:</p>
+<p>print("Container name required")</p>
+<p>continue</p>
+<p>client_socket.sendall(f'run {container_name}'.encode('utf-8'))</p>
+<p></p>
+<p>elif command == 'stop':</p>
+<p>container_name = input("Enter container name: ").strip()</p>
+<p>if len(container_name) < 1:</p>
+<p>print("Container name required")</p>
+<p>continue</p>
+<p>client_socket.sendall(f'stop {container_name}'.encode('utf-8'))</p>
+<p></p>
+<p>elif command == 'list':</p>
+<p>client_socket.sendall('list'.encode('utf-8'))</p>
+<p></p>
+<p>else:</p>
+<p>print("Unknown instruction token. Valid primitives: run, stop, list, exit.")</p>
+<p></p>
+<p>except Exception as e:</p>
+<p>print(f'Error: {e}')</p>
+<h1>Ensure the channel state closes gracefully without orphan socket leakage</h1
+<p>try:</p>
+<p>client_socket.sendall("Connection closed.".encode('utf-8'))</p>
+<p>except:</p>
+<p>pass</p>
+<p>break</p>
+<p></p>
+<p>if __name__ == '__main__':</p>
+<h1>Instantiate the client mapping to the local loopback container daemon port</h1
+<p>client = Container_Manager_CLI_client('127.0.0.1', 8080)</p>
+<p>client.start_CLI_interface()</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Architectural Deep Dive</h2
+<p></p>
+<h3>1. The Daemon-Client Communication Contract</h3
+<p></p>
+Because this client bypasses third-party RPC frameworks or HTTP overhead, it talks to our underlying infrastructure server using a raw <strong>string serialization protocol</strong>. The state command format is explicitly structured as space-delimited text payloads:
+<p></p>
+<li>`run <container_id>`: Instructs the engine daemon to invoke a new isolated fork container process.</li>
+<li>`stop <container_id>`: Signals the daemon to terminate execution boundaries on the targeted resource space.</li>
+<li>`list`: Demands a quick snapshot array dump of active isolation states.</li>
+<p></p>
+<h3>2. Guardrails & Socket Security</h3
+<p></p>
+Sockets are highly vulnerable to corruption if malformed or empty text blocks enter the stream buffer. Our `start_CLI_interface` engine enforces client-side string validation before firing packets into the network interface:
+<p></p>
+<pre><code>python</code></pre>
+<p>if len(container_name) < 1:</p>
+<p>print("Container name required")</p>
+<p>continue</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>By ensuring length constraints are met locally, we prevent the client from wasting socket bandwidth or throwing server-side token exceptions over the network pipe.</p>
+<p></p>
+<h3>3. Preventing Orphan Connection Leakage</h3
+<p></p>
+If a terminal session crashes (e.g., user hits a breaking terminal event), failing to alert the backend daemon leaves an "orphaned socket descriptor" hanging open on the operating system kernel. Our structural `try/except` loop wraps all transactional activities. If an unexpected error drops, the system catches it instantly and transmits an explicit termination string frame before exiting cleanly.
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Verifying the Orchestration Pipeline</h2
+<p></p>
+<p>To test this CLI component interface, you must first verify that your primary socket network layer helper is compiled and reachable, and that your underlying daemon is running.</p>
+<p></p>
+<h3>1. Setup the Network Host</h3
+<p></p>
+Ensure your `utils.py` contains the matching standard library TCP connector framework:
+<p></p>
+<pre><code>python</code></pre>
+<p>import socket</p>
+<p></p>
+<p>def connect_to_socket_server(host, port, service_name):</p>
+<p>"""Binds a raw socket layer directly to a remote listening TCP port."""</p>
+<p>s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</p>
+<p>s.connect((host, port))</p>
+<p>print(f"Connected successfully to the {service_name} Daemon at {host}:{port}")</p>
+<p>return s</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<h3>2. Execution Steps</h3
+<p></p>
+1. Boot your backend manager daemon script (`py_container_manager.py`) on port `8080`.
+<p>2. Fire up this client interface inside a separate terminal window:</p>
+<pre><code>bash</code></pre>
+<p>python py_container_manager_CLI_client.py</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p></p>
+<p></p>
+<h3>Target Execution Log Output</h3
+<p></p>
+<pre><code>text</code></pre>
+<p>Connected successfully to the Container Manager Daemon at 127.0.0.1:8080</p>
+<p>Enter command (run, stop or list), exit to quit interface: list</p>
+<p>[Client Packet Shipped: list]</p>
+<p></p>
+<p>Enter command (run, stop or list), exit to quit interface: run</p>
+<p>Enter container name: production_redis_node</p>
+<p>[Client Packet Shipped: run production_redis_node]</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Next Evolutionary Milestones</h2
+<p></p>
+<p>While this client loop successfully abstracts command parsing away from the backend container manager daemon, it relies on synchronous block execution patterns.</p>
+<p></p>
+<p>To bridge the gap between this prototype and a high-throughput systems utility, our project integration checklist points to these upcoming engineering sprints:</p>
+<p></p>
+<li><strong>Asynchronous Response Interception:</strong> Refactoring the internal polling stream to use a dedicated tracking thread that continuously prints async status stream reports from the daemon without blocking the user input console.</li>
+<li><strong>Unix Domain Socket Routing:</strong> Switching our `socket.AF_INET` TCP protocol interface over to localized file-system socket hooks (`socket.AF_UNIX`) to eliminate TCP handshaking latency on local loopbacks.</li>
+<li><strong>JSON Payload Marshalling:</strong> Standardizing our custom text framing format to rigid JSON structures to natively support passing advanced environment settings (e.g., memory limits, port forwards) over the socket line.</li>
+<p></p>
+<a href="https://linktr.ee/aminboulouma"
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+</a>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                Ai Systems Design From First Principles Footer
+                https://aminblm.github.io/ai_systems_design_from_scratch
+            </div>
+        </footer>
+    </body>
+</html>

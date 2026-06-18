@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Ai Systems Design From First Principles </title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="hero">
+            <header>
+                <h1>Ai Systems Design From First Principles</h1>
+                <p>Rebuilding enterprise systems and AI from first principles.</p>
+            </header>
+        </div>
+        
+        <main>
+            <div class="container">
+                <p>---</p>
+<p>layout: default</p>
+<p>title: "Building a Reactive Frontend Framework from Scratch"</p>
+<p>description: "Demystifying component-based web architectures: Implementing a declarative state binder, component registry, and custom event dispatcher loop in pure Python."</p>
+<p>---</p>
+<p></p>
+<head>
+<meta charset="utf-8">
+<title>{{ page.title }} | {{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<p></p>
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<p></p>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.description | default: site.description }}">
+</head>
+<p></p>
+<a href="https://linktr.ee/aminboulouma"
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+</a>
+<p></p>
+<a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
+<p></p>
+<div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
+<a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
+<a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a>
+<a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
+</div>
+<p></p>
+<h1>Building a Reactive Frontend Framework from Scratch</h1
+<p></p>
+Modern client-side web development is dominated by component-driven frameworks like React, Vue, and Angular. These platforms abstract away direct, tedious DOM manipulations by introducing high-level software design patterns: <strong>Component Isolation</strong>, <strong>Data Binding</strong>, and <strong>Decoupled Event Dispatching</strong>. Instead of writing imperatively, you declare your state, and the core engine reflects those data states dynamically onto the user interface view.
+<p></p>
+<p>But beneath the heavy Javascript bundle sizes and Virtual DOM nodes, how do these systems operate from first principles?</p>
+<p></p>
+To honor our repository's <strong>strict zero-dependency constraint</strong>, we will peel back the browser layer entirely. We will build a complete, state-bound frontend rendering engine prototype using nothing but standard Python objects.
+<p></p>
+<p>---</p>
+<p></p>
+<h2>The Frontend Engine Architecture</h2
+<p></p>
+<p>Our custom system divides state tracking and UI rendering across four explicit structural roles:</p>
+1. <strong>`Component`</strong>: The baseline atomic module housing localized metadata, state definitions, and template hook pointers.
+2. <strong>`DataBinder`</strong>: The state coordinator that maps raw component states into structured virtual UI nodes.
+3. <strong>`EventDispatcher`</strong>: The centralized observer bus allowing modular decoupling of behavior execution from structural state mutation.
+4. <strong>`UI`</strong>: The orchestration interface binding the individual sub-modules together into a clean API loop wrapper.
+<p></p>
+<p>Here is the complete implementation block:</p>
+<p></p>
+<pre><code>python</code></pre>
+<p>class Component:</p>
+<p>def __init__(self, name, data=None, methods=None):</p>
+<p>self.name = name</p>
+<p>self.data = data if data is not None else {}</p>
+<p>self.methods = methods if methods is not None else {}</p>
+<p>self.events = {}</p>
+<p></p>
+<p>def __repr__(self):</p>
+<p>return f'Component ({self.name}, data={self.data}, methods={self.methods})'</p>
+<p></p>
+<p></p>
+<p>class DataBinder:</p>
+<p>def __init__(self):</p>
+<p>self.components = {}</p>
+<p>self.rendered = []</p>
+<p></p>
+<p>def add_component(self, component):</p>
+<p>"""Registers a detached UI component blueprint into active tracking state."""</p>
+<p>self.components[component.name] = component</p>
+<p></p>
+<p>def render(self):</p>
+<p>"""Triggers a clean rendering tree pass over all tracked components."""</p>
+<p>self.rendered = []</p>
+<p>for component in self.components.values():</p>
+<p>self._render_component(component)</p>
+<p>return self.rendered</p>
+<p></p>
+<p>def _render_component(self, component):</p>
+<p>"""Simulates browser DOM string parsing by resolving state markers."""</p>
+<p>dom = f"<div id='{component.name}'>{component.data['text']}</div>"</p>
+<p>self.rendered.append(dom)</p>
+<p>return dom</p>
+<p></p>
+<p></p>
+<p>class EventDispatcher:</p>
+<p>def __init__(self):</p>
+<p>self.listeners = {}</p>
+<p></p>
+<p>def add_listener(self, event_type, handler):</p>
+<p>"""Binds an execution handler function pointer to a targeted event key."""</p>
+<p>self.listeners[event_type] = handler</p>
+<p></p>
+<p>def trigger_event(self, event_type, data):</p>
+<p>"""Fires an action message down the bus to evaluate registered event handlers."""</p>
+<p>handler = self.listeners.get(event_type)</p>
+<p>if handler:</p>
+<p>handler(data)</p>
+<p></p>
+<p></p>
+<p>class UI:</p>
+<p>def __init__(self):</p>
+<p>self.data_binder = DataBinder()</p>
+<p>self.event_dispatcher = EventDispatcher()</p>
+<p></p>
+<p>def create_component(self, name, data=None, methods=None):</p>
+<p>"""Convenience factory to initialize a node and link it to the data binder."""</p>
+<p>component = Component(name, data, methods)</p>
+<p>self.data_binder.add_component(component)</p>
+<p>return component</p>
+<p></p>
+<p>def bind_data(self, component, key, value):</p>
+<p>"""Mutates a target state component property to flag data adjustments."""</p>
+<p>component.data[key] = value</p>
+<p></p>
+<p>def run(self):</p>
+<p>"""Executes the render pipeline cycle and dumps resulting tree templates to standard out."""</p>
+<p>self.data_binder.render()</p>
+<p>print("Rendered UI:")</p>
+<p>for html in self.data_binder.render():</p>
+<p>print(html)</p>
+<p></p>
+<p></p>
+<p>if __name__ == "__main__":</p>
+<p>ui = UI()</p>
+<p></p>
+<h1>Example: create an active button component structure</h1
+<p>button = ui.create_component("button", {"text": "Click Me"}, {"click": ui.event_dispatcher.trigger_event})</p>
+<p></p>
+<h1>Programmatically mutate state boundary values</h1
+<p>ui.bind_data(button, "text", "Hello world!")</p>
+<p></p>
+<h1>Run structural pipeline compilation</h1
+<p>ui.run()</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Architectural Mechanisms Breakdown</h2
+<p></p>
+<h3>1. Isolated Component Encapsulation</h3
+<p></p>
+The `Component` class maps directly to the design patterns behind modern framework design. By storing properties inside a distinct dictionary boundary (`self.data`), states stay highly contained. Changing properties on a `button` node cannot trigger unintended adjustments across adjacent modules, mitigating global mutation risks.
+<p></p>
+<h3>2. The Declarative Render Pipeline</h3
+<p></p>
+In old imperative programming setups, updating text forced a manual lookup string call like `document.getElementById('button').innerText = "New Text"`. Our `DataBinder` implements a primitive rendering pipeline. The `_render_component` helper acts as a template parser:
+<p></p>
+<pre><code>python</code></pre>
+<p>dom = f"<div id='{component.name}'>{component.data['text']}</div>"</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+The underlying text is pulled straight from the component's state memory block. When `ui.run()` triggers its compile loop, it renders the HTML structure dynamically using whatever parameters are stored inside the data dictionary at that exact frame moment.
+<p></p>
+<h3>3. Decoupled Behavior Dispatching</h3
+<p></p>
+Rather than tightly coupling execution statements to individual components, the system delegates actions through the `EventDispatcher`. The engine registers function handles within a tracking dictionary bus (`self.listeners`). When user triggers roll in, the target method is pulled dynamically and fired, preserving clear decoupling between interface elements and background business logic handlers.
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Framework Verification and Execution</h2
+<p></p>
+<p>When you run this framework module inside your terminal instance, it demonstrates how shifting data configurations changes the final UI layout automatically:</p>
+<p></p>
+<pre><code>bash</code></pre>
+<p>python py_frontend.py</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<h3>Expected Output Log</h3
+<p></p>
+<pre><code>text</code></pre>
+<p>Rendered UI:</p>
+<div id='button'>Hello world!</div>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+Notice that although the `button` instance was initialized with a default text property of `"Click Me"`, invoking `ui.bind_data(button, "text", "Hello world!")` overwrote that state memory cell before the rendering pipeline step commenced. The engine compiled the accurate output data representation cleanly without hardcoded string alterations.
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Next Evolutionary Milestones</h2
+<p></p>
+While this pattern demonstrates component initialization and data lookup mechanisms, it operates as a pull-based framework—meaning rendering only occurs when we manually invoke the `run()` system method.
+<p></p>
+<p>To upgrade this framework into a highly interactive, push-based client emulator, our architecture roadmap highlights these feature enhancements:</p>
+<p></p>
+<li><strong>True Reactive Listeners (Getters/Setters):</strong> Wrapping `Component.data` using Python's magic properties or a Proxy setter class to intercept modifications, instantly calling the data binder's render function automatically whenever a value shifts.</li>
+<li><strong>Component Tree Nesting:</strong> Enhancing the `DataBinder` to handle components nesting inside other components (`parent_component.children`), building an authentic, hierarchical virtual tree architecture.</li>
+<li><strong>Diffing Algorithm Implementation:</strong> Building a tree difference algorithm that evaluates new output structures against cached render logs, updating only the elements that shifted rather than re-compiling the entire layout tree on every state update.</li>
+<p></p>
+<a href="https://linktr.ee/aminboulouma"
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+</a>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                Ai Systems Design From First Principles Footer
+                https://aminblm.github.io/ai_systems_design_from_scratch
+            </div>
+        </footer>
+    </body>
+</html>

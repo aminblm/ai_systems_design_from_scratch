@@ -1,6 +1,6 @@
 import socket
 
-import utils
+import ai_systems_design.utils as utils
 
 
 class REST_API:

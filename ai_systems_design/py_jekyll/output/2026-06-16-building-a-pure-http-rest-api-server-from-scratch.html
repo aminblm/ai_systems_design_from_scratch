@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Ai Systems Design From First Principles </title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="hero">
+            <header>
+                <h1>Ai Systems Design From First Principles</h1>
+                <p>Rebuilding enterprise systems and AI from first principles.</p>
+            </header>
+        </div>
+        
+        <main>
+            <div class="container">
+                <p>---</p>
+<p>layout: default</p>
+<p>title: "Building a Pure HTTP REST API Server From Scratch"</p>
+<p>description: "Demystifying application-layer routing infrastructure: Implementing an HTTP/1.1 protocol engine, text payload string parser, and RESTful router in pure Python."</p>
+<p>---</p>
+<p></p>
+<head>
+<meta charset="utf-8">
+<title>{{ page.title }} | {{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<p></p>
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<p></p>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.description | default: site.description }}">
+</head>
+<p></p>
+<a href="https://linktr.ee/aminboulouma"
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+</a>
+<p></p>
+<a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
+<p></p>
+<p></p>
+<div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
+<a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
+<a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a>
+<a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
+</div>
+<p></p>
+<p></p>
+<h1> Building a Relational SQL Database Engine Abstraction From Scratch</h1
+<p></p>
+Every time a web browser or client application fetches data from a backend service, it relies on an application-layer network protocol: <strong>Hypertext Transfer Protocol (HTTP)</strong>. In standard development, web servers like NGINX, Apache, or Python frameworks like Flask and FastPI capture these requests automatically. They shield engineers from raw TCP/IP data buffers by providing pre-parsed request parameters and automated status routing abstractions.
+<p></p>
+<p>To genuinely master distributed backend architectures, we must peer beneath these framework abstractions to look directly at the underlying mechanics of text serialization and socket-multiplexing.</p>
+<p></p>
+Adhering to our repository's <strong>strict zero-dependency mandate</strong>, we will engineer a robust HTTP/1.1 web server from first principles using nothing but the Python standard library.
+<p></p>
+<p>---</p>
+<p></p>
+<h2>The Networked REST API Architecture</h2
+<p></p>
+Our backend routing engine is encapsulated inside a unified controller class: `REST_API`. This runtime server manages a master listening socket loop, captures application-layer request lines, isolates text tokens, and serializes raw compliance-valid HTTP plain-text responses back across the wire channel.
+<p></p>
+<p>Here is the complete codebase block matching our strict system integration matrix:</p>
+<p></p>
+<pre><code>python</code></pre>
+<p>import socket</p>
+<p>import utils</p>
+<p></p>
+<p>class REST_API:</p>
+<p>def __init__(self, host='127.0.0.1', port=8080):</p>
+<p>self.host = host</p>
+<p>self.port = port</p>
+<p></p>
+<p>def start_server(self):</p>
+<p>"""Initializes the master server socket and boots the connection-polling interface loop."""</p>
+<p>server_socket = utils.create_socket_server(self.host, self.port, 'REST API')</p>
+<p></p>
+<p>while True:</p>
+<p>try:</p>
+<h1>Block thread processing until a remote client opens a transport connection path</h1
+<p>client_socket, client_address = server_socket.accept()</p>
+<p>print(f"Connection from {client_address}")</p>
+<p></p>
+<h1>1. Read incoming HTTP plain-text request blocks from the transport buffer</h1
+<p>request = client_socket.recv(4096).decode('utf-8')</p>
+<p>print(f'Received request: {request}')</p>
+<p></p>
+<p>if not request.strip():</p>
+<p>client_socket.close()</p>
+<p>continue</p>
+<p></p>
+<h1>2. Tokenize raw text lines into standard HTTP parameters</h1
+<p>method, path = self._parse_request(request)</p>
+<p>print(f"Routed Primitive: {method} -> Targeted Resource: {path}")</p>
+<p></p>
+<h1>3. Route parameters through the application layer mapping layer</h1
+<p>response = self._handle_request(method, path)</p>
+<p></p>
+<h1>4. Flush the serialized text blocks back out across the socket interface wire</h1
+<p>client_socket.sendall(response.encode('utf-8'))</p>
+<p></p>
+<h1>5. Sever the ephemeral client channel to prevent socket resource leaks</h1
+<p>client_socket.close()</p>
+<p></p>
+<p>except (KeyboardInterrupt, EOFError):</p>
+<p>print("\nShutdown sequence initiated. Closing master API socket listener.")</p>
+<p>server_socket.close()</p>
+<p>break</p>
+<p>except Exception as e:</p>
+<p>print(f"Application Runtime Exception: {e}")</p>
+<p>try:</p>
+<p>client_socket.close()</p>
+<p>except:</p>
+<p>pass</p>
+<p></p>
+<p>def _parse_request(self, request):</p>
+<p>"""Deconstructs the raw HTTP header stream to isolate the Method Verb and Target Path URL."""</p>
+<h1>HTTP Standard isolates the request line as the absolute first row of the packet buffer</h1
+<p>first_line = request.splitlines()[0]</p>
+<p>parts = first_line.split()</p>
+<p></p>
+<h1>Guardrail check for minimal valid HTTP request formatting (Method, Path, Protocol Version)</h1
+<p>if len(parts) < 2:</p>
+<p>return "GET", "/"</p>
+<p></p>
+<p>return parts[0], parts[1]</p>
+<p></p>
+<p>def _handle_request(self, method, path):</p>
+<p>"""Evaluates REST verbs and URI tokens to compile a strict HTTP compliance plain-text response."""</p>
+<h1>Note: Crucial HTTP specification compliance requires separating headers from bodies via double newlines (\r\n\r\n)</h1
+<p>if method == 'GET':</p>
+<p>if path == '/':</p>
+<p>response = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nHello, World!"</p>
+<p>elif path == '/hello':</p>
+<p>response = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nHello from the server!"</p>
+<p>else:</p>
+<p>response = "HTTP/1.1 404 Not Found\r\nContent-Type: text/plain\r\n\r\nFile not found!"</p>
+<p></p>
+<p>elif method == 'POST':</p>
+<p>print("Received POST data payload frame.")</p>
+<p>response = "HTTP/1.1 201 Created\r\nContent-Type: application/json\r\n\r\n{\"message\": \"Data Received\"}"</p>
+<p></p>
+<p>elif method == 'PUT':</p>
+<p>print("Data update request received!")</p>
+<p>response = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n{\"message\": \"Data Updated!\"}"</p>
+<p></p>
+<p>elif method == 'DELETE':</p>
+<p>response = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nData Deleted!"</p>
+<p></p>
+<p>else:</p>
+<p>response = "HTTP/1.1 405 Method Not Allowed\r\nContent-Type: text/plain\r\n\r\nMethod not allowed!"</p>
+<p></p>
+<p>return response</p>
+<p></p>
+<p>if __name__ == "__main__":</p>
+<p>app = REST_API('127.0.0.1', 8080)</p>
+<p>app.start_server()</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Architectural Mechanisms Breakdown</h2
+<p></p>
+<h3>1. HTTP Request Line Deconstruction</h3
+<p></p>
+Our internal parsing worker (`_parse_request`) leverages first-principles string indexing to interpret network frames. According to Internet Engineering Task Force (IETF) specification patterns, an HTTP frame is structured around an initial command string row:
+<p></p>
+<pre><code>text</code></pre>
+<p>GET /hello HTTP/1.1</p>
+<p>Host: 127.0.0.1:8080</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+By applying spatial string splits (`request.splitlines()[0].split()`), our engine strips away auxiliary trailing network headers, instantly exposing the primary action primitive (`parts[0]`) and the target file system URI (`parts[1]`) in an efficient, lightweight extraction pass.
+<p></p>
+<h3>2. Strict HTTP Header Framing Boundaries</h3
+<p></p>
+In the original protocol template structures, responses were compiled using single newline characters (`\n`). While modern resilient browser parsers can occasionally infer boundaries from single transitions, the formal HTTP/1.1 protocol specification strictly mandates <strong>Carriage Return + Line Feed sequence pairs</strong> (`\r\n`).
+<p></p>
+Furthermore, separating functional network headers (like `Content-Type`) from the raw data body requires an explicit empty line transition (`\r\n\r\n`). Our updated architecture implements this standard across all routing blocks:
+<p></p>
+<pre><code>python</code></pre>
+<p>response = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nHello, World!"</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>Ensuring this demarcation line is formed flawlessly protects your streaming bytes from being dropped or classified as a corrupted header chunk by strict downstream API clients.</p>
+<p></p>
+<h3>3. REST Status Mapping Boundaries</h3
+<p></p>
+<p>The handler logic implements an authentic RESTful routing matrix, binding distinct CRUD actions directly to semantic HTTP status codes:</p>
+<p></p>
+<li>`200 OK`: Returned for successful reads (`GET`), updates (`PUT`), and removals (`DELETE`).</li>
+<li>`201 Created`: Explicitly dispatched upon successful ingestion of new record payloads via `POST`.</li>
+<li>`404 Not Found`: Triggered to gracefully alert the client if an unconfigured resource path is hit.</li>
+<li>`405 Method Not Allowed`: Acts as an explicit validation guardrail if an unknown system verb tries to communicate with our socket channel.</li>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Verifying the REST API Backend</h2
+<p></p>
+To test this backend microservice engine, execute it locally inside your primary shell window while passing network requests using your previously constructed client tool (`py_http_client.py`) or standard terminal utility commands like `curl`.
+<p></p>
+<h3>1. Launch the Server Infrastructure</h3
+<p></p>
+<pre><code>bash</code></pre>
+<p>python py_http_server.py</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<h3>2. Stream Probing Requests (Alternative Terminal Window)</h3
+<p></p>
+<pre><code>bash</code></pre>
+<p>curl -i [http://127.0.0.1:8080/hello](http://127.0.0.1:8080/hello)</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<h3>Target Execution Logs (Server Console Output)</h3
+<p></p>
+<pre><code>text</code></pre>
+<p>REST API Daemon actively listening on 127.0.0.1:8080</p>
+<p>Connection from ('127.0.0.1', 59421)</p>
+<p>Received request: GET /hello HTTP/1.1</p>
+<p>Host: 127.0.0.1:8080</p>
+<p></p>
+<p>GET /hello</p>
+<p>Routed Primitive: GET -> Targeted Resource: /hello</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Infrastructure Scaling Roadmap</h2
+<p></p>
+<p>While this server engine handles basic state mapping, route evaluation, and protocol parsing loops, it functions as a single-threaded blocker—meaning it can only process one active network connection at a time.</p>
+<p></p>
+<p>To scale this infrastructure module into a reliable, concurrent application-tier platform, our engineering goals target these upcoming code sprints:</p>
+<p></p>
+<li><strong>Asynchronous Selector Engine:</strong> Integrating Python's native `selectors` or `threading` module library to spin out distinct worker processes for client connections, freeing the core loop to instantly intercept secondary incoming sockets.</li>
+<li><strong>Regular Expression URI Tree Matching:</strong> Upgrading path lookups from simple string comparisons to a compiled Regex Route Tree, enabling dynamic route parameters (e.g., parsing `/users/<user_id>`).</li>
+<li><strong>Stream Buffer Body Splitting:</strong> Refactoring the payload receiver to scan for the `Content-Length` header, enabling the server to dynamically buffer and parse multi-line JSON dictionaries passed during high-density `POST` and `PUT` transactions.</li>
+<p></p>
+<a href="https://linktr.ee/aminboulouma"
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+</a>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                Ai Systems Design From First Principles Footer
+                https://aminblm.github.io/ai_systems_design_from_scratch
+            </div>
+        </footer>
+    </body>
+</html>

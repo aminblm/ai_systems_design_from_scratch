@@ -23,7 +23,7 @@ limitations:
 """
 
 class YAMLParser:
-    def __init__(self, yaml_str=None, yaml_file_path=None):
+    def __init__(self, yaml_file_path=None, yaml_str=None):
         self.yaml_file_path = yaml_file_path 
         self.yaml_str = yaml_str if yaml_str else self._read_yaml_file()
         self._parse()
@@ -37,7 +37,8 @@ class YAMLParser:
         for line in self.yaml_str.split("\n"):
             line = line.strip()
             if not line: continue
-            else: self.mapping[line.split(': ')[0]] = line.split(': ')[1]
+            else:
+                self.mapping[line.split(': ')[0]] = line.split(': ')[1]
                 
     def get(self, key):
         return self.mapping[key]

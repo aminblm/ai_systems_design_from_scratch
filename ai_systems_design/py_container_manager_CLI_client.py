@@ -1,4 +1,4 @@
-import utils
+import ai_systems_design.utils as utils
 
 
 class Container_Manager_CLI_client:

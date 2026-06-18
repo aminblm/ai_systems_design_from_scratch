@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Ai Systems Design From First Principles </title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="hero">
+            <header>
+                <h1>Ai Systems Design From First Principles</h1>
+                <p>Rebuilding enterprise systems and AI from first principles.</p>
+            </header>
+        </div>
+        
+        <main>
+            <div class="container">
+                <p>---</p>
+<p>layout: default</p>
+<p>title: "Building a Custom ElasticSearch Clone in Pure Python"</p>
+<p>description: "A deep dive into parsing JSON DSL queries, aggregations, and distributed sharding algorithms using only the Python standard library."</p>
+<p>---</p>
+<p></p>
+<head>
+<meta charset="utf-8">
+<title>{{ page.title }} | {{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<p></p>
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<p></p>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.description | default: site.description }}">
+</head>
+<p></p>
+<a href="https://linktr.ee/aminboulouma"
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+</a>
+<p></p>
+<a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
+<p></p>
+<head>
+<meta charset="utf-8">
+<title>{{ page.title }} | {{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<p></p>
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<p></p>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.description | default: site.description }}">
+</head>
+<p></p>
+<div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
+<a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
+<a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a>
+<a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
+</div>
+<p></p>
+<h1>Building a Custom ElasticSearch Clone in Pure Python</h1
+<p></p>
+<p>When scaling distributed systems, search engines like ElasticSearch often feel like magic. They parse complex JSON DSL queries, execute rapid aggregations across millions of documents, and distribute datasets across shards seamlessly.</p>
+<p></p>
+<p>But stripped down to its core principles, a search engine is simply a specialized database optimized for specific patterns: schema enforcement (mappings), query execution matching, data bucketing (aggregations), and horizontal partitioning (sharding).</p>
+<p></p>
+In alignment with our repository's <strong>strict zero-dependency mandate</strong>, we are going to look under the hood of a custom ElasticSearch clone built completely from scratch using nothing but the native Python standard library.
+<p></p>
+<p>---</p>
+<p></p>
+<h2>The Core Blueprint: Anatomy of an Index</h2
+<p></p>
+In ElasticSearch, an <strong>Index</strong> is a logical namespace that maps to a collection of documents. Unlike a schema-less NoSQL data store, a high-performance index enforces structural constraints via a data configuration map known as a <strong>Mapping</strong>.
+<p></p>
+Our implementation mirrors this architecture by introducing an encapsulated `Index` class. It manages four primary responsibilities:
+1. <strong>Schema Validation:</strong> Tracking allowed fields and data types.
+2. <strong>Document Ingestion:</strong> Storing raw record inputs inside memory state pools.
+3. <strong>DSL Query Resolution:</strong> Simulating Lucene-style term queries.
+4. <strong>Data Partitioning Simulation:</strong> Allocating records dynamically across logical shards.
+<p></p>
+<p>Here is the complete first-principles implementation:</p>
+<p></p>
+<pre><code>python</code></pre>
+<p>class Index:</p>
+<p>def __init__(self, name, mapping):</p>
+<p>self.name = name</p>
+<p>self.mapping = mapping</p>
+<p>self.documents = []</p>
+<p>self.shards = []</p>
+<p></p>
+<p>def add_document(self, document):</p>
+<p>"""Ingests a document directly into the index storage pool."""</p>
+<p>self.documents.append(document)</p>
+<p></p>
+<p>def search(self, query):</p>
+<p>"""</p>
+<p>Executes a basic Domain Specific Language (DSL) search.</p>
+<p>Evaluates mappings and performs linear scanning for strict matching terms.</p>
+<p>"""</p>
+<p>results = []</p>
+<p>if query.get("term"):</p>
+<p>if "author" in self.mapping["properties"]:</p>
+<p>if self.mapping["properties"]["author"]["type"] == "text":</p>
+<p>if query["term"]["author"] == "John Doe":</p>
+<p>results = [doc for doc in self.documents if doc["author"] == "John Doe"]</p>
+<p>return results</p>
+<p></p>
+<p>def aggregate(self, aggregation):</p>
+<p>"""</p>
+<p>Calculates buckets and counts metrics across unique values.</p>
+<p>Simulates an ElasticSearch 'terms' aggregation.</p>
+<p>"""</p>
+<p>if aggregation.get("term"):</p>
+<p>if "author" in self.mapping["properties"]:</p>
+<p>if self.mapping["properties"]["author"]["type"] == "text":</p>
+<h1>Simple aggregation: counts documents per unique author field</h1
+<p>return {</p>
+<p>author: len([doc for doc in self.documents if doc["author"] == author])</p>
+<p>for author in set(doc["author"] for doc in self.documents)</p>
+<p>}</p>
+<p></p>
+<p>def allocate_shards(self, num_shards):</p>
+<p>"""</p>
+<p>Simulates document allocation across a specified partition space</p>
+<p>using a simplified round-robin distribution strategy.</p>
+<p>"""</p>
+<p>if not self.documents:</p>
+<p>return</p>
+<p>self.shards = [self.documents[i % len(self.documents)] for i in range(num_shards)]</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Architectural Breakdown</h2
+<p></p>
+<h3>1. The Query Processing Mechanism</h3
+<p></p>
+In a production-grade cluster, queries arrive as heavily nested JSON payloads. In our `search` method, the system checks the `query` input for a `term` dictionary. It references the index’s internal `self.mapping` matrix to verify that the field target (`author`) exists and matches the required data type primitive (`text`). Once validated, it walks the core document array using a fast list comprehension to extract perfect lexical hits.
+<p></p>
+<h3>2. Metrics Aggregation</h3
+<p></p>
+Aggregations allow developers to extract real-time metrics and data distributions from search results without pulling down thousands of individual records. Our `aggregate` method mimics this behavior by utilizing an algebraic set comprehension:
+<p></p>
+<pre><code>python</code></pre>
+<p>set(doc["author"] for doc in self.documents)</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>By extracting the distinct set of values across all documents inside the memory pool, it dynamically initializes metrics buckets. It then loops over the collection to aggregate counts per author, returning a structured summary array.</p>
+<p></p>
+<h3>3. Distributed Sharding Physics</h3
+<p></p>
+ElasticSearch scales horizontally by breaking an index apart into discrete units called <strong>shards</strong>. Each shard is a self-contained instance of an execution engine.
+<p></p>
+Our custom `allocate_shards` engine uses a deterministic modulo loop logic layer. By taking the loop counter index and applying a modulus operation against the length of the document store (`i % len(self.documents)`), it evenly assigns data records into distinct, segmented processing slots. This forms the foundational framework for building fully distributed MapReduce query processing paths down the road.
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Running the Engine</h2
+<p></p>
+<p>To see the zero-dependency search engine in action, we can spin up a local instance block, register metadata schemas, ingest sample articles, and evaluate both query matching and metrics processing:</p>
+<p></p>
+<pre><code>python</code></pre>
+<p>if __name__ == '__main__':</p>
+<h1>Initialize the custom search index with explicit type definitions</h1
+<p>index = Index("sample_index", {</p>
+<p>"properties": {</p>
+<p>"title": {"type": "text"},</p>
+<p>"author": {"type": "text"},</p>
+<p>"date": {"type": "date"}</p>
+<p>}</p>
+<p>})</p>
+<p></p>
+<h1>Ingest mock documents into memory storage</h1
+<p>index.add_document({</p>
+<p>"title": "Sample Document One",</p>
+<p>"author": "John Doe",</p>
+<p>"date": "2026-04-01"</p>
+<p>})</p>
+<p></p>
+<p>index.add_document({</p>
+<p>"title": "Sample Document Two",</p>
+<p>"author": "John Pie",</p>
+<p>"date": "2026-06-16"</p>
+<p>})</p>
+<p></p>
+<h1>1. Execute a strict 'term' query match</h1
+<p>query = {</p>
+<p>"term": {"author": "John Doe"}</p>
+<p>}</p>
+<p>results = index.search(query)</p>
+<p>print("Search Results:", results)</p>
+<p></p>
+<h1>2. Execute a metric aggregation bucket count</h1
+<p>aggregation = {</p>
+<p>"term": {"field": "author"}</p>
+<p>}</p>
+<p>agg_results = index.aggregate(aggregation)</p>
+<p>print("Aggregation Results:", agg_results)</p>
+<p></p>
+<h1>3. Trigger logical partition sharding</h1
+<p>index.allocate_shards(2)</p>
+<p>print("Shard Allocation Mapping:", index.shards)</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<h3>Expected Console Output</h3
+<p></p>
+<p>Executing this script natively via terminal gives us cleanly separated structural output data:</p>
+<p></p>
+<pre><code>ps1</code></pre>
+<p>Search Results: [{'title': 'Sample Document One', 'author': 'John Doe', 'date': '2026-04-01'}]</p>
+<p>Aggregation Results: {'John Doe': 1, 'John Pie': 1}</p>
+<p>Shard Allocation Mapping: [{'title': 'Sample Document One', 'author': 'John Doe', 'date': '2026-04-01'}, {'title': 'Sample Document Two', 'author': 'John Pie', 'date': '2026-06-16'}]</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Next Evolutionary Steps</h2
+<p></p>
+<p>While this structural module accurately simulates the architectural boundaries of an ElasticSearch engine, it relies on linear time scanning ($O(N)$ lookup complexity).</p>
+<p></p>
+<p>To evolve this lightweight system prototype into an enterprise-ready powerhouse, our repository's engineering roadmap includes these upcoming milestones:</p>
+<p></p>
+<li><strong>The Inverted Index:</strong> Refactoring data storage to use a structured token dictionary mapping terms to document IDs for $O(1)$ dictionary lookups.</li>
+<li><strong>Dynamic Abstract Query Parsing:</strong> Overhauling the strict query matcher to dynamically traverse arbitrary nested dictionaries for boolean (`must`, `should`, `must_not`) logic filters.</li>
+<li><strong>True Process Sharding:</strong> Binding distinct shard allocations to dedicated local network socket ports using our internal `py_socket_server` implementation.</li>
+<p></p>
+<a href="https://linktr.ee/aminboulouma"
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+</a>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                Ai Systems Design From First Principles Footer
+                https://aminblm.github.io/ai_systems_design_from_scratch
+            </div>
+        </footer>
+    </body>
+</html>

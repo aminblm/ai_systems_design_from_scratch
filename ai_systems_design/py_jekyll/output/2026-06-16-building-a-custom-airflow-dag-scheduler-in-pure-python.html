@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Ai Systems Design From First Principles </title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="hero">
+            <header>
+                <h1>Ai Systems Design From First Principles</h1>
+                <p>Rebuilding enterprise systems and AI from first principles.</p>
+            </header>
+        </div>
+        
+        <main>
+            <div class="container">
+                <p>---</p>
+<p>layout: default</p>
+<p>title: "Building a Custom Airflow DAG Scheduler in Pure Python"</p>
+<p>description: "An architectural breakdown of data engineering orchestration: implementing Directed Acyclic Graphs (DAGs), task state tracking, and a clock-driven execution engine loop from scratch."</p>
+<p>---</p>
+<p></p>
+<head>
+<meta charset="utf-8">
+<title>{{ page.title }} | {{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<p></p>
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<p></p>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.description | default: site.description }}">
+</head>
+<p></p>
+<a href="https://linktr.ee/aminboulouma"
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+</a>
+<p></p>
+<a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
+<p></p>
+<div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
+<a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
+<a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a>
+<a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
+</div>
+<p></p>
+<p></p>
+<p></p>
+<h1>Building a Custom Airflow DAG Scheduler in Pure Python</h1
+<p></p>
+In data engineering, workflow orchestration is the backbone of reliable data movement. Tools like Apache Airflow manage complex networks of data pipelines by treating them as <strong>DAGs (Directed Acyclic Graphs)</strong>. They ensure tasks run in the correct order, handle retries, and schedule executions precisely based on time configurations.
+<p></p>
+<p>But underneath the heavy enterprise infrastructure, what does an orchestrator actually do? At its fundamental level, it is a infinite control loop mapping three core mechanisms:</p>
+1. <strong>The Graph Structure:</strong> A coordinate plane defining jobs and relationships.
+2. <strong>The State Registry:</strong> Tracking what needs to run and when.
+3. <strong>The Scheduler Heartbeat:</strong> A deterministic clock cycle parsing cron-like syntax and managing thread execution.
+<p></p>
+As part of our <strong>zero-dependency mandate</strong>, we are shifting away from heavy celery workers and databases to build a functional data pipeline orchestrator using nothing but the Python standard library.
+<p></p>
+<p>---</p>
+<p></p>
+<h2>The First-Principles Orchestration Blueprint</h2
+<p></p>
+Our minimalist engine breaks the orchestration pattern into three standalone components: `AirflowDAG` to hold our structural metadata, `Task` to isolate our execution callbacks, and a clock-driven `Scheduler` to drive the system forward.
+<p></p>
+<p>Here is the complete core implementation:</p>
+<p></p>
+<pre><code>python</code></pre>
+<p>import time</p>
+<p></p>
+<p>class AirflowDAG:</p>
+<p>def __init__(self, name, default_args=None):</p>
+<p>self.name = name</p>
+<p>self.default_args = default_args or {}</p>
+<p>self.tasks = []</p>
+<p>self.schedule_interval = None</p>
+<p></p>
+<p>def add_task(self, task, schedule=None, dependencies=None):</p>
+<p>"""Registers an independent operational node inside the execution registry."""</p>
+<p>task.name = task.name</p>
+<p>task.schedule = task.schedule or schedule</p>
+<p>task.dependencies = dependencies</p>
+<p>self.tasks.append(task)</p>
+<p></p>
+<p>class Task:</p>
+<p>def __init__(self, name, execute_func, schedule=None, dependencies=None):</p>
+<p>self.name = name</p>
+<p>self.execute_func = execute_func</p>
+<p>self.schedule = schedule</p>
+<p>self.dependencies = dependencies or {}</p>
+<p></p>
+<p>def execute(self):</p>
+<p>"""Triggers the task payload function execution wrapper."""</p>
+<p>print(f"Executing Task: {self.name}")</p>
+<p>self.execute_func()</p>
+<p>return True</p>
+<p></p>
+<p>class Scheduler:</p>
+<p>def __init__(self, dag):</p>
+<p>self.dag = dag</p>
+<p>self.current_time = 0</p>
+<p>self.task_executions = {}</p>
+<p></p>
+<p>def start(self):</p>
+<p>"""Ignites the core operational heartbeat engine loop."""</p>
+<p>print("Scheduler started...")</p>
+<p>while True:</p>
+<p>self._check_schedules()</p>
+<p>self._execute_tasks()</p>
+<p>self.current_time += 1 # Simulate deterministic logical time ticks</p>
+<p></p>
+<p>def _check_schedules(self):</p>
+<p>"""Scans the registered graph nodes to detect due workflows."""</p>
+<p>for task in self.dag.tasks:</p>
+<p>if self._is_due(task):</p>
+<p>self._schedule_task(task)</p>
+<p></p>
+<p>def _execute_tasks(self):</p>
+<p>"""Loops through task nodes to safely execute payload operations."""</p>
+<p>for index, task in zip(range(len(self.dag.tasks)), self.dag.tasks):</p>
+<p>if self._is_due(task):</p>
+<p>task.execute()</p>
+<h1>Use cron parameter splits to sleep processing threads dynamically</h1
+<p>time.sleep(int(task.schedule.split(' ')[0]))</p>
+<p></p>
+<p>def _is_due(self, task):</p>
+<p>"""Evaluates numerical modulo metrics against a cron-like timing model."""</p>
+<p>if not task.schedule:</p>
+<p>return False</p>
+<h1>Evaluates simple interval parameters (e.g., parsing the first space block)</h1
+<p>interval = int(task.schedule.split(' ')[0]) if task.schedule else 1</p>
+<p>return self.current_time % interval == 0</p>
+<p></p>
+<p>def _schedule_task(self, task):</p>
+<p>"""Caches the task payload internally into the state tracker registry."""</p>
+<p>self.task_executions[task.name] = task</p>
+<p>print(f'Task {task.name} scheduled')</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Architectural Deep Dive</h2
+<p></p>
+<h3>1. Simulating Cron Interval Parsing</h3
+<p></p>
+<p>In standard enterprise architectures, scheduling intervals are parsed using complex crontab specifications matching minutes, hours, days, and weeks. Our custom core handles this deterministically with zero overhead via token extraction string splits:</p>
+<p></p>
+<pre><code>python</code></pre>
+<p>int(task.schedule.split(' ')[0])</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+By reading the initial string slice from a standard cron statement (like `"5 <em> </em> <em> </em>"`), the engine extracts the integer value (`5`). The system then evaluates the operational deadline by computing a mathematical modulus check against the advancing system clock: `self.current_time % interval == 0`. Every time the clock matches a clean multiple of that interval, the scheduler flags the specific graph node as due for execution.
+<p></p>
+<h3>2. The Heartbeat Engine Loop</h3
+<p></p>
+The `Scheduler` class relies on an infinite while loop driven by a synthetic logical clock (`self.current_time += 1`). On each clock tick, the orchestrator acts as a state coordinator executing two phases:
+<p></p>
+<li><strong>The Check Phase:</strong> Interrogates the collection registry via `_check_schedules` to determine which operations match the temporal constraints.</li>
+<li><strong>The Execution Phase:</strong> Steps through the due tasks via `_execute_tasks` and sequentially calls `task.execute()`, simulating runtime thread blocks using standard `time.sleep()`.</li>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Verification & Execution</h2
+<p></p>
+<p>We can verify our local orchestration layer by establishing a mock task flow, loading it into our core engine, and instantiating the loop handler:</p>
+<p></p>
+<pre><code>python</code></pre>
+<p>if __name__ == "__main__":</p>
+<h1>1. Instantiate the logical DAG orchestrator wrapper</h1
+<p>dag = AirflowDAG("Sample_Orchestration_DAG")</p>
+<p></p>
+<h1>2. Construct a functional workload callback payload</h1
+<p>def my_task():</p>
+<p>print("Task executed!")</p>
+<p></p>
+<h1>3. Create a task defined to trigger every 5 clock cycles</h1
+task = Task("My_First_Principles_Task", my_task, schedule="5 <em> </em> <em> </em>")
+<p>dag.add_task(task)</p>
+<p></p>
+<h1>4. Bootstrap and run the custom processing heartbeat</h1
+<p>scheduler = Scheduler(dag)</p>
+<p>scheduler.start()</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<h3>Expected Output Log Output</h3
+<p></p>
+<p>When you run this script directly in your terminal, you will see the system tick forward, dynamically scheduling and running your tasks exactly as the temporal interval demands:</p>
+<p></p>
+<pre><code>text</code></pre>
+<p>Scheduler started...</p>
+<p>Task My_First_Principles_Task scheduled</p>
+<p>Executing Task: My_First_Principles_Task</p>
+<p>Task executed!</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Future Framework Roadmap</h2
+<p></p>
+<p>While this structural pattern establishes the foundational clock mechanics of an enterprise data pipeline worker, true production DAG orchestration requires managing asymmetric task dependencies.</p>
+<p></p>
+<p>To expand this framework into a production-grade emulator, our project development registry targets the following architectural additions:</p>
+<p></p>
+<li><strong>True Dependency Resolution:</strong> Implementing a Topological Sort algorithm to map upstream constraints (`task1 >> task2`), ensuring child actions wait cleanly for parent state resolutions.</li>
+<li><strong>Asynchronous Multi-Threading:</strong> Offloading task execution blocks into native Python `threading` or `multiprocessing` worker pools, preventing long-running tasks from locking the main scheduler loop.</li>
+<li><strong>Persistent State Logs:</strong> Writing transactional metadata boundaries directly to our internal `py_sqlite` or `py_redis` engines to recover pipelines seamlessly during server restarts.</li>
+<p></p>
+<a href="https://linktr.ee/aminboulouma"
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+</a>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                Ai Systems Design From First Principles Footer
+                https://aminblm.github.io/ai_systems_design_from_scratch
+            </div>
+        </footer>
+    </body>
+</html>

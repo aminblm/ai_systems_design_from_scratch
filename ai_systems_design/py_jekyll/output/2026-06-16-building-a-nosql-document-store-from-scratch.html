@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Ai Systems Design From First Principles </title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="hero">
+            <header>
+                <h1>Ai Systems Design From First Principles</h1>
+                <p>Rebuilding enterprise systems and AI from first principles.</p>
+            </header>
+        </div>
+        
+        <main>
+            <div class="container">
+                <p>---</p>
+<p>layout: default</p>
+<p>title: "Building a NoSQL Document Store From Scratch"</p>
+<p>description: "Demystifying unstructured data systems: Implementing a stateful database engine, document collection structures, and collection sharding mechanics in pure Python."</p>
+<p>---</p>
+<p></p>
+<head>
+<meta charset="utf-8">
+<title>{{ page.title }} | {{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<p></p>
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<p></p>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.description | default: site.description }}">
+</head>
+<p></p>
+<a href="https://linktr.ee/aminboulouma"
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+</a>
+<p></p>
+<a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
+<p></p>
+<div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
+<a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
+<a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a>
+<a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
+</div>
+<p></p>
+<p></p>
+<h1>Building a NoSQL Document Store From Scratch</h1
+<p></p>
+In non-relational database design, NoSQL document stores like MongoDB ditch rigid tables, rows, and foreign key constraints in favor of flexible, schema-agnostic abstractions. Data is bundled into self-contained objects called <strong>Documents</strong> (typically represented as BSON or JSON) and grouped inside <strong>Collections</strong>.
+<p></p>
+To handle massive write volumes and analytical workloads at scale, these engines implement core systems architectural patterns: logical storage hierarchies, document indexing arrays, data aggregation pipelines, and <strong>Horizontal Sharding</strong> partitions.
+<p></p>
+<p>To demystify how document-oriented storage engines maintain state and model cluster mechanics under the hood, we can build a functional prototype from the ground up.</p>
+<p></p>
+Following our repository's <strong>strict zero-dependency constraint</strong>, we will implement an in-memory document database engine complete with data aggregation and data routing mechanics using nothing but pure Python standard constructs.
+<p></p>
+<p>---</p>
+<p></p>
+<h2>The Document Store Architecture</h2
+<p></p>
+Our NoSQL architecture coordinates independent structural layers: `Database` serves as the root namespace context, `Collection` manages memory records and index tables, `Document` encapsulates data blobs, and decoupled abstractions handle processing steps like `Query`, `Aggregation`, and `Sharding`.
+<p></p>
+<p>Here is the complete codebase block matching our first-principles framework matrix:</p>
+<p></p>
+<pre><code>python</code></pre>
+<p>class Database:</p>
+<p>def __init__(self, name):</p>
+<p>self.name = name</p>
+<p>self.collections = []</p>
+<p></p>
+<p></p>
+<p>class Collection:</p>
+<p>def __init__(self, name, fields=None):</p>
+<p>self.name = name</p>
+<p>self.fields = fields or {}</p>
+<p>self.documents = []</p>
+<p>self.indexes = []</p>
+<p></p>
+<p>def insert(self, document):</p>
+<p>"""Appends a raw document object or data dict into the collection storage array."""</p>
+<p>self.documents.append(document)</p>
+<p></p>
+<p>def find(self, filter=None):</p>
+<p>"""Scans internal documents. Currently runs a basic lookup pass matching active blocks."""</p>
+<p>return [doc for doc in self.documents if filter]</p>
+<p></p>
+<p>def aggregate(self, pipeline):</p>
+<p>"""Executes an analytics pipeline pass to compute document frequency counts over schemas."""</p>
+<p>return {field: len([doc for doc in self.documents if doc.get(field)]) for field in self.fields}</p>
+<p></p>
+<p>def create_index(self, index):</p>
+<p>"""Registers a lookup index structure across targeted fields."""</p>
+<p>self.indexes.append(index)</p>
+<p></p>
+<p>def shard(self, num_shards):</p>
+<p>"""Simulates horizontal clustering mechanics by distributing documents across shard fields."""</p>
+<p>if not self.documents:</p>
+<p>self.shards = []</p>
+<p>return</p>
+<p>self.shards = [self.documents[i % len(self.documents)] for i in range(num_shards)]</p>
+<p></p>
+<p></p>
+<p>class Document:</p>
+<p>def __init__(self, data):</p>
+<p>self.data = data</p>
+<p></p>
+<p></p>
+<p>class Index:</p>
+<p>def __init__(self, name, fields):</p>
+<p>self.name = name</p>
+<p>self.fields = fields</p>
+<p></p>
+<p></p>
+<p>class Query:</p>
+<p>def __init__(self, filter=None, sort=None, limit=None):</p>
+<p>self.filter = filter</p>
+<p>self.sort = sort</p>
+<p>self.limit = limit</p>
+<p></p>
+<p></p>
+<p>class Aggregation:</p>
+<p>def __init__(self, pipeline):</p>
+<p>self.pipeline = pipeline</p>
+<p></p>
+<p></p>
+<p>class Sharding:</p>
+<p>def __init__(self, database):</p>
+<p>self.database = database</p>
+<p>self.shards = []</p>
+<p></p>
+<p></p>
+<p>if __name__ == "__main__":</p>
+<h1>1. Initialize our namespace database container</h1
+<p>db = Database("mydb")</p>
+<p></p>
+<h1>2. Spawn a user metadata collection tracking structured keys</h1
+<p>collection = Collection("users", {"name": "text", "age": "int"})</p>
+<p></p>
+<h1>3. Insert an un-normalized document payload dictionary</h1
+<p>collection.insert({"name": "Alice", "age": "30"})</p>
+<p></p>
+<h1>4. Query data strings from collection storage arrays</h1
+<p>results = collection.find({"age": "30"})</p>
+<p>print(f"Find Query Results : {results}")</p>
+<p></p>
+<h1>5. Define and evaluate a system count aggregation step</h1
+<p>aggregation = Aggregation([{"$count": "age"}])</p>
+<p>agg_results = collection.aggregate(aggregation)</p>
+<p>print(f"Aggregation Results: {agg_results}")</p>
+<p></p>
+<h1>6. Horizontally distribute document arrays across 2 virtual cluster partitions</h1
+<p>collection.shard(2)</p>
+<p>print(f"Sharded Node Allocations: {collection.shards}")</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Architectural Mechanisms Breakdown</h2
+<p></p>
+<h3>1. The Document Namespace Tree</h3
+<p></p>
+The engine models a classic structural storage tree. The `Database` class holds a list array of `Collection` objects, and each collection functions as an isolated table boundary tracking its own list of documents, index schemas, and partition variables. This layered approach ensures database contexts remain perfectly separated inside system memory.
+<p></p>
+<h3>2. Analytical Pipeline Aggregations</h3
+<p></p>
+In production systems, aggregation engines process high-density datasets through sequential, staged manipulation pipelines (such as filtering, grouping, and sorting). Our first-principles database mimics this pattern. The `aggregate` helper loops across the known structure keys defined inside `self.fields`:
+<p></p>
+<pre><code>python</code></pre>
+<p>return {field: len([doc for doc in self.documents if doc.get(field)]) for field in self.fields}</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>It dynamically evaluates data field visibility, counting the instances where a given key exists across your stored documents and returning a clean, grouped summary map of database contents.</p>
+<p></p>
+<h3>3. Modulo-Based Horizontal Sharding</h3
+<p></p>
+When document collections grow too large for a single machine's storage limits, database systems distribute the write load across separate servers via <strong>Sharding</strong>. Our prototype implements an authentic data partitioning pattern by applying a deterministic mathematical modulo loop (`i % len(self.documents)`) over incoming collections. This strategy breaks a single unified collection down into independent balanced data shards, laying the structural groundwork for distributed scale.
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Verifying the Engine</h2
+<p></p>
+<p>Execute the module script file in your terminal workspace to observe how the data structures manage collections, count properties, and segment datasets:</p>
+<p></p>
+<pre><code>bash</code></pre>
+<p>python py_mongo_db.py</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<h3>Expected Console Output</h3
+<p></p>
+<pre><code>text</code></pre>
+<p>Find Query Results : [{'name': 'Alice', 'age': '30'}]</p>
+<p>Aggregation Results: {'name': 1, 'age': 1}</p>
+<p>Sharded Node Allocations: [{'name': 'Alice', 'age': '30'}, {'name': 'Alice', 'age': '30'}]</p>
+<p></p>
+<pre><code></code></pre>
+<p></p>
+<p>---</p>
+<p></p>
+<h2>Upcoming Engineering Sprints</h2
+<p></p>
+<p>While this structural architecture effectively isolates document namespaces, performs aggregation calculations, and runs basic shards, it functions as an unindexed in-memory prototype.</p>
+<p></p>
+<p>To evolve this code module into a highly performant, production-grade storage system, our upcoming architecture roadmap points to these milestones:</p>
+<p></p>
+<li><strong>Authentic B-Tree Filtering:</strong> Upgrading the `find` method from an $O(N)$ linear collection scan to query data through active `Index` objects using an $O(\log N)$ B-Tree lookup structure.</li>
+<li><strong>Pipeline Command Evaluation:</strong> Expanding the `Aggregation` class to iterate over multiple stacked stage dictionaries, parsing pipeline primitives like `{"$match": ...}` and `{"$project": ...}` sequentially.</li>
+<li><strong>Persistent JSON Disks:</strong> Writing automated transaction workers that serialize memory dictionary adjustments directly to non-volatile storage files, safeguarding data across engine restarts.</li>
+<p></p>
+<a href="https://linktr.ee/aminboulouma"
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+</a>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                Ai Systems Design From First Principles Footer
+                https://aminblm.github.io/ai_systems_design_from_scratch
+            </div>
+        </footer>
+    </body>
+</html>
