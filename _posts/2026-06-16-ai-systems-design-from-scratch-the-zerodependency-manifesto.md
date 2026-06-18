@@ -118,7 +118,6 @@ python3 src/py_REST_API.py
 
 The platform currently logs **17 fully realized system modules** out of a target matrix tracking **71 distinct technologies**. To transition this framework into a highly resilient cloud emulation workspace, current development cycles prioritize the following upcoming milestones:
 
-* **AST Import Linter:** A custom abstract syntax tree parser script designed to automatically audit code changes and block accidental third-party dependency pollution.
 * **Namespace Isolation Checklists:** Refining the local container manager (`py_container_manager.py`) to leverage more granular system-level process gates.
 * **Chaos Engineering Drivers:** Introducing automated fault-injection scripts to deliberately stress-test our custom TCP network interfaces, validating state recovery and error handling during simulated socket drops.
 

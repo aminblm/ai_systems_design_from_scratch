@@ -10,8 +10,7 @@ class SlugGenerator:
 
     def clean_title(self, title: str) -> str:
         """Forces lowercase normalization and purges masked punctuation characters."""
-        if not title:
-            return ""
+        if not title: return ""
         lowercase_title = title.lower()
         return "".join(char for char in lowercase_title if char not in self.punctuation_mask)
 
@@ -69,8 +68,7 @@ class TerminalInterface:
             try:
                 raw_input = input("Enter Blog Title -> ")
                 should_continue = self.process_input(raw_input)
-                if not should_continue:
-                    break
+                if not should_continue: break
             except (KeyboardInterrupt, EOFError):
                 print("\n\nProcess interrupted via runtime signal. Exiting safely.")
                 break

@@ -49,7 +49,7 @@ git clone https://github.com/aminblm/ai_systems_design_from_scratch.git
 cd ai_systems_design_from_scratch
 ```
 
-Run any core system directly from ``src/`:
+Run any core system directly from `src/`:
 
 ```
 # Run the key-value cache store
@@ -220,6 +220,13 @@ They are organized by operational domain so that you can easily copy and paste t
 * [x] [**Slug Generator**](src/py_slug_generator.py) (generate blop url slugs from blog titles)
 * [x] [**Utility library**](src/utils.py) (utility library for reusable components)
 * [ ] **LinkTree clone** (web links in one webpage)
+* [ ] **Circle AI** (An AI partner that builds, runs, and grows your digital business with you)
+* [ ] **Technologies in Job Descriptions** (Source for technologies from Job Descriptions)
+* [ ] **Jekyll**
+* [ ] **BIOS**
+* [ ] **Markdown to HTML parser**
+* [ ] **YAML parser**
+
 ---
 
 ### Integration Architecture Checklists
