@@ -1,27 +1,3 @@
-"""
-about:
-    - title: py_yaml.py
-    - author: Amin Boulouma
-    - description: Takes a YAML file and parses it.
-
-i/o:
-    - input: a YAML file path or YAML text
-    - output: YAML Mapping in a dict format
-
-features:
-    - key, value generation
-    - 
-
-implementations details:
-    - order preservation
-    - element recognition
-
-limitations:
-    - parsing not yet supported:
-        - lists
-        - advacend YAML concepts and nesting
-"""
-
 class YAMLParser:
     def __init__(self, yaml_file_path=None, yaml_str=None):
         self.yaml_file_path = yaml_file_path 

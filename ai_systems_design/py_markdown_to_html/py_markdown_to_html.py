@@ -1,37 +1,3 @@
-"""
-about:
-    - title: py_markdown_to_html.py
-    - author: Amin Boulouma
-    - description: Takes a Markdown file and converts it to an HTML file.
-
-i/o:
-    - input: a Markdown file path or Markdown text
-    - output: HTML file or HTML text
-
-features:
-    - headers, html, quote, bold, italic and inline code block
-    - supported encoding for special characters like emojis
-
-implementations details:
-    - order preservation
-    - element recognition
-    - nested elements
-
-limitations:
-    - parsing not yet supported:
-        - tables 
-        - multi-line html 
-        - multi-line code
-        - bullet points 
-        - --- separators
-        - ` operator
-        - Links
-        - Images
-        - Nested bolds and italics
-        - Ordered bullet points
-        - checklists
-"""
-
 class MarkdownToHTML:
     def __init__(self, markdown_file_path=None, markdown_text=None, html_file_path=None):
         self.markdown_file_path = markdown_file_path or ""

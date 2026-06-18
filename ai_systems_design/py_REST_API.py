@@ -2,7 +2,7 @@ import ai_systems_design.utils as utils
 
 
 class REST_API:
-    def __init__(self, host='127.0.0.1', port=8080):
+    def __init__(self, host, port):
         self.host = host
         self.port = port 
 

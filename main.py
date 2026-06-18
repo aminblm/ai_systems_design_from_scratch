@@ -6,6 +6,7 @@ def generate_jekyll_site():
                     'ai_systems_design/py_jekyll/output', 
                     'ai_systems_design/py_jekyll/layout.html', 
                     'ai_systems_design/py_jekyll/config.yaml')
+    jekyll.generate_site()
 
 def generate_slugs():
     slug_engine = SlugGenerator()

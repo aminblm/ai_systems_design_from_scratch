@@ -2,7 +2,7 @@ import ai_systems_design.utils as utils
 
 
 class REST_API_CLI_Client:    
-    def __init__(self, server_ip='127.0.0.1', server_port=8080):
+    def __init__(self, server_ip, server_port):
         self.server_ip = server_ip
         self.server_port = server_port 
 
