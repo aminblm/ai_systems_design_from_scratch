@@ -11,7 +11,6 @@ i/o:
 features:
     - headers, html, quote, bold, italic and inline code block
     - supported encoding for special characters like emojis
-    - nested italic within bold
 
 implementations details:
     - order preservation
@@ -28,8 +27,9 @@ limitations:
         - ` operator
         - Links
         - Images
-        - Nested bold within italic
+        - Nested bolds and italics
         - Ordered bullet points
+        - checklists
 """
 
 class MarkdownToHTML:
@@ -60,6 +60,7 @@ class MarkdownToHTML:
             if line.startswith('#'): self._parse_header(line)
             elif line.startswith("<"): self._parse_html(line)
             elif line.startswith(">"): self._parse_quote(line)
+            elif line.startswith("* ") or line.startswith("- "): self._parse_bullet_point(line)
             elif line.startswith(self.MD_SPECIALS['MULTILINE_CODE']): self._parse_multi_line_code(line)
             elif self._is_pure_text(line): self._parse_pure_text_line(line)
             else: self.html_lines.append(self._parse_markdown_specials(line))
@@ -110,6 +111,9 @@ class MarkdownToHTML:
         # TODO add support for multiline html
         self.html_lines.append(line)
 
+    def _parse_bullet_point(self, line):
+        self.html_lines.append(f'<li>{ self._parse_markdown_specials(" ".join(line.split(' ')[1:])) }</li>')
+
     def _parse_quote(self, line):
         self.html_lines.append(f"<blockquote>{ self._parse_markdown_specials(' '.join(line.split(' ')[1:])) }</blockquote>")
 
@@ -143,6 +147,14 @@ A comprehensive, zero-dependency implementation of artificial intelligence compo
 To clone and use the repository, execute:
 
 ```git clone https://github.com/aminblm/ai_systems_design_from_scratch.git```
+
+* **PyTorch** (Custom tensor structures and automatic differentiation tracking)
+* **Tensorflow** (Alternative computation graph and execution engine)
+* **Numpy** (Pure Python multi-dimensional array structures and matrix math routines)
+* **Pandas** (DataFrames, Series, and structured data-manipulation mechanics)
+* **Ollama** (Local LLM protocol orchestration and serving architecture)
+* **Meta’s Llama** (Open-weights inference parser and layer-by-layer execution engine)
+* **ChatGPT** (Upstream LLM API integration and chat state wrapper)
 """
     md_to_html = MarkdownToHTML(markdown_text=md_text)
     print(md_to_html.md_to_html())
