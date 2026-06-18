@@ -1,3 +1,30 @@
+"""
+about:
+    - title: py_jekyll.py
+    - author: Amin Boulouma
+    - description: Takes a folder of Markdown files and converts them into an output folder of HTML files following a layout and a yaml configuration.
+
+i/o:
+    - input: input folder path, output folder path, layout file path, config file path
+    - output: html files into the output folder
+
+features:
+    - generates a site of html files from markdown files
+    - dynamic variable
+
+implementations details:
+    - order preservation
+    - element recognition
+    - nested elements
+
+limitations:
+    - dynamic variables
+    - advanced site generation
+
+examples: 
+    - you can see examples in the input / output folder within this folder
+"""
+
 import os
 
 from ai_systems_design.py_yaml import YAMLParser
@@ -5,6 +32,12 @@ from ai_systems_design.py_markdown_to_html.py_markdown_to_html import MarkdownTo
 
 
 class SiteConfig:
+    _instance = None 
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
+        return cls._instance
+    
     def __init__(self, config_file_path):
         self.config_file_path = config_file_path
         self.config = YAMLParser(config_file_path)
@@ -14,6 +47,12 @@ class SiteConfig:
     
 
 class HTMLContent:
+    _instance = None 
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
+        return cls._instance
+    
     def __init__(self, markdown_file_path):
         self.markdown_file_path = markdown_file_path
         self.html_content = MarkdownToHTML(markdown_file_path).md_to_html()
@@ -23,6 +62,12 @@ class HTMLContent:
     
 
 class Layout:
+    _instance = None 
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
+        return cls._instance
+    
     def __init__(self, layout_path):
         self.layout_path = layout_path
     
@@ -30,6 +75,12 @@ class Layout:
         with open(self.layout_path, 'rb') as l: return l.read().decode('utf-8')
     
 class Jekyll:
+    _instance = None 
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
+        return cls._instance
+    
     def __init__(self, input_folder, output_folder, layout_path, config_file_path):
         self.input_folder = input_folder
         self.output_folder = output_folder 

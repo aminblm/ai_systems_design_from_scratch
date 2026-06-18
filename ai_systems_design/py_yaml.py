@@ -23,6 +23,12 @@ limitations:
 """
 
 class YAMLParser:
+    _instance = None 
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
+        return cls._instance
+
     def __init__(self, yaml_file_path=None, yaml_str=None):
         self.yaml_file_path = yaml_file_path 
         self.yaml_str = yaml_str if yaml_str else self._read_yaml_file()
@@ -45,6 +51,9 @@ class YAMLParser:
     
     def get_mapping(self):
         return self.mapping
+    
+    def __str__(self):
+        return f"YAMLParser(mapping={self.mapping})"
     
 
 if __name__ == "__main__":

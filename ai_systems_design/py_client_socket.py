@@ -1,0 +1,28 @@
+import ai_systems_design.utils as utils
+
+class ClientSocket:
+    _instance = None 
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
+        return cls._instance
+    
+    def __init__(self, host, port):
+        self.host = host
+        self.port = port
+    
+    def connect_client(self):
+        client_socket = utils.connect_to_socket_server(self.host, self.port, "Client Socket")
+
+        response = client_socket.recv(1024).decode()
+        print(response)
+
+        print("Send a message:")
+        message = input()
+        client_socket.sendall(message.encode())
+        
+        client_socket.close()
+
+if __name__ == '__main__':
+    client_socket = ClientSocket('127.0.0.1', 8080)
+    client_socket.connect_client()

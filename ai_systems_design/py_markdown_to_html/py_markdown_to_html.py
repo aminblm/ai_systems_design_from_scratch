@@ -33,6 +33,12 @@ limitations:
 """
 
 class MarkdownToHTML:
+    _instance = None 
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None: cls._instance = super().__new__(cls, *args, **kwargs)
+        return cls._instance
+    
     def __init__(self, markdown_file_path=None, markdown_text=None, html_file_path=None):
         self.markdown_file_path = markdown_file_path or ""
         self.MD_SPECIALS = {
