@@ -35,7 +35,6 @@ limitations:
 class MarkdownToHTML:
     def __init__(self, markdown_file_path=None, markdown_text=None, html_file_path=None):
         self.markdown_file_path = markdown_file_path or ""
-        self.html_lines = []
         self.MD_SPECIALS = {
             'BOLD': '**',
             'ITALIC': '*',
@@ -44,17 +43,18 @@ class MarkdownToHTML:
             'LINK': '[]()',
             'IMAGE': '![]()'
         }
-        self.html = ""
-        self.html_file_path = html_file_path if html_file_path else f'{ self.markdown_file_path.split('.')[0] }.html' \
-            if self.markdown_file_path != '' else "md_to_html.html"
+        self.html_file_path = html_file_path if html_file_path else f'{ self.markdown_file_path.split('.')[0] }.html'
         self.markdown_text = self._read_markdown_file() if not markdown_text else markdown_text
+        self._parse_markdown()
+        self.html = '\n'.join(self.html_lines)
 
     def _read_markdown_file(self):
-        with open(self.markdown_file_path, 'r') as md:
-            return md.readlines()
+        with open(self.markdown_file_path, 'rb') as md:
+            return md.read().decode('utf-8')
 
     def _parse_markdown(self):
-        lines = self._read_markdown_file() if self.markdown_file_path != '' else self.markdown_text.split("\n")
+        self.html_lines = []
+        lines = self._read_markdown_file().split("\n") if self.markdown_file_path != '' else self.markdown_text.split("\n")
         for line in lines:
             line = line.strip()
             if line.startswith('#'): self._parse_header(line)
@@ -128,9 +128,7 @@ class MarkdownToHTML:
         self.html_lines.append(f'<p>{ line }</p>')
 
     def md_to_html(self):
-        self._parse_markdown()
-        self.html = "\n".join(self.html_lines)
-        return self.html
+        return "\n".join(self.html_lines)
 
     def md_to_html_file(self):
         with open(self.html_file_path, 'wb') as html_file: html_file.write(str(self.html).encode('utf-8'))
@@ -156,6 +154,10 @@ To clone and use the repository, execute:
 * **Meta’s Llama** (Open-weights inference parser and layer-by-layer execution engine)
 * **ChatGPT** (Upstream LLM API integration and chat state wrapper)
 """
-    md_to_html = MarkdownToHTML(markdown_text=md_text)
+    md_to_html = MarkdownToHTML(markdown_text=md_text, html_file_path='src/py_markdown_to_html/md_str_to_html.html')
+    print(md_to_html.md_to_html())
+    md_to_html.md_to_html_file()
+
+    md_to_html = MarkdownToHTML(markdown_file_path='src/py_markdown_to_html/md_file.md', html_file_path='src/py_markdown_to_html/md_file_to_html.html')
     print(md_to_html.md_to_html())
     md_to_html.md_to_html_file()

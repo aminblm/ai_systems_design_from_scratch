@@ -224,8 +224,9 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **Technologies in Job Descriptions** (Source for technologies from Job Descriptions)
 * [ ] **Jekyll**
 * [ ] **BIOS**
-* [ ] **Markdown to HTML parser**
-* [ ] **YAML parser**
+* [x] **Markdown to HTML parser**
+* [x] **YAML parser**
+* [ ] **Virtual Environment**
 
 ---
 

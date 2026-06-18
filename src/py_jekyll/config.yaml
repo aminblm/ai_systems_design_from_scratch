@@ -2,4 +2,4 @@ title: "My Jekyll Site"
 url: "https://example.com"
 css: "styles.css"
 author: "Amin Boulouma"
-
+footer_text: "Basic Jekyll App"
