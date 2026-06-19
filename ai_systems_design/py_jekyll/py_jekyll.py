@@ -2,6 +2,7 @@ import os, logging, traceback
 
 from ai_systems_design.py_yaml import YAMLParser
 from ai_systems_design.py_markdown_to_html.py_markdown_to_html import MarkdownToHTMLBuilder
+from ai_systems_design.utils import UtilityMethods
 
 
 class ErrorHandler:
@@ -33,8 +34,7 @@ class FileOperations:
 
 class LayoutHandler:
     @staticmethod
-    def get_layout(layout_path):
-        with open(layout_path, 'rb') as l: return l.read().decode('utf-8')
+    def get_layout(layout_path): return UtilityMethods.read_encoded(layout_path)
 
 
 class ConfigHandler:

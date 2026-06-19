@@ -1,5 +1,6 @@
 from enum import Enum 
 
+from ai_systems_design.utils import UtilityMethods
 
 class MD_SPECIAL_CASES(Enum):
     BOLD = '**'
@@ -12,8 +13,7 @@ class MD_SPECIAL_CASES(Enum):
 
 class FileOperations:
     @staticmethod
-    def read_markdown_file(markdown_file_path):
-        with open(markdown_file_path, 'rb') as md: return md.read().decode('utf-8')
+    def read_markdown_file(markdown_file_path): return UtilityMethods.read_encoded(markdown_file_path)
 
 
 class Helpers:
