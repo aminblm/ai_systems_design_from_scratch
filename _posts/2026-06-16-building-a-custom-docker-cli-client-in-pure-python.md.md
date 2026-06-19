@@ -40,6 +40,10 @@ description: "Demystifying container virtualization orchestration: Implementing 
 
 # Building a Custom Docker CLI Client in Pure Python
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 When you run commands like `docker run`, `docker stop`, or `docker ps`, you aren't interacting directly with Linux kernel cgroups or namespaces. Instead, you are executing commands via a lightweight text-based client that serializes your intent and ships it over a Unix domain socket or a TCP network port to a background daemon (`dockerd`).
 
 To fully understand container runtime orchestration, we must look at both sides of this network boundary. 

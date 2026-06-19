@@ -41,6 +41,10 @@ description: "Demystifying network communications: Implementing a streaming sock
 
 # Building an Interactive TCP Chat Client From Scratch
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 Every high-level chat application, terminal-based remote shell, or realtime streaming tool relies on a reliable transport layer protocol: **Transmission Control Protocol (TCP)**. When writing client-side code, systems engineers use socket interfaces to spin up virtual communication paths. This architecture establishes a full-duplex stream boundary that connects local user inputs straight to remote listening daemons over network adapters.
 
 To truly understand how data packets migrate across distributed architectures, we must look past high-level abstractions and build from the socket layer up.

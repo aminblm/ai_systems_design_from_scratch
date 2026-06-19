@@ -40,6 +40,10 @@ description: "How to implement a deterministic, stateless string-slicing configu
 
 # Parsing Site Configurations with a Custom YAML Engine
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 We have successfully covered site orchestration and markdown translation. The final crucial pillar of our minimalist Jekyll engine is **Configuration Mapping**.
 
 In a traditional setup, you would grab `PyYAML` or a similar heavy dependency. But remember our engineering constraint: **zero external dependencies**. To handle site configurations like title, author, or theme variables, we can build a lightweight key-value string mapper using the Fluent Builder interface we established earlier.

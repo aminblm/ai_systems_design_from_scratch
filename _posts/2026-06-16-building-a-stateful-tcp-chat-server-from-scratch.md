@@ -40,6 +40,10 @@ description: "Demystifying network layer fundamentals: Implementing an event-dri
 
 # Building a Stateful TCP Chat Server From Scratch
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 At the bedrock of every real-time messaging network, multiplayer gaming engine, and streaming infrastructure sits a fundamental network layer construct: the **TCP Socket Server**. Unlike stateless HTTP exchanges, a TCP daemon opens persistent, bidirectional communication pipes directly with incoming clients. The server's primary system responsibility is to bind to a local adapter interface, listen continuously for hardware requests, and orchestrate two-way byte packet transactions.
 
 To completely pull back the black box of network protocol orchestration, we can bypass high-level framework daemons entirely.

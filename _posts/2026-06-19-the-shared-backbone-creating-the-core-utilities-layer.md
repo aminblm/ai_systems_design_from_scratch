@@ -40,6 +40,10 @@ description: "Exploring the low-level foundation: Implementing cross-platform bi
 
 # The Shared Backbone: Creating the Core Utilities Layer
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 Every custom framework requires a sturdy collection of shared primitives. In our previous deep dives, we relied heavily on an internal module called `ai_systems_design.utils` to handle low-level operations like reading templates, exporting rendered HTML, and managing underlying configurations.
 
 When you build from scratch, even basic capabilities like writing a string to a file or spinning up a local network socket must be intentionally abstracted. Let's look at the implementation of our shared utilities layer and explore how it wraps critical I/O boundaries.

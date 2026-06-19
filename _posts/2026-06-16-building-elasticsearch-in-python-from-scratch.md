@@ -56,6 +56,10 @@ description: "A deep dive into parsing JSON DSL queries, aggregations, and distr
 
 # Building a Custom ElasticSearch Clone in Pure Python
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 When scaling distributed systems, search engines like ElasticSearch often feel like magic. They parse complex JSON DSL queries, execute rapid aggregations across millions of documents, and distribute datasets across shards seamlessly. 
 
 But stripped down to its core principles, a search engine is simply a specialized database optimized for specific patterns: schema enforcement (mappings), query execution matching, data bucketing (aggregations), and horizontal partitioning (sharding).

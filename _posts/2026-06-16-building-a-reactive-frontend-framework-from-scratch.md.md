@@ -39,6 +39,10 @@ description: "Demystifying component-based web architectures: Implementing a dec
 
 # Building a Reactive Frontend Framework from Scratch
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 Modern client-side web development is dominated by component-driven frameworks like React, Vue, and Angular. These platforms abstract away direct, tedious DOM manipulations by introducing high-level software design patterns: **Component Isolation**, **Data Binding**, and **Decoupled Event Dispatching**. Instead of writing imperatively, you declare your state, and the core engine reflects those data states dynamically onto the user interface view.
 
 But beneath the heavy Javascript bundle sizes and Virtual DOM nodes, how do these systems operate from first principles? 

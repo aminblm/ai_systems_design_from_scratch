@@ -41,6 +41,10 @@ description: "Demystifying application-layer routing infrastructure: Implementin
 
 #  Building a Relational SQL Database Engine Abstraction From Scratch
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 Every time a web browser or client application fetches data from a backend service, it relies on an application-layer network protocol: **Hypertext Transfer Protocol (HTTP)**. In standard development, web servers like NGINX, Apache, or Python frameworks like Flask and FastPI capture these requests automatically. They shield engineers from raw TCP/IP data buffers by providing pre-parsed request parameters and automated status routing abstractions.
 
 To genuinely master distributed backend architectures, we must peer beneath these framework abstractions to look directly at the underlying mechanics of text serialization and socket-multiplexing.

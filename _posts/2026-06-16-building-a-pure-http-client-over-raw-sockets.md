@@ -39,6 +39,10 @@ description: "Demystifying application-layer transport protocols: Implementing a
 
 # Building a Pure HTTP Client over Raw Sockets
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 When we utilize abstractions like `requests.get()` in Python or `fetch()` in JavaScript, we are interacting with high-level clients wrapped around an application-layer network protocol: **Hypertext Transfer Protocol (HTTP)**. Beneath these convenient libraries, an HTTP request is nothing more than a structured ASCII text payload transmitted across a raw, transport-layer TCP socket stream.
 
 To build a rugged understanding of systems engineering, we must strip away modern dependency wrappers and look directly at the underlying protocol specifications.

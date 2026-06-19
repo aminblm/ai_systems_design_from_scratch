@@ -40,6 +40,10 @@ description: "Demystifying transport-layer utilities: Implementing encapsulated 
 
 # Building a Reusable Socket Bootstrap Utility
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 In networked applications and distributed environments, individual software modules must continuously open point-to-point communication tunnels. Whether you are constructing a custom load balancer, a NoSQL data node, an HTTP web server, or a real-time messaging layer, they all share a low-level dependency: **Transport-Layer Network Sockets**. 
 
 In high-level systems architecture, writing raw, repetitive boilerplate code to create sockets across every single tool introduces maintenance overhead and structural drift. To enforce a clean separation of concerns, engineers encapsulate raw kernel syscall configurations into reusable **Network Factories**.

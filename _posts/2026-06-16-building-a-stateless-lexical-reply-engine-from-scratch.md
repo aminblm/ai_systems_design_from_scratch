@@ -41,6 +41,10 @@ description: "Demystifying natural language interfaces: Implementing an in-memor
 
 # Building a Stateless Lexical Reply Engine From Scratch
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 At the absolute foundation of natural language processing (NLP) and conversational systems sits the rule-based **Lexical Reply Engine**. Before deep neural networks, transformers, and large language models (LLMs) emerged, conversational interfaces operated via deterministic lookup tables. These architectures map user input tokens directly to precompiled response data blocks. 
 
 While enterprise-grade rule systems leverage tokenization pipelines, regular expression (Regex) trees, and edit-distance string similarity tracking, the baseline mechanism of conversational routing relies on an explicit systems engineering pattern: **Stateless In-Memory Intent Mapping**.

@@ -40,6 +40,10 @@ description: "Demystifying unstructured data systems: Implementing a stateful da
 
 # Building a NoSQL Document Store From Scratch
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 In non-relational database design, NoSQL document stores like MongoDB ditch rigid tables, rows, and foreign key constraints in favor of flexible, schema-agnostic abstractions. Data is bundled into self-contained objects called **Documents** (typically represented as BSON or JSON) and grouped inside **Collections**. 
 
 To handle massive write volumes and analytical workloads at scale, these engines implement core systems architectural patterns: logical storage hierarchies, document indexing arrays, data aggregation pipelines, and **Horizontal Sharding** partitions.

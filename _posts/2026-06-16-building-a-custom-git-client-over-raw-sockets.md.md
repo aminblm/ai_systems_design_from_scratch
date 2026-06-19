@@ -39,6 +39,10 @@ description: "Demystifying distributed version control network layers: Implement
 
 # Building a Custom Git Client over Raw Sockets
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 When you run an operation like `git clone`, your local machine handles much more than filesystem mutations. Beneath the hood, Git spins up a networking subsystem to establish an explicit communication boundary with a remote repository server. Whether routing over SSH, HTTP, or the native Git protocol (`git://`), the core mission remains identical: handshaking with a daemon, passing a structured command block, and streaming back compressed packfiles.
 
 To understand version control from first principles, we must investigate how these network packets are marshalled. 

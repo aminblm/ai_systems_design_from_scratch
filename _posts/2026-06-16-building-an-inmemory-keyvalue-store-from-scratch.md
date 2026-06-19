@@ -41,6 +41,10 @@ description: "Demystifying high-performance data structures: Implementing a stat
 
 # Building an In-Memory Key-Value Store From Scratch
 
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 High-performance caching platforms like Redis are structural pillars in modern distributed computing. They operate as sub-millisecond, **In-Memory Key-Value Stores**, caching expensive database queries, managing volatile web sessions, and acting as fast message brokers. 
 
 While enterprise-grade instances implement optimized C-based data primitives (like Skip Lists, Zip Lists, and Dicts), handle raw socket multiplexing, and support fork-based background persistence, the core mechanics of a key-value database rely on a clean systems pattern: **A Single-Threaded Command Dispatcher mapping Multi-Type Storage Buckets**.
