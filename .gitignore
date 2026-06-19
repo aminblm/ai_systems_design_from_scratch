@@ -4,3 +4,4 @@ src/__pycache__
 md_to_html.html
 .venv
 ai_systems_design/py_jekyll/output
+test/*

@@ -8,16 +8,17 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 logger = logging.getLogger(__name__)
 
 
-def generate_site():
+def test_generate_site():
     base_path = 'ai_systems_design/site_generator/'
-    SiteGenerator(f'{base_path}layout.html', f'{base_path}config.yaml').generate_site(f'{base_path}input')
+    test_path = 'test/'
+    SiteGenerator(f'{base_path}layout.html', f'{base_path}config.yaml').generate_site(f'{test_path}input')
 
-def generate_slugs():
+def test_generate_slugs():
     slug_engine = SlugGenerator()
     interface = TerminalInterface(generator=slug_engine)
     interface.run()
 
-def start_engine_scheduler():
+def test_start_engine_scheduler():
     # Define clean decoupled topology
     sample_dag = DAG("Production_pipeline")
 
@@ -38,6 +39,6 @@ def start_engine_scheduler():
     scheduler.run_forever(tick_rate_seconds=0.5)
 
 if __name__ == "__main__":
-    #generate_site()
-    #generate_slugs()
-    start_engine_scheduler()
+    test_generate_site()
+    #test_generate_slugs()
+    #test_start_engine_scheduler()

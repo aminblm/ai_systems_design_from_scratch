@@ -1,4 +1,11 @@
+import logging, sys
+from types import TracebackType
+from typing import Optional, Type
 from ai_systems_design.utils import SocketUtility
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logger = logging.getLogger(__name__)
+
 
 class ClientSocket:
     def __init__(self, host, port):
