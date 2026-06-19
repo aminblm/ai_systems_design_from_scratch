@@ -13,7 +13,10 @@ class MD_SPECIAL_CASES(Enum):
 
 class FileOperations:
     @staticmethod
-    def read_markdown_file(markdown_file_path): return UtilityMethods.read_encoded(markdown_file_path)
+    def read_markdown_file(markdown_file_path): return UtilityMethods.read_decoded(markdown_file_path)
+
+    @staticmethod
+    def write_html_file(html_file_path, content): return UtilityMethods.write_encoded(html_file_path, content)
 
 
 class Helpers:
@@ -151,39 +154,30 @@ class MarkdownToHTMLBuilder:
         )
     
     @staticmethod
-    def create_default():
-        return MarkdownToHTMLBuilder().build()
+    def create_default(): return MarkdownToHTMLBuilder().build()
     
     @staticmethod
-    def create_from_file(path):
-        return MarkdownToHTMLBuilder().set_markdown_file_path(path).build()
+    def create_from_file(path): return MarkdownToHTMLBuilder().set_markdown_file_path(path).build()
     
     @staticmethod
-    def create_from_text(text):
-        return MarkdownToHTMLBuilder().set_markdown_text(text).build()
+    def create_from_text(text): return MarkdownToHTMLBuilder().set_markdown_text(text).build()
     
 
 class MarkdownToHTML:
     def __init__(self, markdown_file_path=None, markdown_text=None):
-        self.markdown_file_path = markdown_file_path
-        self.markdown_text = markdown_text
+        self.markdown_file_path, self.markdown_text = markdown_file_path, markdown_text
 
-    def md_file_to_html(self):
-        return HTMLGenerator.gen_html_from_md_file(self.markdown_file_path)
+    def md_file_to_html(self): return HTMLGenerator.gen_html_from_md_file(self.markdown_file_path)
     
-    def md_text_to_html(self):
-        return HTMLGenerator.gen_html_from_md_text(self.markdown_text)
+    def md_text_to_html(self): return HTMLGenerator.gen_html_from_md_text(self.markdown_text)
     
 
 class HTMLGenerator: 
     @staticmethod
-    def md_text_to_html_file(html, html_file_path):
-        with open(html_file_path, 'wb') as html_file: html_file.write(str(html).encode('utf-8'))
+    def md_text_to_html_file(html_file_path, html_content): FileOperations.write_html_file(html_file_path, html_content)
 
     @staticmethod
-    def gen_html_from_md_file(markdown_file_path):
-        return MarkdownParser.parse(FileOperations.read_markdown_file(markdown_file_path).split("\n"))
+    def gen_html_from_md_file(markdown_file_path): return MarkdownParser.parse(FileOperations.read_markdown_file(markdown_file_path).split("\n"))
     
     @staticmethod
-    def gen_html_from_md_text(md_text):
-        return MarkdownParser.parse(md_text.split("\n"))
+    def gen_html_from_md_text(md_text): return MarkdownParser.parse(md_text.split("\n"))

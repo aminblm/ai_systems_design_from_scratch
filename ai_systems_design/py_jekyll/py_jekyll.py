@@ -30,12 +30,19 @@ class FileOperations:
         output_dir = os.path.join(os.path.dirname(input_dir), 'output')
         if not os.path.exists(output_dir): os.makedirs(output_dir, exist_ok=True)
         return output_dir
+    
+    @staticmethod
+    def write_html_content(md_file_path, html_file_path, layout, config):
+        UtilityMethods.write_encoded(html_file_path, HTMLRenderer.render_html(layout, config, md_file_path))
+
+    @staticmethod 
+    def read_html_file(html_file_path): return UtilityMethods.read_decoded(html_file_path)
 
 
 class LayoutHandler:
     @staticmethod
-    def get_layout(layout_path): return UtilityMethods.read_encoded(layout_path)
-
+    def get_layout(layout_path): return FileOperations.read_html_file(layout_path)
+    
 
 class ConfigHandler:
     @staticmethod
@@ -55,7 +62,7 @@ class HTMLGenerator:
     @staticmethod
     @ErrorHandler.with_error_handling
     def generate_html_page(layout, config, md_file_path, html_file_path):
-        with open(html_file_path, 'wb') as html: html.write(HTMLRenderer.render_html(layout, config, md_file_path).encode('utf-8'))
+        FileOperations.write_html_content(md_file_path, html_file_path, layout, config)
 
     @staticmethod
     @ErrorHandler.with_error_handling

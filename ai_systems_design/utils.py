@@ -3,8 +3,13 @@ import socket
 
 class UtilityMethods:
     @staticmethod
-    def read_encoded(file_path):
+    def read_decoded(file_path):
         with open(file_path, 'rb') as f: return f.read().decode('utf-8')
+
+    @staticmethod
+    def write_encoded(path, content):
+        with open(path, 'wb') as f: f.write(content.encode('utf-8'))
+
 
 def create_socket_server(host, port, context):
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
