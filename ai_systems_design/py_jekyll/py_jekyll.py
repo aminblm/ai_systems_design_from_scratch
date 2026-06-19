@@ -1,6 +1,6 @@
 import os, logging, traceback
 
-from ai_systems_design.py_yaml import YAMLParser
+from ai_systems_design.py_yaml import YAMLBuilder
 from ai_systems_design.py_markdown_to_html.py_markdown_to_html import MarkdownToHTMLBuilder
 from ai_systems_design.utils import UtilityMethods
 
@@ -42,12 +42,12 @@ class FileOperations:
 class LayoutHandler:
     @staticmethod
     def get_layout(layout_path): return FileOperations.read_html_file(layout_path)
-    
+
 
 class ConfigHandler:
     @staticmethod
     def get_config_mapping(config_file_path):
-        return YAMLParser(config_file_path).get_mapping()
+        return YAMLBuilder.create_from_file(config_file_path).get_mapping_from_file()
 
 
 class HTMLRenderer:
