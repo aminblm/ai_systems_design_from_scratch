@@ -1,0 +1,2 @@
+Lack of Reconnect or Error Resilience: If the server is momentarily restarting or drops the connection mid-flight, this class instantly throws an unhandled error and crashes.
+

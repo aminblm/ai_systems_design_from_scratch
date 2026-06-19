@@ -1,0 +1,2 @@
+The recv(1024) Buffer Trap: TCP is a streaming protocol, not a packet protocol. There are no guarantees that a message sent by the server will arrive all at once in a single recv call. Assuming a message fits cleanly in 1024 bytes without handling partial reads or framing delimiters (like \n) will eventually result in truncated data or corrupted payloads.
+

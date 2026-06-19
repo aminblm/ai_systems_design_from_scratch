@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Dict, Union, Tuple 
 
 from ai_systems_design.py_yaml import YAMLBuilder
-from ai_systems_design.py_markdown_to_html.md_html import MarkdownConverterFacade
+from ai_systems_design.md_html.md_html import MarkdownConverterFacade
 from ai_systems_design.utils import FileOperationsUtility
 
 logging.basicConfig(level=logging.INFO)

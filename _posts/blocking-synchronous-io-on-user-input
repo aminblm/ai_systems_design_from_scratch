@@ -1,0 +1,2 @@
+Blocking Synchronous IO on User Input: Mixing system-level network communication synchronously with terminal CLI interactions (input()) freezes the socket connection thread. If the server sends data while the client is sitting idly on the input() prompt, the system will stall.
+

@@ -1,0 +1,1 @@
+The Infinite Blocking Loop: The Scheduler.start method runs while True: on a single thread and calls time.sleep() directly inside the task execution loop. If one task takes time or sleeps, the entire scheduler freezes. It cannot process other tasks concurrently, completely breaking the core purpose of an orchestrator.

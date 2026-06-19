@@ -1,0 +1,2 @@
+Resource Leaks on Failure: If client_socket.recv() times out, or the user hits Ctrl+C during the input() prompt, the code will crash before reaching client_socket.close(). This leaves an unmanaged TCP socket descriptor hanging open in the operating system kernel.
+
