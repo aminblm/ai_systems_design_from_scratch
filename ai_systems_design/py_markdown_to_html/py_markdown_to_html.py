@@ -1,8 +1,34 @@
-from abc import ABC, abstractmethod
-from pathlib import Path
+from enum import Enum 
 
 
-class MarkdownToHTMLFactory:
+class MD_SPECIAL_CASES(Enum):
+    BOLD = '**'
+    ITALIC = '*'
+    MULTILINE_CODE = '```'
+    INLINE_CODE = '`'
+    LINK = '[]()'
+    IMAGE = '![]()'
+
+
+class MarkdownToHTMLBuilder:
+    def __init__(self):
+        self.markdown_file_path = ""
+        self.markdown_text = ""
+
+    def set_markdown_file_path(self, markdown_file_path):
+        self.markdown_file_path = markdown_file_path
+        return self
+
+    def set_markdown_text(self, markdown_text):
+        self.markdown_text = markdown_text
+        return self
+
+    def build(self):
+        return MarkdownToHTML(
+            markdown_file_path = self.markdown_file_path,
+            markdown_text = self.markdown_text,
+        )
+    
     @staticmethod
     def create_default():
         return MarkdownToHTMLBuilder().build()
@@ -16,42 +42,7 @@ class MarkdownToHTMLFactory:
         return MarkdownToHTMLBuilder().set_markdown_text(text)
     
 
-class MarkdownToHTMLBuilder:
-    def __init__(self):
-        self.markdown_file_path = ""
-        self.markdown_text = None
-        self.html_file_path = ""
-
-    def set_markdown_file_path(self, markdown_file_path):
-        self.markdown_file_path = markdown_file_path
-        return self
-
-    def set_markdown_text(self, markdown_text):
-        self.markdown_text = markdown_text
-        return self
-
-    def set_html_file_path(self, html_file_path):
-        self.html_file_path = html_file_path
-        return self
-    
-    def build(self):
-        return MarkdownToHTML(
-            markdown_file_path = self.markdown_file_path,
-            markdown_text = self.markdown_text,
-            html_file_path = self.html_file_path
-        )
-    
-
 class Helpers:
-    MD_SPECIALS = {
-        'BOLD': '**',
-        'ITALIC': '*',
-        'MULTILINE_CODE': '```',
-        'INLINE_CODE': '`',
-        'LINK': '[]()',
-        'IMAGE': '![]()'
-    }
-    
     @staticmethod
     def _ignore_metadata_line(lines):
         # TODO process metadata into dynamic variables
@@ -61,7 +52,7 @@ class Helpers:
 
     @staticmethod         
     def _is_pure_text(text):
-        return not any(special in text for special in Helpers.MD_SPECIALS.values())
+        return not any(special.value in text for special in MD_SPECIAL_CASES)
     
 
 class MarkdownParser:
@@ -85,12 +76,12 @@ class MarkdownParser:
     @staticmethod
     def _parse_multi_line_code(line):
         # TODO support multi-line code
-        return f'<pre><code>{ line.split(Helpers.MD_SPECIALS['MULTILINE_CODE'])[1] }</code></pre>'
+        return f'<pre><code>{ line.split(MD_SPECIAL_CASES.MULTILINE_CODE.value)[1] }</code></pre>'
 
     @staticmethod
     def _parse_inline_code(line):
         # TODO support multi-line code
-        return f'<pre><code>{ line.split(Helpers.MD_SPECIALS['INLINE_CODE'])[1] }</code></pre>'
+        return f'<pre><code>{ line.split(MD_SPECIAL_CASES.INLINE_CODE.value)[1] }</code></pre>'
     
     @staticmethod
     def _parse_bold_html_element(bold_split_element):
@@ -108,9 +99,9 @@ class MarkdownParser:
     def _parse_markdown_specials(markdown_content):
         # TODO markdwn proper specials nesting
         html_content = ""
-        if len(markdown_content.split(Helpers.MD_SPECIALS['BOLD'])) % 2 != 0:
+        if len(markdown_content.split(MD_SPECIAL_CASES.BOLD.value)) % 2 != 0:
             html_content += MarkdownParser._parse_text_with_possible_bold(markdown_content)
-        elif len(markdown_content.split(Helpers.MD_SPECIALS['ITALIC'])) % 2 != 0:
+        elif len(markdown_content.split(MD_SPECIAL_CASES.ITALIC.value)) % 2 != 0:
             html_content += MarkdownParser._parse_text_with_possible_italic(markdown_content)
         return html_content
     
@@ -118,9 +109,9 @@ class MarkdownParser:
     def _parse_text_with_possible_italic(markdown_content):
         # TODO markdwn proper specials nesting
         html_content = ""
-        italic_split = markdown_content.split(Helpers.MD_SPECIALS['ITALIC'])
+        italic_split = markdown_content.split(MD_SPECIAL_CASES.ITALIC.value)
         for i, italic_split_element in enumerate(italic_split):
-            if italic_split[0].startswith(Helpers.MD_SPECIALS['ITALIC']):
+            if italic_split[0].startswith(MD_SPECIAL_CASES.ITALIC.value):
                 if i%2 == 0: html_content += MarkdownParser._parse_italic_html_element(italic_split_element)
                 else: html_content += italic_split_element
             else:
@@ -132,8 +123,8 @@ class MarkdownParser:
     def _parse_text_with_possible_bold(markdown_content):
         # TODO markdwn proper specials nesting
         html_content = ""
-        bold_split = markdown_content.split(Helpers.MD_SPECIALS['BOLD'])
-        if bold_split[0].startswith(Helpers.MD_SPECIALS['BOLD']):
+        bold_split = markdown_content.split(MD_SPECIAL_CASES.BOLD.value)
+        if bold_split[0].startswith(MD_SPECIAL_CASES.BOLD.value):
             for i, bold_split_element in enumerate(bold_split):
                 if i%2 == 0: html_content += MarkdownParser._parse_bold_html_element(bold_split_element)
                 else: html_content += MarkdownParser._parse_text_with_possible_italic(bold_split_element)
@@ -151,8 +142,8 @@ class MarkdownParser:
         elif line.startswith("<"): return MarkdownParser._parse_html(line)
         elif line.startswith(">"): return MarkdownParser._parse_quote(line)
         elif line.startswith("* ") or line.startswith("- "): return MarkdownParser._parse_bullet_point(line)
-        elif line.startswith(Helpers.MD_SPECIALS['MULTILINE_CODE']): return MarkdownParser._parse_multi_line_code(line)
-        elif line.startswith(Helpers.MD_SPECIALS['INLINE_CODE']): return MarkdownParser._parse_inline_code(line)
+        elif line.startswith(MD_SPECIAL_CASES.MULTILINE_CODE.value): return MarkdownParser._parse_multi_line_code(line)
+        elif line.startswith(MD_SPECIAL_CASES.INLINE_CODE.value): return MarkdownParser._parse_inline_code(line)
         elif line.endswith('"') or line.endswith('">'): return '' #TODO Multi-line HTML
         elif line.startswith('[') or line.startswith('!'): return '' #TODO Links and images
         elif Helpers._is_pure_text(line): return MarkdownParser._parse_pure_text_line(line)
@@ -173,10 +164,9 @@ class HTMLGenerator:
 
 
 class MarkdownToHTML:
-    def __init__(self, markdown_file_path=None, markdown_text=None, html_file_path=None):
-        self.markdown_file_path = markdown_file_path or ""
-        self.html_file_path = html_file_path if html_file_path else f'{ self.markdown_file_path.split('.')[0] }.html'
-        self.markdown_text = self._read_markdown_file() if not markdown_text else markdown_text
+    def __init__(self, markdown_file_path='', markdown_text=''):
+        self.markdown_file_path = markdown_file_path
+        self.markdown_text = markdown_text
 
     def _read_markdown_file(self):
         with open(self.markdown_file_path, 'rb') as md: return md.read().decode('utf-8')
