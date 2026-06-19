@@ -1,4 +1,4 @@
-import ai_systems_design.utils as utils
+from ai_systems_design.utils import SocketUtility
 
 class ClientSocket:
     def __init__(self, host, port):
@@ -6,7 +6,7 @@ class ClientSocket:
         self.port = port
     
     def connect_client(self):
-        client_socket = utils.connect_to_socket_server(self.host, self.port, "Client Socket")
+        client_socket = SocketUtility.connect_to_socket_server(self.host, self.port, "Client Socket")
 
         response = client_socket.recv(1024).decode()
         print(response)

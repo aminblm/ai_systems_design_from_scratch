@@ -1,9 +1,9 @@
-from ai_systems_design.utils import UtilityMethods
+from ai_systems_design.utils import FileOperationsUtility
 
 
 class FileOperations:
     @staticmethod
-    def read_yaml_file(yaml_file_path): return UtilityMethods.read_decoded(yaml_file_path)
+    def read_yaml_file(yaml_file_path): return FileOperationsUtility.read_decoded(yaml_file_path)
 
 
 class YAMLBuilder:

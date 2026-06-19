@@ -1,6 +1,6 @@
 import json
 
-import ai_systems_design.utils as utils
+from ai_systems_design.utils import SocketUtility
 
 
 class GitClient:
@@ -9,7 +9,7 @@ class GitClient:
         self.port = port
 
     def start_client(self):
-        client_socket = utils.connect_to_socket_server(self.host, self.port, "Git Client")
+        client_socket = SocketUtility.connect_to_socket_server(self.host, self.port, "Git Client")
 
         command = "git clone https://github.com/user/repo.git"
         client_socket.sendall(json.dumps({"type": "git", "command": command}).encode())

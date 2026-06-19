@@ -2,7 +2,7 @@ import os, logging, traceback
 
 from ai_systems_design.py_yaml import YAMLBuilder
 from ai_systems_design.py_markdown_to_html.py_markdown_to_html import MarkdownToHTMLBuilder
-from ai_systems_design.utils import UtilityMethods
+from ai_systems_design.utils import FileOperationsUtility
 
 
 class ErrorHandler:
@@ -33,10 +33,10 @@ class FileOperations:
     
     @staticmethod
     def write_html_content(md_file_path, html_file_path, layout, config):
-        UtilityMethods.write_encoded(html_file_path, HTMLRenderer.render_html(layout, config, md_file_path))
+        FileOperationsUtility.write_encoded(html_file_path, HTMLRenderer.render_html(layout, config, md_file_path))
 
     @staticmethod 
-    def read_html_file(html_file_path): return UtilityMethods.read_decoded(html_file_path)
+    def read_html_file(html_file_path): return FileOperationsUtility.read_decoded(html_file_path)
 
 
 class LayoutHandler:

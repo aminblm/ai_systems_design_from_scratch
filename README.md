@@ -222,11 +222,15 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **LinkTree clone** (web links in one webpage)
 * [ ] **Circle AI** (An AI partner that builds, runs, and grows your digital business with you)
 * [ ] **Technologies in Job Descriptions** (Source for technologies from Job Descriptions)
-* [ ] **Jekyll**
+* [x] **Jekyll**
 * [ ] **BIOS**
 * [x] **Markdown to HTML parser**
 * [x] **YAML parser**
 * [ ] **Virtual Environment**
+* [ ] **Python To Markdown Generator**
+* [ ] **Python To Markdown To HTML Generator**
+* [ ] **Server on change listener**
+
 
 ---
 

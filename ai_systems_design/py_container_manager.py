@@ -1,4 +1,4 @@
-import ai_systems_design.utils as utils
+from ai_systems_design.utils import SocketUtility
 
 
 class ContainerManager:
@@ -10,7 +10,7 @@ class ContainerManager:
 
     def start_server(self):
         """Start server listening on specified port."""
-        self.server_socket = utils.create_socket_server(self.host, self.listen_port, 'Container Manager')
+        self.server_socket = SocketUtility.create_socket_server(self.host, self.listen_port, 'Container Manager')
 
         while True:
             self.client_socket, self.client_address = self.server_socket.accept()

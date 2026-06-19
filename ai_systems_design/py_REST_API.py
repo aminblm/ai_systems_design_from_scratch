@@ -1,4 +1,4 @@
-import ai_systems_design.utils as utils
+from ai_systems_design.utils import SocketUtility
 
 
 class REST_API:
@@ -7,7 +7,7 @@ class REST_API:
         self.port = port 
 
     def start_server(self):
-        server_socket = utils.create_socket_server(self.host, self.port, 'REST API')
+        server_socket = SocketUtility.create_socket_server(self.host, self.port, 'REST API')
 
         while True:
             client_socket, client_address = server_socket.accept()

@@ -1,6 +1,6 @@
 import json 
 
-import ai_systems_design.utils as utils
+from ai_systems_design.utils import SocketUtility
 
 
 class GitServer:
@@ -9,7 +9,7 @@ class GitServer:
         self.port = port
 
     def start_server(self):
-        server_socket = utils.create_socket_server(self.port, self.host, "Git Server")
+        server_socket = SocketUtility.create_socket_server(self.port, self.host, "Git Server")
 
         while True: 
             client_socket, addr = server_socket.accept()

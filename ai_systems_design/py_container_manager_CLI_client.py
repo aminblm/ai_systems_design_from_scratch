@@ -1,4 +1,4 @@
-import ai_systems_design.utils as utils
+from ai_systems_design.utils import SocketUtility
 
 
 class Container_Manager_CLI_client:
@@ -7,7 +7,7 @@ class Container_Manager_CLI_client:
         self.container_manager_server_port = container_manager_server_port
 
     def start_CLI_interface(self):
-        client_socket = utils.connect_to_socket_server(self.container_manager_server_host, self.container_manager_server_port, 'Container Manager')
+        client_socket = SocketUtility.connect_to_socket_server(self.container_manager_server_host, self.container_manager_server_port, 'Container Manager')
 
         while True:
             try:

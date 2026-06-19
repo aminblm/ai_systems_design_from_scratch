@@ -1,4 +1,4 @@
-import ai_systems_design.utils as utils
+from ai_systems_design.utils import SocketUtility
 
 
 class REST_API_CLI_Client:    
@@ -8,7 +8,7 @@ class REST_API_CLI_Client:
 
     def start_client(self):
         # Connect to the server
-        client_socket = utils.connect_to_socket_server(self.server_ip, self.server_port, 'REST API')
+        client_socket = SocketUtility.connect_to_socket_server(self.server_ip, self.server_port, 'REST API')
 
         # CLI Loop
         self._CLI_interface(client_socket)
