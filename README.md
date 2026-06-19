@@ -230,6 +230,7 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **Python To Markdown Generator**
 * [ ] **Python To Markdown To HTML Generator**
 * [ ] **Server on change listener**
+* [ ] **Blog Posts Metas Appender** Append Blog posts with MEta and SEO data dynamically and automatically
 
 
 ---
