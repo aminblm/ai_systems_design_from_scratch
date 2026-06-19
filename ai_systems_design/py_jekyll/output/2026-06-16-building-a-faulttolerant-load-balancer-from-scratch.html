@@ -33,6 +33,10 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
+
+
+
+
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -70,8 +74,10 @@ Our balancer prototype defines an explicit structural state routing object (`Loa
 <p>self.servers = servers</p>
 <p></p>
 <p>def handle_requests(self, request):</p>
+
 <p>Coordinates request distribution across the active cluster.</p>
 <p>Implements a functional failover strategy if a target node passes an empty response.</p>
+
 <p>for server in self.servers:</p>
 <h1>Proxy the incoming user request payload down to the target node</h1
 <p>response = server(request)</p>
@@ -83,18 +89,25 @@ Our balancer prototype defines an explicit structural state routing object (`Loa
 <h1>If the server returns None, treat it as a structural failure or context miss; pass control to the next node</h1
 <p>continue</p>
 <p></p>
+
 <p></p>
 <p></p>
 <p>def server1(request):</p>
+
 <p>if request == "hello":</p>
+
 <p>return None</p>
 <p></p>
 <p>def server2(request):</p>
+
 <p>if request == "world":</p>
+
 <p>return None</p>
 <p></p>
 <p>def server3(request):</p>
+
 <p>if request == "bye":</p>
+
 <p>return None</p>
 <p></p>
 <p></p>
@@ -191,8 +204,13 @@ If a client passes an unrecognizable or malicious command string down the proxy 
 <li><strong>Active Health Probe Check Daemon:</strong> Writing a background helper thread that continuously dispatches lightweight poll messages down to the registered servers, dynamically dropping non-responsive nodes from the live tracking cluster pool before incoming requests arrive.</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
+
+
+
+
 <p>Connect with Amin Boulouma Official</p>
 </a>
+
             </div>
         </main>
 

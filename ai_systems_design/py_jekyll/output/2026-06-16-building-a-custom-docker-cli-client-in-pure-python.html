@@ -33,6 +33,10 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
+
+
+
+
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -70,8 +74,10 @@ The architecture is encapsulated within a decoupled controller class: `Container
 <p>self.container_manager_server_port = container_manager_server_port</p>
 <p></p>
 <p>def start_CLI_interface(self):</p>
+
 <p>Establishes a persistent TCP connection handshake to the orchestrator daemon</p>
 <p>and boots the infinite user interactive input polling loop.</p>
+
 <p>client_socket = utils.connect_to_socket_server(</p>
 <p>self.container_manager_server_host,</p>
 <p>self.container_manager_server_port,</p>
@@ -167,6 +173,7 @@ Ensure your `utils.py` contains the matching standard library TCP connector fram
 <p>import socket</p>
 <p></p>
 <p>def connect_to_socket_server(host, port, service_name):</p>
+
 <p>s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</p>
 <p>s.connect((host, port))</p>
 <p>print(f"Connected successfully to the {service_name} Daemon at {host}:{port}")</p>
@@ -190,9 +197,11 @@ Ensure your `utils.py` contains the matching standard library TCP connector fram
 <pre><code>text</code></pre>
 <p>Connected successfully to the Container Manager Daemon at 127.0.0.1:8080</p>
 <p>Enter command (run, stop or list), exit to quit interface: list</p>
+
 <p></p>
 <p>Enter command (run, stop or list), exit to quit interface: run</p>
 <p>Enter container name: production_redis_node</p>
+
 <p></p>
 <pre><code></code></pre>
 <p></p>
@@ -209,8 +218,13 @@ Ensure your `utils.py` contains the matching standard library TCP connector fram
 <li><strong>JSON Payload Marshalling:</strong> Standardizing our custom text framing format to rigid JSON structures to natively support passing advanced environment settings (e.g., memory limits, port forwards) over the socket line.</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
+
+
+
+
 <p>Connect with Amin Boulouma Official</p>
 </a>
+
             </div>
         </main>
 

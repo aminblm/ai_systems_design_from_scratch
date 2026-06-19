@@ -1,4 +1,4 @@
-import os, logging
+import os, logging, traceback
 
 from ai_systems_design.py_yaml import YAMLParser
 from ai_systems_design.py_markdown_to_html.py_markdown_to_html import MarkdownToHTML
@@ -11,7 +11,9 @@ class ErrorHandler:
             if 'input_dir' in kwargs and not os.path.isdir(kwargs['input_dir']):
                 raise ValueError(f"Input dir {kwargs['input_dir'] } is not a dir.")
             try: result = func(*args, **kwargs); return result
-            except Exception as e: logging.error(f"Error in {func.__name__}: {e}"); return None
+            except Exception as e: 
+                logging.error(f"Error in {func.__name__}: {e}"); 
+                logging.error(traceback.format_exc()); return None
         return wrapper
     
 
@@ -44,7 +46,7 @@ class ConfigHandler:
 class HTMLRenderer:
     @staticmethod
     def render_html(layout, config, md_file_path):
-        html = layout.replace('{{ site.content }}', MarkdownToHTML(md_file_path).md_to_html())
+        html = layout.replace('{{ site.content }}', MarkdownToHTML(md_file_path).md_file_to_html())
         for key in config: html = html.replace('{{ site.' + key + ' }}', config[key])
         return html
     

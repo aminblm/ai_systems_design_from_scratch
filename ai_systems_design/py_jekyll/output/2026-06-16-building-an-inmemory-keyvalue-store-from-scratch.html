@@ -33,6 +33,10 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
+
+
+
+
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -99,6 +103,7 @@ Our database layout uses an isolated class component (`Redis`). This engine init
 <p>}</p>
 <p></p>
 <p>def run(self):</p>
+
 <p>print("In-Memory Key-Value Database Engine Initialized.")</p>
 <p>while True:</p>
 <p>try:</p>
@@ -111,6 +116,7 @@ Our database layout uses an isolated class component (`Redis`). This engine init
 <p>break</p>
 <p></p>
 <p>def process_command(self, cmd):</p>
+
 <h1>Note: Operational parameters must be parsed out of this input wrapper</h1
 <h1>to drive downstream state mutations during production execution.</h1
 <p>if cmd not in self.commands:</p>
@@ -180,6 +186,7 @@ Our database layout uses an isolated class component (`Redis`). This engine init
 <p>return False</p>
 <p></p>
 <p>def run_rdb(self):</p>
+
 <p>self.rdv = {</p>
 <p>"strings": self.data["strings"].copy(),</p>
 <p>"hashes": self.data["hashes"].copy(),</p>
@@ -190,6 +197,7 @@ Our database layout uses an isolated class component (`Redis`). This engine init
 <p>print("RDB snapshot saved.")</p>
 <p></p>
 <p>def run_aof(self):</p>
+
 <p>self.aof = {"commands": []}</p>
 <p>print("AOF Logging started.")</p>
 <p></p>
@@ -258,8 +266,13 @@ Our layout exposes advanced data tracking operations like `pfadd` and `pfcount`.
 <li><strong>Raw Network Socket Interfacing:</strong> Binding the internal command dispatcher directly to our core `py_socket_server` module to handle remote application connections over a clean custom TCP text protocol layer.</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
+
+
+
+
 <p>Connect with Amin Boulouma Official</p>
 </a>
+
             </div>
         </main>
 

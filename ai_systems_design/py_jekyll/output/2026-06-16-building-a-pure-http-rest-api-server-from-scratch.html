@@ -33,6 +33,10 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
+
+
+
+
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -72,6 +76,7 @@ Our backend routing engine is encapsulated inside a unified controller class: `R
 <p>self.port = port</p>
 <p></p>
 <p>def start_server(self):</p>
+
 <p>server_socket = utils.create_socket_server(self.host, self.port, 'REST API')</p>
 <p></p>
 <p>while True:</p>
@@ -113,31 +118,41 @@ Our backend routing engine is encapsulated inside a unified controller class: `R
 <p>pass</p>
 <p></p>
 <p>def _parse_request(self, request):</p>
+
 <h1>HTTP Standard isolates the request line as the absolute first row of the packet buffer</h1
 <p>first_line = request.splitlines()[0]</p>
 <p>parts = first_line.split()</p>
 <p></p>
 <h1>Guardrail check for minimal valid HTTP request formatting (Method, Path, Protocol Version)</h1
 <p>if len(parts) < 2:</p>
+
 <p></p>
 <p>return parts[0], parts[1]</p>
 <p></p>
 <p>def _handle_request(self, method, path):</p>
+
 <h1>Note: Crucial HTTP specification compliance requires separating headers from bodies via double newlines (\r\n\r\n)</h1
 <p>if method == 'GET':</p>
 <p>if path == '/':</p>
+
 <p>elif path == '/hello':</p>
+
 <p>else:</p>
+
 <p></p>
 <p>elif method == 'POST':</p>
 <p>print("Received POST data payload frame.")</p>
+
 <p></p>
 <p>elif method == 'PUT':</p>
 <p>print("Data update request received!")</p>
+
 <p></p>
 <p>elif method == 'DELETE':</p>
+
 <p></p>
 <p>else:</p>
+
 <p></p>
 <p>return response</p>
 <p></p>
@@ -170,6 +185,7 @@ In the original protocol template structures, responses were compiled using sing
 Furthermore, separating functional network headers (like `Content-Type`) from the raw data body requires an explicit empty line transition (`\r\n\r\n`). Our updated architecture implements this standard across all routing blocks:
 <p></p>
 <pre><code>python</code></pre>
+
 <p></p>
 <pre><code></code></pre>
 <p></p>
@@ -230,8 +246,13 @@ To test this backend microservice engine, execute it locally inside your primary
 <li><strong>Stream Buffer Body Splitting:</strong> Refactoring the payload receiver to scan for the `Content-Length` header, enabling the server to dynamically buffer and parse multi-line JSON dictionaries passed during high-density `POST` and `PUT` transactions.</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
+
+
+
+
 <p>Connect with Amin Boulouma Official</p>
 </a>
+
             </div>
         </main>
 

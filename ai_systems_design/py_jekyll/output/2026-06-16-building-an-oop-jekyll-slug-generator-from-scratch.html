@@ -33,6 +33,10 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
+
+
+
+
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -68,24 +72,29 @@ Our platform design breaks responsibilities down into two independent classes. T
 <p>import string</p>
 <p></p>
 <p>class SlugGenerator:</p>
+
 <p></p>
 <p>def __init__(self, punctuation_mask=None):</p>
 <h1>Allow custom punctuation masks, defaulting to standard string punctuation</h1
 <p>self.punctuation_mask = punctuation_mask if punctuation_mask is not None else string.punctuation</p>
 <p></p>
 <p>def clean_title(self, title: str) -> str:</p>
+
 <p>if not title:</p>
+
 <p>lowercase_title = title.lower()</p>
 <h1>Filter technique strips matching punctuation markers in a single pass</h1
 <p>return "".join(char for char in lowercase_title if char not in self.punctuation_mask)</p>
 <p></p>
 <p>def build_slug(self, title: str) -> str:</p>
+
 <p>cleaned = self.clean_title(title)</p>
 <p>tokens = cleaned.split()</p>
 <p>return "-".join(tokens)</p>
 <p></p>
 <p></p>
 <p>class TerminalInterface:</p>
+
 <p></p>
 <p>def __init__(self, generator: SlugGenerator):</p>
 <h1>Explicit Dependency Injection of our logic engine worker</h1
@@ -94,14 +103,17 @@ Our platform design breaks responsibilities down into two independent classes. T
 <p>self.date_prefix = datetime.date.today().strftime("%Y-%m-%d")</p>
 <p></p>
 <p>def display_header(self):</p>
+
 <p>print("=========================================================")</p>
 <p>print("    OOP Jekyll Blog Post Filename Generator Engine       ")</p>
 <p>print("        Type 'exit' or 'quit' to terminate.              ")</p>
 <p>print("=========================================================\n")</p>
 <p></p>
 <p>def process_input(self, user_input: str) -> bool:</p>
+
 <p>Evaluates input tokens. Returns False if a shutdown token is</p>
 <p>received, otherwise processes text parameters and returns True.</p>
+
 <p>cleaned_input = user_input.strip()</p>
 <p></p>
 <p>if cleaned_input.lower() in ['exit', 'quit']:</p>
@@ -113,6 +125,7 @@ Our platform design breaks responsibilities down into two independent classes. T
 <p></p>
 <h1>Invoke the aggregated generator service dependency</h1
 <p>slug = self.generator.build_slug(cleaned_input)</p>
+
 <p></p>
 print("-" <em> 60)</em>
 <p>print(f"Target Slug    : {slug}")</p>
@@ -121,6 +134,7 @@ print("-" <em> 60 + "\n")</em>
 <p>return True</p>
 <p></p>
 <p>def run(self):</p>
+
 <p>self.display_header()</p>
 <p></p>
 <p>while True:</p>
@@ -219,8 +233,13 @@ The interface class utilizes instance caching to optimize resource consumption. 
 <li><strong>Unicode Diacritic Translation:</strong> Integrating a text transformation lookup table to map accent characters across international datasets safely (e.g., automatically converting `"Café"` into its web-safe URL token form `"cafe"`).</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
+
+
+
+
 <p>Connect with Amin Boulouma Official</p>
 </a>
+
             </div>
         </main>
 

@@ -33,6 +33,10 @@
 </head>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
+
+
+
+
 <p>Connect with Amin Boulouma Official</p>
 </a>
 <p></p>
@@ -70,12 +74,14 @@ Our implementation uses an explicit class structure (`REST_API_CLI_Client`). Thi
 <p>self.server_port = server_port</p>
 <p></p>
 <p>def start_client(self):</p>
+
 <p>client_socket = utils.connect_to_socket_server(self.server_ip, self.server_port, 'REST API')</p>
 <p></p>
 <h1>Launch the core Command Line Interface polling state machine</h1
 <p>self._CLI_interface(client_socket)</p>
 <p></p>
 <p>def _CLI_interface(self, client_socket):</p>
+
 <p>while True:</p>
 <p>try:</p>
 <p>print("\n=== REST API Tester ===")</p>
@@ -122,12 +128,17 @@ Our implementation uses an explicit class structure (`REST_API_CLI_Client`). Thi
 <p>break</p>
 <p></p>
 <p>def _send_request(self, client_socket, method, path, body=None):</p>
+
 <h1>1. Structural Application Layer Frame Assembly (\r\n transitions are mandatory)</h1
+
 <p></p>
 <p>if body:</p>
 <h1>Append required headers for structured payload ingestion</h1
+
+
 <p>else:</p>
 <h1>Terminate HTTP headers block with an empty carriage-return newline pair</h1
+
 <p></p>
 <h1>2. Serialize ASCII text blocks to raw bytes and flush completely down the stream</h1
 <p>client_socket.sendall(request_line.encode('utf-8'))</p>
@@ -142,6 +153,7 @@ Our implementation uses an explicit class structure (`REST_API_CLI_Client`). Thi
 <p>self._parse_response(response)</p>
 <p></p>
 <p>def _parse_response(self, response):</p>
+
 <p>if not response.strip():</p>
 <p>print("Received empty payload block.")</p>
 <p>return</p>
@@ -187,6 +199,7 @@ Our implementation uses an explicit class structure (`REST_API_CLI_Client`). Thi
 The absolute core of our script is the clean construction of the `request_line` block:
 <p></p>
 <pre><code>python</code></pre>
+
 <p></p>
 <pre><code></code></pre>
 <p></p>
@@ -265,8 +278,13 @@ To verify your custom HTTP framework engine, launch it directly against a local 
 <li><strong>TLS Layer Handshaking Wrappers:</strong> Wrapping our raw transport layer using Python's built-in `ssl.wrap_socket()` helper module to safely establish secure HTTPS operations over external networks.</li>
 <p></p>
 <a href="https://linktr.ee/aminboulouma"
+
+
+
+
 <p>Connect with Amin Boulouma Official</p>
 </a>
+
             </div>
         </main>
 

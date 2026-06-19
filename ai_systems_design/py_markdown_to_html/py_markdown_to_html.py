@@ -1,144 +1,188 @@
-class MarkdownToHTML:
-    def __init__(self, markdown_file_path=None, markdown_text=None, html_file_path=None):
-        self.markdown_file_path = markdown_file_path or ""
-        self.MD_SPECIALS = {
-            'BOLD': '**',
-            'ITALIC': '*',
-            'MULTILINE_CODE': '```',
-            'INLINE_CODE': '`',
-            'LINK': '[]()',
-            'IMAGE': '![]()'
-        }
-        self.html_file_path = html_file_path if html_file_path else f'{ self.markdown_file_path.split('.')[0] }.html'
-        self.markdown_text = self._read_markdown_file() if not markdown_text else markdown_text
-        self._parse_markdown()
-        self.html = '\n'.join(self.html_lines)
+from abc import ABC, abstractmethod
+from pathlib import Path
 
-    def _read_markdown_file(self):
-        with open(self.markdown_file_path, 'rb') as md:
-            return md.read().decode('utf-8')
 
-    def _parse_markdown(self):
-        self.html_lines = []
-        lines = self._read_markdown_file().split("\n") if self.markdown_file_path != '' else self.markdown_text.split("\n")
-        if lines[0].startswith('---'): lines = self._ignore_metadata_line(lines[1:])
-        for line in lines:
-            line = line.strip()
-            if line.startswith('#'): self._parse_header(line)
-            elif line.startswith('---'): self.html_lines.append('<br>')
-            elif line.startswith("<"): self._parse_html(line)
-            elif line.startswith(">"): self._parse_quote(line)
-            elif line.endswith('"') or line.endswith('">'): continue #TODO Multi-line HTML
-            elif line.startswith('[') or line.startswith('!'): continue #TODO Links and images
-            elif line.startswith("* ") or line.startswith("- "): self._parse_bullet_point(line)
-            elif line.startswith(self.MD_SPECIALS['MULTILINE_CODE']): self._parse_multi_line_code(line)
-            elif line.startswith(self.MD_SPECIALS['INLINE_CODE']): self._parse_inline_code(line)
-            elif self._is_pure_text(line): self._parse_pure_text_line(line)
-            else: self.html_lines.append(self._parse_markdown_specials(line))
+class MarkdownToHTMLFactory:
+    @staticmethod
+    def create_default():
+        return MarkdownToHTMLBuilder().build()
+    
+    @staticmethod
+    def create_from_file(path):
+        return MarkdownToHTMLBuilder().set_markdown_file_path(path)
+    
+    @staticmethod
+    def create_from_text(text):
+        return MarkdownToHTMLBuilder().set_markdown_text(text)
+    
 
-    def _ignore_metadata_line(self, lines):
+class MarkdownToHTMLBuilder:
+    def __init__(self):
+        self.markdown_file_path = ""
+        self.markdown_text = None
+        self.html_file_path = ""
+
+    def set_markdown_file_path(self, markdown_file_path):
+        self.markdown_file_path = markdown_file_path
+        return self
+
+    def set_markdown_text(self, markdown_text):
+        self.markdown_text = markdown_text
+        return self
+
+    def set_html_file_path(self, html_file_path):
+        self.html_file_path = html_file_path
+        return self
+    
+    def build(self):
+        return MarkdownToHTML(
+            markdown_file_path = self.markdown_file_path,
+            markdown_text = self.markdown_text,
+            html_file_path = self.html_file_path
+        )
+    
+
+class Helpers:
+    MD_SPECIALS = {
+        'BOLD': '**',
+        'ITALIC': '*',
+        'MULTILINE_CODE': '```',
+        'INLINE_CODE': '`',
+        'LINK': '[]()',
+        'IMAGE': '![]()'
+    }
+    
+    @staticmethod
+    def _ignore_metadata_line(lines):
         # TODO process metadata into dynamic variables
         for i, line in enumerate(lines):
             if line.startswith('---'): return lines[i+1:]
         return lines
-                            
-    def _parse_markdown_specials(self, markdown_content):
-        html_content = ""
-        if len(markdown_content.split(self.MD_SPECIALS['BOLD'])) % 2 != 0:
-            html_content += self._append_text_with_possible_bold(markdown_content)
-        elif len(markdown_content.split(self.MD_SPECIALS['ITALIC'])) % 2 != 0:
-            html_content += self._append_text_with_possible_italic(markdown_content)
-        return html_content
+
+    @staticmethod         
+    def _is_pure_text(text):
+        return not any(special in text for special in Helpers.MD_SPECIALS.values())
     
-    def _append_text_with_possible_italic(self, markdown_content):
-        html_content = ""
-        italic_split = markdown_content.split(self.MD_SPECIALS['ITALIC'])
-        for i, italic_split_element in enumerate(italic_split):
-            if italic_split[0].startswith(self.MD_SPECIALS['ITALIC']):
-                if i%2 == 0: html_content += self._append_italic_html_element(italic_split_element)
-                else: html_content += italic_split_element
-            else:
-                if i%2 == 1: html_content += self._append_italic_html_element(italic_split_element)
-                else: html_content += italic_split_element
-        return html_content
+
+class MarkdownParser:
+    @staticmethod
+    def _parse_header(line):
+        return f"<h{ len(line.split(' ')[0])}>{ " ".join(line.split(' ')[1:]) }</h{ len(line.split(' ')[0]) }"
+
+    @staticmethod
+    def _parse_html(line):
+        # TODO add support for multiline html
+        return line
+
+    @staticmethod
+    def _parse_bullet_point(line):
+        return f'<li>{ MarkdownParser._parse_markdown_specials(" ".join(line.split(' ')[1:])) }</li>'
+
+    @staticmethod
+    def _parse_quote(line):
+        return f"<blockquote>{ MarkdownParser._parse_markdown_specials(' '.join(line.split(' ')[1:])) }</blockquote>"
+
+    @staticmethod
+    def _parse_multi_line_code(line):
+        # TODO support multi-line code
+        return f'<pre><code>{ line.split(Helpers.MD_SPECIALS['MULTILINE_CODE'])[1] }</code></pre>'
+
+    @staticmethod
+    def _parse_inline_code(line):
+        # TODO support multi-line code
+        return f'<pre><code>{ line.split(Helpers.MD_SPECIALS['INLINE_CODE'])[1] }</code></pre>'
     
-    def _append_text_with_possible_bold(self, markdown_content):
-        html_content = ""
-        bold_split = markdown_content.split(self.MD_SPECIALS['BOLD'])
-        if bold_split[0].startswith(self.MD_SPECIALS['BOLD']):
-            for i, bold_split_element in enumerate(bold_split):
-                if i%2 == 0: html_content += self._append_bold_html_element(bold_split_element)
-                else: html_content += self._append_text_with_possible_italic(bold_split_element)
-        else:
-            for i, bold_split_element in enumerate(bold_split): 
-                if i%2 == 1: html_content += self._append_bold_html_element(bold_split_element)
-                else: html_content += self._append_text_with_possible_italic(bold_split_element)
-        return html_content
-        
-    def _append_bold_html_element(self, bold_split_element):
-        return f'<strong>{ self._append_text_with_possible_italic(bold_split_element) }</strong>'
+    @staticmethod
+    def _parse_bold_html_element(bold_split_element):
+        return f'<strong>{ bold_split_element }</strong>'
     
-    def _append_italic_html_element(self, italic_split_element):
+    @staticmethod
+    def _parse_italic_html_element(italic_split_element):
         return f"<em>{ italic_split_element }</em>"
 
-    def _parse_header(self, line):
-        self.html_lines.append(f"<h{ len(line.split(' ')[0])}>{ " ".join(line.split(' ')[1:]) }</h{ len(line.split(' ')[0]) }")
+    @staticmethod
+    def _parse_pure_text_line(line):
+        return f'<p>{ line }</p>'
+    
+    @staticmethod
+    def _parse_markdown_specials(markdown_content):
+        # TODO markdwn proper specials nesting
+        html_content = ""
+        if len(markdown_content.split(Helpers.MD_SPECIALS['BOLD'])) % 2 != 0:
+            html_content += MarkdownParser._parse_text_with_possible_bold(markdown_content)
+        elif len(markdown_content.split(Helpers.MD_SPECIALS['ITALIC'])) % 2 != 0:
+            html_content += MarkdownParser._parse_text_with_possible_italic(markdown_content)
+        return html_content
+    
+    @staticmethod
+    def _parse_text_with_possible_italic(markdown_content):
+        # TODO markdwn proper specials nesting
+        html_content = ""
+        italic_split = markdown_content.split(Helpers.MD_SPECIALS['ITALIC'])
+        for i, italic_split_element in enumerate(italic_split):
+            if italic_split[0].startswith(Helpers.MD_SPECIALS['ITALIC']):
+                if i%2 == 0: html_content += MarkdownParser._parse_italic_html_element(italic_split_element)
+                else: html_content += italic_split_element
+            else:
+                if i%2 == 1: html_content += MarkdownParser._parse_italic_html_element(italic_split_element)
+                else: html_content += italic_split_element
+        return html_content
+    
+    @staticmethod
+    def _parse_text_with_possible_bold(markdown_content):
+        # TODO markdwn proper specials nesting
+        html_content = ""
+        bold_split = markdown_content.split(Helpers.MD_SPECIALS['BOLD'])
+        if bold_split[0].startswith(Helpers.MD_SPECIALS['BOLD']):
+            for i, bold_split_element in enumerate(bold_split):
+                if i%2 == 0: html_content += MarkdownParser._parse_bold_html_element(bold_split_element)
+                else: html_content += MarkdownParser._parse_text_with_possible_italic(bold_split_element)
+        else:
+            for i, bold_split_element in enumerate(bold_split): 
+                if i%2 == 1: html_content += MarkdownParser._parse_bold_html_element(bold_split_element)
+                else: html_content += MarkdownParser._parse_text_with_possible_italic(bold_split_element)
+        return html_content
+    
+    @staticmethod
+    def _parse_line(line):
+        line = line.strip()
+        if line.startswith('#'): return MarkdownParser._parse_header(line)
+        elif line.startswith('---'): return '<br>'
+        elif line.startswith("<"): return MarkdownParser._parse_html(line)
+        elif line.startswith(">"): return MarkdownParser._parse_quote(line)
+        elif line.startswith("* ") or line.startswith("- "): return MarkdownParser._parse_bullet_point(line)
+        elif line.startswith(Helpers.MD_SPECIALS['MULTILINE_CODE']): return MarkdownParser._parse_multi_line_code(line)
+        elif line.startswith(Helpers.MD_SPECIALS['INLINE_CODE']): return MarkdownParser._parse_inline_code(line)
+        elif line.endswith('"') or line.endswith('">'): return '' #TODO Multi-line HTML
+        elif line.startswith('[') or line.startswith('!'): return '' #TODO Links and images
+        elif Helpers._is_pure_text(line): return MarkdownParser._parse_pure_text_line(line)
+        else: return MarkdownParser._parse_markdown_specials(line)
 
-    def _parse_html(self, line):
-        # TODO add support for multiline html
-        self.html_lines.append(line)
+    @staticmethod
+    def parse(lines):
+        html = ''
+        if lines[0].startswith('---'): lines = Helpers._ignore_metadata_line(lines[1:])
+        for line in lines: html += f'{ MarkdownParser._parse_line(line) }\n'
+        return html
 
-    def _parse_bullet_point(self, line):
-        self.html_lines.append(f'<li>{ self._parse_markdown_specials(" ".join(line.split(' ')[1:])) }</li>')
 
-    def _parse_quote(self, line):
-        self.html_lines.append(f"<blockquote>{ self._parse_markdown_specials(' '.join(line.split(' ')[1:])) }</blockquote>")
+class HTMLGenerator: 
+    @staticmethod
+    def md_to_html_file(html, html_file_path):
+        with open(html_file_path, 'wb') as html_file: html_file.write(str(html).encode('utf-8'))
 
-    def _parse_multi_line_code(self, line):
-        # TODO support multi-line code
-        self.html_lines.append(f'<pre><code>{ line.split(self.MD_SPECIALS['MULTILINE_CODE'])[1] }</code></pre>')
 
-    def _parse_inline_code(self, line):
-        # TODO support multi-line code
-        self.html_lines.append(f'<pre><code>{ line.split(self.MD_SPECIALS['INLINE_CODE'])[1] }</code></pre>')
+class MarkdownToHTML:
+    def __init__(self, markdown_file_path=None, markdown_text=None, html_file_path=None):
+        self.markdown_file_path = markdown_file_path or ""
+        self.html_file_path = html_file_path if html_file_path else f'{ self.markdown_file_path.split('.')[0] }.html'
+        self.markdown_text = self._read_markdown_file() if not markdown_text else markdown_text
 
-    def _is_pure_text(self, text):
-        return not any(special in text for special in self.MD_SPECIALS.values())
+    def _read_markdown_file(self):
+        with open(self.markdown_file_path, 'rb') as md: return md.read().decode('utf-8')
 
-    def _parse_pure_text_line(self, line):
-        self.html_lines.append(f'<p>{ line }</p>')
-
-    def md_to_html(self):
-        return "\n".join(self.html_lines)
-
-    def md_to_html_file(self):
-        with open(self.html_file_path, 'wb') as html_file: html_file.write(str(self.html).encode('utf-8'))
-
-if __name__ == "__main__":
-    md_text = """# AI Systems Design From Scratch 
-
-> *(Star⭐ our Repo)*
-
-A comprehensive, zero-dependency implementation of artificial intelligence components and enterprise systems design patterns, built completely from first principles.
-
-**Amin Boulouma** — *Software Engineer*
-
-To clone and use the repository, execute:
-
-```git clone https://github.com/aminblm/ai_systems_design_from_scratch.git```
-
-* **PyTorch** (Custom tensor structures and automatic differentiation tracking)
-* **Tensorflow** (Alternative computation graph and execution engine)
-* **Numpy** (Pure Python multi-dimensional array structures and matrix math routines)
-* **Pandas** (DataFrames, Series, and structured data-manipulation mechanics)
-* **Ollama** (Local LLM protocol orchestration and serving architecture)
-* **Meta’s Llama** (Open-weights inference parser and layer-by-layer execution engine)
-* **ChatGPT** (Upstream LLM API integration and chat state wrapper)
-"""
-    md_to_html = MarkdownToHTML(markdown_text=md_text, html_file_path='src/py_markdown_to_html/md_str_to_html.html')
-    print(md_to_html.md_to_html())
-    md_to_html.md_to_html_file()
-
-    md_to_html = MarkdownToHTML(markdown_file_path='src/py_markdown_to_html/md_file.md', html_file_path='src/py_markdown_to_html/md_file_to_html.html')
-    print(md_to_html.md_to_html())
-    md_to_html.md_to_html_file()
+    def md_file_to_html(self):
+        return MarkdownParser.parse(self._read_markdown_file().split("\n"))
+    
+    def md_text_to_html(self):
+        return MarkdownParser.parse(self.markdown_text.split("\n"))
