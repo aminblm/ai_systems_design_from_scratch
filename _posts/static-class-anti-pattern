@@ -1,0 +1,1 @@
+The Static Class Anti-Pattern: Helpers, MarkdownParser, FileOperations, and HTMLGenerator are essentially namespaces full of @staticmethod. In Python, we just use modules and top-level functions for this. Classes without state are a code smell.

@@ -1,0 +1,3 @@
+startwith checking for multi startwith possibilities
+
+if line.startswith(('* ', '- ')):

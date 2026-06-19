@@ -1,0 +1,1 @@
+Semantic Code Cleanliness: Combined all the redundant builder classes into a simple MarkdownConverterFacade that manages the IO/parsing strategy clearly. 

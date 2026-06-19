@@ -11,5 +11,5 @@ def generate_slugs():
     interface.run()
 
 if __name__ == "__main__":
-    #generate_jekyll_site()
-    generate_slugs()
+    generate_jekyll_site()
+    #generate_slugs()

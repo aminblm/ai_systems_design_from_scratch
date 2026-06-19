@@ -234,6 +234,24 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **Media Generator** Photo, video, gif 
 * [ ] **Media converter** 
 * [ ] **AST**
+* [ ] **VS Code Extension**
+* [ ] **Anything LLM**
+* [ ] **AI Agents**
+* [ ] **MAS Multi-Agent Systems**
+* [ ] **Chain of thoughts**
+* [ ] **Drug Discovery**
+* [ ] **TDD / DDD**
+* [ ] **Pip package manager**
+* [ ] **Local LLM Model**
+* [ ] **Blog Scrapper**
+* [ ] **Landing Page Builder**
+* [ ] **Roadmap builder**
+* [ ] **CV Builder**
+* [ ] **Scrapy**
+* [ ] **LinkedIn Application Bot**
+* [ ] **Diagram Generator**
+* [ ] **Regex**
+
 
 ---
 

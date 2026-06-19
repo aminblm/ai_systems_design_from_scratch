@@ -1,7 +1,7 @@
 import os, logging, traceback
 
 from ai_systems_design.py_yaml import YAMLBuilder
-from ai_systems_design.py_markdown_to_html.py_markdown_to_html import MarkdownToHTMLBuilder
+from ai_systems_design.py_markdown_to_html.py_markdown_to_html import MarkdownConverterFacade
 from ai_systems_design.utils import FileOperationsUtility
 
 
@@ -53,7 +53,7 @@ class ConfigHandler:
 class HTMLRenderer:
     @staticmethod
     def render_html(layout, config, md_file_path):
-        html = layout.replace('{{ site.content }}', MarkdownToHTMLBuilder.create_from_file(md_file_path).md_file_to_html())
+        html = layout.replace('{{ site.content }}', MarkdownConverterFacade().convert_file(md_file_path))
         for key in config: html = html.replace('{{ site.' + key + ' }}', config[key])
         return html
     

@@ -1,0 +1,21 @@
+def _ignore_metadata_lines(lines):
+    # TODO process metadata into dynamic variables
+    for i, line in enumerate(lines):
+        if line.startswith('---'): return lines[i+1:]
+    return lines
+
+
+def _clean_metadata(self, lines: List[str]) -> Generator[str, None, None]:
+    """Generator to strip front-matter metadata (lines between '---')."""
+    iterator = iter(lines)
+    for line in iterator:
+        cleaned = line.strip()
+        if cleaned == '---':
+            # Skip everything until the closing metadata tag
+            for close_line in iterator:
+                if close_line.strip() == '---':
+                    break
+            continue
+        yield cleaned
+
+Generator-Based Metadata Filter: Cleaned up the metadata wrapper by using Python generators (yield). This avoids blowing up memory buffers when parsing massive lines of text.
