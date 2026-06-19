@@ -1,9 +1,9 @@
-from ai_systems_design.py_jekyll.py_jekyll import Jekyll 
+from ai_systems_design.site_generator.site_generator import SiteGenerator 
 from ai_systems_design.py_slug_generator import SlugGenerator, TerminalInterface
 
-def generate_jekyll_site():
-    base_path = 'ai_systems_design/py_jekyll/'
-    Jekyll.generate_site(f'{base_path}input', f'{base_path}layout.html', f'{base_path}config.yaml')
+def generate_site():
+    base_path = 'ai_systems_design/site_generator/'
+    SiteGenerator(f'{base_path}layout.html', f'{base_path}config.yaml').generate_site(f'{base_path}input')
 
 def generate_slugs():
     slug_engine = SlugGenerator()
@@ -11,5 +11,5 @@ def generate_slugs():
     interface.run()
 
 if __name__ == "__main__":
-    generate_jekyll_site()
+    generate_site()
     #generate_slugs()

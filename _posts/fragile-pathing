@@ -1,0 +1,2 @@
+Fragile Pathing: Substring splitting on filenames (md_file_name.split('.md')[0]) breaks if a filename contains multiple dots (e.g., release.v1.md). Modern Python uses pathlib.Path to handle extensions safely.
+

@@ -1,1 +1,3 @@
 The Static Class Anti-Pattern: Helpers, MarkdownParser, FileOperations, and HTMLGenerator are essentially namespaces full of @staticmethod. In Python, we just use modules and top-level functions for this. Classes without state are a code smell.
+
+The Static Class Namespace Anti-Pattern: Classes like ErrorHandler, FileOperations, LayoutHandler, ConfigHandler, HTMLRenderer, DependenciesManager, and Jekyll contain zero internal state. They are being used as makeshift containers for functions. In Python, this is what modules (.py files) are for.

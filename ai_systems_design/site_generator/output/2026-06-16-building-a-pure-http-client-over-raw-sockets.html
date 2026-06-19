@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> AI Systems Design From First Principles </title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="hero">
+            <header>
+                <h1>AI Systems Design From First Principles</h1>
+                <p>Rebuilding enterprise systems and AI from first principles.</p>
+            </header>
+        </div>
+        
+        <main>
+            <div class="container">
+                <p><head></p>
+<p><meta charset="utf-8"></p>
+<p><title>{{ page.title }} | AI Systems Design From First Principles</title></p>
+<p><meta name="description" content="{{ page.description | default: site.description }}"></p>
+<p><link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}"></p>
+<p><meta property="og:type" content="article"></p>
+<p><meta property="og:title" content="{{ page.title }}"></p>
+<p><meta property="og:description" content="{{ page.description | default: site.description }}"></p>
+<p><meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}"></p>
+<p><meta property="og:site_name" content="AI Systems Design From First Principles"></p>
+<p><meta name="twitter:card" content="summary"></p>
+<p><meta name="twitter:title" content="{{ page.title }}"></p>
+<p><meta name="twitter:description" content="{{ page.description | default: site.description }}"></p>
+<p></head></p>
+<p><a href="https://linktr.ee/aminboulouma"</p>
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+<p></a></p>
+<p><a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a></p>
+<p><div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;"></p>
+<p><a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a></p>
+<p><a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a></p>
+<p><a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a></p>
+<p></div></p>
+<h1>Building a Pure HTTP Client over Raw Sockets</h1>
+<p>When we utilize abstractions like <code>requests.get()</code> in Python or <code>fetch()</code> in JavaScript, we are interacting with high-level clients wrapped around an application-layer network protocol: <strong>Hypertext Transfer Protocol (HTTP)</strong>. Beneath these convenient libraries, an HTTP request is nothing more than a structured ASCII text payload transmitted across a raw, transport-layer TCP socket stream.</p>
+<p>To build a rugged understanding of systems engineering, we must strip away modern dependency wrappers and look directly at the underlying protocol specifications.</p>
+<p>Adhering to our repository’s <strong>strict zero-dependency mandate</strong>, we will engineer an interactive REST API verification client entirely from first principles using pure Python socket management.</p>
+<h2>Architectural Mechanisms Breakdown</h2>
+<h3>1. The HTTP Plain-Text Specification (RFC 7230)</h3>
+<p>The absolute core of our script is the clean construction of the <code>request_line</code> block:</p>
+<pre><code>python</code></pre>
+<p>request_line = f"{method} {path} HTTP/1.1\r\n"</p>
+<pre><code></code></pre>
+<p>HTTP/1.1 is an open text-based wire standard. It explicitly dictates that every parameter line boundary must terminate with a strict Carriage Return + Line Feed sequence (<code>\r\n</code>). When passing complex request payloads like <code>POST</code> or <code>PUT</code>, adding headers like <code>Content-Length</code> is mandatory. Without this exact header value, an downstream compliance-valid HTTP backend will choke, fail to identify where your request payload ends, and leave your connection hanging indefinitely.</p>
+<h3>2. Client-Side Parsing and Delimiter Splitting</h3>
+<p>Just as the client manually builds requests, it must also manually split incoming web responses. When parsing response packets, our method leverages native string operations like <code>.splitlines()</code>. This action breaks down the complete response block, letting the client easily step through and extract crucial header markers:</p>
+<pre><code>python</code></pre>
+<p>status_code = lines[0].split()[1]</p>
+<pre><code></code></pre>
+<p>By segmenting arrays this way, our logic isolates status tokens out of the index frame effortlessly—mirroring how heavy proxy tools analyze web traffic under the hood.</p>
+<h3>3. State Rectification Guardrails</h3>
+<p>The original implementation had an overlapping input assignment typo under <code>choice == 2</code> and <code>choice == 3</code> that overwrote the <code>path</code> variable string with user request bodies. We re-engineered these flows into distinct variable buffers:</p>
+<pre><code>python</code></pre>
+<p>path = input("Enter path e.g. /data: ").strip()</p>
+<p>body = input('Enter body e.g. {"key":"value"}: ').strip()</p>
+<pre><code></code></pre>
+<p>This structural correction ensures that when <code>_send_request</code> fires, both structural arguments retain pristine values, avoiding critical route corruption issues.</p>
+<h2>Next Evolutionary Milestones</h2>
+<p>While this script successfully abstracts HTTP command compilation and response parsing loops, it functions as a simple prototype relying on clean loopback assumptions.</p>
+<p>To upgrade this framework tool into a production-grade systems utility, our engineering roadmap features these milestones:</p>
+<li><strong>Chunked Transfer Stream Processing:</strong> Refactoring <code>client_socket.recv(4096)</code> into a dynamic <code>while</code> chunk streaming consumer loop capable of re-assembling high-density binary files or web pages across network buffers.</li>
+<li><strong>Automatic JSON Content Type Marshalling:</strong> Upgrading the body builder to automatically wrap inputs using Python's <code>json.dumps()</code>, and injecting modern <code>Content-Type: application/json</code> headers natively.</li>
+<li><strong>TLS Layer Handshaking Wrappers:</strong> Wrapping our raw transport layer using Python's built-in <code>ssl.wrap_socket()</code> helper module to safely establish secure HTTPS operations over external networks.</li>
+<p><a href="https://linktr.ee/aminboulouma"</p>
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+<p></a></p>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
+            </div>
+        </footer>
+    </body>
+</html>

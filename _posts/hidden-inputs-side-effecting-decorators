@@ -1,0 +1,2 @@
+Hidden Inputs and Side-Effecting Decorators: The @ErrorHandler.with_error_handling decorator looks for 'input_dir' in kwargs. This is incredibly fragile. If a developer calls a decorated function using positional arguments instead of keyword arguments (generate_html_pages(input_dir, ...) instead of generate_html_pages(input_dir=input_dir, ...)), the input directory validation is completely bypassed.
+

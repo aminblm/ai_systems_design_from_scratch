@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> AI Systems Design From First Principles </title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="hero">
+            <header>
+                <h1>AI Systems Design From First Principles</h1>
+                <p>Rebuilding enterprise systems and AI from first principles.</p>
+            </header>
+        </div>
+        
+        <main>
+            <div class="container">
+                <p><head></p>
+<p><meta charset="utf-8"></p>
+<p><title>{{ page.title }} | AI Systems Design From First Principles</title></p>
+<p><meta name="description" content="{{ page.description | default: site.description }}"></p>
+<p><link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}"></p>
+<p><meta property="og:type" content="article"></p>
+<p><meta property="og:title" content="{{ page.title }}"></p>
+<p><meta property="og:description" content="{{ page.description | default: site.description }}"></p>
+<p><meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}"></p>
+<p><meta property="og:site_name" content="AI Systems Design From First Principles"></p>
+<p><meta name="twitter:card" content="summary"></p>
+<p><meta name="twitter:title" content="{{ page.title }}"></p>
+<p><meta name="twitter:description" content="{{ page.description | default: site.description }}"></p>
+<p></head></p>
+<p><a href="https://linktr.ee/aminboulouma"</p>
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+<p></a></p>
+<p><a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a></p>
+<p><div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;"></p>
+<p><a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a></p>
+<p><a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a></p>
+<p><a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a></p>
+<p></div></p>
+<h1>Building a Custom Docker Daemon Engine From Scratch</h1>
+<p>When you execute a command through a client CLI tool, it communicates directly with a central structural service: the container runtime daemon. In a production environment, this is <code>dockerd</code>. The daemon acts as the stateful engine room of the platform—listening continuously for incoming socket connection packets, validating requests against an internal data schema, spinning up virtual sandboxes, and logging operational status matrices.</p>
+<p>By analyzing the daemon as a clean communication layer, we peel back the abstraction of infrastructure automation.</p>
+<p>To satisfy our repository's <strong>strict zero-dependency constraint</strong>, we will build a stateful, socket-multiplexed container virtualization coordinator server completely from scratch, relying solely on the Python standard library runtime.</p>
+<h2>Architectural Mechanisms Breakdown</h2>
+<h3>1. In-Memory State Registration</h3>
+<p>Unlike stateless API microservices, our daemon acts as a single source of truth using a localized tracking matrix: <code>self.containers</code>. When a <code>_run</code> sequence gets processed, the engine mutates this dictionary state. This models exactly how full-scale runtimes store configuration blobs, isolated virtual locations, and system parameters during local execution.</p>
+<h3>2. Stream Buffer Splitting & Parsing</h3>
+<p>Data moving over raw network sockets arrives without structural spacing formatting. By extracting string tokens using whitespace parsing checks:</p>
+<pre><code>python</code></pre>
+<p>parts = data.strip().split()</p>
+<p>command = parts[0]</p>
+<pre><code></code></pre>
+<p>The server isolates the functional command token and cross-references it against our structural execution blocks. The remaining elements are mapped dynamically as configuration arguments to drive target behaviors.</p>
+<h3>3. Connection Lifecycles & Resource Cleansing</h3>
+<p>When the client disconnects or an empty data string block (<code>if not data: break</code>) hits the transport layer, the controller drops out of its command handler loop and drops down to clean up socket allocations. Explicitly closing <code>self.client_socket</code> is crucial for production reliability; without it, file handles remain locked, slowly degrading system resources.</p>
+<h2>Infrastructure Scaling Roadmap</h2>
+<p>While this server engine handles basic state tracking and command interpretation, it is constrained by a synchronous connection blocker: it can only handle a single client payload loop at a time.</p>
+<p>To transform this system into a high-throughput runtime simulator, our upcoming milestones target these upgrades:</p>
+<li><strong>Non-Blocking Selectors / Threading:</strong> Refactoring <code>start_server</code> to dispatch client connections onto individual <code>threading.Thread</code> loops or a non-blocking <code>selectors</code> module array to support dozens of concurrent client CLI processes.</li>
+<li><strong>OS Namespace Process Spawning:</strong> Upgrading the <code>_run</code> strategy to dynamically spawn physical, isolated OS subprocesses using Python's <code>subprocess.Popen</code>, allowing for authentic process life-cycle monitoring.</li>
+<li><strong>Persistent Local Storage:</strong> Transitioning the in-memory dictionary to write state change files continuously to disk, protecting your cluster's metadata from resetting if the server drops.</li>
+<p><a href="https://linktr.ee/aminboulouma"</p>
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+<p></a></p>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
+            </div>
+        </footer>
+    </body>
+</html>

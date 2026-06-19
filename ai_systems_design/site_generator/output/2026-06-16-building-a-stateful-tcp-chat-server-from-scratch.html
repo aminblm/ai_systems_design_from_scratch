@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> AI Systems Design From First Principles </title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="hero">
+            <header>
+                <h1>AI Systems Design From First Principles</h1>
+                <p>Rebuilding enterprise systems and AI from first principles.</p>
+            </header>
+        </div>
+        
+        <main>
+            <div class="container">
+                <p><head></p>
+<p><meta charset="utf-8"></p>
+<p><title>{{ page.title }} | AI Systems Design From First Principles</title></p>
+<p><meta name="description" content="{{ page.description | default: site.description }}"></p>
+<p><link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}"></p>
+<p><meta property="og:type" content="article"></p>
+<p><meta property="og:title" content="{{ page.title }}"></p>
+<p><meta property="og:description" content="{{ page.description | default: site.description }}"></p>
+<p><meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}"></p>
+<p><meta property="og:site_name" content="AI Systems Design From First Principles"></p>
+<p><meta name="twitter:card" content="summary"></p>
+<p><meta name="twitter:title" content="{{ page.title }}"></p>
+<p><meta name="twitter:description" content="{{ page.description | default: site.description }}"></p>
+<p></head></p>
+<p><a href="https://linktr.ee/aminboulouma"</p>
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+<p></a></p>
+<p><a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a></p>
+<p><div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;"></p>
+<p><a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a></p>
+<p><a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a></p>
+<p><a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a></p>
+<p></div></p>
+<h1>Building a Stateful TCP Chat Server From Scratch</h1>
+<p>At the bedrock of every real-time messaging network, multiplayer gaming engine, and streaming infrastructure sits a fundamental network layer construct: the <strong>TCP Socket Server</strong>. Unlike stateless HTTP exchanges, a TCP daemon opens persistent, bidirectional communication pipes directly with incoming clients. The server's primary system responsibility is to bind to a local adapter interface, listen continuously for hardware requests, and orchestrate two-way byte packet transactions.</p>
+<p>To completely pull back the black box of network protocol orchestration, we can bypass high-level framework daemons entirely.</p>
+<p>Following our repository's <strong>strict zero-dependency constraint</strong>, we will build an interactive, bidirectional TCP socket server from first principles using nothing but pure Python standard library modules.</p>
+<h2>Architectural Mechanisms Breakdown</h2>
+<h3>1. The Socket Lifecycle State Machine</h3>
+<p>Operating system kernels manage network channels using a strict sequence of syscall operations: <code>socket()</code> $\rightarrow$ <code>bind()</code> $\rightarrow$ <code>listen()</code> $\rightarrow$ <code>accept()</code>.</p>
+<li><strong><code>bind()</code></strong> stakes a claim on a specific interface address and port configuration block within the operating system network stack.</li>
+<li><strong><code>listen()</code></strong> flags the chosen file descriptor as a passive gatekeeper ready to catch traffic.</li>
+<li><strong><code>accept()</code></strong> behaves as a blocking process. The script sleeps here until an external client finishes a standard 3-way TCP handshake, at which point <code>accept()</code> wakes up and hands back a brand new, dedicated socket object explicitly tied to that client's transmission line.</li>
+<h3>2. Bidirectional Wire Synchronization</h3>
+<p>Our server runtime pattern establishes an explicit bidirectional conversation sequence. Rather than dropping data on the floor or instantly severing connections, the server enforces a structural order of operations:</p>
+<pre><code>python</code></pre>
+<p>client_socket.sendall(message.encode('utf-8'))</p>
+<p>response = client_socket.recv(1024).decode('utf-8')</p>
+<pre><code></code></pre>
+<p>The server kicks off communication by transmitting its internal text bytes. Immediately after, it shifts into a listening posture by calling <code>.recv()</code>. This sequence forms a simple, stateful synchronization contract. It guarantees both endpoints get a turn to send and receive before the communication channel is broken down.</p>
+<h3>3. Preventing Address Reuse Chokes</h3>
+<p>In socket programming, abruptly shutting down a server script leaves the underlying port locked in a kernel protection state known as <code>TIME_WAIT</code> for a couple of minutes. If you try to reboot the script right away, the operating system throws an annoying <code>OSError: [Errno 98] Address already in use</code> error. To make our script robust and repeatable, we injected an explicit socket configuration rule:</p>
+<pre><code>python</code></pre>
+<p>server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)</p>
+<pre><code></code></pre>
+<p>This configuration tells the kernel's network stack to bypass the standard safety hold, letting you stop and start the master server daemon instantly during testing.</p>
+<h2>Next Evolutionary Milestones</h2>
+<p>While this server engine demonstrates core socket lifecycles and stateful bidirectional synchronization loops, it blocks processes synchronously—meaning it can only manage one single client chat connection at a time.</p>
+<p>To transform this script module into a concurrent, high-scale chat platform, our engineering goals target these upgrades:</p>
+<li><strong>Multi-Threaded Worker Pools:</strong> Updating the execution loop to hand off incoming <code>client_socket</code> objects directly to dedicated background threads using Python's <code>threading</code> library, allowing the server to manage dozens of chats at once.</li>
+<li><strong>Centralized Broadcast Bus:</strong> Implementing a tracking array to log active client connections, enabling a broadcast system that forwards a message from one user out to every other client connected to the socket pool.</li>
+<li><strong>Structured Protocol Serialization:</strong> Upgrading raw string formatting to use organized JSON packet validation frames (<code>{"sender": "user1", "payload": "text"}</code>), perfectly aligning with our frontend components layout.</li>
+<p><a href="https://linktr.ee/aminboulouma"</p>
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+<p></a></p>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
+            </div>
+        </footer>
+    </body>
+</html>

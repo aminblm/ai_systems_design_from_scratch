@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> AI Systems Design From First Principles </title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="hero">
+            <header>
+                <h1>AI Systems Design From First Principles</h1>
+                <p>Rebuilding enterprise systems and AI from first principles.</p>
+            </header>
+        </div>
+        
+        <main>
+            <div class="container">
+                <p><head></p>
+<p><meta charset="utf-8"></p>
+<p><title>{{ page.title }} | AI Systems Design From First Principles</title></p>
+<p><meta name="description" content="{{ page.description | default: site.description }}"></p>
+<p><link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}"></p>
+<p><meta property="og:type" content="article"></p>
+<p><meta property="og:title" content="{{ page.title }}"></p>
+<p><meta property="og:description" content="{{ page.description | default: site.description }}"></p>
+<p><meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}"></p>
+<p><meta property="og:site_name" content="AI Systems Design From First Principles"></p>
+<p><meta name="twitter:card" content="summary"></p>
+<p><meta name="twitter:title" content="{{ page.title }}"></p>
+<p><meta name="twitter:description" content="{{ page.description | default: site.description }}"></p>
+<p></head></p>
+<p><a href="https://linktr.ee/aminboulouma"</p>
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+<p></a></p>
+<p><a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a></p>
+<p><div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;"></p>
+<p><a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a></p>
+<p><a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a></p>
+<p><a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a></p>
+<p></div></p>
+<h1>Building a Custom Airflow DAG Scheduler in Pure Python</h1>
+<p>In data engineering, workflow orchestration is the backbone of reliable data movement. Tools like Apache Airflow manage complex networks of data pipelines by treating them as <strong>DAGs (Directed Acyclic Graphs)</strong>. They ensure tasks run in the correct order, handle retries, and schedule executions precisely based on time configurations.</p>
+<p>But underneath the heavy enterprise infrastructure, what does an orchestrator actually do? At its fundamental level, it is a infinite control loop mapping three core mechanisms:</p>
+<p>1. <strong>The Graph Structure:</strong> A coordinate plane defining jobs and relationships.</p>
+<p>2. <strong>The State Registry:</strong> Tracking what needs to run and when.</p>
+<p>3. <strong>The Scheduler Heartbeat:</strong> A deterministic clock cycle parsing cron-like syntax and managing thread execution.</p>
+<p>As part of our <strong>zero-dependency mandate</strong>, we are shifting away from heavy celery workers and databases to build a functional data pipeline orchestrator using nothing but the Python standard library.</p>
+<h2>Architectural Deep Dive</h2>
+<h3>1. Simulating Cron Interval Parsing</h3>
+<p>In standard enterprise architectures, scheduling intervals are parsed using complex crontab specifications matching minutes, hours, days, and weeks. Our custom core handles this deterministically with zero overhead via token extraction string splits:</p>
+<pre><code>python</code></pre>
+<p>int(task.schedule.split(' ')[0])</p>
+<pre><code></code></pre>
+<p>By reading the initial string slice from a standard cron statement (like <code>"5 <em> </em> <em> </em>"</code>), the engine extracts the integer value (<code>5</code>). The system then evaluates the operational deadline by computing a mathematical modulus check against the advancing system clock: <code>self.current_time % interval == 0</code>. Every time the clock matches a clean multiple of that interval, the scheduler flags the specific graph node as due for execution.</p>
+<h3>2. The Heartbeat Engine Loop</h3>
+<p>The <code>Scheduler</code> class relies on an infinite while loop driven by a synthetic logical clock (<code>self.current_time += 1</code>). On each clock tick, the orchestrator acts as a state coordinator executing two phases:</p>
+<li><strong>The Check Phase:</strong> Interrogates the collection registry via <code>_check_schedules</code> to determine which operations match the temporal constraints.</li>
+<li><strong>The Execution Phase:</strong> Steps through the due tasks via <code>_execute_tasks</code> and sequentially calls <code>task.execute()</code>, simulating runtime thread blocks using standard <code>time.sleep()</code>.</li>
+<h2>Future Framework Roadmap</h2>
+<p>While this structural pattern establishes the foundational clock mechanics of an enterprise data pipeline worker, true production DAG orchestration requires managing asymmetric task dependencies.</p>
+<p>To expand this framework into a production-grade emulator, our project development registry targets the following architectural additions:</p>
+<li><strong>True Dependency Resolution:</strong> Implementing a Topological Sort algorithm to map upstream constraints (<code>task1 >> task2</code>), ensuring child actions wait cleanly for parent state resolutions.</li>
+<li><strong>Asynchronous Multi-Threading:</strong> Offloading task execution blocks into native Python <code>threading</code> or <code>multiprocessing</code> worker pools, preventing long-running tasks from locking the main scheduler loop.</li>
+<li><strong>Persistent State Logs:</strong> Writing transactional metadata boundaries directly to our internal <code>py_sqlite</code> or <code>py_redis</code> engines to recover pipelines seamlessly during server restarts.</li>
+<p><a href="https://linktr.ee/aminboulouma"</p>
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+<p></a></p>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
+            </div>
+        </footer>
+    </body>
+</html>

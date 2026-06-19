@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> AI Systems Design From First Principles </title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="hero">
+            <header>
+                <h1>AI Systems Design From First Principles</h1>
+                <p>Rebuilding enterprise systems and AI from first principles.</p>
+            </header>
+        </div>
+        
+        <main>
+            <div class="container">
+                <p><head></p>
+<p><meta charset="utf-8"></p>
+<p><title>{{ page.title }} | AI Systems Design From First Principles</title></p>
+<p><meta name="description" content="{{ page.description | default: site.description }}"></p>
+<p><link rel="canonical" href="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}"></p>
+<p><meta property="og:type" content="article"></p>
+<p><meta property="og:title" content="{{ page.title }}"></p>
+<p><meta property="og:description" content="{{ page.description | default: site.description }}"></p>
+<p><meta property="og:url" content="https://aminblm.github.io/ai_systems_design_from_scratch{{ site.baseurl }}{{ page.url }}"></p>
+<p><meta property="og:site_name" content="AI Systems Design From First Principles"></p>
+<p><meta name="twitter:card" content="summary"></p>
+<p><meta name="twitter:title" content="{{ page.title }}"></p>
+<p><meta name="twitter:description" content="{{ page.description | default: site.description }}"></p>
+<p></head></p>
+<p><a href="https://linktr.ee/aminboulouma"</p>
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+<p></a></p>
+<p><a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a></p>
+<p><div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;"></p>
+<p><a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a></p>
+<p><a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a></p>
+<p><a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a></p>
+<p></div></p>
+<h1>Building an OOP Jekyll Slug Generator From Scratch</h1>
+<p>In static site generators like Jekyll, Hugo, or Astro, routing patterns rely on strict file system naming conventions. For instance, to publish a blog post, your Markdown file must live inside a dedicated local <code>_posts/</code> directory and match an explicit metadata naming standard: <code>YYYY-MM-DD-hyphenated-slug.md</code>.</p>
+<p>While modern content management systems (CMS) hide string formatting behind heavy database engines, local static workflows require automated build tools to sanitize text inputs into web-safe, Search Engine Optimized (<strong>SEO</strong>) URL tokens.</p>
+<p>To understand how text pipelines process strings safely from first principles, we can design a decoupled, production-grade text transformation engine.</p>
+<p>Adhering to our repository's <strong>strict zero-dependency constraint</strong>, we will use <strong>Object-Oriented Programming (OOP)</strong> principles to separate raw text cleanup pipelines from interactive console interface controllers using nothing but pure Python.</p>
+<h2>Architectural Mechanisms Breakdown</h2>
+<h3>1. Inversion of Control via Dependency Injection</h3>
+<p>Rather than allowing the user-facing user interface code to tightly instantiate its own processing blocks, our platform relies on an architectural design pattern known as <strong>Dependency Injection (DI)</strong>:</p>
+<pre><code>python</code></pre>
+<p>def __init__(self, generator: SlugGenerator):</p>
+<p>self.generator = generator</p>
+<pre><code></code></pre>
+<p>The <code>TerminalInterface</code> explicitly requires a pre-built <code>SlugGenerator</code> context passed into its constructor. This structural decoupling keeps our business data transformation logic completely separated from user interface constraints—allowing engineers to swap components or run isolated unit tests seamlessly.</p>
+<h3>2. Multi-Stage Token Cleaning Pipeline</h3>
+<p>The <code>SlugGenerator</code> transforms raw human titles into clean, web-safe strings through a reliable, multi-step pipeline sequence:</p>
+<p>1. <strong>Lowercase Normalization:</strong> <code>.lower()</code> strips away case differences to ensure URLs remain uniformly formatted.</p>
+<p>2. <strong>Punctuation Stripping:</strong> A generator compression loop inspects characters, dropping symbols like <code>!</code>, <code>@</code>, or <code>?</code> based on the configured <code>punctuation_mask</code> array.</p>
+<p>3. <strong>Whitespace Tokenization:</strong> <code>.split()</code> collapses irregular gaps or tabs, grouping raw text into clean arrays of string words.</p>
+<p>4. <strong>Hyphen Join Construction:</strong> <code>"-".join(tokens)</code> links the isolated words together with standard URL-safe dashes.</p>
+<h3>3. State Preservation and Caching</h3>
+<p>The interface class utilizes instance caching to optimize resource consumption. Instead of repeatedly creating <code>datetime</code> instances and hitting kernel time subroutines on every individual user input pass, the system computes and saves the prefix token string (<code>self.date_prefix = ...</code>) once during constructor setup. This keeps string concatenation operations ultra-lean and incredibly efficient inside the endless interactive processing loop.</p>
+<h2>Upcoming Engineering Sprints</h2>
+<p>While this utility smoothly automates localized text sanitization, title transformations, and file-naming layouts, it operates as an interactive command-line tool.</p>
+<p>To scale this pipeline toward a fully featured static blogging helper, our repository roadmap targets these milestones:</p>
+<li><strong>Automated Hard Disk Workspace Creation:</strong> Upgrading the <code>process_input</code> method to use Python's built-in <code>os</code> system modules to automatically write an empty starter Markdown template file inside your local <code>_posts/</code> folder upon text confirmation.</li>
+<li><strong>Front Matter Header Generation:</strong> Expanding the file builder to inject standard Jekyll metadata syntax blocks (such as YAML front matter like <code>--- layout: post ---</code>) directly into newly generated post files.</li>
+<li><strong>Unicode Diacritic Translation:</strong> Integrating a text transformation lookup table to map accent characters across international datasets safely (e.g., automatically converting <code>"Café"</code> into its web-safe URL token form <code>"cafe"</code>).</li>
+<p><a href="https://linktr.ee/aminboulouma"</p>
+<p>target="_blank"</p>
+<p>rel="noopener noreferrer"</p>
+<p>class="btn-primary"</p>
+<p>style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;"></p>
+<p>Connect with Amin Boulouma Official</p>
+<p></a></p>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p><a href="https://aminblm.github.io/ai_systems_design_from_scratch">AI Systems Design From First Principles by Amin Boulouma</a></p>
+            </div>
+        </footer>
+    </body>
+</html>
