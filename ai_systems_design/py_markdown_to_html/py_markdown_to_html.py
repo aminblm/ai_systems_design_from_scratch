@@ -10,37 +10,11 @@ class MD_SPECIAL_CASES(Enum):
     IMAGE = '![]()'
 
 
-class MarkdownToHTMLBuilder:
-    def __init__(self):
-        self.markdown_file_path = ""
-        self.markdown_text = ""
-
-    def set_markdown_file_path(self, markdown_file_path):
-        self.markdown_file_path = markdown_file_path
-        return self
-
-    def set_markdown_text(self, markdown_text):
-        self.markdown_text = markdown_text
-        return self
-
-    def build(self):
-        return MarkdownToHTML(
-            markdown_file_path = self.markdown_file_path,
-            markdown_text = self.markdown_text,
-        )
-    
+class FileOperations:
     @staticmethod
-    def create_default():
-        return MarkdownToHTMLBuilder().build()
-    
-    @staticmethod
-    def create_from_file(path):
-        return MarkdownToHTMLBuilder().set_markdown_file_path(path)
-    
-    @staticmethod
-    def create_from_text(text):
-        return MarkdownToHTMLBuilder().set_markdown_text(text)
-    
+    def read_markdown_file(markdown_file_path):
+        with open(markdown_file_path, 'rb') as md: return md.read().decode('utf-8')
+
 
 class Helpers:
     @staticmethod
@@ -157,22 +131,59 @@ class MarkdownParser:
         return html
 
 
-class HTMLGenerator: 
-    @staticmethod
-    def md_to_html_file(html, html_file_path):
-        with open(html_file_path, 'wb') as html_file: html_file.write(str(html).encode('utf-8'))
+class MarkdownToHTMLBuilder:
+    def __init__(self):
+        self.markdown_file_path = ""
+        self.markdown_text = ""
 
+    def set_markdown_file_path(self, markdown_file_path):
+        self.markdown_file_path = markdown_file_path
+        return self
+
+    def set_markdown_text(self, markdown_text):
+        self.markdown_text = markdown_text
+        return self
+
+    def build(self):
+        return MarkdownToHTML(
+            markdown_file_path = self.markdown_file_path,
+            markdown_text = self.markdown_text,
+        )
+    
+    @staticmethod
+    def create_default():
+        return MarkdownToHTMLBuilder().build()
+    
+    @staticmethod
+    def create_from_file(path):
+        return MarkdownToHTMLBuilder().set_markdown_file_path(path).build()
+    
+    @staticmethod
+    def create_from_text(text):
+        return MarkdownToHTMLBuilder().set_markdown_text(text).build()
+    
 
 class MarkdownToHTML:
-    def __init__(self, markdown_file_path='', markdown_text=''):
+    def __init__(self, markdown_file_path=None, markdown_text=None):
         self.markdown_file_path = markdown_file_path
         self.markdown_text = markdown_text
 
-    def _read_markdown_file(self):
-        with open(self.markdown_file_path, 'rb') as md: return md.read().decode('utf-8')
-
     def md_file_to_html(self):
-        return MarkdownParser.parse(self._read_markdown_file().split("\n"))
+        return HTMLGenerator.gen_html_from_md_file(self.markdown_file_path)
     
     def md_text_to_html(self):
-        return MarkdownParser.parse(self.markdown_text.split("\n"))
+        return HTMLGenerator.gen_html_from_md_text(self.markdown_text)
+    
+
+class HTMLGenerator: 
+    @staticmethod
+    def md_text_to_html_file(html, html_file_path):
+        with open(html_file_path, 'wb') as html_file: html_file.write(str(html).encode('utf-8'))
+
+    @staticmethod
+    def gen_html_from_md_file(markdown_file_path):
+        return MarkdownParser.parse(FileOperations.read_markdown_file(markdown_file_path).split("\n"))
+    
+    @staticmethod
+    def gen_html_from_md_text(md_text):
+        return MarkdownParser.parse(md_text.split("\n"))
