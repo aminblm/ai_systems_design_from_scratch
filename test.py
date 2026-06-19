@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 def test_generate_site():
     base_path = 'ai_systems_design/site_generator/'
     test_path = 'test/'
-    SiteGenerator(f'{base_path}layout.html', f'{base_path}config.yaml').generate_site(f'{test_path}input')
+    SiteGenerator(f'{base_path}layout.html', f'{base_path}config.yaml').generate_site(f'{test_path}sg_input')
 
 def test_generate_slugs():
     slug_engine = SlugGenerator()

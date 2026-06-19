@@ -53,7 +53,7 @@ class SiteGenerator:
             raise ValueError(f'Target input path is not a valid directory: {input_dir}')
 
         # Automatically establish output directory as a sibling to input
-        output_dir = input_dir.parent / 'output'
+        output_dir = input_dir.parent / 'sg_output'
         output_dir.mkdir(parents=True, exist_ok=True)
 
         # Batch process directory contents safely
