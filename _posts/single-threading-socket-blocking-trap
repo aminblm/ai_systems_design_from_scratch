@@ -1,0 +1,1 @@
+The Single-Threaded Head-of-Line Blocking Trap: This is the most critical flaw. The server calls self.server_socket.accept(), assigns the client to self.client_socket, and enters an infinite while True: loop inside _handle_client(). While that single client is connected, the server cannot accept any other connections. New clients will hang indefinitely waiting to handshake.

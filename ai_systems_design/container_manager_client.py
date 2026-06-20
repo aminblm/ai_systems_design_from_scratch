@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 logger = logging.getLogger(__name__)
 
 
-class ContainerManager:
+class ContainerManagerClient:
     """A clean, defencive CLI client for interacting with a remote container management service."""
 
     def __init__(self, host: str, port: int, timeout: float = 5.0) -> None:
@@ -16,7 +16,7 @@ class ContainerManager:
         self.timeout = timeout
         self._socket = None
 
-    def __enter__(self) -> "ContainerManager":
+    def __enter__(self) -> "ContainerManagerClient":
         """Establishes the connection to Container Manager Core when entering a context manager block."""
         try:
             logger.info(f"Establishing connection to Container Manager Core at {self.host}:{self.port}...")

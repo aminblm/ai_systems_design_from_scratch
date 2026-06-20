@@ -4,7 +4,8 @@ from ai_systems_design.site_generator.site_generator import SiteGenerator
 from ai_systems_design.py_slug_generator import SlugGenerator, TerminalInterface
 from ai_systems_design.engine_scheduler import Task, DAG, EngineScheduler
 from ai_systems_design.resilient_client_socket import ResilientClientSocket
-from ai_systems_design.container_manager import ContainerManager
+from ai_systems_design.container_manager_client import ContainerManagerClient
+from ai_systems_design.threaded_container_manager import ThreadedContainerManager
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -64,13 +65,17 @@ def test_resilient_client_socket():
     except Exception as general_failure:
         logger.critical(f"Fatal application runtime termination event: {general_failure}")
 
-def test_container_manager():
+def test_container_manager_client():
     # Context manager auto-manages low-level cleanup on teardown or crash
     try:
-        with ContainerManager(SERVER_HOST, SERVER_PORT) as client:
+        with ContainerManagerClient(SERVER_HOST, SERVER_PORT) as client:
             client.start_interface()
     except Exception as fatal_err:
         logger.critical(f"Failed to run service management shell: {fatal_err}")
+
+def test_threaded_container_manager():
+    manager = ThreadedContainerManager(SERVER_HOST, SERVER_PORT)
+    manager.start_server()
 
 
 if __name__ == "__main__":
@@ -78,4 +83,6 @@ if __name__ == "__main__":
     #test_generate_slugs()
     #test_start_engine_scheduler()
     #test_resilient_client_socket()
-    test_container_manager()
+    #test_container_manager_client()
+    # #TODO - TEST FAIL
+    test_threaded_container_manager()
