@@ -1,11 +1,17 @@
-import logging
+import logging, sys
 
 from ai_systems_design.site_generator.site_generator import SiteGenerator 
 from ai_systems_design.py_slug_generator import SlugGenerator, TerminalInterface
 from ai_systems_design.engine_scheduler import Task, DAG, EngineScheduler
+from ai_systems_design.resilient_client_socket import ResilientClientSocket
+from ai_systems_design.container_manager import ContainerManager
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
+
+
+SERVER_HOST = "127.0.0.1"
+SERVER_PORT = 8080
 
 
 def test_generate_site():
@@ -38,7 +44,38 @@ def test_start_engine_scheduler():
     # Run the execution agent loop
     scheduler.run_forever(tick_rate_seconds=0.5)
 
+def test_resilient_client_socket():
+    # Using a context manager completely replaces manual tracking of .close()
+    try:
+        with ResilientClientSocket(SERVER_HOST, SERVER_PORT) as client:
+            server_handshake = client.receive_message()
+            if server_handshake:
+                print(f"\n[Server]: {server_handshake}")
+
+            #Collect explicit local buffer arguments
+            print("\nEnter outound payload message:")
+            user_input = sys.stdin.readline().strip()
+        
+            if user_input:
+                client.send_message(user_input)
+    
+    except (KeyboardInterrupt, SystemExit):
+        logger.info("\nExecution cancelled by user signal interrupt. Exiting safely.")
+    except Exception as general_failure:
+        logger.critical(f"Fatal application runtime termination event: {general_failure}")
+
+def test_container_manager():
+    # Context manager auto-manages low-level cleanup on teardown or crash
+    try:
+        with ContainerManager(SERVER_HOST, SERVER_PORT) as client:
+            client.start_interface()
+    except Exception as fatal_err:
+        logger.critical(f"Failed to run service management shell: {fatal_err}")
+
+
 if __name__ == "__main__":
-    test_generate_site()
+    #test_generate_site()
     #test_generate_slugs()
     #test_start_engine_scheduler()
+    #test_resilient_client_socket()
+    test_container_manager()

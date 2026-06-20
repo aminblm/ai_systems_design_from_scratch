@@ -253,7 +253,14 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **Regex**
 * [ ] **ServiceNow**
 * [ ] **Odoo**
+* [ ] **Async**
+* [ ] **Concurrency**
+* [ ] **Recursivity**
 
+### Possible evolutions of this repository
+
+- Lightweight zero-dependency all-in-one infrastructure for rapid prototyping and validating systems before scale.
+- Sandbox prototyping and local development
 
 ---
 
