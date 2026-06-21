@@ -1,7 +1,7 @@
 import logging, sys
 
 from ai_systems_design.site_generator.site_generator import SiteGenerator 
-from ai_systems_design.py_slug_generator import SlugGenerator, TerminalInterface
+from ai_systems_design.resilient_slug_generator import JekyllFilenameController
 from ai_systems_design.engine_scheduler import Task, DAG, EngineScheduler
 from ai_systems_design.resilient_client_socket import ResilientClientSocket
 from ai_systems_design.container_manager_client import ContainerManagerClient
@@ -56,10 +56,8 @@ def test_generate_site():
     test_path = 'test/'
     SiteGenerator(f'{base_path}layout.html', f'{base_path}config.yaml').generate_site(f'{test_path}sg_input')
 
-def test_generate_slugs():
-    slug_engine = SlugGenerator()
-    interface = TerminalInterface(generator=slug_engine)
-    interface.run()
+def test_resilient_slug_generator():
+    JekyllFilenameController().start_generator_interface()
 
 def test_start_engine_scheduler():
     # Define clean decoupled topology
@@ -327,7 +325,7 @@ def test_resilient_multi_threaded_server():
 
 if __name__ == "__main__":
     #test_generate_site()
-    #test_generate_slugs()
+    test_resilient_slug_generator()
     #test_start_engine_scheduler()
     #test_resilient_client_socket()
     #test_container_manager_client()
@@ -344,4 +342,4 @@ if __name__ == "__main__":
     # TODO TEST
     #test_resilient_http_raw_client()
     #test_concurrent_rest_engine()
-    test_resilient_multi_threaded_server()
+    #test_resilient_multi_threaded_server()

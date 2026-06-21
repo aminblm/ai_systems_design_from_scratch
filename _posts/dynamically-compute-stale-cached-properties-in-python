@@ -1,0 +1,4 @@
+@property
+def current_date_string(self) -> str:
+    """Dynamically computes the date stamp inline, avoiding stale cached properties over midnights."""
+    return datetime.date.today().strftime("%Y-%m-%d")
