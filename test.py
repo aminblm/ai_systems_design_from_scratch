@@ -12,6 +12,8 @@ from ai_systems_design.resilient_git_rpc_client import ResilientGitRPCClient
 from ai_systems_design.threaded_git_rpc_server import ThreadedGitRPCServer
 from ai_systems_design.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
 from ai_systems_design.distributed_no_sql_database import DistributedDatabase
+from ai_systems_design.intent_matching_engine import IntentMatchingEngine
+
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -20,6 +22,29 @@ logger = logging.getLogger(__name__)
 SERVER_HOST = "127.0.0.1"
 SERVER_PORT = 8080
 TARGET_REPO = "https://github.com/user/repo.git"
+
+INTENT_DATA_REPOS = {
+    "greetings": {
+        "keywords": ["hello", "hi", "hey", "greetings", "good day"],
+        "response": "Hello! How can I assist you today? 👋"
+    },
+    "state_of_being": {
+        "keywords": ["how are you", "hows it going", "how are things"],
+        "response": "I am operating optimally. How can I help you build today?"
+    },
+    "identity": {
+        "keywords": ["what is your name", "who are you", "your name"],
+        "response": "I am a refactored automation agent running on Python."
+    },
+    "capabilities": {
+        "keywords": ["what can you do", "help", "features", "options"],
+        "response": "I can process commands, normalize inputs, and route intents."
+    },
+    "farewells": {
+        "keywords": ["bye", "goodbye", "exit", "quit", "see ya"],
+        "response": "Goodbye! Have an excellent day."
+    }
+}
 
 
 def test_generate_site():
@@ -230,6 +255,32 @@ def test_distributed_no_sql_database():
         allocated = shard.collections.get("users", [])
         print(f"Cluster Shard #{shard.shard_id} local document count: {len(allocated)}")
 
+def test_intent_matching_engine():
+    # Instantiate engine cleanly parsing external mapping values
+    engine = IntentMatchingEngine(intents=INTENT_DATA_REPOS)
+
+    print("\n=== Robust Intent Processing Bot Interface Enabled ===")
+    print("Ask questions smoothly. Type 'exit' to terminate the runtime cycle.")
+
+    while True:
+        try:
+            print("\nUser> ", end="", flush=True)
+            user_raw_string = sys.stdin.readline().strip()
+
+            if user_raw_string.lower() in ("exit", "quit"):
+                print("Bot: Goodbye!")
+                break
+
+            if not user_raw_string:
+                continue
+
+            bot_reply = engine.extract_response(user_raw_string)
+            print(f"Bot: {bot_reply}")
+
+        except (KeyboardInterrupt, SystemExit):
+            print("\nSession killed via hardware interrupt signal.")
+            break
+
 
 if __name__ == "__main__":
     #test_generate_site()
@@ -244,4 +295,5 @@ if __name__ == "__main__":
     #test_resilient_git_rpc_client()
     #test_threaded_git_rpc_server()
     #test_round_robin_load_balancer()
-    test_distributed_no_sql_database()
+    #test_distributed_no_sql_database()
+    test_intent_matching_engine()
