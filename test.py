@@ -11,6 +11,7 @@ from ai_systems_design.reactive_frontend import ReconcileUI, ButtonComponent
 from ai_systems_design.resilient_git_rpc_client import ResilientGitRPCClient
 from ai_systems_design.threaded_git_rpc_server import ThreadedGitRPCServer
 from ai_systems_design.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
+from ai_systems_design.distributed_no_sql_database import DistributedDatabase
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -197,6 +198,38 @@ def test_round_robin_load_balancer():
             print("\nSystem execution loop terminated via hardware interrupt signal.")
             break
 
+def test_distributed_no_sql_database():
+    # 1. Initialize our clustered store wrapper
+    db = DistributedDatabase("production_cluster", num_shards=2)
+
+    # 2. Establish our collection metadata layout boundaries
+    users_schema = {"name": "text", "age": "int", "status": "text"}
+    users = db.create_collection("users", schema=users_schema)
+
+    # 3. Populate collection store variables
+    users.insert_one({"name": "Alice", "age": 30, "status": "active"})
+    users.insert_one({"name": "Bob", "age": 30, "status": "pending"})
+    users.insert_one({"name": "Charlie", "age": 25, "status": "active"})
+
+    # 4. Perform structured search query actions
+    search_results = users.find({"age": 30})
+    print("Search Results (age == 30):", search_results)
+
+    # 5. Execute explicit pipeline queries (Fully functional pipeline handling)
+    aggregation_pipeline = [
+        {"$match": {"status": "active"}},
+        {"$count": "active_users_count"}
+    ]
+    agg_results = users.aggregate(aggregation_pipeline)
+    print("\nAggregation Framework Output:", agg_results)
+
+    # 6. Distribute elements down onto structural data cluster partitions safely
+    db.shard_collection("users", shard_key="name")
+    
+    for shard in db.shards:
+        allocated = shard.collections.get("users", [])
+        print(f"Cluster Shard #{shard.shard_id} local document count: {len(allocated)}")
+
 
 if __name__ == "__main__":
     #test_generate_site()
@@ -210,4 +243,5 @@ if __name__ == "__main__":
     #test_reactive_frontend()
     #test_resilient_git_rpc_client()
     #test_threaded_git_rpc_server()
-    test_round_robin_load_balancer()
+    #test_round_robin_load_balancer()
+    test_distributed_no_sql_database()
