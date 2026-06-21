@@ -2,7 +2,7 @@ import os, logging, traceback
 from pathlib import Path
 from typing import Dict, Union, Tuple 
 
-from ai_systems_design.py_yaml import YAMLBuilder
+from ai_systems_design.safe_yaml_parser import ConfigurationBuilder
 from ai_systems_design.md_html import MarkdownConverterFacade
 from ai_systems_design.utils import FileOperationsUtility
 
@@ -21,11 +21,16 @@ class SiteGenerator:
         self.layout_template = self._load_layout()
         self.config_mappings = self._load_config()
 
+    # TODO
+    # Possible copy of the styles file to the output folder for dynamic styling
+    def _copy_styles(self) -> None:
+        return None
+    
     def _load_layout(self) -> str:
         return FileOperationsUtility.read_decoded(str(self.layout_path))
     
     def _load_config(self) -> Dict[str, str]:
-        return YAMLBuilder.create_from_file(str(self.config_file_path)).get_mapping_from_file()
+        return ConfigurationBuilder().from_file(str(self.config_file_path)).build().to_dict()
     
     def _render_html(self, md_file_path: Path) -> str:
         """Injects compiled markdown content and config mappings into the layout"""
