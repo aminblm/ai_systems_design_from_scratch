@@ -1,0 +1,24 @@
+class EventDispatcher:
+    """An event broker implementing a standard multicast Observer pattern."""
+
+    def __init__(self) -> None:
+        self._listeners: Dict[str, List[Callable[[Any], None]]] = {}
+
+    def subscribe(self, event_type: str, handler: Callable[[Any], None]) -> None:
+        """Appends a subscriber function without flattening existing tracking keys."""
+        if event_type not in self._listeners:
+            self._listeners[event_type] = []
+        self._listeners[event_type].append(handler)
+
+    def dispatch(self, event_type: str, event_data: Any = None) -> None:
+        """Fires updates out safely to all registered callback hooks downstream."""
+        handlers = self._listeners.get(event_type, [])
+        if not handlers:
+            logger.warning(f"Event '{event_type}' was dispatched but has no active subscribers.")
+            return
+            
+        for handler in handlers:
+            try:
+                handler(event_data)
+            except Exception as err:
+                logger.error(f"Error handling event channel '{event_type}': {err}")

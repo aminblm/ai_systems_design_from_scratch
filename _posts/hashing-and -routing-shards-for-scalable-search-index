@@ -1,0 +1,1 @@
+True Cluster Sharding Core: Replaced your mock list of values with a dedicated structural routing paradigm (_get_shard_route). Incoming items are allocated uniquely into real Shard container classes using consistent hashing algorithms ($ID \pmod{\text{Total Shards}}$).

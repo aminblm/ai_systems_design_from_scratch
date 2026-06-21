@@ -256,6 +256,7 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **Async**
 * [ ] **Concurrency**
 * [ ] **Recursivity**
+* [ ] **Wordpress**
 
 ### Possible evolutions of this repository
 

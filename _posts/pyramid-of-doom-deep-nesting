@@ -1,0 +1,1 @@
+The Pyramids of Doom (Deep Nesting): Both search and aggregate feature deep, heavily nested if statements. This makes the code unreadable, incredibly fragile to extend, and expensive to evaluate sequentially.
