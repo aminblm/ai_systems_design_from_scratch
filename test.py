@@ -14,6 +14,7 @@ from ai_systems_design.round_robin_load_balancer import RoundRobinLoadBalancer, 
 from ai_systems_design.distributed_no_sql_database import DistributedDatabase
 from ai_systems_design.intent_matching_engine import IntentMatchingEngine
 from ai_systems_design.realtime_redis_engine import RealtimeRedisEngine
+from ai_systems_design.resilient_http_raw_client import ResilientHTTPRawClient
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -306,6 +307,14 @@ def test_realtime_redis_engine():
             print("\nTerminated via supervisor hardware signal line.")
             break
 
+def test_resilient_http_raw_client():
+    # Context manager pattern ensures explicit teardown safeguards apply uniformly
+    try:
+        with ResilientHTTPRawClient(SERVER_HOST, SERVER_PORT) as client_runtime:
+            client_runtime.start_repl_loop()
+    except Exception as initialization_failure:
+        logger.critical(f"Failed to engage network testing suite system execution nodes: {initialization_failure}")
+
 if __name__ == "__main__":
     #test_generate_site()
     #test_generate_slugs()
@@ -321,4 +330,7 @@ if __name__ == "__main__":
     #test_round_robin_load_balancer()
     #test_distributed_no_sql_database()
     #test_intent_matching_engine()
-    test_realtime_redis_engine()
+    #test_realtime_redis_engine()
+    # TODO TEST
+    #test_resilient_http_raw_client()
+    pass
