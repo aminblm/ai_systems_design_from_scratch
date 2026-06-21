@@ -9,6 +9,7 @@ from ai_systems_design.threaded_container_manager import ThreadedContainerManage
 from ai_systems_design.scalable_index import ScalableIndex
 from ai_systems_design.reactive_frontend import ReconcileUI, ButtonComponent
 from ai_systems_design.resilient_git_rpc_client import ResilientGitRPCClient
+from ai_systems_design.threaded_git_rpc_server import ThreadedGitRPCServer
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -160,6 +161,9 @@ def test_resilient_git_rpc_client():
     except Exception as fatal_error:
         logger.critical(f"Abrupt termination handling repository pipeline sequence tasks: {fatal_error}")
 
+def test_threaded_git_rpc_server():
+    git_server = ThreadedGitRPCServer(SERVER_HOST, SERVER_PORT)
+    git_server.start_server()
 
 if __name__ == "__main__":
     #test_generate_site()
@@ -171,5 +175,5 @@ if __name__ == "__main__":
     #test_threaded_container_manager()
     #test_scalable_index()
     #test_reactive_frontend()
-    # #TODO - TEST WHEN GIT SERVER RUNNING - ResilientGitRPCClient
-    test_resilient_git_rpc_client()
+    #test_resilient_git_rpc_client()
+    test_threaded_git_rpc_server()
