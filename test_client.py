@@ -42,5 +42,4 @@ if __name__ == "__main__":
     # #TODO - TEST FAIL - ContainerManagerClient
     #test_container_manager_client()
     #test_resilient_git_rpc_client()
-    # TODO TEST
     test_resilient_http_raw_client()

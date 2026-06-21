@@ -259,6 +259,8 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **Wordpress**
 * [ ] **Domain Name Provider**
 * [ ] **Link Shortener**
+* [ ] **Reverse proxy** (Nginx)
+* [ ] **Commit Message Generator**
 
 ### Possible evolutions of this repository
 
