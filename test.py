@@ -13,6 +13,7 @@ from ai_systems_design.threaded_git_rpc_server import ThreadedGitRPCServer
 from ai_systems_design.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
 from ai_systems_design.distributed_no_sql_database import DistributedDatabase
 from ai_systems_design.intent_matching_engine import IntentMatchingEngine
+from ai_systems_design.realtime_redis_engine import RealtimeRedisEngine
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -281,6 +282,29 @@ def test_intent_matching_engine():
             print("\nSession killed via hardware interrupt signal.")
             break
 
+def test_realtime_redis_engine():
+    engine = RealtimeRedisEngine()
+    print("\n=== Multi-Type Mock Redis Cluster Interface Engaged ===")
+    print("Execute core commands [SET, GET, DEL, INCR, EXPIRE, TTL]. Type 'exit' to halt.")
+
+    while True:
+        try:
+            print("\nredis-cli> ", end="", flush=True)
+            input_line = sys.stdin.readline().strip()
+
+            if input_line.lower() in ('exist', 'quit'):
+                print("Halting server instance engine state cleanly.")
+                break
+
+            if not input_line:
+                continue
+
+            execution_output = engine.execute_command_string(input_line)
+            print(execution_output)
+
+        except (KeyboardInterrupt, SystemExit):
+            print("\nTerminated via supervisor hardware signal line.")
+            break
 
 if __name__ == "__main__":
     #test_generate_site()
@@ -296,4 +320,5 @@ if __name__ == "__main__":
     #test_threaded_git_rpc_server()
     #test_round_robin_load_balancer()
     #test_distributed_no_sql_database()
-    test_intent_matching_engine()
+    #test_intent_matching_engine()
+    test_realtime_redis_engine()

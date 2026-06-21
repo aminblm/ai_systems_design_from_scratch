@@ -257,6 +257,8 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **Concurrency**
 * [ ] **Recursivity**
 * [ ] **Wordpress**
+* [ ] **Domain Name Provider**
+* [ ] **Link Shortener**
 
 ### Possible evolutions of this repository
 
