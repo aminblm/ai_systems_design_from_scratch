@@ -357,6 +357,10 @@ def test_architecture_renderer():
         ArchComponent("API Service", "service", [
             ArchComponent("User Database", "database"),
             ArchComponent("Cache Layer", "service")
+        ]),
+        ArchComponent("API Service", "service", [
+            ArchComponent("User Database", "database"),
+            ArchComponent("Cache Layer", "service")
         ])
     ])
 

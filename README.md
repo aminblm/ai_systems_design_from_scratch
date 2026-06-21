@@ -249,7 +249,7 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **CV Builder**
 * [ ] **Scrapy**
 * [ ] **LinkedIn Application Bot**
-* [ ] **Diagram Generator**
+* [x] **Diagram Generator**
 * [ ] **Regex**
 * [ ] **ServiceNow**
 * [ ] **Odoo**
