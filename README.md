@@ -261,6 +261,7 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **Link Shortener**
 * [ ] **Reverse proxy** (Nginx)
 * [ ] **Commit Message Generator**
+* [ ] **Beautiful soup**
 
 ### Possible evolutions of this repository
 

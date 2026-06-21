@@ -18,6 +18,7 @@ from ai_systems_design.resilient_http_raw_client import ResilientHTTPRawClient
 from ai_systems_design.concurrent_rest_engine import ConcurrentRESTEngine
 from ai_systems_design.resilient_multi_threaded_server import ResilientMultiThreadedServer
 from ai_systems_design.safe_yaml_parser import ConfigurationBuilder
+from ai_systems_design.architecture_renderer import ArchitectureRenderer, ArchComponent
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -350,9 +351,25 @@ def test_safe_yaml_parser():
     file_config = ConfigurationBuilder().from_file("_config.yaml").build()
     print(f"Parsed Target Map : {file_config.to_dict()}")
 
+def test_architecture_renderer():
+        # Define system topology declaratively
+    topology = ArchComponent("Load Balancer", "lb", [
+        ArchComponent("API Service", "service", [
+            ArchComponent("User Database", "database"),
+            ArchComponent("Cache Layer", "service")
+        ])
+    ])
+
+    renderer = ArchitectureRenderer()
+    html_output = renderer.generate_html(topology)
+    
+    with open("test/ar_output/arch_diagram.html", "w") as f:
+        f.write(html_output)
+    
+    logger.info("Artifact generation successful: 'arch_diagram.html' created.")
 
 if __name__ == "__main__":
-    test_generate_site()
+    #test_generate_site()
     #test_resilient_slug_generator()
     #test_start_engine_scheduler()
     #test_resilient_client_socket()
@@ -372,5 +389,6 @@ if __name__ == "__main__":
     #test_concurrent_rest_engine()
     #test_resilient_multi_threaded_server()
     #test_safe_yaml_parser()
+    test_architecture_renderer()
 
     pass
