@@ -1,6 +1,6 @@
 import logging, sys
 
-from ai_systems_design.site_generator.site_generator import SiteGenerator 
+#from ai_systems_design.site_generator.site_generator import SiteGenerator 
 from ai_systems_design.resilient_slug_generator import JekyllFilenameController
 from ai_systems_design.engine_scheduler import Task, DAG, EngineScheduler
 from ai_systems_design.resilient_client_socket import ResilientClientSocket
@@ -17,7 +17,7 @@ from ai_systems_design.realtime_redis_engine import RealtimeRedisEngine
 from ai_systems_design.resilient_http_raw_client import ResilientHTTPRawClient
 from ai_systems_design.concurrent_rest_engine import ConcurrentRESTEngine
 from ai_systems_design.resilient_multi_threaded_server import ResilientMultiThreadedServer
-
+from ai_systems_design.safe_yaml_parser import ConfigurationBuilder
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -323,9 +323,37 @@ def test_resilient_multi_threaded_server():
     server = ResilientMultiThreadedServer(SERVER_HOST, SERVER_PORT)
     server.start_server()
 
+def test_safe_yaml_parser():
+    # Test Scenario A: Dynamic text stream ingestion
+    raw_yaml_stream = """
+    # Infrastructure Environment Allocations
+    app_id: custom_microservice_node
+    max_retries: 5
+    api_key: 'secret_token_signature_hash'
+    malformed_line_test_without_spaces
+    """
+
+    print("--- Executing Fluent Builder Construction Pipeline ---")
+    config = (
+        ConfigurationBuilder()
+        .from_text(raw_yaml_stream)
+        .build()
+    )
+
+    # FIXED: Accessing keys immediately works without needing to call any middle-tier methods first!
+    print(f"Verified App ID   : {config.get('app_id')}")
+    print(f"Verified API Key  : {config.get('api_key')}")
+    # FIXED: Invalid configuration lines are skipped safely rather than crashing the loop
+    print(f"Missing Property  : {config.get('non_existent_key', 'fallback_default_value')}")
+
+    print("\n--- Executing Simulated File Ingestion Pipeline ---")
+    file_config = ConfigurationBuilder().from_file("_config.yaml").build()
+    print(f"Parsed Target Map : {file_config.to_dict()}")
+
+
 if __name__ == "__main__":
     #test_generate_site()
-    test_resilient_slug_generator()
+    #test_resilient_slug_generator()
     #test_start_engine_scheduler()
     #test_resilient_client_socket()
     #test_container_manager_client()
@@ -343,3 +371,6 @@ if __name__ == "__main__":
     #test_resilient_http_raw_client()
     #test_concurrent_rest_engine()
     #test_resilient_multi_threaded_server()
+    test_safe_yaml_parser()
+
+    pass
