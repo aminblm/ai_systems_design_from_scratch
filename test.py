@@ -16,6 +16,7 @@ from ai_systems_design.intent_matching_engine import IntentMatchingEngine
 from ai_systems_design.realtime_redis_engine import RealtimeRedisEngine
 from ai_systems_design.resilient_http_raw_client import ResilientHTTPRawClient
 from ai_systems_design.concurrent_rest_engine import ConcurrentRESTEngine
+from ai_systems_design.resilient_multi_threaded_server import ResilientMultiThreadedServer
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -320,6 +321,10 @@ def test_concurrent_rest_engine():
     app = ConcurrentRESTEngine(SERVER_HOST, SERVER_PORT)
     app.start_server()
 
+def test_resilient_multi_threaded_server():
+    server = ResilientMultiThreadedServer(SERVER_HOST, SERVER_PORT)
+    server.start_server()
+
 if __name__ == "__main__":
     #test_generate_site()
     #test_generate_slugs()
@@ -338,4 +343,5 @@ if __name__ == "__main__":
     #test_realtime_redis_engine()
     # TODO TEST
     #test_resilient_http_raw_client()
-    test_concurrent_rest_engine()
+    #test_concurrent_rest_engine()
+    test_resilient_multi_threaded_server()
