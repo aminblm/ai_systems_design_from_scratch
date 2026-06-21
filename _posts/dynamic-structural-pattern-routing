@@ -1,0 +1,2 @@
+Dynamic Structural Pattern Routing: Extracted the hardcoded response strings. The backend now decodes the incoming JSON structure payload, tracks the actual inner argument array target (parts[2]), verifies string patterns via structural match-case blocks, and echoes back the actual targeted repository URL.
+

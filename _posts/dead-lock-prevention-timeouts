@@ -1,0 +1,1 @@
+Dead-Lock Prevention Timeouts: Configured explicit socket transaction execution timeouts (settimeout(15.0)). Silent or non-responsive socket descriptors are forced closed rather than holding server memory indefinitely.
