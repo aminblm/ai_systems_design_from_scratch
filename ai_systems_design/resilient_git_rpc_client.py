@@ -1,3 +1,4 @@
+# resilient_git_rpc_client.py
 import json, logging
 from types import TracebackType
 from typing import Optional, Type, Dict, Any

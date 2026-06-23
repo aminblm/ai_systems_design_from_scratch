@@ -1,3 +1,4 @@
+# resilient_http_raw_client.py
 import logging, sys
 from socket import socket as Socket
 from types import TracebackType

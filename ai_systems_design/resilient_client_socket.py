@@ -1,3 +1,4 @@
+# resilient_client_socket.py
 import logging, sys
 from types import TracebackType
 from typing import Optional, Type

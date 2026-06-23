@@ -1,3 +1,4 @@
+# resilient_slug_generator.py
 import datetime, logging, re, sys, unicodedata
 from typing import Optional
 
