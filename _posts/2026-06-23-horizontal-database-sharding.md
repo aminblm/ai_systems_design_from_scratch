@@ -107,7 +107,7 @@ class ShardingRouter:
 By delegating placement to a structural routing paradigm, you build a system where data distribution is an inherent property of the architecture, not an administrative afterthought.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

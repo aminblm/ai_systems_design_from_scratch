@@ -103,7 +103,7 @@ with ContainerManagerClient("localhost", 8080) as client:
 The Context Manager pattern is the bridge between a fragile script that crashes and a robust application that manages its own lifecycle. By defining these boundaries, you ensure that even under error conditions, your system returns to a clean state.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

@@ -124,7 +124,7 @@ debug_mode = config.get("debug", default=False)
 By abstracting the ingestion and parsing of configuration into a coherent builder pipeline, you create a system that is testable, extensible, and inherently safe.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

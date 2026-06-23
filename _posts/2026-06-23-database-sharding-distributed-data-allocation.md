@@ -100,7 +100,7 @@ The `Collection.aggregate` method provided demonstrates a "pipeline" stage appro
 By decomposing your system into logical collections and physical shards, you transform a monolithic storage bottleneck into a highly parallel, extensible architecture capable of growing alongside your application.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

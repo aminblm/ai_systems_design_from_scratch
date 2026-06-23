@@ -121,7 +121,7 @@ except SqliteError as e:
 By being intentional about where you handle errors, you stop writing code that hides problems and start writing code that reports them precisely where they occur.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

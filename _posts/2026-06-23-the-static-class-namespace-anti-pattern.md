@@ -121,7 +121,7 @@ Classes are powerful, but they should only be used when they **manage state** or
 By abandoning the static class anti-pattern, you reduce the surface area of your code, improve import ergonomics, and embrace the architecture that Python was designed for.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

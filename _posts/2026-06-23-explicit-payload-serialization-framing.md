@@ -118,7 +118,7 @@ By appending an explicit frame marker, you transform a fragile, stream-corruptin
 **Are you currently using newline framing, or have you encountered issues with binary data that requires a more robust length-prefixed header approach?**
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

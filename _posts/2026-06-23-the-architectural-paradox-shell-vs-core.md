@@ -102,7 +102,7 @@ The engine—your task scheduler, your network handler, your data pipeline—is 
 Complexity is easy to add; simplicity is hard to maintain. Don't hide a broken engine behind a fancy structural layout. Focus on the core, ensure the execution is resilient, and only abstract when the code demands it.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

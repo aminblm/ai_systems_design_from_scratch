@@ -96,7 +96,7 @@ Design patterns aren't just about syntax; they are about **managing future compl
 Which of these pattern categories (Creational, Structural, or Behavioral) do you find yourself needing to implement most frequently in your current projects?
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

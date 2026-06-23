@@ -102,7 +102,7 @@ In this implementation, the `search` and `aggregate_counts` methods perform a **
 By decomposing your data into shards, you transform a monolithic storage problem into a distributed management system, allowing your application to scale with your data growth.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

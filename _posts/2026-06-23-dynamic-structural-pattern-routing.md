@@ -117,7 +117,7 @@ print(route_request(payload))
 By transitioning from static string matching to structural pattern analysis, you create a robust, self-documenting routing layer that is prepared to handle complex, evolving data schemas.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

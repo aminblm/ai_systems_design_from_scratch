@@ -124,7 +124,7 @@ Are you dealing with other properties in your application that might be prone to
 ```
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

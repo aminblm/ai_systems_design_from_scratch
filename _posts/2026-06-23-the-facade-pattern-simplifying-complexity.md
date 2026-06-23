@@ -97,7 +97,7 @@ class MarkdownConverterFacade:
 By wrapping your complex Markdown logic in a clean Facade, you provide an ergonomic API that improves developer experience while keeping your internal implementation highly decoupled and testable.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

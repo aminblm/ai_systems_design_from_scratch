@@ -110,7 +110,7 @@ Network interruptions are a fact of life. If a client drops their connection wit
 A resilient server is a self-cleaning one. By wrapping your network operations in defensive cleanup blocks, you ensure that every socket—whether closed by intent or by interruption—is properly returned to the OS.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

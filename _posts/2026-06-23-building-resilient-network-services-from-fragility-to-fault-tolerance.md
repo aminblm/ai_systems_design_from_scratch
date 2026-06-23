@@ -118,7 +118,7 @@ class LoadBalancer:
 By wrapping your upstream calls in a protective layer of defensive logic, you transition your service from a fragile component to a robust, self-healing part of a distributed architecture.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

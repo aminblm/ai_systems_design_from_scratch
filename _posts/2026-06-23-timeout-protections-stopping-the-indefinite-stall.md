@@ -103,7 +103,7 @@ def connect_and_read(host, port):
 Explicit timeout protections convert your system from one that "waits for failure" to one that "actively manages failure." It is a fundamental requirement for any network-facing service.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

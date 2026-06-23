@@ -117,7 +117,7 @@ Are you currently using a specific type checker like `mypy` or `pyright` in your
 ```
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

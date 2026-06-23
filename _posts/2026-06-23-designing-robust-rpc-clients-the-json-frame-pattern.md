@@ -91,7 +91,7 @@ The `ResilientGitRPCClient` encapsulates this logic, keeping the application cod
 By combining JSON serialization for flexibility, newline-based framing for reliability, and context management for resource safety, you create a robust RPC client capable of handling sophisticated orchestration tasks across a network.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

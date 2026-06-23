@@ -117,7 +117,7 @@ def process_data(data):
 By inverting your logic and focusing on early exits, you transform unreadable "pyramids" into clean, linear flows. This not only makes the code easier to read but ensures that your search and aggregation features remain extensible for years to come.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

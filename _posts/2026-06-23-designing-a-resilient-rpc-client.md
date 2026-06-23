@@ -107,7 +107,7 @@ When our client is tasked with a Git operation, it moves through a controlled li
 By combining explicit framing, RAII-based cleanup, and robust retry logic, you turn a fragile network interaction into a reliable Git RPC client capable of scaling across your infrastructure.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

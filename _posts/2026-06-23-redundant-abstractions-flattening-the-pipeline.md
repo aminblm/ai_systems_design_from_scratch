@@ -104,7 +104,7 @@ def markdown_to_html(markdown_text: str) -> str:
 Complexity is the enemy of maintainability. By stripping away these redundant abstractions, you turn an opaque "web" of code into a transparent, linear pipeline that is easy to read, test, and evolve.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

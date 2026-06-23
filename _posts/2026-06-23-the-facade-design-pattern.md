@@ -117,7 +117,7 @@ class ComputerFacade:
 The Facade pattern is one of the most effective ways to manage technical debt in growing projects. By offering a clean, semantic gateway to your subsystems, you transform an intimidating architecture into an intuitive API.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

@@ -107,7 +107,7 @@ def _clean_metadata(self, lines: List[str]) -> Generator[str, None, None]:
 By embracing generator-based filtering, you turn your parser into a lean, memory-efficient machine capable of handling text files of any size without breaking a sweat.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

@@ -116,7 +116,7 @@ def robust_client_handler(sock):
 Networking is a game of synchronization. By understanding how the kernel manages your data after it leaves your code, you can avoid the subtle race conditions that make distributed systems feel unpredictable.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

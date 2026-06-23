@@ -103,7 +103,7 @@ html_output = converter.to_html()
 By consolidating your logic into clear, purpose-driven facades, you turn an intimidating web of components into a clean, intuitive API that facilitates faster development and fewer integration errors.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

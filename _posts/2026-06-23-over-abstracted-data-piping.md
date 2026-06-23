@@ -116,7 +116,7 @@ Jekyll.generate_site(deps)
 By stripping away the unnecessary wrappers, you make your codebase more approachable and easier to debug. Sometimes, the best code is the code you decide not to write.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

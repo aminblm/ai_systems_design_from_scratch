@@ -101,7 +101,7 @@ file_name = file_path.stem  # Results in "release.v1"
 By shifting from brittle string manipulation to object-oriented path handling, you eliminate a whole class of "file not found" or "wrong filename" bugs in your production systems.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

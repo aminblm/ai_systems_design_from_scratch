@@ -108,7 +108,7 @@ def format_input(data: int | str | list[int]) -> str:
 By being explicit about the types your code handles, you shift the burden of validation from your runtime logic to your development environment. This leads to fewer bugs and a much better developer experience.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

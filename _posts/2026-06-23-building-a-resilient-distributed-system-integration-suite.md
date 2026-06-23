@@ -127,7 +127,7 @@ if __name__ == "__main__":
 3. **Fail-Fast vs. Recover**: Decide which components are critical. For non-critical services (like UI components), implement recovery loops. For critical infrastructure (like the Database), implement fail-fast mechanisms to prevent corrupted data state.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

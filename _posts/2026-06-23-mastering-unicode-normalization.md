@@ -111,7 +111,7 @@ text = unicodedata.normalize('NFKC', text)
 By applying the correct normalization form, you ensure your text processing is resilient, platform-independent, and ready for global user inputs.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

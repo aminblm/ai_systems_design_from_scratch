@@ -129,7 +129,7 @@ def with_error_handling(func):
 By shifting from "guessing" the input through dictionary lookups to "binding" it via signature inspection, you eliminate one of the most common and dangerous failure modes in Python's decorator ecosystem.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

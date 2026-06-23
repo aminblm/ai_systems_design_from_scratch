@@ -107,7 +107,7 @@ def parse_markdown(text: str) -> str:
 By delegating pattern resolution to the Regex engine, you treat your text as a data stream rather than a series of indices—resulting in cleaner, more resilient code.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

@@ -96,7 +96,7 @@ def transform_to_slug(self, text: str) -> str:
 By decomposing your slug generation into these modular steps, you create a system that is easily testable, highly predictable, and perfectly suited for automation.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

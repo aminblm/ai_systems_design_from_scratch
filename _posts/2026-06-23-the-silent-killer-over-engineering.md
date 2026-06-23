@@ -122,7 +122,7 @@ def fetch_user_data(user_id):
 Complexity is the natural state of software—it is entropy. Your job as a developer is to fight that entropy, not accelerate it. By choosing simplicity over hypothetical elegance, you produce code that is not only easier to maintain but also a joy to work with.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

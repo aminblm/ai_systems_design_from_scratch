@@ -182,7 +182,7 @@ Which of these antipatterns do you see most frequently in your current codebase?
 ```
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

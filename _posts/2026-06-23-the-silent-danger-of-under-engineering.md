@@ -116,7 +116,7 @@ The goal is not to "over-engineer" every project with layers of abstraction you 
 Engineering is not about the complexity of the solution; it is about the reliability of the outcome. Build for the real world, where things break, and you will find your code is far more robust than you ever imagined.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

@@ -134,7 +134,7 @@ match event:
 By adopting `match-case`, you move away from imperative "check-and-branch" programming toward a declarative style that describes *what* your data should look like, making your code significantly more resilient and easier to maintain.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

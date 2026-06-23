@@ -150,7 +150,7 @@ class SiteGenerator:
 3. **Path Safety**: Utilizing `pathlib.Path` objects prevents OS-specific separator issues (e.g., forward slash vs backslash), making the code cross-platform compatible.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

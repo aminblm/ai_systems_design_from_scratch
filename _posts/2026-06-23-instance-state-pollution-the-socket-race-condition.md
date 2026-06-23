@@ -112,7 +112,7 @@ class Server:
 By eliminating shared state in your network handlers, you turn a fragile, blocking server into a robust, concurrent powerhouse capable of scaling to meet your users' needs.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

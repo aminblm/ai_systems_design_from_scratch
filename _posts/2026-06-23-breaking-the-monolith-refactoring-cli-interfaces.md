@@ -113,7 +113,7 @@ class CLIInterface:
 By breaking the monolith, you turn a fragile script into a robust application. You are no longer writing code that "just works"—you are building a maintainable system that can grow with your project's needs.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

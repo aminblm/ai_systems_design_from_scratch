@@ -91,7 +91,7 @@ The `ReconcileUI` class acts as the orchestrator. It holds the registry of compo
 By combining descriptors for property-level reactivity and a dirty-flagging system for caching, you create a lightweight, efficient framework that mimics the reactive principles found in major front-end libraries.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

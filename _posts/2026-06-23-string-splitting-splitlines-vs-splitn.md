@@ -106,7 +106,7 @@ print(text.splitlines())
 By defaulting to `.splitlines()` for text, you avoid the common "extra empty string" bug that frequently plagues file parsers. It is a small change that makes your code more resilient and cleaner.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

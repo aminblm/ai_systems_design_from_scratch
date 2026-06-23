@@ -103,7 +103,7 @@ class CommandHandler:
 By standardizing your routes to accept dynamic lists, you move from a brittle, hard-coded command set to a modular engine that can grow in complexity without requiring fundamental architectural changes.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

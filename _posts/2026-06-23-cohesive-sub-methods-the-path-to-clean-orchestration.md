@@ -109,7 +109,7 @@ class GitTaskOrchestrator:
 By decomposing your complex methods into small, cohesive sub-methods, you don't just write "better" code—you write code that is modular, flexible, and fundamentally easier to reason about.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

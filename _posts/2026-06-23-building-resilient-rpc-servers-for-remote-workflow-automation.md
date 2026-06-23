@@ -143,7 +143,7 @@ class ThreadedGitRPCServer:
 3. **Logging**: Always log the `client_addr` when connections are established or dismantled. This is invaluable when auditing system failures in a distributed architecture.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

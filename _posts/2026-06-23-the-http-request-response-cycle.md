@@ -93,7 +93,7 @@ The server's response is equally structured. The first line of the response cont
 By manipulating these raw frames, you gain deep insight into how web services communicate, providing you with the skills to debug complex network interactions that high-level libraries often obscure.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

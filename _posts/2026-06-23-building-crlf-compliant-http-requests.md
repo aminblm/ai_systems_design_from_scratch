@@ -107,7 +107,7 @@ def create_http_request(method, path, headers: dict, body: str = ""):
 By adhering to the CRLF standard, you ensure your requests are portable across different servers and safe from injection attacks.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

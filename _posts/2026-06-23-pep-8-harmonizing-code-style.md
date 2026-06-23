@@ -118,7 +118,7 @@ class ClientHandler:
 By adhering to these standard naming conventions, you allow the structure of your code to communicate its intent. It is one of the lowest-effort, highest-impact ways to improve the quality and professional appearance of your work.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

@@ -108,7 +108,7 @@ def process_stream():
 By modernizing how you ingest data, you make your tools compatible with the broader Unix ecosystem. `sys.stdin.readline()` turns your script from a simple interactive program into a powerful part of a command-line pipeline.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

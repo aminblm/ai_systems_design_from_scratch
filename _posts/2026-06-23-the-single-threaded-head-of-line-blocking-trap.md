@@ -97,7 +97,7 @@ To escape the trap, you must decouple the **Connection Manager** (which accepts 
 The Head-of-Line blocking trap turns your server into a serial gatekeeper. By liberating your `accept()` loop and offloading task execution, you transform your service from a restrictive bottleneck into a truly scalable, concurrent engine.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

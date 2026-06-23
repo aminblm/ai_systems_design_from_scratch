@@ -106,7 +106,7 @@ with SocketConnection("localhost", 8080) as sock:
 By shifting to the RAII context manager pattern, you turn "resource management" into an automated feature of your code's structure. You are no longer responsible for remembering to close resources; your architecture is now responsible for them.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

@@ -110,7 +110,7 @@ print(filename.strip("/")) # Result: "my_data_file"
 `.strip()` is the Swiss Army knife of string manipulation. By passing specific character sets, you turn a generic utility into a precise parser for your data pipeline.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

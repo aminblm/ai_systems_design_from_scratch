@@ -106,7 +106,7 @@ class EventDispatcher:
 The `EventDispatcher` transforms your architecture from a rigid tree into a flexible, communicative network. It is the foundation for building systems that are truly modular and capable of evolving alongside your requirements.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

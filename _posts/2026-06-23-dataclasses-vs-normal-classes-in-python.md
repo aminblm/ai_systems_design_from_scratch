@@ -125,7 +125,7 @@ Dataclasses are specifically for **data-centric objects**. You should continue u
 Always treat your data objects as schemas. Using dataclasses with type hints turns your data structures into self-documenting contracts, making it significantly easier for your team to understand exactly what data a method expects and returns.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

@@ -109,7 +109,7 @@ asyncio.run(scheduler([("Task A", 5), ("Task B", 2)]))
 By shifting from a synchronous "wait-and-do" model to an asynchronous "event-driven" model, you transform your orchestrator from a fragile sequential loop into a resilient, highly concurrent engine.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

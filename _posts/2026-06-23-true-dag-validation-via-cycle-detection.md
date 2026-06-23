@@ -122,7 +122,7 @@ By treating cycle detection as a mandatory structural gate, you ensure that your
 Do you have a specific task orchestration engine you are currently building, or are you looking to integrate this validation logic into a wider graph-based data processing system?
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

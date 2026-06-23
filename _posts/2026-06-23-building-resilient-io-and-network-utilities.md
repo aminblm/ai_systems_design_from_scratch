@@ -121,7 +121,7 @@ class SocketUtility:
 3. **Encapsulation**: By wrapping `socket.socket` and standard `open()` calls, you allow your higher-level business logic to remain clean and focused on task execution rather than plumbing details.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

@@ -84,7 +84,7 @@ def process_posts(input_dir, output_dir):
             new_content = re.sub(r'(# .+\n)', r'\1\n' + wrap_raw(AUTHOR_CARD) + '\n', new_content, count=1)
             
             # Append Footer
-            new_content = new_content.rstrip() + "\n\n" + wrap_raw("---\n" + AUTHOR_LINK_HTML) + "\n"
+            new_content = new_content.rstrip() + "\n\n" + wrap_raw("\n" + AUTHOR_LINK_HTML) + "\n"
             
             with open(output_path, 'w', encoding='utf-8') as f:
                 f.write(new_content)

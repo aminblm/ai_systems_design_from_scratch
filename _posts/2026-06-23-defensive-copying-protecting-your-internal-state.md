@@ -115,7 +115,7 @@ docs.append("safe_doc.txt") # manager._documents remains unchanged!
 Defensive copying is a simple technique that prevents subtle, hard-to-track bugs. By keeping your class's internal state encapsulated, you create a system that is predictable, robust, and much easier to debug.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 

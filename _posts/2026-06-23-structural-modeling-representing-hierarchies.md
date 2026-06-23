@@ -99,7 +99,7 @@ The `_render_node` method is the core of the hierarchy. It doesn't need to know 
 By leveraging recursive structures, you turn the complex task of rendering nested architectures into a predictable, automated process. You are no longer managing nodes; you are managing the *logic* that flows through them.
 
 {% raw %}
----
+
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
