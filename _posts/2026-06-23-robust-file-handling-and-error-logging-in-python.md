@@ -56,7 +56,7 @@ class SiteGenerator:
         html = self.layout_template.replace('{{ site.content }}', md_html_content)
 
         for key, value in self.config_mappings.items():
-            html = html.replace(f'{{{{ site.{key} }}}}', str(value))
+            html = html.replace(f'{% raw %}{{{{ site.{key} }}}}{% endraw %}', str(value))
         return html
     
     def _resolve_paths(self, md_file: Path, input_dir: Path, output_dir: Path) -> Tuple[Path, Path]:
