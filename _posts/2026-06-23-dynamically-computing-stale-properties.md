@@ -119,9 +119,6 @@ While `@property` is safer, it does execute logic every time it is called.
 
 By embracing dynamic properties, you transform your objects from rigid, static containers into flexible components that stay synchronized with the real-world state of your system.
 
-Are you dealing with other properties in your application that might be prone to staleness, such as configuration values that should be reloaded without a process restart?
-
-```
 
 {% raw %}
 

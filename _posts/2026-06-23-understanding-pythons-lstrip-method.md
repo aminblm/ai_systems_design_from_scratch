@@ -104,9 +104,7 @@ if line.startswith('#'):
 
 By leveraging `lstrip()`, you can transform raw, semi-structured text into clean, usable data structures with minimal code.
 
-How are you currently handling text parsing in your project, and are there other string-based patterns you are trying to clean or normalize?
 
-```
 
 {% raw %}
 

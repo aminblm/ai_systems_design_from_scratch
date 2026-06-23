@@ -124,9 +124,6 @@ def recv_framed(sock):
 * **Always implement a loop**: Keep reading from the socket until your chosen framing logic (delimiter or length count) signals that the message is complete.
 * **Use `sendall()**`: Just as `recv` is not atomic, `send` might not push the entire buffer at once. Always use `sendall()` to ensure the full message leaves the buffer.
 
-Have you encountered data corruption issues in your network services, and do you think your current protocol would be better served by delimiters or length-prefixing?
-
-```
 
 {% raw %}
 

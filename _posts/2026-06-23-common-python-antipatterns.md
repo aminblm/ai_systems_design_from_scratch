@@ -177,10 +177,6 @@ with open('data.txt', 'r') as f:
 
 By avoiding these pitfalls, your Python code becomes more readable, robust, and aligned with the "Pythonic" philosophy.
 
-Which of these antipatterns do you see most frequently in your current codebase?
-
-```
-
 {% raw %}
 
 

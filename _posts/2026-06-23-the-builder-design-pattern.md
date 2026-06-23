@@ -135,9 +135,6 @@ print(pc)
 
 The Builder pattern is about **clarity over brevity**. While it adds more code, it prevents the cognitive load associated with tracking long lists of arguments, making your object initialization declarative and robust.
 
-Are you currently dealing with objects that have large numbers of optional parameters in your project, and would you like to see how to implement a Director class to manage predefined "recipes" for building objects?
-
-```
 
 {% raw %}
 

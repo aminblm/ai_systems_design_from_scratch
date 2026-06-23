@@ -110,9 +110,7 @@ print(f"Pipeline Result: {result}")
 * **Declarative Syntax**: The code describes *what* to do rather than the internal loop logic of *how* to do it.
 * **Extensibility**: You can easily inject new stages (e.g., `project`, `group`, `sort`) without modifying existing logic.
 
-By structuring your processing logic this way, you bridge the gap between simple scripts and professional, pipeline-oriented data engineering architectures.
 
-```
 
 {% raw %}
 

@@ -112,9 +112,7 @@ When bugs inevitably occur, types provide crucial context:
 
 Type hinting isn't "overkill"; it’s **infrastructure**. Even in small scripts, the act of writing out the types forces you to think more deeply about your data contracts, which often leads to discovering architectural flaws before a single line of logic is written.
 
-Are you currently using a specific type checker like `mypy` or `pyright` in your workflow, and have you found that type hinting has significantly changed the way you structure your classes and functions?
 
-```
 
 {% raw %}
 

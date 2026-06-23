@@ -125,10 +125,6 @@ for client in clients:
 
 By treating network traffic as a structured API contract rather than a stream of text, you ensure your services can evolve independently without causing system-wide failures.
 
-Are you using raw strings in your current communication layer, and what is the biggest challenge you face when trying to migrate to a structured format like JSON?
-
-```
-
 {% raw %}
 
 

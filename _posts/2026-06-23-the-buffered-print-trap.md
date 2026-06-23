@@ -117,9 +117,6 @@ python -u my_script.py
 * **Avoid `print` for high-volume logs**: If you are logging thousands of lines per second, constant flushing will significantly degrade performance. Use the `logging` module with a proper handler.
 * **Understand Environment**: Remember that terminal emulators often have their *own* buffering layer. If you still see delays, check the settings of your terminal or IDE console.
 
-Do you rely on standard `print()` statements for your application logs, or are you currently using the `logging` module to manage your output streams?
-
-```
 
 {% raw %}
 

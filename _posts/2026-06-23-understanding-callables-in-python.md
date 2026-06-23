@@ -116,9 +116,6 @@ print(double.count) # 1
 * **Keep it Simple**: If you just need a straightforward transformation, stick to a regular `def` or `lambda`.
 * **Type Hinting**: When expecting a callable, use `typing.Callable` to ensure your code is robust and self-documenting.
 
-Do you have a use case in your current project where you need to maintain state inside a function, and would you like to see how to use `functools.partial` as an alternative to the `__call__` method?
-
-```
 
 {% raw %}
 

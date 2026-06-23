@@ -107,9 +107,6 @@ except socket.timeout:
 
 By treating every connection as potentially ephemeral, you transform your network layer from a fragile chain into a resilient, self-healing system.
 
-Do you have monitoring in place to track how many "hanging" connections your server holds at any given time, and have you considered implementing a heartbeat mechanism to differentiate between "slow" clients and "dead" clients?
-
-```
 
 {% raw %}
 

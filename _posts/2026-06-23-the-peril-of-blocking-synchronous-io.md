@@ -124,9 +124,6 @@ async def main():
 
 By moving away from blocking synchronous I/O, you ensure your CLI application remains a "living" entity capable of handling real-time communication alongside user interaction.
 
-How are you currently handling concurrency in your CLI tools, and does this bottleneck impact your existing architecture?
-
-```
 
 {% raw %}
 

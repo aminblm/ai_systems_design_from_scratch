@@ -114,9 +114,6 @@ print(router.dispatch("GET", "/index"))
 * **Method Enforcement**: Ensure your `dispatch` method explicitly checks for supported HTTP methods to return `405 Method Not Allowed` responses when appropriate.
 * **Separation of Concerns**: Keep your router strictly for mapping; do not perform complex data processing inside the `_routes` dictionary initialization.
 
-Is this routing architecture intended for a custom micro-framework you are building, or are you looking to optimize lookup performance in a larger existing application?
-
-```
 
 {% raw %}
 
