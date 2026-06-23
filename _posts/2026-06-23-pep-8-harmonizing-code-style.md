@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # PEP 8: Harmonizing Code Style
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 Code is read far more often than it is written. In Python, following the **PEP 8 style guide** is not just about aesthetics—it is about reducing the cognitive load for everyone who interacts with your codebase. By standardizing naming conventions, you provide immediate, implicit context about the role of a variable, constant, or method.
@@ -111,6 +117,7 @@ class ClientHandler:
 
 By adhering to these standard naming conventions, you allow the structure of your code to communicate its intent. It is one of the lowest-effort, highest-impact ways to improve the quality and professional appearance of your work.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -120,4 +127,6 @@ By adhering to these standard naming conventions, you allow the structure of you
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Memory-Efficient Text Processing with Generators
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 When parsing large text files—such as long-form Markdown documents or logs—loading the entire file into a list (a "buffer") is a recipe for disaster. As your input grows, so does your memory consumption, eventually leading to `MemoryError` or system slowdowns. **Generator-based filtering** is the solution, allowing you to process data in a stream rather than a bulk load.
@@ -100,6 +106,7 @@ def _clean_metadata(self, lines: List[str]) -> Generator[str, None, None]:
 
 By embracing generator-based filtering, you turn your parser into a lean, memory-efficient machine capable of handling text files of any size without breaking a sweat.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -109,4 +116,6 @@ By embracing generator-based filtering, you turn your parser into a lean, memory
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # The Pyramids of Doom (Deep Nesting)
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 The "Pyramid of Doom" is the visual manifestation of poor logic flow. It occurs when your search and aggregation functions grow deep, horizontally-growing forests of `if` statements. This pattern—where code progressively drifts further and further to the right—makes your logic unreadable, fragile, and difficult to test.
@@ -110,6 +116,7 @@ def process_data(data):
 
 By inverting your logic and focusing on early exits, you transform unreadable "pyramids" into clean, linear flows. This not only makes the code easier to read but ensures that your search and aggregation features remain extensible for years to come.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -119,4 +126,6 @@ By inverting your logic and focusing on early exits, you transform unreadable "p
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

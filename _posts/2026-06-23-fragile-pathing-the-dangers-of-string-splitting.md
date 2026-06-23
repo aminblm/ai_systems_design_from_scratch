@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Fragile Pathing: The Dangers of String Splitting
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 A common source of "brittle" code is using string manipulation to parse file paths. A classic antipattern is splitting on a dot to extract a filename: `md_file_name.split('.md')[0]`.
@@ -94,6 +100,7 @@ file_name = file_path.stem  # Results in "release.v1"
 
 By shifting from brittle string manipulation to object-oriented path handling, you eliminate a whole class of "file not found" or "wrong filename" bugs in your production systems.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -103,4 +110,6 @@ By shifting from brittle string manipulation to object-oriented path handling, y
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

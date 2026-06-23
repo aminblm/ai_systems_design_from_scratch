@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Structural Modeling: Representing Hierarchies
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 When modeling complex systems—like microservice topologies or infrastructure maps—we often need a way to represent parent-child relationships. The `dataclass` pattern combined with a recursive rendering structure is the most Pythonic and efficient way to map these hierarchical models to visual representations like HTML or graphs.
@@ -92,6 +98,7 @@ The `_render_node` method is the core of the hierarchy. It doesn't need to know 
 
 By leveraging recursive structures, you turn the complex task of rendering nested architectures into a predictable, automated process. You are no longer managing nodes; you are managing the *logic* that flows through them.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -101,4 +108,6 @@ By leveraging recursive structures, you turn the complex task of rendering neste
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

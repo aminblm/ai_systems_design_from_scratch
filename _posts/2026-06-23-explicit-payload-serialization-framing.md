@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Explicit Payload Serialization Framing
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 When streaming serialized data—such as JSON payloads—over a TCP socket, you are dealing with a continuous byte stream, not a collection of discrete files. A common failure is to assume that `socket.send()` on the client will map perfectly to a single `socket.recv()` on the server. In reality, TCP can fragment your data or combine multiple small messages into one, leading to "stream bleeding" where messages are mangled together.
@@ -111,6 +117,7 @@ By appending an explicit frame marker, you transform a fragile, stream-corruptin
 
 **Are you currently using newline framing, or have you encountered issues with binary data that requires a more robust length-prefixed header approach?**
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -120,4 +127,6 @@ By appending an explicit frame marker, you transform a fragile, stream-corruptin
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

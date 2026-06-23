@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Reactive State and UI Reconciliation
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 Modern UI frameworks rely on "reactivity"—the ability of a system to automatically update the view when the underlying state changes. In Python, we can simulate this reactive behavior using the **Descriptor Protocol** (`__get__`, `__set__`) and a component-based lifecycle.
@@ -84,6 +90,7 @@ The `ReconcileUI` class acts as the orchestrator. It holds the registry of compo
 
 By combining descriptors for property-level reactivity and a dirty-flagging system for caching, you create a lightweight, efficient framework that mimics the reactive principles found in major front-end libraries.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -93,4 +100,6 @@ By combining descriptors for property-level reactivity and a dirty-flagging syst
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

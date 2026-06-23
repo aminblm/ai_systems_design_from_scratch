@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Designing Robust RPC Clients: The JSON-Frame Pattern
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 Remote Procedure Calls (RPC) allow an application to execute logic on a remote server as if it were a local function call. To build a robust RPC client, you must bridge the gap between high-level data structures (like Python dictionaries) and the raw, stream-oriented nature of TCP sockets.
@@ -84,6 +90,7 @@ The `ResilientGitRPCClient` encapsulates this logic, keeping the application cod
 
 By combining JSON serialization for flexibility, newline-based framing for reliability, and context management for resource safety, you create a robust RPC client capable of handling sophisticated orchestration tasks across a network.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -93,4 +100,6 @@ By combining JSON serialization for flexibility, newline-based framing for relia
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

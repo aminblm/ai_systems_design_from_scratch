@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Redundant Abstractions: Flattening the Pipeline
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In software engineering, we often feel that "more classes mean better design." However, when you see a pipeline containing `MarkdownToHTMLBuilder`, `MarkdownToHTML`, and `HTMLGenerator`, you aren't looking at "clean design"—you are looking at **Redundant Abstraction**.
@@ -97,6 +103,7 @@ def markdown_to_html(markdown_text: str) -> str:
 
 Complexity is the enemy of maintainability. By stripping away these redundant abstractions, you turn an opaque "web" of code into a transparent, linear pipeline that is easy to read, test, and evolve.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -106,4 +113,6 @@ Complexity is the enemy of maintainability. By stripping away these redundant ab
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

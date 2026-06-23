@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Cohesive Sub-methods: The Path to Clean Orchestration
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 A common architectural trap in Python development is the "God Method"—a single, monolithic function that handles user input, processes business logic, and manages network communication. This creates code that is nearly impossible to test and terrifying to modify.
@@ -102,6 +108,7 @@ class GitTaskOrchestrator:
 
 By decomposing your complex methods into small, cohesive sub-methods, you don't just write "better" code—you write code that is modular, flexible, and fundamentally easier to reason about.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -111,4 +118,6 @@ By decomposing your complex methods into small, cohesive sub-methods, you don't 
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

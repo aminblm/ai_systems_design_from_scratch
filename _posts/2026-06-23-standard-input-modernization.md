@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Standard Input Modernization
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In basic Python scripts, `input()` is the go-to for gathering user data. However, when you build automation tools that process streams of data—or when you need to handle piped input and EOF markers reliably—`input()` becomes a liability. Transitioning to `sys.stdin.readline()` provides the precision required for production-grade CLI tools.
@@ -101,6 +107,7 @@ def process_stream():
 
 By modernizing how you ingest data, you make your tools compatible with the broader Unix ecosystem. `sys.stdin.readline()` turns your script from a simple interactive program into a powerful part of a command-line pipeline.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -110,4 +117,6 @@ By modernizing how you ingest data, you make your tools compatible with the broa
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

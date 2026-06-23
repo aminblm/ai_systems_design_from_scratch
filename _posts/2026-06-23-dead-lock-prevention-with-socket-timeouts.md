@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Dead-Lock Prevention with Socket Timeouts
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In network-heavy Python applications, a "deadlock" is often not a logical error, but a resource exhaustion issue. If a client connects and then goes silent, your thread or process might hang indefinitely, waiting for data that will never arrive. This consumes memory and file descriptors, eventually starving your server of resources.
@@ -105,6 +111,7 @@ Do you have monitoring in place to track how many "hanging" connections your ser
 
 ```
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -114,4 +121,6 @@ Do you have monitoring in place to track how many "hanging" connections your ser
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

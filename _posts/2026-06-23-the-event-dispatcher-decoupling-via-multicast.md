@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # The Event Dispatcher: Decoupling via Multicast
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In complex systems, components often need to communicate without being tightly bound to one another. Hard-coding dependencies (e.g., `ModuleA` calling `ModuleB` directly) creates a fragile, rigid architecture. The **Observer Pattern**, implemented here as an `EventDispatcher`, provides a clean solution: a centralized "broker" that manages communication between producers and consumers.
@@ -99,6 +105,7 @@ class EventDispatcher:
 
 The `EventDispatcher` transforms your architecture from a rigid tree into a flexible, communicative network. It is the foundation for building systems that are truly modular and capable of evolving alongside your requirements.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -108,4 +115,6 @@ The `EventDispatcher` transforms your architecture from a rigid tree into a flex
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

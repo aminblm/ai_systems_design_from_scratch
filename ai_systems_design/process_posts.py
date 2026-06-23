@@ -53,6 +53,10 @@ AUTHOR_CARD = """
 </div>
 """
 
+def wrap_raw(content):
+    """Wraps the content in Jekyll raw tags."""
+    return f"{{% raw %}}\n{content}\n{{% endraw %}}\n"
+
 def process_posts(input_dir, output_dir):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -65,20 +69,22 @@ def process_posts(input_dir, output_dir):
             with open(input_path, 'r', encoding='utf-8') as f:
                 content = f.read()
 
-            # Split only on the first occurrence to isolate YAML header
             parts = re.split(r'^---', content, maxsplit=2, flags=re.MULTILINE)
             if len(parts) < 3: continue
             
             front_matter, body = parts[1], parts[2]
             
-            # Clean body: Remove any remaining '---' that act as horizontal rules
-            # We look for lines containing only '---' (with optional whitespace)
+            # Clean body of redundant horizontal rules
             body = re.sub(r'^\s*---\s*$', '', body, flags=re.MULTILINE)
             
-            # Reconstruction
-            new_content = f"---\n{front_matter}\n---\n{META_TEMPLATE}\n{AUTHOR_LINK_HTML}\n{LINKS_DIV}\n{body}"
-            new_content = re.sub(r'(# .+\n)', r'\1\n' + AUTHOR_CARD + '\n', new_content, count=1)
-            new_content = new_content.rstrip() + "\n\n---\n" + AUTHOR_LINK_HTML + "\n"
+            # Reconstruct with Metas and wrapped HTML elements
+            new_content = f"---\n{front_matter}\n---\n{META_TEMPLATE}\n{wrap_raw(AUTHOR_LINK_HTML + '\n' + LINKS_DIV)}\n{body}"
+            
+            # Insert Author Card after the first H1
+            new_content = re.sub(r'(# .+\n)', r'\1\n' + wrap_raw(AUTHOR_CARD) + '\n', new_content, count=1)
+            
+            # Append Footer
+            new_content = new_content.rstrip() + "\n\n" + wrap_raw("---\n" + AUTHOR_LINK_HTML) + "\n"
             
             with open(output_path, 'w', encoding='utf-8') as f:
                 f.write(new_content)

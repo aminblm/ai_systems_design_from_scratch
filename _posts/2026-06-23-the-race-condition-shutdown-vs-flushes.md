@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # The Race Condition: Shutdown vs. Flushes
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In high-performance networking, we often assume that when our code calls a cleanup function, the action is instantaneous. However, there is a dangerous **race condition** lurking in most `try-finally` blocks: the gap between calling `socket.shutdown()` and the kernel actually finishing the transmission of data buffered in the OS.
@@ -109,6 +115,7 @@ def robust_client_handler(sock):
 
 Networking is a game of synchronization. By understanding how the kernel manages your data after it leaves your code, you can avoid the subtle race conditions that make distributed systems feel unpredictable.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -118,4 +125,6 @@ Networking is a game of synchronization. By understanding how the kernel manages
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

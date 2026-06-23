@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Building a Resilient Distributed System Integration Suite
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In modern backend architecture, testing individual components is only half the battle. To ensure high availability and graceful failure, you need a unified test harness that can spin up services, manage stateful connections, and handle unexpected shutdowns cleanly.
@@ -120,6 +126,7 @@ if __name__ == "__main__":
 2. **Telemetry and Metrics**: Integrate logging or custom telemetry hooks into your components. When running distributed simulations, seeing the `asctime` and `levelname` across different modules is essential for reconstructing the sequence of events.
 3. **Fail-Fast vs. Recover**: Decide which components are critical. For non-critical services (like UI components), implement recovery loops. For critical infrastructure (like the Database), implement fail-fast mechanisms to prevent corrupted data state.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -129,4 +136,6 @@ if __name__ == "__main__":
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Scaling Concurrency: The Multi-Threaded Engine
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In a single-threaded network server, the `accept()` loop is a major bottleneck. If the server is busy handling a single client, it cannot accept new connections, leading to massive latency for every other user. By transitioning to a **Multi-Threaded Concurrent Execution Engine**, you shift the orchestrator's role from "executor" to "manager," allowing the system to handle overlapping tasks with ease.
@@ -109,6 +115,7 @@ class ConcurrentServer:
 
 By delegating execution to dynamic threads, you transform your orchestrator into a lean manager, ensuring that no single client can monopolize your server's resources.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -118,4 +125,6 @@ By delegating execution to dynamic threads, you transform your orchestrator into
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

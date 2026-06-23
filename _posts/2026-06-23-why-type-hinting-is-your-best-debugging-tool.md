@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Why Type Hinting is Your Best Debugging Tool
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 For years, Python’s "duck typing" philosophy—*if it walks like a duck and quacks like a duck, it must be a duck*—was celebrated for its simplicity. However, as codebases grow, that same flexibility often becomes a liability. **Type hinting** is the modern solution to this, turning runtime surprises into compile-time certainty.
@@ -110,6 +116,7 @@ Are you currently using a specific type checker like `mypy` or `pyright` in your
 
 ```
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -119,4 +126,6 @@ Are you currently using a specific type checker like `mypy` or `pyright` in your
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

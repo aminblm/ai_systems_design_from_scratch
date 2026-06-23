@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Building Resilient RPC Servers for Remote Workflow Automation
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In distributed systems, Remote Procedure Call (RPC) servers act as the bridge for executing tasks on remote nodes. When dealing with sensitive workflows like Git operations, your server must be capable of handling concurrent connections, preventing zombie sessions, and validating incoming payloads defensively.
@@ -136,6 +142,7 @@ class ThreadedGitRPCServer:
 2. **Schema Validation**: Before executing any command, verify the `request_data` has the necessary keys. This prevents `KeyError` crashes in your logic layer.
 3. **Logging**: Always log the `client_addr` when connections are established or dismantled. This is invaluable when auditing system failures in a distributed architecture.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -145,4 +152,6 @@ class ThreadedGitRPCServer:
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

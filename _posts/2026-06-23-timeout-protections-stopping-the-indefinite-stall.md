@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Timeout Protections: Stopping the Indefinite Stall
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 A common failure mode in network programming is the "infinite hang." If a server stops responding, your client might wait forever for a `recv()` call that will never return. Without a explicit timeout, your application process becomes a zombie, consuming resources while stuck in an I/O wait state.
@@ -96,6 +102,7 @@ def connect_and_read(host, port):
 
 Explicit timeout protections convert your system from one that "waits for failure" to one that "actively manages failure." It is a fundamental requirement for any network-facing service.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -105,4 +112,6 @@ Explicit timeout protections convert your system from one that "waits for failur
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

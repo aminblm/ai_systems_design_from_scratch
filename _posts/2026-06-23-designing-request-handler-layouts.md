@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Designing Request-Handler Layouts
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In Python web development, mapping incoming HTTP requests to specific logic is the backbone of any framework. Using a dictionary-based routing table—specifically structured as `self._routes[HTTP_METHOD][URL_PATH] = Handler_Callback`—is a highly efficient and performant way to manage application traffic.
@@ -112,6 +118,7 @@ Is this routing architecture intended for a custom micro-framework you are build
 
 ```
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -121,4 +128,6 @@ Is this routing architecture intended for a custom micro-framework you are build
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

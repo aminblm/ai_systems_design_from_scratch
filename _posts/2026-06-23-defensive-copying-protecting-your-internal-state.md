@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Defensive Copying: Protecting Your Internal State
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In Python, collections like `list`, `dict`, and `set` are mutable objects. When you store these in a class and expose them via a getter method, returning the original reference is a common source of "spooky action at a distance"—where external code accidentally modifies your internal state.
@@ -108,6 +114,7 @@ docs.append("safe_doc.txt") # manager._documents remains unchanged!
 
 Defensive copying is a simple technique that prevents subtle, hard-to-track bugs. By keeping your class's internal state encapsulated, you create a system that is predictable, robust, and much easier to debug.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -117,4 +124,6 @@ Defensive copying is a simple technique that prevents subtle, hard-to-track bugs
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

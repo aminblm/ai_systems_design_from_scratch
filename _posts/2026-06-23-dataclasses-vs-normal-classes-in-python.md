@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Dataclasses vs. Normal Classes in Python
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In modern Python development, the `dataclass` decorator (introduced in Python 3.7) has revolutionized how we handle objects that primarily exist to store data. Moving away from manual `__init__` boilerplate and error-prone attribute assignments is a critical step toward writing cleaner, more professional code.
@@ -118,6 +124,7 @@ Dataclasses are specifically for **data-centric objects**. You should continue u
 
 Always treat your data objects as schemas. Using dataclasses with type hints turns your data structures into self-documenting contracts, making it significantly easier for your team to understand exactly what data a method expects and returns.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -127,4 +134,6 @@ Always treat your data objects as schemas. Using dataclasses with type hints tur
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

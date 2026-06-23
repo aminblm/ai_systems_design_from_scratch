@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Instance State Pollution: The Socket Race Condition
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In a single-threaded environment, assigning a socket to an instance variable (`self.client_socket = sock`) feels harmless. However, the moment your architecture grows to support concurrency—such as multi-threading or asynchronous task processing—this pattern becomes a **critical security vulnerability**.
@@ -105,6 +111,7 @@ class Server:
 
 By eliminating shared state in your network handlers, you turn a fragile, blocking server into a robust, concurrent powerhouse capable of scaling to meet your users' needs.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -114,4 +121,6 @@ By eliminating shared state in your network handlers, you turn a fragile, blocki
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

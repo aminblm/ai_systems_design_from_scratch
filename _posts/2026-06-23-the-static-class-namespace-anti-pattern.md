@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # The Static Class Namespace Anti-Pattern
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In languages like Java or C#, class-based structures are mandatory for organizing code. This leads many developers to carry over the "Static Class" habit into Python. However, wrapping stateless functions inside a `class` (e.g., `HelperClass`, `FileManager`) when they don't hold state is a **code smell**. 
@@ -114,6 +120,7 @@ Classes are powerful, but they should only be used when they **manage state** or
 
 By abandoning the static class anti-pattern, you reduce the surface area of your code, improve import ergonomics, and embrace the architecture that Python was designed for.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -123,4 +130,6 @@ By abandoning the static class anti-pattern, you reduce the surface area of your
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

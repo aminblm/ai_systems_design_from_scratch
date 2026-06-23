@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Breaking the Monolith: Refactoring CLI Interfaces
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 When building command-line interfaces (CLI), it is tempting to dump all your logic—input collection, validation, and network communication—into a single `while True:` loop. While this works for a tiny script, it quickly becomes a "God Method" that is impossible to test, maintain, or extend. This is a clear violation of the **Single Responsibility Principle (SRP)**.
@@ -106,6 +112,7 @@ class CLIInterface:
 
 By breaking the monolith, you turn a fragile script into a robust application. You are no longer writing code that "just works"—you are building a maintainable system that can grow with your project's needs.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -115,4 +122,6 @@ By breaking the monolith, you turn a fragile script into a robust application. Y
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

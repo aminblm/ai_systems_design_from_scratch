@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # The Infinite Blocking Loop
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 The primary purpose of a task orchestrator is to manage multiple workloads simultaneously. However, a common architectural failure is the "Infinite Blocking Loop," where the scheduler runs on a single thread and uses `time.sleep()` within the task loop. When this happens, the entire system grinds to a halt whenever one task is busy or waiting, effectively turning your "parallel" orchestrator into a slow, sequential script.
@@ -102,6 +108,7 @@ asyncio.run(scheduler([("Task A", 5), ("Task B", 2)]))
 
 By shifting from a synchronous "wait-and-do" model to an asynchronous "event-driven" model, you transform your orchestrator from a fragile sequential loop into a resilient, highly concurrent engine.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -111,4 +118,6 @@ By shifting from a synchronous "wait-and-do" model to an asynchronous "event-dri
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

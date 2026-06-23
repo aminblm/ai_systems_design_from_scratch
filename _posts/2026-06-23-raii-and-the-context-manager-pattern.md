@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # RAII and the Context Manager Pattern
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In systems programming, "Resource Acquisition Is Initialization" (RAII) is a pattern that ties the lifecycle of a resource—like a network socket or a file handle—to the lifetime of an object. In Python, this is implemented via the **Context Manager** (`__enter__` and `__exit__` methods). When dealing with low-level network operations, failing to close a socket can lead to file descriptor exhaustion, effectively killing your server's ability to accept new connections.
@@ -99,6 +105,7 @@ with SocketConnection("localhost", 8080) as sock:
 
 By shifting to the RAII context manager pattern, you turn "resource management" into an automated feature of your code's structure. You are no longer responsible for remembering to close resources; your architecture is now responsible for them.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -108,4 +115,6 @@ By shifting to the RAII context manager pattern, you turn "resource management" 
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

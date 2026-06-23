@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Building Resilient I/O and Network Utilities
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 Reliable systems are built on a foundation of stable infrastructure utilities. When interacting with the filesystem or network sockets, you must account for common failure modes like file corruption, port collisions, and connection timeouts. By centralizing these operations, you create a "source of truth" that ensures consistency across your entire architecture.
@@ -114,6 +120,7 @@ class SocketUtility:
 2. **Centralized Logging**: Note the use of `logger.critical` and `logger.error`. These categorize issues by severity, allowing monitoring tools (like ELK or Sentry) to trigger alerts only when infrastructure-level failures (like socket binding) occur.
 3. **Encapsulation**: By wrapping `socket.socket` and standard `open()` calls, you allow your higher-level business logic to remain clean and focused on task execution rather than plumbing details.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -123,4 +130,6 @@ class SocketUtility:
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

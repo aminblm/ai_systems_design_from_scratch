@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Hidden Inputs and Side-Effecting Decorators
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 Decorators are powerful tools for cross-cutting concerns, but they become a liability when they depend on *how* a function is called rather than *what* a function is. Relying on `kwargs` for validation—like looking for `input_dir` inside a decorator—creates an API where the slightest deviation in calling syntax causes security and logic failures.
@@ -122,6 +128,7 @@ def with_error_handling(func):
 
 By shifting from "guessing" the input through dictionary lookups to "binding" it via signature inspection, you eliminate one of the most common and dangerous failure modes in Python's decorator ecosystem.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -131,4 +138,6 @@ By shifting from "guessing" the input through dictionary lookups to "binding" it
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

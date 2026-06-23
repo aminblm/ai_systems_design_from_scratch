@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Architecting Multi-Threaded Network Daemons
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 When designing high-concurrency systems, a single-threaded server will quickly become a bottleneck. To handle multiple incoming client requests simultaneously, we must utilize a **Multi-Threaded Server** pattern. This ensures that a long-running task for one client does not block the entire system from accepting other connections.
@@ -122,6 +128,7 @@ class ThreadedContainerManager:
 2. **Daemon Threads**: By setting `daemon=True` on your `threading.Thread` instances, you ensure that these threads do not block the program from exiting if the main process receives a termination signal.
 3. **Buffer Management**: When performing `recv(max_buffer_size)`, always handle the case where the data might be empty (signifying a client disconnect) or incomplete, and sanitize all input before routing it to business logic.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -131,4 +138,6 @@ class ThreadedContainerManager:
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

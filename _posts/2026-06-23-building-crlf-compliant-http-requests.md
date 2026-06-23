@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Building CRLF-Compliant HTTP Requests
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In the world of network protocols, the difference between a functional request and a security vulnerability often comes down to a few invisible characters. HTTP mandates the use of **CRLF** (Carriage Return + Line Feed, `\r\n`) to delimit headers and separate the header section from the body.
@@ -100,6 +106,7 @@ def create_http_request(method, path, headers: dict, body: str = ""):
 
 By adhering to the CRLF standard, you ensure your requests are portable across different servers and safe from injection attacks.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -109,4 +116,6 @@ By adhering to the CRLF standard, you ensure your requests are portable across d
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

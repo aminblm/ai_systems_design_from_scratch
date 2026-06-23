@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Beyond Whitespace: The Power of .strip()
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 When we first learn Python, `.strip()` is presented as the simple "space remover." In reality, it is a surgical tool for data cleaning. By providing a string argument to `.strip()`, you can remove any set of characters from the start and end of your strings.
@@ -103,6 +109,7 @@ print(filename.strip("/")) # Result: "my_data_file"
 
 `.strip()` is the Swiss Army knife of string manipulation. By passing specific character sets, you turn a generic utility into a precise parser for your data pipeline.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -112,4 +119,6 @@ print(filename.strip("/")) # Result: "my_data_file"
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

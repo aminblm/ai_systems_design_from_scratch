@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Load Balancing: The Round-Robin Pattern
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In distributed systems, a **Load Balancer** is the traffic cop that sits in front of your backend servers. Its purpose is to ensure no single server becomes a bottleneck by distributing incoming requests across a pool of available nodes.
@@ -94,6 +100,7 @@ def route_request(self, request_context: Dict[str, Any]) -> str:
 
 By abstracting the routing behind a standard interface, you can add or remove server nodes from your infrastructure without changing the client-facing code, providing massive flexibility for scaling.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -103,4 +110,6 @@ By abstracting the routing behind a standard interface, you can add or remove se
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

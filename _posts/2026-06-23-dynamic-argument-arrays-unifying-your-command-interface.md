@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Dynamic Argument Arrays: Unifying Your Command Interface
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 A common bottleneck in CLI design is the "fixed-argument trap," where methods are tightly coupled to a specific number of positional arguments. To build a truly interactive shell environment, your method routes should accept a unified dynamic signature, typically `args: List[str]`. This pattern decouples your command-logic from the shell's input parsing.
@@ -96,6 +102,7 @@ class CommandHandler:
 
 By standardizing your routes to accept dynamic lists, you move from a brittle, hard-coded command set to a modular engine that can grow in complexity without requiring fundamental architectural changes.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -105,4 +112,6 @@ By standardizing your routes to accept dynamic lists, you move from a brittle, h
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

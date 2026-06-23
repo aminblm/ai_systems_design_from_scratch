@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Preventing Resource Leaks: The "Dangling Socket" Problem
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In robust networking, the most silent killer of services is not a logic bug, but a resource leak. If your code crashes during an I/O operation—like a `recv()` timeout or a user-triggered `Ctrl+C` interrupt—and it fails to execute the final `.close()` call, the underlying TCP socket remains held open by the operating system.
@@ -103,6 +109,7 @@ Network interruptions are a fact of life. If a client drops their connection wit
 
 A resilient server is a self-cleaning one. By wrapping your network operations in defensive cleanup blocks, you ensure that every socket—whether closed by intent or by interruption—is properly returned to the OS.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -112,4 +119,6 @@ A resilient server is a self-cleaning one. By wrapping your network operations i
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

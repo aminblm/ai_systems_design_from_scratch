@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Designing a Resilient RPC Client
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 Executing Git commands over a network is fraught with challenges, from connection drops to stream corruption. To build a system that is truly production-ready, we must treat the transport layer as unreliable and wrap our Remote Procedure Call (RPC) logic in a protocol that guarantees message integrity.
@@ -100,6 +106,7 @@ When our client is tasked with a Git operation, it moves through a controlled li
 
 By combining explicit framing, RAII-based cleanup, and robust retry logic, you turn a fragile network interaction into a reliable Git RPC client capable of scaling across your infrastructure.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -109,4 +116,6 @@ By combining explicit framing, RAII-based cleanup, and robust retry logic, you t
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 

@@ -23,6 +23,7 @@ layout: default
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 </head>
 
+{% raw %}
 
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
@@ -39,14 +40,19 @@ layout: default
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
 
+{% endraw %}
+
 
 
 # Resource Lifecycle Management: The Context Manager Pattern
 
+{% raw %}
 
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
+
+{% endraw %}
 
 
 In network programming, managing the lifecycle of resources—like TCP sockets—is a major source of technical debt. If a network operation crashes, a naive implementation might leave the socket file descriptor open, eventually leading to exhaustion and system instability.
@@ -96,6 +102,7 @@ with ContainerManagerClient("localhost", 8080) as client:
 
 The Context Manager pattern is the bridge between a fragile script that crashes and a robust application that manages its own lifecycle. By defining these boundaries, you ensure that even under error conditions, your system returns to a clean state.
 
+{% raw %}
 ---
 
 <a href="https://linktr.ee/aminboulouma" 
@@ -105,4 +112,6 @@ The Context Manager pattern is the bridge between a fragile script that crashes 
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
+{% endraw %}
 
