@@ -1,7 +1,13 @@
+---
+
 
 title: "Building CRLF-Compliant HTTP Requests"
 description: "Learn why CRLF line endings are critical for HTTP protocol adherence and how to prevent common request-splitting vulnerabilities."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

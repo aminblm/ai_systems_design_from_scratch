@@ -1,7 +1,13 @@
+---
+
 
 title: "The Peril of Blocking Synchronous I/O in CLI Tools"
 description: "Understanding why mixing synchronous network I/O with blocking terminal input leads to stalled connections and system deadlocks."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

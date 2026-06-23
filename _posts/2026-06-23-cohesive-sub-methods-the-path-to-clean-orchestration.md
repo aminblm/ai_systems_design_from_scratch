@@ -1,7 +1,13 @@
+---
+
 
 title: "Modular Design: Achieving Cohesion in Python"
 description: "Learn how to enhance code maintainability and testability by extracting input handling and network logic into cohesive sub-methods."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

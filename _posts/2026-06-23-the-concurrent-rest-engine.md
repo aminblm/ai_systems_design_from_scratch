@@ -1,7 +1,13 @@
+---
+
 
 title: "The Concurrent REST Engine: Architecture and Execution"
 description: "Analysis of a threaded REST engine design, focusing on route mapping, connection lifecycles, and thread-safe transport."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

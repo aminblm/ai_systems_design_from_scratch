@@ -1,7 +1,13 @@
+---
+
 
 title: "String Splitting: .splitlines() vs .split('\n')"
 description: "Discover the subtle but critical differences between .splitlines() and .split('\n') for robust text processing in Python."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

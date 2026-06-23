@@ -1,7 +1,13 @@
+---
+
 
 title: "Reliable Network Streams: Mastering Payload Framing"
 description: "Discover why streaming data over raw sockets requires explicit framing markers to prevent message interleaving and corruption."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

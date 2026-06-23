@@ -1,7 +1,13 @@
+---
+
 
 title: "Pattern Matching in Python: A Modern Approach to Logic"
 description: "Master Python's match-case syntax to simplify complex conditional logic, improve readability, and replace brittle if-elif chains."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

@@ -1,7 +1,13 @@
+---
+
 
 title: "The Silent Race: Understanding Socket Shutdown and Kernel Buffering"
 description: "Learn why premature socket shutdown leads to data loss and how to synchronize your cleanup logic with kernel buffer flushes."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

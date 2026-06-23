@@ -165,9 +165,6 @@ def clean_author(input_dir, output_dir):
             # Force empty lines around div/a blocks if they precede headers
             content = re.sub(r'(</div>|</a>)\s*\n(?=#)', r'\1\n\n\n', content)
             
-            # Remove isolated horizontal rules
-            content = re.sub(r'^\s*---\s*$', '', content, flags=re.MULTILINE)
-
             with open(output_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             

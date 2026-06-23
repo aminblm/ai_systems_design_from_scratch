@@ -1,7 +1,13 @@
+---
+
 
 title: "Understanding the recv(1024) Buffer Trap"
 description: "Why relying on fixed-buffer reads in TCP is a common network antipattern and how to implement proper stream framing."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

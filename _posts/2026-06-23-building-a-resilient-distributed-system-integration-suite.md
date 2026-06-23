@@ -1,7 +1,13 @@
+---
+
 
 title: "Building a Resilient Distributed System Integration Suite"
 description: "Learn to orchestrate complex Python system components using centralized logging, resilient design patterns, and automated test rigs."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

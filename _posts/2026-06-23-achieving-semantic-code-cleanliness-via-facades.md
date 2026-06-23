@@ -1,7 +1,13 @@
+---
+
 
 title: "Achieving Semantic Code Cleanliness via Facades"
 description: "Learn how to simplify complex subsystem interactions by applying the Facade design pattern to your codebase."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

@@ -1,7 +1,13 @@
+---
+
 
 title: "Building an Aggregate Functional Pipeline in Python"
 description: "Learn how to transform standard aggregation techniques into a production-ready, multi-stage functional pipeline."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

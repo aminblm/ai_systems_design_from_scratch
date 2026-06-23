@@ -1,7 +1,13 @@
+---
+
 
 title: "The Facade Design Pattern"
 description: "A comprehensive guide to the Facade design pattern, its utility in reducing complexity, and how to implement it for cleaner APIs."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

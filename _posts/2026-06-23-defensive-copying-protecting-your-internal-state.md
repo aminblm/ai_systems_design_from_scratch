@@ -1,7 +1,13 @@
+---
+
 
 title: "The Importance of Defensive Copying in Python"
 description: "Learn how to prevent side-effect bugs by returning copies of mutable collections rather than the original references."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

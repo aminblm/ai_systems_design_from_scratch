@@ -1,7 +1,13 @@
+---
+
 
 title: "Understanding Callables in Python"
 description: "A deep dive into what makes an object 'callable' in Python and how to leverage the __call__ method for cleaner, stateful functions."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

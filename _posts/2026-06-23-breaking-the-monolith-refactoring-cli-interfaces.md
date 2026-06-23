@@ -1,7 +1,13 @@
+---
+
 
 title: "Breaking the Monolith: Refactoring CLI Interfaces"
 description: "Learn how to apply the Single Responsibility Principle (SRP) to CLI applications by decoupling input, validation, and execution."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

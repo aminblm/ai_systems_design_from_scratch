@@ -1,7 +1,13 @@
+---
+
 
 title: "Robust File Handling and Error Logging in Python"
 description: "Learn how to build resilient Python systems using os, pathlib, logging, and traceback for efficient file processing."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

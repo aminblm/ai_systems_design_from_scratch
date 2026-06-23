@@ -1,7 +1,13 @@
+---
+
 
 title: "The Resilience Boundary: Try-Except vs. Raising Errors"
 description: "Learn the essential distinction between handling errors locally and bubbling them up in your application architecture."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

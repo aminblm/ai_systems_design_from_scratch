@@ -1,7 +1,13 @@
+---
+
 
 title: "The Silent Danger of Under-Engineering"
 description: "Why neglecting foundational robustness leads to technical debt and brittle, unscalable software systems."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

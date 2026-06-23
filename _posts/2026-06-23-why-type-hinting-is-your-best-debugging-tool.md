@@ -1,7 +1,13 @@
+---
+
 
 title: "Why Python Type Hinting is Your Best Debugging Tool"
 description: "Explore how type hinting transforms Python from a dynamic, error-prone language into a robust, self-documenting development environment."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

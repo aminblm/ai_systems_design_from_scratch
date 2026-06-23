@@ -1,7 +1,13 @@
+---
+
 
 title: "Resource Safety with RAII: The Python Context Manager Pattern"
 description: "Learn how to prevent resource leaks and ensure reliable socket cleanup using Python's context manager (with) pattern."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

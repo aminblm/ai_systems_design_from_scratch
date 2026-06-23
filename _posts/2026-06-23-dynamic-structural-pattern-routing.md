@@ -1,7 +1,13 @@
+---
+
 
 title: "Dynamic Structural Pattern Routing in Python"
 description: "How to replace hardcoded strings with structural pattern matching to build flexible, high-performance request routers."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">

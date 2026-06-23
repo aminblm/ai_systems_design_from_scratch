@@ -1,7 +1,13 @@
+---
+
 
 title: "Building a Resilient RPC Client for Git Operations"
 description: "Learn to design a robust Remote Procedure Call (RPC) client that leverages safe TCP framing for reliable Git task execution."
 layout: default
+
+
+---
+
 
 <head>
   <meta charset="utf-8">
