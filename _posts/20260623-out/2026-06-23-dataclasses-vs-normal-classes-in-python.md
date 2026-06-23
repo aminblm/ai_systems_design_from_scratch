@@ -1,0 +1,80 @@
+---
+
+title: "Dataclasses vs. Normal Classes in Python"
+description: "Discover why dataclasses have become the modern standard for data-centric objects and how they improve code safety."
+layout: default
+
+---
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.description | default: site.description }}">
+</head>
+
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
+
+<div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
+  <a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
+  <a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a>
+  <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
+</div>
+
+
+
+# Dataclasses vs. Normal Classes in Python
+
+
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
+
+In modern Python development, the `dataclass` decorator (introduced in Python 3.7) has revolutionized how we handle objects that primarily exist to store data. Moving away from manual `__init__` boilerplate and error-prone attribute assignments is a critical step toward writing cleaner, more professional code.
+
+## The Problem: The Boilerplate Tax
+
+Standard classes often require repetitive code just to initialize attributes. This creates surface area for bugs—such as typos in variable names or inconsistent initializations.
+
+### The Old Way (Standard Class)
+```python
+class User:
+    def __init__(self, name, age, email):
+        self.name = name
+        self.age = age
+        self.email = email
+
+    def __repr__(self):
+        return f"User(name={self.name}, age={self.age})"
+
+```
+
+---
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
