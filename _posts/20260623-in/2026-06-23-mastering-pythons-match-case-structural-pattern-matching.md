@@ -49,13 +49,9 @@ layout: default
 
 # Mastering Python's `match-case` (Structural Pattern Matching)
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 Introduced in Python 3.10, the `match-case` statement is far more than a simple "switch-case" replacement found in other languages. It is a powerful **Structural Pattern Matching** engine that allows you to inspect the shape, type, and content of data with unparalleled clarity.

@@ -41,7 +41,7 @@ description: "Demystifying distributed systems infrastructure: Implementing a fa
 # Building a Fault-Tolerant Load Balancer From Scratch
 
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
 
 In high-availability web architecture, a **Load Balancer** sits at the entry boundary of your infrastructure. Its core duty is to act as a traffic proxy—intercepting incoming client application requests and strategically distributing them across an underlying cluster of target backend application servers. 

@@ -49,13 +49,9 @@ layout: default
 
 # Designing a Resilient RPC Client
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 Executing Git commands over a network is fraught with challenges, from connection drops to stream corruption. To build a system that is truly production-ready, we must treat the transport layer as unreliable and wrap our Remote Procedure Call (RPC) logic in a protocol that guarantees message integrity.

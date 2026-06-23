@@ -49,13 +49,9 @@ layout: default
 
 # Intent Matching: From Raw Input to Structured Response
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 Building a conversational interface requires a mechanism to translate vague, human-readable input into specific, actionable "intents." An `IntentMatchingEngine` is the bridge between chaotic user input and your application's logic.

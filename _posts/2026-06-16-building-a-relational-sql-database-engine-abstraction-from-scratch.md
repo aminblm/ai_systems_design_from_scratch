@@ -41,7 +41,7 @@ description: "Demystifying storage-layer gateways: Implementing a stateful relat
 # Building a Relational SQL Database Engine Abstraction From Scratch
 
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
 
 In backend engineering, interacting with data-tier systems typically involves abstract client interfaces or Object-Relational Mappers (ORMs). When using libraries like Python's built-in `sqlite3`, PostgreSQL drivers, or MySQL connectors, your code relies on an architectural pattern known as the **Database Gateway and Cursor Lifecycle**. This manager maintains the file socket state, coordinates atomicity boundaries (`COMMIT` and `ROLLBACK`), and abstracts lower-level low-density table parsing routines into explicit application-layer primitives.

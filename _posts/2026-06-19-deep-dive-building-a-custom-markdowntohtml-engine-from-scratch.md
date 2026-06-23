@@ -41,7 +41,7 @@ description: "Learn how to write a lightweight, line-by-line Markdown parser usi
 # Deep Dive: Building a Custom Markdown-to-HTML Engine from Scratch
 
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
 
 In our previous post, we looked at how to orchestrate a static site generator pipeline using structural design patterns. Now, let’s zoom in on the most critical engine under the hood: the **Markdown Parser** (`MarkdownToHTMLBuilder`).

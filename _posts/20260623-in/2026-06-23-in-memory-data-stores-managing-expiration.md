@@ -49,13 +49,9 @@ layout: default
 
 # In-Memory Data Stores: Managing Expiration
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In high-performance systems, an in-memory data store is often the backbone of temporary state management. Implementing features like `EXPIRE` and `TTL` (Time-To-Live) requires more than just storing values; it requires a robust strategy for **eviction**.

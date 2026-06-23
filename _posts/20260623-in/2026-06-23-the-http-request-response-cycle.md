@@ -49,13 +49,9 @@ layout: default
 
 # The HTTP Request-Response Cycle
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 When you use a browser, you are utilizing a high-level abstraction over the **HTTP/1.1 protocol**. However, at the networking layer, HTTP is fundamentally just a sequence of text frames sent over a TCP stream. To understand how APIs function, one must understand how to construct these frames manually.

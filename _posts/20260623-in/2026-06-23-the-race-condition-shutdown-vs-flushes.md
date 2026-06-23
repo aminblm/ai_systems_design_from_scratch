@@ -49,13 +49,9 @@ layout: default
 
 # The Race Condition: Shutdown vs. Flushes
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In high-performance networking, we often assume that when our code calls a cleanup function, the action is instantaneous. However, there is a dangerous **race condition** lurking in most `try-finally` blocks: the gap between calling `socket.shutdown()` and the kernel actually finishing the transmission of data buffered in the OS.

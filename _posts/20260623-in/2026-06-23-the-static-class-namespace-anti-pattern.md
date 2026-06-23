@@ -49,13 +49,9 @@ layout: default
 
 # The Static Class Namespace Anti-Pattern
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In languages like Java or C#, class-based structures are mandatory for organizing code. This leads many developers to carry over the "Static Class" habit into Python. However, wrapping stateless functions inside a `class` (e.g., `HelperClass`, `FileManager`) when they don't hold state is a **code smell**. 

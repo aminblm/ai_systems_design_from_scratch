@@ -49,13 +49,9 @@ layout: default
 
 # Building an Aggregate Functional Pipeline in Python
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In data processing, shifting from monolithic aggregate functions to a **multi-stage functional pipeline** significantly improves maintainability, testing, and scalability. By mimicking the structure of database-driven operators like `$match` and `$count`, we can create a clean, declarative data processing flow.

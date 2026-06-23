@@ -49,13 +49,9 @@ layout: default
 
 # Building a Robust Configuration Engine
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 Managing application configuration often involves parsing flat text files. While heavy-duty libraries like `PyYAML` are standard, creating a custom, lightweight parser offers better control, fewer dependencies, and deeper insight into how your application consumes settings.

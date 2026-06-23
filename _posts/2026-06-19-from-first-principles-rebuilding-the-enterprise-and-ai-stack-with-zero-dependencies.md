@@ -41,7 +41,7 @@ description: "A deep-tech architectural blueprint for rebuilding enterprise infr
 # From First Principles: Rebuilding the Enterprise and AI Stack with Zero Dependencies
 
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
 
 

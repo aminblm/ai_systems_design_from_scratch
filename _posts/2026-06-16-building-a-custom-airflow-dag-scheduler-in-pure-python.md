@@ -42,7 +42,7 @@ description: "An architectural breakdown of data engineering orchestration: impl
 # Building a Custom Airflow DAG Scheduler in Pure Python
 
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
 
 In data engineering, workflow orchestration is the backbone of reliable data movement. Tools like Apache Airflow manage complex networks of data pipelines by treating them as **DAGs (Directed Acyclic Graphs)**. They ensure tasks run in the correct order, handle retries, and schedule executions precisely based on time configurations.

@@ -49,13 +49,9 @@ layout: default
 
 # The Facade Design Pattern
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 The **Facade Pattern** is a structural design pattern that provides a simplified, unified interface to a complex subsystem. It acts as a "front-facing" object that masks the underlying complexity of multiple interacting classes, libraries, or APIs, making the system easier to use and maintain.

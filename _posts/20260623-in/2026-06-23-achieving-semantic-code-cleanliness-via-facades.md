@@ -49,13 +49,9 @@ layout: default
 
 # Achieving Semantic Code Cleanliness via Facades
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 Codebase complexity often stems from "class explosion," where a dozen small, redundant helper classes clutter the project and make the API difficult to navigate. When you find yourself juggling multiple interconnected builders or managers, it is time to simplify via the **Facade design pattern**.

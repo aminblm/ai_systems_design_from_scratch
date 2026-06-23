@@ -49,13 +49,9 @@ layout: default
 
 # Cohesive Sub-methods: The Path to Clean Orchestration
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 A common architectural trap in Python development is the "God Method"—a single, monolithic function that handles user input, processes business logic, and manages network communication. This creates code that is nearly impossible to test and terrifying to modify.

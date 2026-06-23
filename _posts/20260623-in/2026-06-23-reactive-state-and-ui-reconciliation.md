@@ -49,13 +49,9 @@ layout: default
 
 # Reactive State and UI Reconciliation
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 Modern UI frameworks rely on "reactivity"—the ability of a system to automatically update the view when the underlying state changes. In Python, we can simulate this reactive behavior using the **Descriptor Protocol** (`__get__`, `__set__`) and a component-based lifecycle.

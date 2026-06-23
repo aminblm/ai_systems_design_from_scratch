@@ -49,13 +49,9 @@ layout: default
 
 # The recv(1024) Buffer Trap
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 A common misconception among developers new to network programming is that TCP behaves like a mailbox: you send a message, and the receiver gets that exact message in one piece. In reality, **TCP is a byte-stream protocol**.

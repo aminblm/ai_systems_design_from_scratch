@@ -49,13 +49,9 @@ layout: default
 
 # The Silent Danger of Under-Engineering
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In our rush to deliver features, we often conflate "simple" with "under-engineered." While simplicity is a virtue, under-engineering is a technical liability. It happens when we treat complex systems as simple scripts, ignoring the reality of error handling, concurrency, and resource lifecycle management.

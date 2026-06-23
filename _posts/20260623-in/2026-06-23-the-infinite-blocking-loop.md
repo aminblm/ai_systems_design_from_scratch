@@ -49,13 +49,9 @@ layout: default
 
 # The Infinite Blocking Loop
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 The primary purpose of a task orchestrator is to manage multiple workloads simultaneously. However, a common architectural failure is the "Infinite Blocking Loop," where the scheduler runs on a single thread and uses `time.sleep()` within the task loop. When this happens, the entire system grinds to a halt whenever one task is busy or waiting, effectively turning your "parallel" orchestrator into a slow, sequential script.

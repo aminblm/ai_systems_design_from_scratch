@@ -49,13 +49,9 @@ layout: default
 
 # The Dangers of Brittle Network Formatting
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 When building distributed systems or client-server architectures, how you serialize data for transit is just as important as the communication protocol itself. A common antipattern, particularly in rapid prototyping, is sending the raw string representation of a Python object over the wire.

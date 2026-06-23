@@ -49,13 +49,9 @@ layout: default
 
 # Timeout Protections: Stopping the Indefinite Stall
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 A common failure mode in network programming is the "infinite hang." If a server stops responding, your client might wait forever for a `recv()` call that will never return. Without a explicit timeout, your application process becomes a zombie, consuming resources while stuck in an I/O wait state.

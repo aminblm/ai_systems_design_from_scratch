@@ -49,13 +49,9 @@ layout: default
 
 # Scalable Indexing: Sharding and Data Distribution
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In large-scale systems, storing all data in a single location creates a bottleneck for both storage capacity and query performance. **Sharding** (or horizontal partitioning) is the architectural solution, where a large dataset is broken into smaller, more manageable segments called **Shards**.

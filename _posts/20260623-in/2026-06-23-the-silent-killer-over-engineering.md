@@ -49,13 +49,9 @@ layout: default
 
 # The Silent Killer: Over-Engineering
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 We have all been there. You start with a simple task—perhaps a function to fetch user data—and suddenly you find yourself designing a modular plugin architecture, implementing an abstract factory pattern, and setting up a dedicated event-bus for inter-service communication. You are no longer writing software; you are building a cathedral for a tool that only needed to be a shed.

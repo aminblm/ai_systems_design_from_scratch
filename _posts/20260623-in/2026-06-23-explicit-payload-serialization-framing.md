@@ -49,13 +49,9 @@ layout: default
 
 # Explicit Payload Serialization Framing
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 When streaming serialized data—such as JSON payloads—over a TCP socket, you are dealing with a continuous byte stream, not a collection of discrete files. A common failure is to assume that `socket.send()` on the client will map perfectly to a single `socket.recv()` on the server. In reality, TCP can fragment your data or combine multiple small messages into one, leading to "stream bleeding" where messages are mangled together.

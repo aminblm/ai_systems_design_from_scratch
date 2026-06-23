@@ -49,13 +49,9 @@ layout: default
 
 # RAII and the Context Manager Pattern
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In systems programming, "Resource Acquisition Is Initialization" (RAII) is a pattern that ties the lifecycle of a resource—like a network socket or a file handle—to the lifetime of an object. In Python, this is implemented via the **Context Manager** (`__enter__` and `__exit__` methods). When dealing with low-level network operations, failing to close a socket can lead to file descriptor exhaustion, effectively killing your server's ability to accept new connections.

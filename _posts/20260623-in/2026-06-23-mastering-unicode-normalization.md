@@ -49,13 +49,9 @@ layout: default
 
 # Mastering Unicode Normalization
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In global applications, text input is rarely uniform. Users might submit identical-looking characters that are encoded differently in Unicode, or you might need to strip special characters to normalize inputs for database keys or URL slugs. Python’s `unicodedata` module provides the essential tools to handle these variations reliably.

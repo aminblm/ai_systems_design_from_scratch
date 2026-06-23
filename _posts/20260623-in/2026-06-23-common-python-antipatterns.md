@@ -49,13 +49,9 @@ layout: default
 
 # Common Python Antipatterns
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 Even in a language designed for readability, certain habits can lead to fragile, slow, or unidiomatic code. Recognizing these **antipatterns** is the first step toward writing professional-grade Python.

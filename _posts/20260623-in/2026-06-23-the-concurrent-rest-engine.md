@@ -49,13 +49,9 @@ layout: default
 
 # The Concurrent REST Engine
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 To move beyond the "Head-of-Line" blocking trap, a server must decouple its listener (the master thread) from its workers (the execution threads). The provided `ConcurrentRESTEngine` achieves this by using a listener-dispatcher pattern, ensuring that the main loop remains free to accept new connections while worker threads handle existing HTTP transactions.

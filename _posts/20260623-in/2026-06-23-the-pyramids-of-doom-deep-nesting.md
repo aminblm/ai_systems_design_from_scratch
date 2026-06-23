@@ -49,13 +49,9 @@ layout: default
 
 # The Pyramids of Doom (Deep Nesting)
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 The "Pyramid of Doom" is the visual manifestation of poor logic flow. It occurs when your search and aggregation functions grow deep, horizontally-growing forests of `if` statements. This pattern—where code progressively drifts further and further to the right—makes your logic unreadable, fragile, and difficult to test.

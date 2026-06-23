@@ -49,13 +49,9 @@ layout: default
 
 # PEP 8: Harmonizing Code Style
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 Code is read far more often than it is written. In Python, following the **PEP 8 style guide** is not just about aesthetics—it is about reducing the cognitive load for everyone who interacts with your codebase. By standardizing naming conventions, you provide immediate, implicit context about the role of a variable, constant, or method.

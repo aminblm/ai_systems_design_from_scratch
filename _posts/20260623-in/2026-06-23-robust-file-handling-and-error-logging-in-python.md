@@ -49,13 +49,9 @@ layout: default
 
 # Robust File Handling and Error Logging in Python
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 When building automated systems—such as a static site generator—handling file system operations and unexpected errors gracefully is critical. In this tutorial, we explore how to leverage standard library modules to create a reliable processing pipeline.

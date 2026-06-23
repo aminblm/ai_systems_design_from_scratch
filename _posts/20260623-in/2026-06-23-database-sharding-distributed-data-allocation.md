@@ -49,13 +49,9 @@ layout: default
 
 # Database Sharding: Distributed Data Allocation
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 When a single database instance can no longer handle the write volume or storage capacity requirements of an application, we move to **Horizontal Partitioning**, commonly known as **Sharding**. This design pattern distributes records across multiple physical or logical partitions to ensure horizontal scalability.

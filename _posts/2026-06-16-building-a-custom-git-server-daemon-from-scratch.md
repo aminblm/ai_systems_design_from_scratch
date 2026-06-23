@@ -40,7 +40,7 @@ description: "Demystifying distributed version control network backends: Impleme
 # Building a Custom Git Server Daemon From Scratch
 
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
 
 Behind every remote version control operation, such as `git clone` or `git push`, sits a listening network daemon. In enterprise systems, this task is managed by components like Gitolite, GitLab Shell, or the native `git-daemon`. The server's responsibility is clear: it binds to an open network port, accepts incoming connection streams from distributed clients, parses serialization headers, and coordinates resource delivery from its local filesystem.

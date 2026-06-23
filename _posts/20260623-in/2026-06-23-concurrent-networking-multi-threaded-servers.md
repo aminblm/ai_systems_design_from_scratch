@@ -49,13 +49,9 @@ layout: default
 
 # Concurrent Networking: Multi-Threaded Servers
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In basic TCP server implementations, the process is linear: the server accepts a connection, processes it, and only then goes back to listen for new connections. This "blocking" behavior means that if one client is slow, the entire server halts for everyone else.

@@ -50,7 +50,7 @@ layout: default
 # Fragile Pathing: The Dangers of String Splitting
 
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
 
 

@@ -49,13 +49,9 @@ layout: default
 
 # Beyond Fragile String Parsing
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 When parsing structured text like Markdown, developers often fall into the trap of using `.split()` or index-based slicing to isolate tokens. While this works for trivial cases, it crumbles immediately upon encountering nested or unbalanced syntax (e.g., `*Italic **Bold***`).

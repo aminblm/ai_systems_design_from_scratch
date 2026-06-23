@@ -49,13 +49,9 @@ layout: default
 
 # Defensive Copying: Protecting Your Internal State
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In Python, collections like `list`, `dict`, and `set` are mutable objects. When you store these in a class and expose them via a getter method, returning the original reference is a common source of "spooky action at a distance"—where external code accidentally modifies your internal state.

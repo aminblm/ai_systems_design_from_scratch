@@ -49,13 +49,9 @@ layout: default
 
 # Redundant Abstractions: Flattening the Pipeline
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In software engineering, we often feel that "more classes mean better design." However, when you see a pipeline containing `MarkdownToHTMLBuilder`, `MarkdownToHTML`, and `HTMLGenerator`, you aren't looking at "clean design"—you are looking at **Redundant Abstraction**.

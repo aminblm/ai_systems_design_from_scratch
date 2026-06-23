@@ -49,13 +49,9 @@ layout: default
 
 # String Splitting: `.splitlines()` vs `.split('\n')`
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In Python, it is common to process multiline strings. While `.split('\n')` and `.splitlines()` often produce similar results, they are not interchangeable. Choosing the wrong one can lead to "off-by-one" errors or unexpected behavior with different operating systems.

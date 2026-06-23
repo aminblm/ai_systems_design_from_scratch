@@ -49,13 +49,9 @@ layout: default
 
 # Over-abstracted Data Piping
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In software engineering, we are taught to avoid duplication and abstract logic into managers. However, there is a point where abstraction becomes a liability. A classic example is the `DependenciesManager` class that exists solely to return a 4-tuple, which is then immediately unpacked into a target function. 

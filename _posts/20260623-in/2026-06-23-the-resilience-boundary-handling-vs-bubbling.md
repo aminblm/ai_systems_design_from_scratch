@@ -49,13 +49,9 @@ layout: default
 
 # The Resilience Boundary: Handling vs. Bubbling
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 A common point of confusion in Python development is deciding where to catch an error and where to let it propagate. Understanding this "resilience boundary" is key to writing clean, maintainable systems.

@@ -49,13 +49,9 @@ layout: default
 
 # Scaling Concurrency: The Multi-Threaded Engine
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In a single-threaded network server, the `accept()` loop is a major bottleneck. If the server is busy handling a single client, it cannot accept new connections, leading to massive latency for every other user. By transitioning to a **Multi-Threaded Concurrent Execution Engine**, you shift the orchestrator's role from "executor" to "manager," allowing the system to handle overlapping tasks with ease.

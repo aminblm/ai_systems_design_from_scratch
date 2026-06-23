@@ -49,13 +49,9 @@ layout: default
 
 # Beyond Whitespace: The Power of .strip()
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 When we first learn Python, `.strip()` is presented as the simple "space remover." In reality, it is a surgical tool for data cleaning. By providing a string argument to `.strip()`, you can remove any set of characters from the start and end of your strings.

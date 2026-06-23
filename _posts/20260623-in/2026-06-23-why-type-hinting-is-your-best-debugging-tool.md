@@ -4,7 +4,7 @@
 title: "Why Python Type Hinting is Your Best Debugging Tool"
 description: "Explore how type hinting transforms Python from a dynamic, error-prone language into a robust, self-documenting development environment."
 layout: default
-
+render_with_liquid: true
 
 ---
 
@@ -49,13 +49,9 @@ layout: default
 
 # Why Type Hinting is Your Best Debugging Tool
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 For years, Python’s "duck typing" philosophy—*if it walks like a duck and quacks like a duck, it must be a duck*—was celebrated for its simplicity. However, as codebases grow, that same flexibility often becomes a liability. **Type hinting** is the modern solution to this, turning runtime surprises into compile-time certainty.

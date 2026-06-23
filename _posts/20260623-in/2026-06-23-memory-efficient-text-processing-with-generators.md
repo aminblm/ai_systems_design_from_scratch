@@ -49,13 +49,9 @@ layout: default
 
 # Memory-Efficient Text Processing with Generators
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 When parsing large text files—such as long-form Markdown documents or logs—loading the entire file into a list (a "buffer") is a recipe for disaster. As your input grows, so does your memory consumption, eventually leading to `MemoryError` or system slowdowns. **Generator-based filtering** is the solution, allowing you to process data in a stream rather than a bulk load.

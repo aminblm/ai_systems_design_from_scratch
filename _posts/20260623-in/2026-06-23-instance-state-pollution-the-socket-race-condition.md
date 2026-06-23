@@ -49,13 +49,9 @@ layout: default
 
 # Instance State Pollution: The Socket Race Condition
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In a single-threaded environment, assigning a socket to an instance variable (`self.client_socket = sock`) feels harmless. However, the moment your architecture grows to support concurrency—such as multi-threading or asynchronous task processing—this pattern becomes a **critical security vulnerability**.

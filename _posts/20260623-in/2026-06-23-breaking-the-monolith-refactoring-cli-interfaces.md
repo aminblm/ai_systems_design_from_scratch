@@ -49,13 +49,9 @@ layout: default
 
 # Breaking the Monolith: Refactoring CLI Interfaces
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 When building command-line interfaces (CLI), it is tempting to dump all your logic—input collection, validation, and network communication—into a single `while True:` loop. While this works for a tiny script, it quickly becomes a "God Method" that is impossible to test, maintain, or extend. This is a clear violation of the **Single Responsibility Principle (SRP)**.

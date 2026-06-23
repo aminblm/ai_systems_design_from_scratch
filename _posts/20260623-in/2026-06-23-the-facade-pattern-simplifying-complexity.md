@@ -49,13 +49,9 @@ layout: default
 
 # The Facade Pattern: Simplifying Complexity
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 When building a library, your internal implementation is often highly modular (e.g., separate regex engines, metadata strippers, and line-level parsers). While this is great for maintainability, it can overwhelm the end-user. The **Facade Pattern** provides a simplified, high-level interface that masks the complexity of the underlying subsystem.

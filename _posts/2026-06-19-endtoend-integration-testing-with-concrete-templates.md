@@ -41,7 +41,7 @@ description: "Putting it all together: Validating the static site pipeline with 
 # End-to-End Integration Testing of Jekyll with Concrete Templates
 
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
 
 We have constructed individual parsing processors for Markdown and YAML, implemented clean abstraction wrappers around network/file I/O operations, and engineered an orchestration facade. To tie our series together, let's look at an **end-to-end integration test case** using a concrete layout schema and global configuration payload.

@@ -49,13 +49,9 @@ layout: default
 
 # Structural Modeling: Representing Hierarchies
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 When modeling complex systems—like microservice topologies or infrastructure maps—we often need a way to represent parent-child relationships. The `dataclass` pattern combined with a recursive rendering structure is the most Pythonic and efficient way to map these hierarchical models to visual representations like HTML or graphs.

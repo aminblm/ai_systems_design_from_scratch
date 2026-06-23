@@ -49,13 +49,9 @@ layout: default
 
 # Architecting Multi-Threaded Network Daemons
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 When designing high-concurrency systems, a single-threaded server will quickly become a bottleneck. To handle multiple incoming client requests simultaneously, we must utilize a **Multi-Threaded Server** pattern. This ensures that a long-running task for one client does not block the entire system from accepting other connections.

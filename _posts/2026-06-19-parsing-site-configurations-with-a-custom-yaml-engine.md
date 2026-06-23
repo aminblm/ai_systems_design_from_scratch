@@ -41,7 +41,7 @@ description: "How to implement a deterministic, stateless string-slicing configu
 # Parsing Site Configurations with a Custom YAML Engine
 
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
 
 We have successfully covered site orchestration and markdown translation. The final crucial pillar of our minimalist Jekyll engine is **Configuration Mapping**.

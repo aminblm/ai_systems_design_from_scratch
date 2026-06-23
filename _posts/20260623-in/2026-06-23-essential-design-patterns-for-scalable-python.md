@@ -49,13 +49,9 @@ layout: default
 
 # Essential Design Patterns for Scalable Python
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 As your codebase grows, the challenge shifts from "making it work" to "making it last." **Design patterns** are proven, reusable solutions to common software architecture problems. They provide a shared vocabulary for developers to describe complex system structures.

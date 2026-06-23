@@ -49,13 +49,9 @@ layout: default
 
 # Dead-Lock Prevention with Socket Timeouts
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In network-heavy Python applications, a "deadlock" is often not a logical error, but a resource exhaustion issue. If a client connects and then goes silent, your thread or process might hang indefinitely, waiting for data that will never arrive. This consumes memory and file descriptors, eventually starving your server of resources.

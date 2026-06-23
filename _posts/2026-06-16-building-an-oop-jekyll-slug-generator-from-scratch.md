@@ -41,7 +41,7 @@ description: "Demystifying static site data pipelines: Implementing a text token
 # Building an OOP Jekyll Slug Generator From Scratch
 
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
 
 In static site generators like Jekyll, Hugo, or Astro, routing patterns rely on strict file system naming conventions. For instance, to publish a blog post, your Markdown file must live inside a dedicated local `_posts/` directory and match an explicit metadata naming standard: `YYYY-MM-DD-hyphenated-slug.md`. 

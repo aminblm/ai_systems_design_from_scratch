@@ -49,13 +49,9 @@ layout: default
 
 # Orchestrating Workflows: The DAG Scheduler
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 In distributed systems and automation pipelines, tasks rarely run in total isolation. Often, Task B requires the output of Task A, and Task C must only trigger if Task B completes successfully. A **Directed Acyclic Graph (DAG)** is the standard data structure to model these constraints.

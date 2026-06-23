@@ -49,13 +49,9 @@ layout: default
 
 # Building Resilient I/O and Network Utilities
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 Reliable systems are built on a foundation of stable infrastructure utilities. When interacting with the filesystem or network sockets, you must account for common failure modes like file corruption, port collisions, and connection timeouts. By centralizing these operations, you create a "source of truth" that ensures consistency across your entire architecture.

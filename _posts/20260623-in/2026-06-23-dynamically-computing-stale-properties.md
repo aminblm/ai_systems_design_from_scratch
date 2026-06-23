@@ -49,13 +49,9 @@ layout: default
 
 # Dynamically Computing Stale Properties
 
-{% raw %}
-
 <div class="author-card">
-    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
 </div>
-
-{% endraw %}
 
 
 A common source of "impossible" bugs in long-running Python applications is the **stale cache**. Developers often initialize a date, time, or configuration property at object instantiation, only to find that these values become incorrect once the calendar date flips or system state shifts.
