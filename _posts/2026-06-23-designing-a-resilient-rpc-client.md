@@ -1,10 +1,53 @@
 ---
+
 title: "Building a Resilient RPC Client for Git Operations"
 description: "Learn to design a robust Remote Procedure Call (RPC) client that leverages safe TCP framing for reliable Git task execution."
 layout: default
+
 ---
 
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.description | default: site.description }}">
+</head>
+
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
+
+<div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
+  <a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
+  <a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a>
+  <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
+</div>
+
+
+
 # Designing a Resilient RPC Client
+
+
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 
 Executing Git commands over a network is fraught with challenges, from connection drops to stream corruption. To build a system that is truly production-ready, we must treat the transport layer as unreliable and wrap our Remote Procedure Call (RPC) logic in a protocol that guarantees message integrity.
 
@@ -39,8 +82,6 @@ Git operations (like `git fetch` or `git push`) are not always idempotent. A res
 
 A crashing RPC client should not leak a socket. By utilizing the `with` statement (the Context Manager pattern), we ensure that the system file descriptor is released immediately, even if the Git command throws an exception mid-transfer.
 
----
-
 ## The Workflow of a Reliable Git RPC
 
 When our client is tasked with a Git operation, it moves through a controlled lifecycle:
@@ -51,16 +92,21 @@ When our client is tasked with a Git operation, it moves through a controlled li
 4. **Resilient Transmission**: Send the frame and wait for an acknowledgment, handling potential `TimeoutError` or `ConnectionError` exceptions.
 5. **Graceful Closure**: Automatically release the socket via the context manager’s `__exit__` logic.
 
----
-
 ## Best Practices
 
 * **Keep Payloads Lean**: Avoid sending massive file diffs over the RPC if you can instead send a reference (like a commit hash).
 * **Timeout Strategically**: Set different timeouts for different operations. `git status` should be fast; `git clone` requires a much longer timeout window.
 * **Logging**: Log the full lifecycle of the RPC, including the initiation, the frame sending, and the final response parsing. This is critical for debugging distributed Git workflows.
 
----
-
 By combining explicit framing, RAII-based cleanup, and robust retry logic, you turn a fragile network interaction into a reliable Git RPC client capable of scaling across your infrastructure.
 
 ---
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+

@@ -54,10 +54,6 @@ AUTHOR_CARD = """
 """
 
 def process_posts(input_dir, output_dir):
-    """
-    Parses MD files from input_dir, injects elements, 
-    and saves to output_dir.
-    """
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -69,12 +65,17 @@ def process_posts(input_dir, output_dir):
             with open(input_path, 'r', encoding='utf-8') as f:
                 content = f.read()
 
-            parts = re.split(r'^---', content, flags=re.MULTILINE)
+            # Split only on the first occurrence to isolate YAML header
+            parts = re.split(r'^---', content, maxsplit=2, flags=re.MULTILINE)
             if len(parts) < 3: continue
             
             front_matter, body = parts[1], parts[2]
             
-            # Reconstruction Logic
+            # Clean body: Remove any remaining '---' that act as horizontal rules
+            # We look for lines containing only '---' (with optional whitespace)
+            body = re.sub(r'^\s*---\s*$', '', body, flags=re.MULTILINE)
+            
+            # Reconstruction
             new_content = f"---\n{front_matter}\n---\n{META_TEMPLATE}\n{AUTHOR_LINK_HTML}\n{LINKS_DIV}\n{body}"
             new_content = re.sub(r'(# .+\n)', r'\1\n' + AUTHOR_CARD + '\n', new_content, count=1)
             new_content = new_content.rstrip() + "\n\n---\n" + AUTHOR_LINK_HTML + "\n"
@@ -82,3 +83,10 @@ def process_posts(input_dir, output_dir):
             with open(output_path, 'w', encoding='utf-8') as f:
                 f.write(new_content)
             print(f"Processed: {filename} -> {output_dir}")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Process Markdown files.")
+    parser.add_argument("--input", required=True)
+    parser.add_argument("--output", required=True)
+    args = parser.parse_args()
+    process_posts(args.input, args.output)

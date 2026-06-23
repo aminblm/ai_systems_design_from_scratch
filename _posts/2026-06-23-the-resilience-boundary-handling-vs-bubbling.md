@@ -1,20 +1,59 @@
 ---
+
 title: "The Resilience Boundary: Try-Except vs. Raising Errors"
 description: "Learn the essential distinction between handling errors locally and bubbling them up in your application architecture."
 layout: default
+
 ---
 
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.description | default: site.description }}">
+</head>
+
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
+
+<div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
+  <a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
+  <a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a>
+  <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
+</div>
+
+
+
 # The Resilience Boundary: Handling vs. Bubbling
+
+
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
 
 A common point of confusion in Python development is deciding where to catch an error and where to let it propagate. Understanding this "resilience boundary" is key to writing clean, maintainable systems.
 
 ## The Rule of Responsibility
 
 The decision between `try-except` (handling) and `raise` (bubbling) rests on one fundamental question: **"Can this specific layer do something meaningful to recover?"**
-
-
-
----
 
 ## When to Use `try-except` (Handle)
 
@@ -33,8 +72,6 @@ except NetworkError:
 
 ```
 
----
-
 ## When to Use `raise` (Bubble)
 
 Raise an error (or let it propagate) when you cannot fix the underlying issue. Bubbling errors up is not a failure; it is a way to ensure that the error is handled by a component with enough context to make a correct decision.
@@ -51,8 +88,6 @@ def process_git_push(repo):
 
 ```
 
----
-
 ## The "Translate" Pattern
 
 Sometimes, you need to catch a low-level exception and re-raise a more descriptive, high-level exception. This preserves the error context while hiding internal implementation details.
@@ -66,8 +101,6 @@ except SqliteError as e:
 
 ```
 
----
-
 ## Best Practices
 
 | Strategy | When to Apply |
@@ -79,6 +112,15 @@ except SqliteError as e:
 * **Never Use Bare `except**`: Always catch specific exceptions (e.g., `except ConnectionError:`). Bare `except:` clauses hide bugs.
 * **Fail Loudly**: If you don't know exactly how to recover, let the exception bubble up. It is easier to debug an unhandled exception than one that was silently swallowed.
 
+By being intentional about where you handle errors, you stop writing code that hides problems and start writing code that reports them precisely where they occur.
+
 ---
 
-By being intentional about where you handle errors, you stop writing code that hides problems and start writing code that reports them precisely where they occur.
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
