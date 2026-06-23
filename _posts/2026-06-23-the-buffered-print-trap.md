@@ -1,10 +1,13 @@
 ---
 
+
 title: "The Buffered Print Trap in Python"
 description: "Learn why Python's output buffering causes delayed logs in long-running processes and how to force immediate terminal updates."
 layout: default
 
+
 ---
+
 
 <head>
   <meta charset="utf-8">

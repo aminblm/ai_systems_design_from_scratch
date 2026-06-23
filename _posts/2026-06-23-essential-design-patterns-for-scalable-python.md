@@ -1,10 +1,13 @@
 ---
 
+
 title: "Essential Design Patterns for Scalable Python"
 description: "An overview of why design patterns are critical for architecting maintainable and scalable Python applications."
 layout: default
 
+
 ---
+
 
 <head>
   <meta charset="utf-8">

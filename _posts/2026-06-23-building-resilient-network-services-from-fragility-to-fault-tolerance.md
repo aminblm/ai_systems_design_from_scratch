@@ -1,10 +1,13 @@
 ---
 
+
 title: "Building Resilient Network Services: From Fragility to Fault Tolerance"
 description: "Learn how to transform fragile network clients into resilient services using robust error wrappers and defensive programming in Python."
 layout: default
 
+
 ---
+
 
 <head>
   <meta charset="utf-8">

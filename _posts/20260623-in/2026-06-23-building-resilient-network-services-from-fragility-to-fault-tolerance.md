@@ -1,20 +1,65 @@
 ---
+
 title: "Building Resilient Network Services: From Fragility to Fault Tolerance"
 description: "Learn how to transform fragile network clients into resilient services using robust error wrappers and defensive programming in Python."
 layout: default
+
 ---
 
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.description | default: site.description }}">
+</head>
+
+{% raw %}
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
+
+<div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
+  <a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
+  <a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a>
+  <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
+</div>
+
+{% endraw %}
+
+
+
 # Building Resilient Network Services: From Fragility to Fault Tolerance
+
+{% raw %}
+
+<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>
+
+{% endraw %}
+
 
 In the world of distributed systems, network partitions, service restarts, and sudden drops are not "exceptional" events—they are inevitable realities. If your architecture assumes the network is 100% reliable, your services will be inherently fragile, crashing every time an upstream dependency flickers.
 
 ## The Problem: The "Crash-on-First-Error" Antipattern
 
 When a client library or a routing layer throws an unhandled exception upon encountering a dropped connection, it doesn't just fail that one request; it can crash the entire application thread. This stops the server from processing any further requests, turning a minor, transient network glitch into a full-scale service outage.
-
-
-
----
 
 ## The Solution: Resilient Defensiveness
 
@@ -57,15 +102,11 @@ class LoadBalancer:
 
 ```
 
----
-
 ## Why Resilient Defensiveness Wins
 
 1. **Fault Isolation**: An error in an upstream service is contained and managed. The orchestrator continues to run, allowing it to handle other healthy requests.
 2. **Graceful Degradation**: Users receive a clean `502 Bad Gateway` page instead of a generic "Connection Reset" or a hanging request, providing a much better user experience.
 3. **Observability**: By catching errors at the routing layer, you have a centralized place to increment metrics (like `upstream_failures_total`) or send alerts to your monitoring system.
-
----
 
 ## Best Practices for Network Resilience
 
@@ -74,7 +115,18 @@ class LoadBalancer:
 * **Avoid "Silent Swallowing"**: Never use a bare `except:` without logging. If you catch an error and do nothing, you are flying blind when your service begins to fail.
 * **Implement Reconnect Logic**: For long-running connections, consider a retry mechanism with exponential backoff rather than simply failing on the first attempt.
 
----
-
 By wrapping your upstream calls in a protective layer of defensive logic, you transition your service from a fragile component to a robust, self-healing part of a distributed architecture.
+
+{% raw %}
+
+
+<a href="https://linktr.ee/aminboulouma" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn-primary" 
+   style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
+   Connect with Amin Boulouma Official
+</a>
+
+{% endraw %}
 

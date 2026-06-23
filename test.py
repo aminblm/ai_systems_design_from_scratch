@@ -19,7 +19,7 @@ from ai_systems_design.concurrent_rest_engine import ConcurrentRESTEngine
 from ai_systems_design.resilient_multi_threaded_server import ResilientMultiThreadedServer
 from ai_systems_design.safe_yaml_parser import ConfigurationBuilder
 from ai_systems_design.architecture_renderer import ArchitectureRenderer, ArchComponent
-from ai_systems_design.process_posts import process_posts
+from ai_systems_design.process_posts import process_posts, clean_posts
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -380,7 +380,8 @@ def test_process_posts():
     parser.add_argument("--output", required=True, help="Output directory for processed files")
     
     args = parser.parse_args()
-    process_posts(args.input, args.output)
+    #process_posts(args.input, args.output)
+    clean_posts(args.input, args.output)
 
 
 if __name__ == "__main__":

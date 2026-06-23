@@ -1,10 +1,13 @@
 ---
 
+
 title: "The Danger of Implicit Dependency Injection"
 description: "Why relying on kwargs in decorators leads to brittle APIs and silent bypasses of critical validation logic."
 layout: default
 
+
 ---
+
 
 <head>
   <meta charset="utf-8">

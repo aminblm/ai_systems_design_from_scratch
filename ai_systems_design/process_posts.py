@@ -90,6 +90,45 @@ def process_posts(input_dir, output_dir):
                 f.write(new_content)
             print(f"Processed: {filename} -> {output_dir}")
 
+def clean_posts(input_dir, output_dir):
+    """
+    Standardizes Markdown files by stripping non-breaking spaces 
+    and redundant separators to ensure Jekyll renders HTML correctly.
+    """
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    for filename in os.listdir(input_dir):
+        if filename.endswith('.md'):
+            input_path = os.path.join(input_dir, filename)
+            output_path = os.path.join(output_dir, filename)
+            
+            with open(input_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+
+            # 1. Remove non-breaking spaces (Unicode U+00A0)
+            content = content.replace('\u00a0', ' ')
+            
+            # 2. Clean up redundant horizontal rules (---) inside body
+            # Split only on the first YAML boundary
+            parts = re.split(r'^---', content, maxsplit=2, flags=re.MULTILINE)
+            if len(parts) < 3: continue
+            
+            front_matter, body = parts[1], parts[2]
+            
+            # Remove isolated --- lines
+            body = re.sub(r'^\s*---\s*$', '', body, flags=re.MULTILINE)
+            
+            # 3. Ensure double newline between HTML and Markdown
+            # This is critical for Jekyll HTML rendering
+            body = re.sub(r'(</div>|</a>)\s*\n(?=#)', r'\1\n\n\n', body)
+            
+            # Write cleaned file
+            with open(output_path, 'w', encoding='utf-8') as f:
+                f.write(f"---\n{front_matter}\n---\n{body}")
+            
+            print(f"Cleaned: {filename}")    
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process Markdown files.")
     parser.add_argument("--input", required=True)
