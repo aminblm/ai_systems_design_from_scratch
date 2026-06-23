@@ -1,1 +1,0 @@
-Timeout Protections: Explicitly configured a socket stream timeout deadline (settimeout()) to stop the application from stalling indefinitely if the target server stops processing frame transfers.

@@ -1,4 +1,0 @@
-Lack of Reconnect or Error Resilience: If the server is momentarily restarting or drops the connection mid-flight, this class instantly throws an unhandled error and crashes.
-
-Resilient Defensiveness: Added a robust try-except execution wrapper inside the routing stage. If an upstream server throws a runtime error, the load balancer intercepts it and returns a standard HTTP 502 error page instead of crashing the main application thread.
-

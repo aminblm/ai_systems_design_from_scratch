@@ -1,3 +1,0 @@
-Building layouts in Python
-
-# Layout: self._routes[HTTP_METHOD][URL_PATH] = Handler_Callback

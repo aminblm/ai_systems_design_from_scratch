@@ -1,1 +1,0 @@
-The Ghost Protocol (Write-Only Network): The client sends commands like run, stop, and list across the network, but never calls .recv() to read the response. The user will type list, the server will process it and respond, but the client will just loop back and prompt "Enter command..." without showing the containers.

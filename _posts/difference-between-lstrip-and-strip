@@ -1,9 +1,0 @@
-lstrip for left strip, strips only characters from the left
-
-usecase: 
-
-# Headings
-if line.startswith('#'):
-    level = len(line) - len(line.lstrip('#'))
-    content = line.lstrip('#').strip()
-    return f"<h{level}>{self._parse_inline_elements(content)}</h{level}>"

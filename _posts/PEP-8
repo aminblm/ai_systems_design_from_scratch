@@ -1,1 +1,0 @@
-Python names are switched to standard PascalCase for Enums and snake_case for methods per PEP 8.

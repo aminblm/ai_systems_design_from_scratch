@@ -1,1 +1,0 @@
-Brittle Network Formatting: In _list(), the string conversion of a Python list (f"Available containers: {clients}") is sent raw over the network. Network architectures should utilize predictable protocol payloads (e.g., JSON or newline-separated strings) rather than raw Python string representation.

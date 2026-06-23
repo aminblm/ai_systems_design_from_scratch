@@ -1,2 +1,0 @@
-Over-abstracted Data Piping: The DependenciesManager exists solely to return a 4-tuple that is immediately unpacked using the * operator in Jekyll.generate_site. This creates high cognitive load and completely breaks readability.
-

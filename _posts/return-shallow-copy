@@ -1,2 +1,0 @@
-return self.documents.copy()
-

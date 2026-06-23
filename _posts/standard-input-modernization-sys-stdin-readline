@@ -1,1 +1,0 @@
-Standard Input Modernization: Replaced basic input() with sys.stdin.readline(), which handles EOF markers and whitespace transitions cleanly when streaming automation commands across terminal prompts.

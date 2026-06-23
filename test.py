@@ -374,7 +374,7 @@ def test_architecture_renderer():
 
 if __name__ == "__main__":
     #test_generate_site()
-    #test_resilient_slug_generator()
+    test_resilient_slug_generator()
     #test_start_engine_scheduler()
     #test_resilient_client_socket()
     #test_container_manager_client()
@@ -388,11 +388,10 @@ if __name__ == "__main__":
     #test_distributed_no_sql_database()
     #test_intent_matching_engine()
     #test_realtime_redis_engine()
-    # TODO TEST
     #test_resilient_http_raw_client()
     #test_concurrent_rest_engine()
     #test_resilient_multi_threaded_server()
     #test_safe_yaml_parser()
-    test_architecture_renderer()
+    #test_architecture_renderer()
 
     pass

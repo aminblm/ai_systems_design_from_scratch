@@ -1,1 +1,0 @@
-The Race Condition: Almost immediately after the server thread finishes simple_client_handler, it hits the finally block. Because _handle_client_lifecycle is a finally block associated with the try block that includes the client_session_handler call, it executes the shutdown(SHUT_WR) call while the kernel is potentially still trying to flush the server's response to the client.

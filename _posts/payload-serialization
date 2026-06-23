@@ -1,2 +1,0 @@
-Explicit Payload Serialization Framing: Appended an explicit newline character (\n) frame marker on outbound strings. This lets the listening backend accurately isolate individual transaction objects without mixing streams.
-

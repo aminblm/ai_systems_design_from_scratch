@@ -1,1 +1,0 @@
-Monolithic Control Flow: The CLI logic, console input collection, command validation, and network string construction are all tightly bound into a single, massive while True: loop inside start_CLI_interface. This breaks the Single Responsibility Principle.

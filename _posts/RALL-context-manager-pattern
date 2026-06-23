@@ -1,4 +1,0 @@
-The RAII Context Manager Pattern (__enter__ / __exit__): Moving socket assembly inside a standard python context block guarantees the underlying socket's close() routine runs even if an explicit runtime error occurs midway through the operation.
-
-The Context Lifecycle Pattern (with): Guarantees that the underlying low-level socket drops its system file descriptors cleanly even if a server runtime execution crashes midway through standard data transfers.
-

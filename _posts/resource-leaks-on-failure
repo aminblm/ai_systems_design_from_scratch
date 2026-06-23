@@ -1,4 +1,0 @@
-Resource Leaks on Failure: If client_socket.recv() times out, or the user hits Ctrl+C during the input() prompt, the code will crash before reaching client_socket.close(). This leaves an unmanaged TCP socket descriptor hanging open in the operating system kernel.
-
-Implicit Memory Leak on TCP Dropping: In _handle_client(), if a network interruption happens and the client drops out without explicitly sending an exit command, an unhandled exception will fire during .recv() or .sendall(). The code will exit the loop before hitting self.client_socket.close(), quickly exhausting system file descriptors.
-

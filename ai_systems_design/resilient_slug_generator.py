@@ -76,7 +76,7 @@ class JekyllFilenameController:
 
         print("-" * 65)
         print(f"\n[Generated SEO Slug]:\n{slug}")
-        print(f"\n[Generated Markdown File name]:\n{slug}.md")
+        print(f"\n[Generated Markdown File name]:\n{compiled_filename}")
         print(f"\n[Jekyll Post Target]:\n_posts/{compiled_filename}")
         print("-" * 65 + "\n")
         return True

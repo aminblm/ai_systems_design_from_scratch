@@ -1,1 +1,0 @@
-Redundant Abstrations: MarkdownToHTMLBuilder, MarkdownToHTML, and HTMLGenerator are nested tightly in a web of dependencies that pass strings around unnecessarily. It creates an extremely high cognitive load for a simple pipeline: File/Text -> Parser -> HTML.

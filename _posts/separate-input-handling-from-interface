@@ -1,1 +1,0 @@
-Cohesive Sub-methods: Separated input handling (_prompt_container_name) and networking (_send_and_receive) into dedicated methods, keeping the orchestrating wrapper clean and easy to test.

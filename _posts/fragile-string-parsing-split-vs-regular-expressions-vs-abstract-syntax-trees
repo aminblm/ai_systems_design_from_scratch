@@ -1,3 +1,0 @@
-Fragile String Parsing: Using .split() on Markdown tokens (like  or *) to parse formatting will break easily (e.g., if a line contains unbalanced markdown or mixed formatting like bold and *italic***). True parsers use Regular Expressions (Regex) or Abstract Syntax Trees (AST).
-
-Regex Engine Integration: Swapped error-prone index tracking and list splits for native re.sub(). It naturally supports nested rendering without mutating indices or throwing IndexError.

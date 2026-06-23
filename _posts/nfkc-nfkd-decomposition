@@ -1,4 +1,0 @@
-text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('ascii')
-
-text = unicodedata.normalize('NFKC', text)
-
