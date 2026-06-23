@@ -1,13 +1,7 @@
----
-
 
 title: "Plugging the Leaks: Solving Resource Exhaustion in Network Sockets"
 description: "Learn how to prevent TCP file descriptor exhaustion and memory leaks by ensuring your network code handles unexpected failures gracefully."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Preventing Resource Leaks: The "Dangling Socket" Problem
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In robust networking, the most silent killer of services is not a logic bug, but a resource leak. If your code crashes during an I/O operation—like a `recv()` timeout or a user-triggered `Ctrl+C` interrupt—and it fails to execute the final `.close()` call, the underlying TCP socket remains held open by the operating system.

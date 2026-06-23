@@ -1,13 +1,7 @@
----
-
 
 title: "Elegant Conditional Logic: The Tuple-Based `startswith()`"
 description: "Master Python's multi-pattern matching with startwith() to write cleaner, faster conditional logic."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Multi-Pattern Matching: Beyond Single StartsWith
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 When writing parsers, command-line interfaces, or stream processors, you often need to check if a string begins with any one of several characters or prefixes. The naive approach—chaining `or` statements—is not only verbose but difficult to maintain.

@@ -1,13 +1,7 @@
----
-
 
 title: "Avoiding Instance State Pollution in Concurrent Servers"
 description: "Learn why storing socket handles as instance attributes creates critical race conditions and how to secure your multi-threaded server."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Instance State Pollution: The Socket Race Condition
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In a single-threaded environment, assigning a socket to an instance variable (`self.client_socket = sock`) feels harmless. However, the moment your architecture grows to support concurrency—such as multi-threading or asynchronous task processing—this pattern becomes a **critical security vulnerability**.

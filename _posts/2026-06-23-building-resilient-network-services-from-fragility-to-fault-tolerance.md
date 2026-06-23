@@ -1,13 +1,7 @@
----
-
 
 title: "Building Resilient Network Services: From Fragility to Fault Tolerance"
 description: "Learn how to transform fragile network clients into resilient services using robust error wrappers and defensive programming in Python."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Building Resilient Network Services: From Fragility to Fault Tolerance
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In the world of distributed systems, network partitions, service restarts, and sudden drops are not "exceptional" events—they are inevitable realities. If your architecture assumes the network is 100% reliable, your services will be inherently fragile, crashing every time an upstream dependency flickers.

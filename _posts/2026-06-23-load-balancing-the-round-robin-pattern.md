@@ -1,13 +1,7 @@
----
-
 
 title: "Load Balancing Algorithms: The Round-Robin Pattern"
 description: "Learn how to distribute traffic across backend server pools efficiently using the Round-Robin algorithm."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Load Balancing: The Round-Robin Pattern
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In distributed systems, a **Load Balancer** is the traffic cop that sits in front of your backend servers. Its purpose is to ensure no single server becomes a bottleneck by distributing incoming requests across a pool of available nodes.

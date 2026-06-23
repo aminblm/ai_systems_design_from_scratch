@@ -1,13 +1,7 @@
----
-
 
 title: "True DAG Validation via Cycle Detection"
 description: "Learn how to prevent infinite dependency loops in your pipeline architectures using DFS-based cycle detection."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # True DAG Validation via Cycle Detection
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In pipeline and dependency management, a **Directed Acyclic Graph (DAG)** is the gold standard. However, without a formal validation step, it is perilously easy to create an "infinite dependency ring" (e.g., A depends on B, B depends on A). Left unchecked, your engine will enter an unresolvable stall state, consuming CPU cycles until the process crashes.

@@ -1,10 +1,13 @@
 ---
 
+
 title: "The Silent Killer: Why Over-Engineering Destroys Velocity"
 description: "Learn to identify the symptoms of over-engineering and embrace pragmatic design for maintainable, readable, and efficient software."
 layout: default
 
+
 ---
+
 
 <head>
   <meta charset="utf-8">

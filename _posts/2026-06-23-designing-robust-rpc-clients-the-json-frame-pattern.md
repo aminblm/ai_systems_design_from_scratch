@@ -1,13 +1,7 @@
----
-
 
 title: "Designing Robust RPC Clients: JSON Framing and Communication Patterns"
 description: "Learn how to structure Remote Procedure Calls using JSON serialization and newline framing for reliable network communication."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Designing Robust RPC Clients: The JSON-Frame Pattern
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 Remote Procedure Calls (RPC) allow an application to execute logic on a remote server as if it were a local function call. To build a robust RPC client, you must bridge the gap between high-level data structures (like Python dictionaries) and the raw, stream-oriented nature of TCP sockets.

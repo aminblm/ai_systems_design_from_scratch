@@ -1,13 +1,7 @@
----
-
 
 title: "Database Sharding: Distributing Data at Scale"
 description: "Explore the mechanics of horizontal partitioning (sharding) in distributed databases through Pythonic collection and shard models."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Database Sharding: Distributed Data Allocation
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 When a single database instance can no longer handle the write volume or storage capacity requirements of an application, we move to **Horizontal Partitioning**, commonly known as **Sharding**. This design pattern distributes records across multiple physical or logical partitions to ensure horizontal scalability.

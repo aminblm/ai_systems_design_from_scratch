@@ -129,6 +129,50 @@ def clean_posts(input_dir, output_dir):
             
             print(f"Cleaned: {filename}")    
 
+def clean_author(input_dir, output_dir):
+    """
+    Sanitizes markdown files, injects components, and standardizes Jekyll rendering.
+    """
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    # Regex to capture the {% raw %} wrapped author card block
+    raw_author_pattern = re.compile(
+        r'\{%\s*raw\s*%\}\s*<div class="author-card">\s*<p><strong>\{\{\s*site\.author\.name\s*\}\}</strong>\s*—\s*<i>\{\{\s*site\.author\.bio\s*\}\}</i></p>\s*</div>\s*\{%\s*endraw\s*%\}',
+        re.MULTILINE
+    )
+
+    clean_author_html = """<div class="author-card">
+    <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
+</div>"""
+
+    for filename in os.listdir(input_dir):
+        if filename.endswith('.md'):
+            input_path = os.path.join(input_dir, filename)
+            output_path = os.path.join(output_dir, filename)
+            
+            with open(input_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+
+            # 1. PURGE INVISIBLE CHARACTERS
+            # Remove non-breaking spaces (U+00A0) and other hidden control chars
+            content = content.replace('\u00a0', ' ')
+            
+            # 2. REPLACE WRAPPED AUTHOR CARD
+            content = raw_author_pattern.sub(clean_author_html, content)
+            
+            # 3. ENSURE RENDERING SPACING
+            # Force empty lines around div/a blocks if they precede headers
+            content = re.sub(r'(</div>|</a>)\s*\n(?=#)', r'\1\n\n\n', content)
+            
+            # Remove isolated horizontal rules
+            content = re.sub(r'^\s*---\s*$', '', content, flags=re.MULTILINE)
+
+            with open(output_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            
+            print(f"Sanitized and Updated: {filename}")
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process Markdown files.")
     parser.add_argument("--input", required=True)

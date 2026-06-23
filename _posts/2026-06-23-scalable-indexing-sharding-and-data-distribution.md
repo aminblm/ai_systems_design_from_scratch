@@ -1,13 +1,7 @@
----
-
 
 title: "Understanding Data Sharding and Indexing"
 description: "Learn how to scale data storage using horizontal partitioning (sharding) and how to build a schema-driven search index."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Scalable Indexing: Sharding and Data Distribution
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In large-scale systems, storing all data in a single location creates a bottleneck for both storage capacity and query performance. **Sharding** (or horizontal partitioning) is the architectural solution, where a large dataset is broken into smaller, more manageable segments called **Shards**.

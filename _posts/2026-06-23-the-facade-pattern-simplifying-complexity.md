@@ -1,13 +1,7 @@
----
-
 
 title: "The Facade Pattern: Simplifying Complex Transformations"
 description: "Learn how the Facade pattern abstracts complex parsing logic into a clean, operational interface for client applications."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # The Facade Pattern: Simplifying Complexity
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 When building a library, your internal implementation is often highly modular (e.g., separate regex engines, metadata strippers, and line-level parsers). While this is great for maintainability, it can overwhelm the end-user. The **Facade Pattern** provides a simplified, high-level interface that masks the complexity of the underlying subsystem.

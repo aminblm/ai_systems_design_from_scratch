@@ -1,13 +1,7 @@
----
-
 
 title: "The Peril of Blocking Synchronous I/O in CLI Tools"
 description: "Understanding why mixing synchronous network I/O with blocking terminal input leads to stalled connections and system deadlocks."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # The Peril of Blocking Synchronous I/O
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 When building CLI applications that communicate with network services, a common architectural trap is the attempt to handle **network I/O** and **user input** on the same execution thread. This often results in a "frozen" application state, where your program becomes deaf to server updates while waiting for a user to type.

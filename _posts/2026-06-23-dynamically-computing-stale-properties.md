@@ -1,13 +1,7 @@
----
-
 
 title: "Avoiding Stale Data with Dynamic Property Computation"
 description: "Learn how to prevent cache-stale bugs in Python by replacing static attributes with dynamic property computation."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Dynamically Computing Stale Properties
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 A common source of "impossible" bugs in long-running Python applications is the **stale cache**. Developers often initialize a date, time, or configuration property at object instantiation, only to find that these values become incorrect once the calendar date flips or system state shifts.

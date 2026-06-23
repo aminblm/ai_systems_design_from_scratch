@@ -1,13 +1,7 @@
----
-
 
 title: "Building Resilient RPC Servers for Remote Workflow Automation"
 description: "Learn how to construct a robust, multi-threaded RPC server in Python, featuring connection lifecycle management and secure command routing."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Building Resilient RPC Servers for Remote Workflow Automation
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In distributed systems, Remote Procedure Call (RPC) servers act as the bridge for executing tasks on remote nodes. When dealing with sensitive workflows like Git operations, your server must be capable of handling concurrent connections, preventing zombie sessions, and validating incoming payloads defensively.

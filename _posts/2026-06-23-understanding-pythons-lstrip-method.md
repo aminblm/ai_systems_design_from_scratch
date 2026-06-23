@@ -1,13 +1,7 @@
----
-
 
 title: "Understanding Python's lstrip() Method"
 description: "Mastering the lstrip() method to efficiently handle string trimming and content parsing."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Understanding Python's lstrip() Method
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 The `lstrip()` method is a powerful, often overlooked string manipulation tool in Python. While `strip()` removes whitespace from both ends of a string, `lstrip()` focuses exclusively on the left side, making it ideal for parsing formatted text where the prefix carries semantic meaning.

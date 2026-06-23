@@ -1,13 +1,7 @@
----
-
 
 title: "Defeating Redundant Abstraction - Simplifying Your Pipeline"
 description: "Learn to recognize and eliminate 'layering rot' by flattening redundant classes and simplifying your data transformation pipelines."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Redundant Abstractions: Flattening the Pipeline
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In software engineering, we often feel that "more classes mean better design." However, when you see a pipeline containing `MarkdownToHTMLBuilder`, `MarkdownToHTML`, and `HTMLGenerator`, you aren't looking at "clean design"—you are looking at **Redundant Abstraction**.

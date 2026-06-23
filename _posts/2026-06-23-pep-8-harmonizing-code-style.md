@@ -1,13 +1,7 @@
----
-
 
 title: "PEP 8: Harmonizing Code Style for Readability"
 description: "Learn how consistent naming conventions like PascalCase for Enums and snake_case for methods improve maintainability and adherence to PEP 8."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # PEP 8: Harmonizing Code Style
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 Code is read far more often than it is written. In Python, following the **PEP 8 style guide** is not just about aesthetics—it is about reducing the cognitive load for everyone who interacts with your codebase. By standardizing naming conventions, you provide immediate, implicit context about the role of a variable, constant, or method.

@@ -1,13 +1,7 @@
----
-
 
 title: "The Buffered Print Trap in Python"
 description: "Learn why Python's output buffering causes delayed logs in long-running processes and how to force immediate terminal updates."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # The Buffered Print Trap
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 When building command-line tools or monitoring scripts, developers often notice that `print()` statements don't appear in the terminal immediately. This is not a delay in your logic; it is **output buffering** in action.

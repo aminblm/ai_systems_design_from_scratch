@@ -1,13 +1,7 @@
----
-
 
 title: "Building a Robust SEO Slug Compiler"
 description: "Learn how to transform raw user input into web-safe, standardized Jekyll post filenames using normalization and character-set sanitization."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # SEO Slug Compilers: Standardizing Filenames
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 For static site generators like Jekyll, the post filename is not just metadata—it is the URL structure. A proper filename must adhere to strict rules: no special characters, no spaces, and standardized date-prefixing. The `ResilientSlugGenerator` and `JekyllFilenameController` classes demonstrate a professional-grade pipeline for this task.

@@ -1,13 +1,7 @@
----
-
 
 title: "Essential Design Patterns for Scalable Python"
 description: "An overview of why design patterns are critical for architecting maintainable and scalable Python applications."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Essential Design Patterns for Scalable Python
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 As your codebase grows, the challenge shifts from "making it work" to "making it last." **Design patterns** are proven, reusable solutions to common software architecture problems. They provide a shared vocabulary for developers to describe complex system structures.

@@ -1,13 +1,7 @@
----
-
 
 title: "Defeating Stall-Outs: Implementing Socket Timeout Protections"
 description: "Learn how to prevent infinite hangs in your network applications by setting explicit socket timeout deadlines."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Timeout Protections: Stopping the Indefinite Stall
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 A common failure mode in network programming is the "infinite hang." If a server stops responding, your client might wait forever for a `recv()` call that will never return. Without a explicit timeout, your application process becomes a zombie, consuming resources while stuck in an I/O wait state.

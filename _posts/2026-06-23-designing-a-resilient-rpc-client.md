@@ -1,13 +1,7 @@
----
-
 
 title: "Building a Resilient RPC Client for Git Operations"
 description: "Learn to design a robust Remote Procedure Call (RPC) client that leverages safe TCP framing for reliable Git task execution."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Designing a Resilient RPC Client
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 Executing Git commands over a network is fraught with challenges, from connection drops to stream corruption. To build a system that is truly production-ready, we must treat the transport layer as unreliable and wrap our Remote Procedure Call (RPC) logic in a protocol that guarantees message integrity.

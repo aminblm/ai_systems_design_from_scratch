@@ -1,13 +1,7 @@
----
-
 
 title: "In-Memory Data Stores: Implementing Redis-like TTL and Expiration"
 description: "Learn how to manage Time-To-Live (TTL) metadata and lazy eviction strategies in an in-memory key-value store."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # In-Memory Data Stores: Managing Expiration
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In high-performance systems, an in-memory data store is often the backbone of temporary state management. Implementing features like `EXPIRE` and `TTL` (Time-To-Live) requires more than just storing values; it requires a robust strategy for **eviction**.

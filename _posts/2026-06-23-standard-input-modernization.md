@@ -1,13 +1,7 @@
----
-
 
 title: "Modernizing Input: Moving from input() to sys.stdin.readline()"
 description: "Discover why sys.stdin.readline() is the preferred choice for robust, streaming input handling in automation and CLI tools."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Standard Input Modernization
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In basic Python scripts, `input()` is the go-to for gathering user data. However, when you build automation tools that process streams of data—or when you need to handle piped input and EOF markers reliably—`input()` becomes a liability. Transitioning to `sys.stdin.readline()` provides the precision required for production-grade CLI tools.

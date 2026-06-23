@@ -1,13 +1,7 @@
----
-
 
 title: "The Head-of-Line Blocking Trap in Single-Threaded Servers"
 description: "Explore how single-threaded network loops cause head-of-line blocking and why your server stops accepting new connections."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # The Single-Threaded Head-of-Line Blocking Trap
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In network programming, the "Head-of-Line" (HOL) blocking trap is the most common reason a simple server fails to scale. When your server's architecture is tied to a single, synchronous execution thread, the entire system is only as responsive as the slowest client it is currently serving.

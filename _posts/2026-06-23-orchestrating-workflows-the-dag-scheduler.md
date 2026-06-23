@@ -1,13 +1,7 @@
----
-
 
 title: "Orchestrating Workflows with Directed Acyclic Graphs (DAGs)"
 description: "Learn how to manage complex task dependencies and execution timing using a Directed Acyclic Graph (DAG) scheduler."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Orchestrating Workflows: The DAG Scheduler
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In distributed systems and automation pipelines, tasks rarely run in total isolation. Often, Task B requires the output of Task A, and Task C must only trigger if Task B completes successfully. A **Directed Acyclic Graph (DAG)** is the standard data structure to model these constraints.

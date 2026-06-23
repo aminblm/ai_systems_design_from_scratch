@@ -1,10 +1,13 @@
 ---
 
+
 title: "The Architectural Paradox: Over-Engineering the Shell, Under-Engineering the Core"
 description: "Explore the dangers of building complex structural frameworks while neglecting the performance and reliability of the execution engine."
 layout: default
 
+
 ---
+
 
 <head>
   <meta charset="utf-8">

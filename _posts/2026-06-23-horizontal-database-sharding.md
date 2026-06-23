@@ -1,13 +1,7 @@
----
-
 
 title: "Implementing Horizontal Database Sharding"
 description: "Learn how to distribute data across clusters using consistent hashing and structural routing."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Horizontal Database Sharding
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 Horizontal sharding is the strategy of splitting a single dataset across multiple nodes (shards) to achieve horizontal scalability. Moving from simple list-based indexing to a structural routing paradigm using consistent hashing ensures your architecture can grow dynamically without manual data migration.

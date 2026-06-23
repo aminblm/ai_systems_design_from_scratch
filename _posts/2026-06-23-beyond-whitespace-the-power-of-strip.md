@@ -1,13 +1,7 @@
----
-
 
 title: "Beyond Whitespace: The Power of .strip()"
 description: "Discover why .strip() is more than a whitespace remover—it’s a versatile tool for cleaning delimiters and structural characters."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Beyond Whitespace: The Power of .strip()
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 When we first learn Python, `.strip()` is presented as the simple "space remover." In reality, it is a surgical tool for data cleaning. By providing a string argument to `.strip()`, you can remove any set of characters from the start and end of your strings.

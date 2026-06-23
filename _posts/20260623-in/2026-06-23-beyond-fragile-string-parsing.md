@@ -1,10 +1,13 @@
 ---
 
+
 title: "From String Splitting to Regex Engine Integration"
 description: "Why string-based parsing fails in complex text processing and how Regex provides a robust, state-aware alternative."
 layout: default
 
+
 ---
+
 
 <head>
   <meta charset="utf-8">

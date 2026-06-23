@@ -1,13 +1,7 @@
----
-
 
 title: "Type Safety: Mastering Union Types in Python"
 description: "Learn how to use Union types to improve code clarity and type safety when functions accept multiple data types."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Precision with Union Types
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 As Python’s type hinting system has matured, `Union` types have become an essential tool for expressing that a function or variable can hold one of several different types. By using `Union`, you move away from the ambiguity of "it could be anything" and toward a self-documenting, statically verifiable codebase.

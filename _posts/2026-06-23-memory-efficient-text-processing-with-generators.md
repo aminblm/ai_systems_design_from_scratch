@@ -1,13 +1,7 @@
----
-
 
 title: "Memory-Efficient Text Processing with Python Generators"
 description: "Discover why generator-based filtering is the key to parsing large files without exhausting system memory."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Memory-Efficient Text Processing with Generators
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 When parsing large text files—such as long-form Markdown documents or logs—loading the entire file into a list (a "buffer") is a recipe for disaster. As your input grows, so does your memory consumption, eventually leading to `MemoryError` or system slowdowns. **Generator-based filtering** is the solution, allowing you to process data in a stream rather than a bulk load.

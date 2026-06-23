@@ -1,13 +1,7 @@
----
-
 
 title: "Understanding the recv(1024) Buffer Trap"
 description: "Why relying on fixed-buffer reads in TCP is a common network antipattern and how to implement proper stream framing."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # The recv(1024) Buffer Trap
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 A common misconception among developers new to network programming is that TCP behaves like a mailbox: you send a message, and the receiver gets that exact message in one piece. In reality, **TCP is a byte-stream protocol**.

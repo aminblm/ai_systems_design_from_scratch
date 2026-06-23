@@ -1,10 +1,13 @@
 ---
 
+
 title: "The Trap of Over-Abstraction: When Less Is More"
 description: "Learn why adding unnecessary layers of abstraction can hurt code readability and how to simplify your data pipelines for better maintainability."
 layout: default
 
+
 ---
+
 
 <head>
   <meta charset="utf-8">

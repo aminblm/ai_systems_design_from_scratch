@@ -1,13 +1,7 @@
----
-
 
 title: "Building CRLF-Compliant HTTP Requests"
 description: "Learn why CRLF line endings are critical for HTTP protocol adherence and how to prevent common request-splitting vulnerabilities."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Building CRLF-Compliant HTTP Requests
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In the world of network protocols, the difference between a functional request and a security vulnerability often comes down to a few invisible characters. HTTP mandates the use of **CRLF** (Carriage Return + Line Feed, `\r\n`) to delimit headers and separate the header section from the body.

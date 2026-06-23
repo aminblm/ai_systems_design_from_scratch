@@ -1,13 +1,7 @@
----
-
 
 title: "Building a Robust Configuration Engine"
 description: "Learn how to implement a fluent Builder pattern and a custom Regex-based parser for handling application configuration."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Building a Robust Configuration Engine
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 Managing application configuration often involves parsing flat text files. While heavy-duty libraries like `PyYAML` are standard, creating a custom, lightweight parser offers better control, fewer dependencies, and deeper insight into how your application consumes settings.

@@ -1,13 +1,7 @@
----
-
 
 title: "Dynamic Structural Pattern Routing in Python"
 description: "How to replace hardcoded strings with structural pattern matching to build flexible, high-performance request routers."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Dynamic Structural Pattern Routing
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 As applications scale, hardcoded route handlers become an unmanageable burden. Moving toward a **Dynamic Structural Pattern**—where the backend decodes incoming JSON, extracts target metadata, and routes based on structural patterns—is the most effective way to decouple request processing from business logic.

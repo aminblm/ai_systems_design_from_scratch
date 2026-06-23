@@ -1,13 +1,7 @@
----
-
 
 title: "The Event Dispatcher: Decoupling Systems with the Observer Pattern"
 description: "Learn how the Observer pattern enables decoupled communication between system components through a centralized Event Dispatcher."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # The Event Dispatcher: Decoupling via Multicast
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In complex systems, components often need to communicate without being tightly bound to one another. Hard-coding dependencies (e.g., `ModuleA` calling `ModuleB` directly) creates a fragile, rigid architecture. The **Observer Pattern**, implemented here as an `EventDispatcher`, provides a clean solution: a centralized "broker" that manages communication between producers and consumers.

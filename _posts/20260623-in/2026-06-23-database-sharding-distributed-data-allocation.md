@@ -1,10 +1,13 @@
 ---
 
+
 title: "Database Sharding: Distributing Data at Scale"
 description: "Explore the mechanics of horizontal partitioning (sharding) in distributed databases through Pythonic collection and shard models."
 layout: default
 
+
 ---
+
 
 <head>
   <meta charset="utf-8">

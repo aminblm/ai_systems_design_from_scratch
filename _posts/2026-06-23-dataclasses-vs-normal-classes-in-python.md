@@ -1,13 +1,7 @@
----
-
 
 title: "Dataclasses vs. Normal Classes in Python"
 description: "Discover why dataclasses have become the modern standard for data-centric objects and how they improve code safety."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Dataclasses vs. Normal Classes in Python
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In modern Python development, the `dataclass` decorator (introduced in Python 3.7) has revolutionized how we handle objects that primarily exist to store data. Moving away from manual `__init__` boilerplate and error-prone attribute assignments is a critical step toward writing cleaner, more professional code.

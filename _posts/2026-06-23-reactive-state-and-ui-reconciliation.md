@@ -1,13 +1,7 @@
----
-
 
 title: "Reactive State and Component Reconciliation"
 description: "Explore how Python descriptors and observers enable reactive UI patterns, allowing components to track state and re-render only when necessary."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Reactive State and UI Reconciliation
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 Modern UI frameworks rely on "reactivity"—the ability of a system to automatically update the view when the underlying state changes. In Python, we can simulate this reactive behavior using the **Descriptor Protocol** (`__get__`, `__set__`) and a component-based lifecycle.

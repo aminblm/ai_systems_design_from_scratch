@@ -1,13 +1,7 @@
----
-
 
 title: "Building a Resilient Distributed System Integration Suite"
 description: "Learn to orchestrate complex Python system components using centralized logging, resilient design patterns, and automated test rigs."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Building a Resilient Distributed System Integration Suite
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In modern backend architecture, testing individual components is only half the battle. To ensure high availability and graceful failure, you need a unified test harness that can spin up services, manage stateful connections, and handle unexpected shutdowns cleanly.

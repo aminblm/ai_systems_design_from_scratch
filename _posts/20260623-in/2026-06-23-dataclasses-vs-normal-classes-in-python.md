@@ -1,10 +1,13 @@
 ---
 
+
 title: "Dataclasses vs. Normal Classes in Python"
 description: "Discover why dataclasses have become the modern standard for data-centric objects and how they improve code safety."
 layout: default
 
+
 ---
+
 
 <head>
   <meta charset="utf-8">

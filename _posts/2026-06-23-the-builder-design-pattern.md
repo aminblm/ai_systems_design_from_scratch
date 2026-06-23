@@ -1,13 +1,7 @@
----
-
 
 title: "Understanding the Builder Design Pattern in Python"
 description: "Learn how the Builder design pattern simplifies the construction of complex objects and improves code readability."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # The Builder Design Pattern
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 The **Builder Pattern** is a creational design pattern used to construct complex objects step by step. Instead of using a constructor with a massive list of parameters—which leads to the "telescoping constructor" anti-pattern—the Builder allows you to produce different types and representations of an object using the same construction code.

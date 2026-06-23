@@ -1,13 +1,7 @@
----
-
 
 title: "The Danger of Implicit Dependency Injection"
 description: "Why relying on kwargs in decorators leads to brittle APIs and silent bypasses of critical validation logic."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Hidden Inputs and Side-Effecting Decorators
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 Decorators are powerful tools for cross-cutting concerns, but they become a liability when they depend on *how* a function is called rather than *what* a function is. Relying on `kwargs` for validation—like looking for `input_dir` inside a decorator—creates an API where the slightest deviation in calling syntax causes security and logic failures.

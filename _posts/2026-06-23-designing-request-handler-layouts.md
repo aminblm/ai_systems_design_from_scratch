@@ -1,13 +1,7 @@
----
-
 
 title: "Designing Request-Handler Layouts in Python"
 description: "How to structure flexible URL routing patterns for your Python web applications."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Designing Request-Handler Layouts
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In Python web development, mapping incoming HTTP requests to specific logic is the backbone of any framework. Using a dictionary-based routing table—specifically structured as `self._routes[HTTP_METHOD][URL_PATH] = Handler_Callback`—is a highly efficient and performant way to manage application traffic.

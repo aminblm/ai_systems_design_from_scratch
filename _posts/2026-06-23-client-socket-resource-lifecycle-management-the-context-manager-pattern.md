@@ -1,13 +1,7 @@
----
-
 
 title: "Resource Lifecycle Management: The Context Manager Pattern"
 description: "Implementing the Context Manager pattern to ensure reliable socket resource cleanup in network-driven CLI applications."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Client Socket - Resource Lifecycle Management: The Context Manager Pattern
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In network programming, managing the lifecycle of resources—like TCP sockets—is a major source of technical debt. If a network operation crashes, a naive implementation might leave the socket file descriptor open, eventually leading to exhaustion and system instability.

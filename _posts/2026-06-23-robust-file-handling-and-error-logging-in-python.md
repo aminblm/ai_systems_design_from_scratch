@@ -1,13 +1,7 @@
----
-
 
 title: "Robust File Handling and Error Logging in Python"
 description: "Learn how to build resilient Python systems using os, pathlib, logging, and traceback for efficient file processing."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Robust File Handling and Error Logging in Python
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 When building automated systems—such as a static site generator—handling file system operations and unexpected errors gracefully is critical. In this tutorial, we explore how to leverage standard library modules to create a reliable processing pipeline.

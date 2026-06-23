@@ -1,13 +1,7 @@
----
-
 
 title: "The Architectural Paradox: Over-Engineering the Shell, Under-Engineering the Core"
 description: "Explore the dangers of building complex structural frameworks while neglecting the performance and reliability of the execution engine."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # The Architectural Paradox: Shell vs. Core
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In software design, we often fall into a trap of **misplaced priority**. We spend weeks crafting a beautiful, highly abstracted "structural layout"—with layers of interfaces, factories, and dependency injectors—while the actual "execution engine" that does the heavy lifting remains a fragile, monolithic `while True:` loop.

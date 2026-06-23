@@ -1,13 +1,7 @@
----
-
 
 title: "From String Splitting to Regex Engine Integration"
 description: "Why string-based parsing fails in complex text processing and how Regex provides a robust, state-aware alternative."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Beyond Fragile String Parsing
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 When parsing structured text like Markdown, developers often fall into the trap of using `.split()` or index-based slicing to isolate tokens. While this works for trivial cases, it crumbles immediately upon encountering nested or unbalanced syntax (e.g., `*Italic **Bold***`).

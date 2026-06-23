@@ -1,13 +1,7 @@
----
-
 
 title: "Building Resilient I/O and Network Utilities"
 description: "Learn how to construct robust, enterprise-grade file and socket utilities in Python to handle I/O failures and network collisions gracefully."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Building Resilient I/O and Network Utilities
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 Reliable systems are built on a foundation of stable infrastructure utilities. When interacting with the filesystem or network sockets, you must account for common failure modes like file corruption, port collisions, and connection timeouts. By centralizing these operations, you create a "source of truth" that ensures consistency across your entire architecture.

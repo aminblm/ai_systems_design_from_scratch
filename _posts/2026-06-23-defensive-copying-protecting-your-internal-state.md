@@ -1,13 +1,7 @@
----
-
 
 title: "The Importance of Defensive Copying in Python"
 description: "Learn how to prevent side-effect bugs by returning copies of mutable collections rather than the original references."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Defensive Copying: Protecting Your Internal State
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In Python, collections like `list`, `dict`, and `set` are mutable objects. When you store these in a class and expose them via a getter method, returning the original reference is a common source of "spooky action at a distance"—where external code accidentally modifies your internal state.

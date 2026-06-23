@@ -1,13 +1,7 @@
----
-
 
 title: "Understanding Callables in Python"
 description: "A deep dive into what makes an object 'callable' in Python and how to leverage the __call__ method for cleaner, stateful functions."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Understanding Callables in Python
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 In Python, the term "callable" refers to any object that can be called using the parentheses `()` operator. While functions are the most common callables, Python’s object-oriented nature allows you to make your own class instances behave like functions.

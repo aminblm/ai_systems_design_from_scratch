@@ -1,13 +1,7 @@
----
-
 
 title: "The Resilience Boundary: Try-Except vs. Raising Errors"
 description: "Learn the essential distinction between handling errors locally and bubbling them up in your application architecture."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # The Resilience Boundary: Handling vs. Bubbling
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 A common point of confusion in Python development is deciding where to catch an error and where to let it propagate. Understanding this "resilience boundary" is key to writing clean, maintainable systems.

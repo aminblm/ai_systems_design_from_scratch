@@ -1,13 +1,7 @@
----
-
 
 title: "Flexible Command Interfaces: Implementing Dynamic Argument Arrays"
 description: "Learn to design robust CLI methods using dynamic argument lists for seamless, unified command execution."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Dynamic Argument Arrays: Unifying Your Command Interface
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 A common bottleneck in CLI design is the "fixed-argument trap," where methods are tightly coupled to a specific number of positional arguments. To build a truly interactive shell environment, your method routes should accept a unified dynamic signature, typically `args: List[str]`. This pattern decouples your command-logic from the shell's input parsing.

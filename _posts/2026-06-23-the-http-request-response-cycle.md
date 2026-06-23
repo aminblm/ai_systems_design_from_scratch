@@ -1,13 +1,7 @@
----
-
 
 title: "Understanding the HTTP Request-Response Cycle"
 description: "Explore the mechanics of manual HTTP interaction through raw TCP sockets, focusing on protocol structure and status code handling."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # The HTTP Request-Response Cycle
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 When you use a browser, you are utilizing a high-level abstraction over the **HTTP/1.1 protocol**. However, at the networking layer, HTTP is fundamentally just a sequence of text frames sent over a TCP stream. To understand how APIs function, one must understand how to construct these frames manually.

@@ -1,13 +1,7 @@
----
-
 
 title: "Implementing Context Managers for Resource Resilience"
 description: "Learn how to use Python's context manager pattern to ensure automatic resource cleanup and robust error handling in client-server architectures."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Implementing Context Managers for Resource Resilience
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 When managing network clients, container interfaces, or RPC channels, ensuring that resources are closed correctly—even when errors occur—is vital. Python's **context manager** pattern (`with` statement) provides a standardized, clean way to handle setup and teardown logic automatically.

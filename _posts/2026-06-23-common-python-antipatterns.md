@@ -1,13 +1,7 @@
----
-
 
 title: "Common Python Antipatterns and How to Avoid Them"
 description: "Identify and refactor the most frequent Python antipatterns to write cleaner, more idiomatic, and efficient code."
 layout: default
-
-
----
-
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +43,9 @@ layout: default
 
 # Common Python Antipatterns
 
-{% raw %}
-
 <div class="author-card">
     <p><strong>{{ site.author.name }}</strong> — <i>{{ site.author.bio }}</i></p>
 </div>
-
-{% endraw %}
 
 
 Even in a language designed for readability, certain habits can lead to fragile, slow, or unidiomatic code. Recognizing these **antipatterns** is the first step toward writing professional-grade Python.

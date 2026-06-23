@@ -1,10 +1,13 @@
 ---
 
+
 title: "Building a Robust SEO Slug Compiler"
 description: "Learn how to transform raw user input into web-safe, standardized Jekyll post filenames using normalization and character-set sanitization."
 layout: default
 
+
 ---
+
 
 <head>
   <meta charset="utf-8">
