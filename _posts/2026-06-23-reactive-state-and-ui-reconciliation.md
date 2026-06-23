@@ -1,6 +1,6 @@
 ---
-title: Reactive State and Component Reconciliation
-description: Explore how Python descriptors and observers enable reactive UI patterns, allowing components to track state and re-render only when necessary.
+title: "Reactive State and Component Reconciliation"
+description: "Explore how Python descriptors and observers enable reactive UI patterns, allowing components to track state and re-render only when necessary."
 layout: default
 ---
 

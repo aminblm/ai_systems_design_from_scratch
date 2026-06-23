@@ -1,6 +1,6 @@
 ---
-title: Mastering Unicode Normalization for Robust Text Processing
-description: Learn how to handle character normalization and ASCII conversion effectively to prevent encoding errors and improve search accuracy.
+title: "Mastering Unicode Normalization for Robust Text Processing"
+description: "Learn how to handle character normalization and ASCII conversion effectively to prevent encoding errors and improve search accuracy."
 layout: default
 ---
 

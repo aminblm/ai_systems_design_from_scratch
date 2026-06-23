@@ -1,6 +1,6 @@
 ---
-title: Designing Robust RPC Clients: JSON Framing and Communication Patterns
-description: Learn how to structure Remote Procedure Calls using JSON serialization and newline framing for reliable network communication.
+title: "Designing Robust RPC Clients: JSON Framing and Communication Patterns"
+description: "Learn how to structure Remote Procedure Calls using JSON serialization and newline framing for reliable network communication."
 layout: default
 ---
 

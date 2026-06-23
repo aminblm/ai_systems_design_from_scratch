@@ -1,6 +1,6 @@
 ---
-title: Building Resilient I/O and Network Utilities
-description: Learn how to construct robust, enterprise-grade file and socket utilities in Python to handle I/O failures and network collisions gracefully.
+title: "Building Resilient I/O and Network Utilities"
+description: "Learn how to construct robust, enterprise-grade file and socket utilities in Python to handle I/O failures and network collisions gracefully."
 layout: default
 ---
 

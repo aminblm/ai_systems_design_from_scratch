@@ -1,6 +1,6 @@
 ---
-title: Scaling Concurrency: Transitioning to a Multi-Threaded Engine
-description: Learn how to evolve your server from a blocking single-threaded loop to a concurrent, multi-threaded execution engine.
+title: "Scaling Concurrency: Transitioning to a Multi-Threaded Engine"
+description: "Learn how to evolve your server from a blocking single-threaded loop to a concurrent, multi-threaded execution engine."
 layout: default
 ---
 

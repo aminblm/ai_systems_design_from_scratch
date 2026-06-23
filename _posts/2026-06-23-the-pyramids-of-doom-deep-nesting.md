@@ -1,6 +1,6 @@
 ---
-title: Defeating the Pyramids of Doom: Simplifying Deeply Nested Logic
-description: Learn how to flatten deep if-else structures using guard clauses, early returns, and functional decomposition for cleaner, more maintainable code.
+title: "Defeating the Pyramids of Doom: Simplifying Deeply Nested Logic"
+description: "Learn how to flatten deep if-else structures using guard clauses, early returns, and functional decomposition for cleaner, more maintainable code."
 layout: default
 ---
 

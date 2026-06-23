@@ -1,6 +1,6 @@
 ---
-title: Load Balancing Algorithms: The Round-Robin Pattern
-description: Learn how to distribute traffic across backend server pools efficiently using the Round-Robin algorithm.
+title: "Load Balancing Algorithms: The Round-Robin Pattern"
+description: "Learn how to distribute traffic across backend server pools efficiently using the Round-Robin algorithm."
 layout: default
 ---
 

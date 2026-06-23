@@ -1,6 +1,6 @@
 ---
-title: Understanding Data Sharding and Indexing
-description: Learn how to scale data storage using horizontal partitioning (sharding) and how to build a schema-driven search index.
+title: "Understanding Data Sharding and Indexing"
+description: "Learn how to scale data storage using horizontal partitioning (sharding) and how to build a schema-driven search index."
 layout: default
 ---
 

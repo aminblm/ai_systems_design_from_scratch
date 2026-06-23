@@ -1,6 +1,6 @@
 ---
-title: Memory-Efficient Text Processing with Python Generators
-description: Discover why generator-based filtering is the key to parsing large files without exhausting system memory.
+title: "Memory-Efficient Text Processing with Python Generators"
+description: "Discover why generator-based filtering is the key to parsing large files without exhausting system memory."
 layout: default
 ---
 

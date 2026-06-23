@@ -1,6 +1,6 @@
 ---
-title: Building an Intent Matching Engine
-description: Learn the mechanics of keyword-based intent classification for conversational interfaces.
+title: "Building an Intent Matching Engine"
+description: "Learn the mechanics of keyword-based intent classification for conversational interfaces."
 layout: default
 ---
 

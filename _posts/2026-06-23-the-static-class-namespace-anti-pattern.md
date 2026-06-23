@@ -1,6 +1,6 @@
 ---
-title: The Anti-Pattern: Static Classes as Namespaces
-description: Why wrapping stateless functions in classes is an anti-pattern in Python and how modules serve this purpose natively.
+title: "The Anti-Pattern: Static Classes as Namespaces"
+description: "Why wrapping stateless functions in classes is an anti-pattern in Python and how modules serve this purpose natively."
 layout: default
 ---
 

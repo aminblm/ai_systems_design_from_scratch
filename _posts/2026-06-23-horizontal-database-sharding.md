@@ -1,6 +1,6 @@
 ---
-title: Implementing Horizontal Database Sharding
-description: Learn how to distribute data across clusters using consistent hashing and structural routing.
+title: "Implementing Horizontal Database Sharding"
+description: "Learn how to distribute data across clusters using consistent hashing and structural routing."
 layout: default
 ---
 

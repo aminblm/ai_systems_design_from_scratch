@@ -1,6 +1,6 @@
 ---
-title: PEP 8: Harmonizing Code Style for Readability
-description: Learn how consistent naming conventions like PascalCase for Enums and snake_case for methods improve maintainability and adherence to PEP 8.
+title: PEP 8: "Harmonizing Code Style for Readability"
+description: "Learn how consistent naming conventions like PascalCase for Enums and snake_case for methods improve maintainability and adherence to PEP 8."
 layout: default
 ---
 

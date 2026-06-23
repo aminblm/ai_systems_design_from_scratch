@@ -1,6 +1,6 @@
 ---
-title: Avoiding Instance State Pollution in Concurrent Servers
-description: Learn why storing socket handles as instance attributes creates critical race conditions and how to secure your multi-threaded server.
+title: "Avoiding Instance State Pollution in Concurrent Servers"
+description: "Learn why storing socket handles as instance attributes creates critical race conditions and how to secure your multi-threaded server."
 layout: default
 ---
 

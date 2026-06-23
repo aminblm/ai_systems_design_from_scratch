@@ -1,6 +1,6 @@
 ---
-title: Fixing Fragile Pathing with Pathlib
-description: Learn why string splitting for filenames causes bugs and how to use Python's modern pathlib module for robust, cross-platform path handling.
+title: "Fixing Fragile Pathing with Pathlib"
+description: "Learn why string splitting for filenames causes bugs and how to use Python's modern pathlib module for robust, cross-platform path handling."
 layout: default
 ---
 

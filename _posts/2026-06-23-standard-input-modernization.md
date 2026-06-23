@@ -1,6 +1,6 @@
 ---
-title: Modernizing Input: Moving from input() to sys.stdin.readline()
-description: Discover why sys.stdin.readline() is the preferred choice for robust, streaming input handling in automation and CLI tools.
+title: "Modernizing Input: Moving from input() to sys.stdin.readline()"
+description: "Discover why sys.stdin.readline() is the preferred choice for robust, streaming input handling in automation and CLI tools."
 layout: default
 ---
 

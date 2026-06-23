@@ -1,6 +1,6 @@
 ---
-title: Common Python Antipatterns and How to Avoid Them
-description: Identify and refactor the most frequent Python antipatterns to write cleaner, more idiomatic, and efficient code.
+title: "Common Python Antipatterns and How to Avoid Them"
+description: "Identify and refactor the most frequent Python antipatterns to write cleaner, more idiomatic, and efficient code."
 layout: default
 ---
 

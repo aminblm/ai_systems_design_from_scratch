@@ -1,6 +1,6 @@
 ---
-title: Reliable Network Streams: Mastering Payload Framing
-description: Discover why streaming data over raw sockets requires explicit framing markers to prevent message interleaving and corruption.
+title: "Reliable Network Streams: Mastering Payload Framing"
+description: "Discover why streaming data over raw sockets requires explicit framing markers to prevent message interleaving and corruption."
 layout: default
 ---
 

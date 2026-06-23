@@ -1,6 +1,6 @@
 ---
-title: Avoiding Stale Data with Dynamic Property Computation
-description: Learn how to prevent cache-stale bugs in Python by replacing static attributes with dynamic property computation.
+title: "Avoiding Stale Data with Dynamic Property Computation"
+description: "Learn how to prevent cache-stale bugs in Python by replacing static attributes with dynamic property computation."
 layout: default
 ---
 

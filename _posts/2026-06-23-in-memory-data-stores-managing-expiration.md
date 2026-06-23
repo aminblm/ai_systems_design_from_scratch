@@ -1,6 +1,6 @@
 ---
-title: In-Memory Data Stores: Implementing Redis-like TTL and Expiration
-description: Learn how to manage Time-To-Live (TTL) metadata and lazy eviction strategies in an in-memory key-value store.
+title: In-Memory Data Stores: "Implementing Redis-like TTL and Expiration"
+description: "Learn how to manage Time-To-Live (TTL) metadata and lazy eviction strategies in an in-memory key-value store."
 layout: default
 ---
 

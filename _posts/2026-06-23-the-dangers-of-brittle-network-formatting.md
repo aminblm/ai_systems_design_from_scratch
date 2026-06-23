@@ -1,6 +1,6 @@
 ---
-title: The Dangers of Brittle Network Formatting
-description: Why raw Python string representations create fragile network architectures and how to implement structured protocol payloads.
+title: "The Dangers of Brittle Network Formatting"
+description: "Why raw Python string representations create fragile network architectures and how to implement structured protocol payloads."
 layout: default
 ---
 

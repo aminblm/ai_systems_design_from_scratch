@@ -1,6 +1,6 @@
 ---
-title: Concurrent Networking: The Multi-Threaded Server Pattern
-description: Learn how to scale TCP servers by offloading client interactions to independent threads, ensuring responsive connection acceptance.
+title: "Concurrent Networking: The Multi-Threaded Server Pattern"
+description: "Learn how to scale TCP servers by offloading client interactions to independent threads, ensuring responsive connection acceptance."
 layout: default
 ---
 

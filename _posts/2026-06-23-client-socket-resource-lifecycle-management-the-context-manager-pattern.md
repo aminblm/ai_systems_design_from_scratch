@@ -1,6 +1,6 @@
 ---
-title: Resource Lifecycle Management: The Context Manager Pattern
-description: Implementing the Context Manager pattern to ensure reliable socket resource cleanup in network-driven CLI applications.
+title: "Resource Lifecycle Management: The Context Manager Pattern"
+description: "Implementing the Context Manager pattern to ensure reliable socket resource cleanup in network-driven CLI applications."
 layout: default
 ---
 

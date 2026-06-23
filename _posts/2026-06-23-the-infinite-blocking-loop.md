@@ -1,6 +1,6 @@
 ---
-title: Breaking the Infinite Blocking Loop
-description: Why sequential execution destroys task orchestrators and how to transition to asynchronous concurrency.
+title: "Breaking the Infinite Blocking Loop"
+description: "Why sequential execution destroys task orchestrators and how to transition to asynchronous concurrency."
 layout: default
 ---
 

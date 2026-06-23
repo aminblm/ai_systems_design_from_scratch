@@ -1,6 +1,6 @@
 ---
-title: Building Resilient RPC Servers for Remote Workflow Automation
-description: Learn how to construct a robust, multi-threaded RPC server in Python, featuring connection lifecycle management and secure command routing.
+title: "Building Resilient RPC Servers for Remote Workflow Automation"
+description: "Learn how to construct a robust, multi-threaded RPC server in Python, featuring connection lifecycle management and secure command routing."
 layout: default
 ---
 

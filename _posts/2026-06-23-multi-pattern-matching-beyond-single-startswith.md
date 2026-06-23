@@ -1,6 +1,6 @@
 ---
-title: Elegant Conditional Logic: The Tuple-Based `startswith()`
-description: Master Python's multi-pattern matching with startwith() to write cleaner, faster conditional logic.
+title: "Elegant Conditional Logic: The Tuple-Based `startswith()`"
+description: "Master Python's multi-pattern matching with startwith() to write cleaner, faster conditional logic."
 layout: default
 ---
 

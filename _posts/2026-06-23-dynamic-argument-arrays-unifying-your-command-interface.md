@@ -1,6 +1,6 @@
 ---
-title: Flexible Command Interfaces: Implementing Dynamic Argument Arrays
-description: Learn to design robust CLI methods using dynamic argument lists for seamless, unified command execution.
+title: "Flexible Command Interfaces: Implementing Dynamic Argument Arrays"
+description: "Learn to design robust CLI methods using dynamic argument lists for seamless, unified command execution."
 layout: default
 ---
 

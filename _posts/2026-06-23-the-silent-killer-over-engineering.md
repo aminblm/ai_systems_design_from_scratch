@@ -1,6 +1,6 @@
-# The Architectural Paradox: Shell vs. Core---
-title: The Silent Killer: Why Over-Engineering Destroys Velocity
-description: Learn to identify the symptoms of over-engineering and embrace pragmatic design for maintainable, readable, and efficient software.
+---
+title: "The Silent Killer: Why Over-Engineering Destroys Velocity"
+description: "Learn to identify the symptoms of over-engineering and embrace pragmatic design for maintainable, readable, and efficient software."
 layout: default
 ---
 

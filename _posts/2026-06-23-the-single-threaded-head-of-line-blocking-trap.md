@@ -1,6 +1,6 @@
 ---
-title: The Head-of-Line Blocking Trap in Single-Threaded Servers
-description: Explore how single-threaded network loops cause head-of-line blocking and why your server stops accepting new connections.
+title: "The Head-of-Line Blocking Trap in Single-Threaded Servers"
+description: "Explore how single-threaded network loops cause head-of-line blocking and why your server stops accepting new connections."
 layout: default
 ---
 

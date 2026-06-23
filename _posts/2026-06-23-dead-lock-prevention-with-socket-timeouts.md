@@ -1,6 +1,6 @@
 ---
-title: Dead-Lock Prevention with Socket Timeouts
-description: Protecting your server from zombie connections by implementing robust socket timeouts.
+title: "Dead-Lock Prevention with Socket Timeouts"
+description: "Protecting your server from zombie connections by implementing robust socket timeouts."
 layout: default
 ---
 

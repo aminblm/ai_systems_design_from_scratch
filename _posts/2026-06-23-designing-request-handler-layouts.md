@@ -1,6 +1,6 @@
 ---
-title: Designing Request-Handler Layouts in Python
-description: How to structure flexible URL routing patterns for your Python web applications.
+title: "Designing Request-Handler Layouts in Python"
+description: "How to structure flexible URL routing patterns for your Python web applications."
 layout: default
 ---
 

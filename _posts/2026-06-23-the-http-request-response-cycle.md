@@ -1,6 +1,6 @@
 ---
-title: Understanding the HTTP Request-Response Cycle
-description: Explore the mechanics of manual HTTP interaction through raw TCP sockets, focusing on protocol structure and status code handling.
+title: "Understanding the HTTP Request-Response Cycle"
+description: "Explore the mechanics of manual HTTP interaction through raw TCP sockets, focusing on protocol structure and status code handling."
 layout: default
 ---
 

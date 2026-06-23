@@ -1,6 +1,6 @@
 ---
-title: Defeating Stall-Outs: Implementing Socket Timeout Protections
-description: Learn how to prevent infinite hangs in your network applications by setting explicit socket timeout deadlines.
+title: "Defeating Stall-Outs: Implementing Socket Timeout Protections"
+description: "Learn how to prevent infinite hangs in your network applications by setting explicit socket timeout deadlines."
 layout: default
 ---
 

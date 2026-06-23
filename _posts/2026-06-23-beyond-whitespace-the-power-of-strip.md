@@ -1,6 +1,6 @@
 ---
-title: Beyond Whitespace: The Power of .strip()
-description: Discover why .strip() is more than a whitespace remover—it’s a versatile tool for cleaning delimiters and structural characters.
+title: "Beyond Whitespace: The Power of .strip()"
+description: "Discover why .strip() is more than a whitespace remover—it’s a versatile tool for cleaning delimiters and structural characters."
 layout: default
 ---
 

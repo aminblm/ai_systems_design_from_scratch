@@ -1,6 +1,6 @@
 ---
-title: Structural Modeling: Trees and Dataclasses
-description: Learn how to represent hierarchical system architectures using recursive dataclass structures and HTML rendering.
+title: "Structural Modeling: Trees and Dataclasses"
+description: "Learn how to represent hierarchical system architectures using recursive dataclass structures and HTML rendering."
 layout: default
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: The Event Dispatcher: Decoupling Systems with the Observer Pattern
-description: Learn how the Observer pattern enables decoupled communication between system components through a centralized Event Dispatcher.
+title: "The Event Dispatcher: Decoupling Systems with the Observer Pattern"
+description: "Learn how the Observer pattern enables decoupled communication between system components through a centralized Event Dispatcher."
 layout: default
 ---
 
