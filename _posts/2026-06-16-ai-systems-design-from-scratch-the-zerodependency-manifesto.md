@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "AI Systems Design From Scratch: The Zero-Dependency Manifesto"
 description: "Demystifying production infrastructure: Building deep-tech AI engines, web protocols, and distributed platforms from first principles with a strict zero-dependency mandate."
 date: 2026-06-16

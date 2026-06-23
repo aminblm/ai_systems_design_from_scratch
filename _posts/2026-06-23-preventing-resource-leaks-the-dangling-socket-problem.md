@@ -1,5 +1,5 @@
 ---
-title: Plugging the Leaks: "Solving Resource Exhaustion in Network Sockets"
+title: "Plugging the Leaks: Solving Resource Exhaustion in Network Sockets"
 description: "Learn how to prevent TCP file descriptor exhaustion and memory leaks by ensuring your network code handles unexpected failures gracefully."
 layout: default
 ---

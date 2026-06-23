@@ -1,5 +1,5 @@
 ---
-title: Type Safety: "Mastering Union Types in Python"
+title: "Type Safety: Mastering Union Types in Python"
 description: "Learn how to use Union types to improve code clarity and type safety when functions accept multiple data types."
 layout: default
 ---

@@ -1,5 +1,5 @@
 ---
-title: Defeating Redundant Abstraction: "Simplifying Your Pipeline"
+title: "Defeating Redundant Abstraction: Simplifying Your Pipeline"
 description: "Learn to recognize and eliminate "layering rot" by flattening redundant classes and simplifying your data transformation pipelines."
 layout: default
 ---
