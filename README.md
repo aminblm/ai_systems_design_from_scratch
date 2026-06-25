@@ -157,7 +157,6 @@ They are organized by operational domain so that you can easily copy and paste t
 
 * [x] [**Socket server**](src/py_socket_server.py) (Low-level TCP/IP listening, socket binding, and socket multiplexing)
 * [x] [**Socket client**](src/py_socket_client.py) (Raw TCP connection handshake protocol and byte streamer)
-* [x] [**Load Balancer**](src/py_load_balancer.py) (Traffic distribution mechanics featuring Round-Robin and Least-Connections)
 * [x] [**FastAPI / Flask / RESTFUL API**](src/py_REST_API.py) (Pure Python REST API routing framework with request/response body parsing)
 * [x] [**Postman / RESTFUL API Client**](src/py_REST_API_CLI_client.py) (Command-line REST API interface and endpoints stress-testing client)
 * [x] [**Angular / React / Vue.js / Frontend**](src/py_frontend.py) (Component-based web client routing abstraction)
@@ -175,7 +174,7 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **Kafka** (Log-append streaming broker, distributed partition managers, and state logs)
 * [ ] **S3** (Simple Storage Service bucket manager, object allocation, and metadata blobs)
 * [ ] **Data lakes** (Unstructured multi-format data directories and partition layouts)
-* [ ] **Databases** (Abstract state engine tracking transactions and ACID parameters)
+
 
 #### 5. Data Orchestration, Ingestion & Pipelines
 
@@ -262,7 +261,169 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **Reverse proxy** (Nginx)
 * [ ] **Commit Message Generator**
 * [ ] **Beautiful soup**
+* [ ] **VPN**
+* [ ] **Rabbit MQ**
+* [ ] **Snowflake**
+* [ ] **Hadoop**
+* [ ] **SLMs**
+* [ ] **Supabase**
 
+### Fundamentals of System Design
+
+* [x] [**Load Balancer**](src/py_load_balancer.py) (Traffic distribution mechanics featuring Round-Robin and Least-Connections)
+   * Layer 4 (IP, TCP, FTP, UDP)
+   * Layer 7 (HTTP)
+   * Algorithms:
+      * [x] Round Robin
+      * [ ] Weighted Round Robin
+      * [ ] Least connections
+      * [ ] Least response time
+* [ ] **Databases** (Abstract state engine tracking transactions and ACID parameters)
+   * Scalability (DBMS)
+   * Security (DBMS)
+   * Consistency (DBMS)
+   * DBMS provides ACID capabilities
+   * Availability (DBMS)
+* [ ] **Microservices**
+   * Organised around a specific business capability
+   * Owned by a small team
+   * Highly scalable
+   * Loosely coupled
+   * Highly maintainable and testable 
+* [ ] Caches
+   * Client caching
+   * CDN caching (Content Delivery Network) 
+   * Web Server caching
+   * Database caching
+   * Application caching
+      * [ ] Memcached
+      * [x] Redis
+      * [ ] DynamoDB
+   * **Caching challenge**: Ensuring consistency of the data between the cache and the underlying data
+* [ ] File System Storage
+   * [ ] Block Storage
+   * [ ] Object Storage
+      * [ ] Amazon S3
+   * [ ] DSF (Distributed File Storage)
+      * Performance
+      * Availability
+      * Scalability
+      * Reliability
+      * Ease of Use
+      * Data integrity
+      * Heterogeneity
+* [ ] Network
+* [ ] Messaging Queues
+   * [ ] Producer
+   * [ ] consumer
+   * Scalable
+   * Distributed
+   * Reliability
+   * Performance
+   * Easy to use interface
+
+### Principles of Microservice Architecture 
+
+* Monolithic vss SOA (Service-Oriented Architecture) vs. Microservices
+* 7 Principles of Microservice Architecture
+   * DDD (Domain-Driven Design)
+   * Culture of automation
+      * Infrastructure automation
+         * Infrastructure as Code (IaaC)
+            * [ ] Terraform
+            * [ ] Ansible
+            * [ ] AWS CloudFormation
+            * [ ] Azure Resource Manager 
+            * [ ] Google Cloud Deployment Manager 
+         * Testing automation
+            * [ ] Apache JMeter
+            * [ ] Gatling
+            * [ ] Jaeger
+            * [ ] Cypress
+            * [ ] Playwright
+         * Continuous Delivery
+            * [ ] Harness
+            * [ ] Spinnaker
+            * [ ] Jenkins
+            * [ ] Github 
+            * [ ] Gitlab
+   * Encapsulation: Hiding Implementation Details
+      * Application Programming Interfaces (API)
+         * CRUD 
+      * Bounded Contexts
+   * Decentralization
+      * Self-Service
+      * Shared Governance 
+      * Smart Endpoints and Dumb Pipes
+
+### Challenges in Distributed Systems: Availability
+
+* Consistency, Availability, Partition Tolerance (CAP Theorem)
+   * CP
+      * [x] MongoDB
+      * [ ] HBase
+      * [x] Redis 
+   * AP
+      * [ ] CouchDB
+      * [ ] Cassandra
+      * [ ] DynamoDB
+      * [ ] Riak
+   * CA
+      * [ ] RDBMS
+* Availability
+   * Redundancy
+   * Monitoring (Observability)
+      * Network
+      * Machine
+      * Application
+      * 4 Pillars
+         * Monitoring
+         * Alerting/visualization
+         * Distriuted systems tracing infrastructure 
+         * Log aggregations / Analytics
+
+### Designing a System from Scratch 
+
+1. Functional Requirements
+2. Non-Functional Requirements 
+3. Data Structure Design 
+   * [ ] Inverted Index 
+   * [ ] Binary-search Tree 
+   * [ ] Trie 
+4. System Architecture
+   * Scalability
+      * Horizontal scaling
+         * Pros:
+            * Provides infinite scaling (through elasticity)
+            * Provides more fault tolerance (through Redundancy)
+            * CHeaper (can be implemented with off-the-shelf hardware)
+            * no need to rely on complex, specialized hardware
+         * Cons:
+            * Introduces the complexity of implementation
+      * Vertical scaling
+         * Pros:
+            * Ease of implementation 
+         * Cons: 
+            * Limitation on the scale
+            * Hardware becomes complex and expensive as the size increases
+   * Sharding
+      * [ ] Random sharding
+         * [ ] Hash algorithms
+      * [ ] Alphabetic sharding
+      * [ ] Consistent Hashing
+   * Availability
+      * Redundancy
+         * Pros:
+            * Availability of duplicate shard
+            * Alleviate pressure on one node
+         * Cons: 
+            * Increase memory requirement of system
+            * Extra complexity of implementation
+               * Shard routing
+               * synchronization of shard data
+5. High-Level Diagram And Data Flow
+   * Client -> Load Balancer -> Web Servers (cahes) -> Indexer nodes -> Document Store (DFS)
+   
 ### Possible evolutions of this repository
 
 - Lightweight zero-dependency all-in-one infrastructure for rapid prototyping and validating systems before scale.
