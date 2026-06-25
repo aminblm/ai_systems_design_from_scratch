@@ -2,7 +2,6 @@
 import os
 import re
 import argparse
-import unicodedata
 
 # Configuration
 AUTHOR_NAME = "Amin Boulouma"
@@ -171,39 +170,6 @@ def clean_author(input_dir, output_dir):
                 f.write(content)
             
             print(f"Sanitized and Updated: {filename}")
-
-def update_author_data(input_dir, output_dir):
-    if not os.path.exists(output_dir): 
-        os.makedirs(output_dir)
-
-    # Normalize targets by collapsing all whitespace
-    # Handles {{  site.author.name  }} or {{site.author.name}}
-    replacements = {
-        "{{ site.author.name }}": "Amin Boulouma",
-        "{{ site.author.bio }}": "Software Engineer"
-    }
-
-    for filename in os.listdir(input_dir):
-        if filename.endswith('.md'):
-            input_path = os.path.join(input_dir, filename)
-            output_path = os.path.join(output_dir, filename)
-            
-            with open(input_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-            
-            # Massive normalization to permit string matching
-            # Removes all whitespace, tabs, and non-breaking spaces
-            normalized = "".join(content.split())
-            
-            # Check if any target exists in the mangled text
-            # If replacement fails, debug by printing the normalized content
-            for old, new in replacements.items():
-                content = content.replace(old, new)
-                # Fallback: replace variations
-                content = content.replace(old.replace(" ", ""), new)
-
-            with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(content)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process Markdown files.")
