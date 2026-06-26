@@ -55,7 +55,7 @@ class MarkdownParser:
                     content += " " + close_line.strip()
                     if close_line.startswith("</"):
                         break
-                yield content
+                yield "\n" + content + "\n"
                 continue
             yield line
     
@@ -63,12 +63,13 @@ class MarkdownParser:
         """Generator to parse multi-line code blocks."""
         for line in lines_iterator:
             if line.startswith("```") and not line.endswith('```'): 
-                content = line.replace(line.split("```")[1], '')
+                yield "\n<pre><code>"
                 for close_line in lines_iterator:
-                    content += "\n" + close_line
                     if close_line.startswith("```"):
                         break
-                yield content
+                    else:
+                        yield "</>" + close_line + "</>"
+                yield "</code></pre>\n"
                 continue
             yield line
 
@@ -76,14 +77,14 @@ class MarkdownParser:
         """Generator to parse multi-line bullet points."""
         for line in lines_iterator:
             if line.startswith("* ") or line.startswith('- '): 
-                content = f"<ul>\n\t<li>{self._parse_inline_elements(line[2:].strip())}</li>"
+                yield f"\n<ul>"
+                yield f"\t<li>{self._parse_inline_elements(line[2:].strip())}</li>"
                 for close_line in lines_iterator:
                     if close_line.startswith("* ") or close_line.startswith('- '):
-                        content += f"\n\t<li>{self._parse_inline_elements(close_line[2:].strip())}</li>"
+                        yield f"\t<li>{self._parse_inline_elements(close_line[2:].strip())}</li>"
                     else:
-                        content += f"\n</ul>"
+                        yield f"</ul>\n"
                         break
-                yield content
                 continue
             yield line
 
@@ -91,22 +92,26 @@ class MarkdownParser:
         """Generator to parse multi-line tables."""
         for line in lines_iterator:
             if line.startswith("| ") and line.endswith(' |'): 
-                content = '<table border="1" border-collapse="collapse">\n\t<thead>\n\t\t<tr>\n'
+                yield '\n<table border="1" border-collapse="collapse">'
+                yield "\t<thead>"
+                yield "\t\t<tr>"
                 for table_head in line.split("|")[1: -1]:
-                    content += f"\t\t\t<th>{self._parse_inline_elements(table_head.strip())}</th>\n"
-                content += "\t\t</tr>\n\t</thead>\n\t<tbody>\n"
+                    yield f"\t\t\t<th>{self._parse_inline_elements(table_head.strip())}</th>"
+                yield "\t\t</tr>"
+                yield "\t</thead>\n"
+                yield "\t<tbody>"
                 for close_line in lines_iterator:
                     if "--- |" in close_line:
                         continue
                     if close_line.startswith("| ") and close_line.endswith(' |'):
-                        content += "\t\t<tr>\n"
+                        yield "\t\t<tr>"
                         for table_body in close_line.split("|")[1: -1]:
-                            content += f"\t\t\t<td>{self._parse_inline_elements(table_body.strip())}</td>\n"
-                        content += "\t\t</tr>\n"
+                            yield f"\t\t\t<td>{self._parse_inline_elements(table_body.strip())}</td>"
+                        yield "\t\t</tr>"
                     else:
                         break
-                content += "\t</tbody>\n</table>\n"
-                yield content
+                yield "\t</tbody>"
+                yield "</table>\n"
                 continue
             yield line
 
@@ -142,21 +147,21 @@ class MarkdownParser:
         # Default paragraph
         return f"<p>{self._parse_inline_elements(line)}</p>"
     
-    def to_html(self, markdown_text: str) -> Generator[str, None, None]:
+    def to_html(self, markdown_generator: Generator[str, None, None]) -> Generator[str, None, None]:
         """Converts an entire markdown document string into an HTML string."""
-        cleaned_lines_iterator = self._parse_tables(
+        cleaned_lines_generator = self._parse_tables(
             self._parse_bullet_points(
                 self._parse_multiline_code(
                     self._parse_multiline_html_tags(
                         self._clean_metadata(
-                            IOUtility.text_to_lines_generator(markdown_text)
+                            markdown_generator
                         )
                     )
                 )
             )
         )
     
-        for line in cleaned_lines_iterator:
+        for line in cleaned_lines_generator:
             parsed = self.parse_line(line.strip())
             if parsed:
                 yield parsed
@@ -169,17 +174,15 @@ class MarkdownConverterFacade:
 
     def convert_file(self, input_path: str | Path, output_path: str | Path = None) -> Generator[str, None, None]:
         """Reads markdown from file, converts it, and writes out HTML."""
-        html_content_iterator = self.parser.to_html(IOUtility.read_decoded(input_path))
+        html_content_generator = self.parser.to_html(IOUtility.text_to_lines_generator(IOUtility.read_decoded(input_path), strip=True))
         if output_path:
-            IOUtility.write_encoded(output_path, html_content_iterator)
-        return html_content_iterator
+            IOUtility.write_encoded(output_path, html_content_generator)
+        return html_content_generator
 
-    def convert_text(self, text: str) -> str:
+    def convert_text(self, text: str) -> Generator[str, None, None]:
         """Direct string interface."""
-        return self.parser.to_html(text)
+        return self.parser.to_html(IOUtility.text_to_lines_generator(text))
 
     def md_text_to_html_file(self, html_file_path: str | Path, html_content: Generator[str, None, None]): IOUtility.write_encoded(html_file_path, html_content)
-
-    def gen_html_from_md_file(self, markdown_file_path: str | Path): return self.parser.to_html(IOUtility.read_decoded(markdown_file_path))
     
     def gen_html_from_md_text(self, md_text): return self.parser.to_html(md_text.split("\n"))

@@ -8,8 +8,11 @@ class IOUtility:
     """Provides atomic, type-safe filesystem I/O operations with explicit encoding safeguards."""
 
     @staticmethod
-    def text_to_lines_generator(text: str) -> Generator[str, None, None]:
-        for line in iter(text.splitlines()): yield line
+    def text_to_lines_generator(text: str, strip=True) -> Generator[str, None, None]:
+        if strip:
+            for line in iter(text.splitlines()): yield line.strip()
+        else: 
+            for line in iter(text.splitlines()): yield line
     
     @staticmethod
     def read_decoded(file_path: str | Path, encoding: str = 'utf-8', errors: str = 'replace') -> str:

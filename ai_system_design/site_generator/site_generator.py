@@ -2,6 +2,7 @@
 import traceback
 from pathlib import Path
 from typing import Dict, Tuple 
+from pprint import pprint
 
 from ai_system_design.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.md_html import MarkdownConverterFacade
@@ -35,7 +36,7 @@ class SiteGenerator:
         """Injects compiled markdown content and config mappings into the layout"""
 
         # Hydrate primary content block
-        html = self.layout_template.replace('{{ site.content }}', "\n".join(MarkdownConverterFacade().convert_file(md_file_path)))
+        html = self.layout_template.replace('{{ site.content }}', "\n\t\t\t\t".join(MarkdownConverterFacade().convert_file(md_file_path)))
 
         # Hydrate,etadata key/value template tokens
         for key, value in self.config_mappings.items():
@@ -68,7 +69,7 @@ class SiteGenerator:
                 src_path, dest_path = self._resolve_paths(file_path, input_dir, output_dir)
                 rendered_content = self._render_html(src_path)
 
-                IOUtility.write_encoded(dest_path, IOUtility.text_to_lines_generator(rendered_content))
+                IOUtility.write_encoded(dest_path, IOUtility.text_to_lines_generator(rendered_content, strip=False))
                 logger.info(f" Successfully generate page: {dest_path.name}")
 
             except Exception as err:
