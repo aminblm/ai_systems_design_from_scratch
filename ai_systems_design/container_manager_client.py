@@ -1,44 +1,16 @@
 # container_manager_client.py
-import logging, sys
-from types import TracebackType
-from typing import Optional, Type
-from ai_systems_design.utils import SocketUtility
+import sys
+from typing import Optional, Any
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
+from ai_systems_design.socket_client import ResilientBaseSocketClient
+from ai_systems_design.utils import logger
 
 
-class ContainerManagerClient:
+class ContainerManagerClient(ResilientBaseSocketClient):
     """A clean, defencive CLI client for interacting with a remote container management service."""
 
-    def __init__(self, host: str, port: int, timeout: float = 5.0) -> None:
-        self.host = host
-        self.port = port
-        self.timeout = timeout
-        self._socket = None
-
-    def __enter__(self) -> ContainerManagerClient:
-        """Establishes the connection to Container Manager Core when entering a context manager block."""
-        try:
-            logger.info(f"Establishing connection to Container Manager Core at {self.host}:{self.port}...")
-            self._socket = SocketUtility.connect_to_socket_server(self.host, self.port, "Container Manager")
-            self._socket.settimeout(self.timeout)
-            return self
-        except Exception as err:
-            logger.error(f"Failed to connect to server backend: {err}")
-            self.close()
-            raise
-
-    def __exit__(
-        self,
-        exc_type: Optional[Type[BaseException]],
-        exc_val: Optional[BaseException],
-        exc_tb: Optional[TracebackType],
-    ) -> Optional[bool]:
-        """Guarantees Container Manager socket closure regardless of internal loop exceptions."""
-        self.close()
-        #returning None or False lets any bubbling runtime exceptions propagate normally
-        return False
+    def __enter__(self, context : str = "Container Manager Client") -> Any:
+        return super().__enter__(context)
     
     def _send_and_receive(self, payload: str, max_buffer_size: int = 4096) -> str:
         """Helper to safely dispatch requests and await server acknowledgement frames."""

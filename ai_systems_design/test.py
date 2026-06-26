@@ -14,15 +14,13 @@ from ai_systems_design.round_robin_load_balancer import RoundRobinLoadBalancer, 
 from ai_systems_design.distributed_no_sql_database import DistributedDatabase
 from ai_systems_design.intent_matching_engine import IntentMatchingEngine
 from ai_systems_design.realtime_redis_engine import RealtimeRedisEngine
-from ai_systems_design.resilient_http_raw_client import ResilientHTTPRawClient
+from ai_systems_design.http_client import HTTPClient
 from ai_systems_design.concurrent_rest_engine import ConcurrentRESTEngine
 from ai_systems_design.resilient_multi_threaded_server import ResilientMultiThreadedServer
 from ai_systems_design.safe_yaml_parser import ConfigurationBuilder
 from ai_systems_design.architecture_renderer import ArchitectureRenderer, ArchComponent
 from ai_systems_design.process_posts import process_posts, clean_posts, clean_author
-
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
+from ai_systems_design.utils import logger
 
 
 SERVER_HOST = "127.0.0.1"
@@ -309,10 +307,10 @@ def test_realtime_redis_engine():
             print("\nTerminated via supervisor hardware signal line.")
             break
 
-def test_resilient_http_raw_client():
+def test_http_client():
     # Context manager pattern ensures explicit teardown safeguards apply uniformly
     try:
-        with ResilientHTTPRawClient(SERVER_HOST, SERVER_PORT) as client_runtime:
+        with HTTPClient(SERVER_HOST, SERVER_PORT) as client_runtime:
             client_runtime.start_repl_loop()
     except Exception as initialization_failure:
         logger.critical(f"Failed to engage network testing suite system execution nodes: {initialization_failure}")
@@ -396,7 +394,11 @@ def test_modules():
         case "engine_scheduler": test_engine_scheduler()
         case "socket_client": test_socket_client()
         case "container_manager_client": test_container_manager_client()
-        #TODO - TEST FAIL - ThreadedContainerManager
+        # TODO - TEST FAIL - ThreadedContainerManager
+        # cmd> run
+        # Enter container name: python
+        # 2026-06-26 05:14:26,834 [WARNING] Remote host has closed the connection stream channel.
+        # [Server Response]:
         case "threaded_container_manager": test_threaded_container_manager()
         case "scalable_index": test_scalable_index()
         case "reactive_frontend": test_reactive_frontend()
@@ -406,7 +408,7 @@ def test_modules():
         case "distributed_no_sql_database": test_distributed_no_sql_database()
         case "intent_matching_engine": test_intent_matching_engine()
         case "realtime_redis_engine": test_realtime_redis_engine()
-        case "resilient_http_raw_client": test_resilient_http_raw_client()
+        case "http_client": test_http_client()
         case "concurrent_rest_engine": test_concurrent_rest_engine()
         case "resilient_multi_threaded_server": test_resilient_multi_threaded_server()
         case "safe_yaml_parser": test_safe_yaml_parser()

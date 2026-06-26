@@ -1,11 +1,8 @@
 # resilient_client_socket.py
-import logging
 from types import TracebackType
 from typing import Optional, Type, Any
-from ai_systems_design.utils import SocketUtility
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
+from ai_systems_design.utils import SocketUtility, logger
 
 
 class ResilientBaseSocketClient:
@@ -58,7 +55,7 @@ class ResilientBaseSocketClient:
 class SocketClient(ResilientBaseSocketClient):
     """A defensive client-side socket ensuring deterministic lifecycle cleanup."""
 
-    def __enter__(self, context : str = "Client Socket") -> Any:
+    def __enter__(self, context : str = "Socket Client") -> Any:
         return super().__enter__(context)
     
     def receive_message(self, max_buffer_size: int = 4096) -> str:

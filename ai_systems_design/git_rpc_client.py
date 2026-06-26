@@ -3,9 +3,7 @@ import json, logging
 from typing import Dict, Any
 
 from ai_systems_design.socket_client import ResilientBaseSocketClient
-
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
+from ai_systems_design.utils import logger
 
 
 class GitRPCClient(ResilientBaseSocketClient):

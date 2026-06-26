@@ -1,37 +1,17 @@
 # resilient_http_raw_client.py
 import logging, sys
-from socket import socket as Socket
-from types import TracebackType
-from typing import Optional, Type, Tuple
+from typing import Optional, Any
 
-from ai_systems_design.utils import SocketUtility
+from ai_systems_design.socket_client import ResilientBaseSocketClient
+from ai_systems_design.utils import logger
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
 
-class ResilientHTTPRawClient:
+class HTTPClient(ResilientBaseSocketClient):
     """A clean raw-socket HTTP client implementating defensive parsing frames over TCP streams."""
 
-    def __init__(self, host: str, port: int, timeout: float = 10.0) -> None:
-        self.host = host
-        self.port = port
-        self.timeout = timeout
-        self._socket: Optional[Socket] = None
-
-    def __enter__(self) -> ResilientHTTPRawClient:
-        logger.info(f"Connecting to raw target remote node interface at {self.host}:{self.port}...")
-        self._socket = SocketUtility.connect_to_socket_server(self.host, self.port, 'REST API')
-        self._socket.settimeout(self.timeout)
-        return self
-
-    def __exit__(
-        self,
-        exc_type: Optional[Type[BaseException]],
-        exc_val: Optional[BaseException],
-        exc_tb: Optional[TracebackType]
-    ) -> None:
-        self.close()
-
+    def __enter__(self, context : str = "HTTP Client") -> Any:
+        return super().__enter__(context)
+    
     def send_http_request(self, method: str, path: str, body: Optional[str] = None) -> None:
         """Constructs and flushes compliant raw HTTP/1.1 text frames down the pipe."""
         if not self._socket:
@@ -147,12 +127,3 @@ class ResilientHTTPRawClient:
             except Exception as loop_fault:
                 logger.error(f"Execution handling cycle failed downstream: {loop_fault}")
                 break
-
-    def close(self) -> None:
-        if self._socket:
-            try:
-                self._socket.close()
-            except Exception:
-                pass
-            finally:
-                self._socket = None
