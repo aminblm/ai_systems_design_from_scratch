@@ -1,4 +1,4 @@
-# resilient_multi_threaded_server.py
+# socket_server.py
 import socket, threading
 from typing import Tuple, Callable
 

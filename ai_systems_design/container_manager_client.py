@@ -77,14 +77,3 @@ class ContainerManagerClient(SocketClient):
             except Exception as err:
                 logger.error(f"Network communication cycle faulted: {err}")
                 break
-    
-    def close(self) -> None:
-        """Idempotently flushes and dismantles low-level kernel descriptors."""
-        if self._socket:
-            try:
-                logger.info("Dismantling low-level TCP connection channels cleanly...")
-                self._socket.close()
-            except Exception as err:
-                logger.debug(f"Silent ignore during interface termination: {err}")
-            finally:
-                self._socket = None

@@ -1,4 +1,4 @@
-# resilient_client_socket.py
+# socket_client.py
 from types import TracebackType
 from typing import Optional, Type, Any
 import socket 
@@ -7,9 +7,8 @@ from ai_systems_design import logger
 
 
 class SocketClient:
-    """A defensive client-side socket ensuring deterministic lifecycle cleanup."""
-
     """A defensive wrapper around client-side sockets ensuring deterministic lifecycle cleanup."""
+
     def __init__(self, host: str, port: int, context: str = "Client Socket", timeout_seconds: float = 10.0) -> None:
         self.host = host
         self.port = port

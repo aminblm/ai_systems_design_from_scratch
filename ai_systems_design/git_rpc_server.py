@@ -1,4 +1,4 @@
-# threaded_git_rpc_server.py
+# git_rpc_server.py
 import json
 from typing import Any, Dict
 

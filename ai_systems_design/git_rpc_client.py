@@ -1,4 +1,4 @@
-# resilient_git_rpc_client.py
+# git_rpc_client.py
 import json
 from typing import Dict, Any
 
