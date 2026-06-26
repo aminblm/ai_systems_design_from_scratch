@@ -2,8 +2,8 @@
 import json
 from typing import Any, Dict
 
-from ai_systems_design.socket_server import SocketServer
-from ai_systems_design import logger
+from ai_system_design.socket_server import SocketServer
+from ai_system_design import logger
 
 
 class GitRPCServer(SocketServer):

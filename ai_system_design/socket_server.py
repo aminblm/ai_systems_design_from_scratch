@@ -2,7 +2,7 @@
 import socket, threading
 from typing import Tuple, Callable
 
-from ai_systems_design import logger
+from ai_system_design import logger
 
 
 class SocketServer:

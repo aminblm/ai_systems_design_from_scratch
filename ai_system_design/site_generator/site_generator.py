@@ -1,14 +1,12 @@
 # site_generator.py
-import os, logging, traceback
+import traceback
 from pathlib import Path
 from typing import Dict, Union, Tuple 
 
-from ai_systems_design.safe_yaml_parser import ConfigurationBuilder
-from ai_systems_design.md_html import MarkdownConverterFacade
-from ai_systems_design.utils import FileOperationsUtility
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+from ai_system_design.safe_yaml_parser import ConfigurationBuilder
+from ai_system_design.md_html import MarkdownConverterFacade
+from ai_system_design.utils import IOUtility
+from ai_system_design import logger
 
 
 class SiteGenerator:
@@ -28,7 +26,7 @@ class SiteGenerator:
         return None
     
     def _load_layout(self) -> str:
-        return FileOperationsUtility.read_decoded(str(self.layout_path))
+        return IOUtility.read_decoded(str(self.layout_path))
     
     def _load_config(self) -> Dict[str, str]:
         return ConfigurationBuilder().from_file(str(self.config_file_path)).build().to_dict()
@@ -71,7 +69,7 @@ class SiteGenerator:
                 src_path, dest_path = self._resolve_paths(file_path, input_dir, output_dir)
                 rendered_content = self._render_html(src_path)
 
-                FileOperationsUtility.write_encoded(str(dest_path), rendered_content)
+                IOUtility.write_encoded(str(dest_path), rendered_content)
                 logger.info(f" Successfully generate page: {dest_path.name}")
 
             except Exception as err:

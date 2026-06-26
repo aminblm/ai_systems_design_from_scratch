@@ -1,8 +1,10 @@
 # md_html.py
 from enum import Enum 
 import re
-from typing import List, Generator
-from ai_systems_design.utils import FileOperationsUtility
+from typing import Generator
+
+from ai_system_design.utils import IOUtility
+from ai_system_design import logger
 
 
 class MDSpecialCases(Enum):
@@ -32,18 +34,29 @@ class MarkdownParser:
             text = re.sub(pattern, replacement, text)
         return text
     
-    def _clean_metadata(self, lines: List[str]) -> Generator[str, None, None]:
+    def _clean_metadata(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
         """Generator to strip front-matter metadata (lines between '---')."""
-        iterator = iter(lines)
-        for line in iterator:
-            cleaned = line.strip()
-            if cleaned == '---':
+        for line in lines_iterator:
+            if line == '---':
                 # Skip everything until the closing metadata tag
-                for close_line in iterator:
+                for close_line in lines_iterator:
                     if close_line.strip() == '---':
                         break
                 continue
-            yield cleaned
+            yield line
+
+    def _parse_multiline_html_tag(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
+        """Generator to parse multi-line html tags."""
+        for line in lines_iterator:
+            if line.startswith("<") and line.endswith('"'): 
+                content = line
+                for close_line in lines_iterator:
+                    content += " " + close_line
+                    if close_line.startswith("</"):
+                        break
+                yield content
+                continue
+            yield line
 
     def parse_line(self, line: str) -> str:
         """Parses block-level elements."""
@@ -55,6 +68,10 @@ class MarkdownParser:
             level = len(line) - len(line.lstrip('#'))
             content = line.lstrip('#').strip()
             return f"<h{level}>{self._parse_inline_elements(content)}</h{level}>"
+        
+        # HTML tag
+        if line.startswith('<') and line.endswith(">"):
+            return f"{line}"
 
         # Blockquotes
         if line.startswith('>'):
@@ -67,24 +84,28 @@ class MarkdownParser:
             return f"<li>{self._parse_inline_elements(content)}</li>"
 
         # Multiline code blocks (Simplistic structural handling)
-        if line.startswith('```'):
+        if line.startswith('```') and line.endswith('```'):
             content = line.strip('`').strip()
             return f"<pre><code>{self._parse_inline_elements(content)}</code></pre>"
+        
+        # Multiline HTML Block
+        if line.startswith('<') and line.endswith('"'):
+            return f"{line}"
 
         # Default paragraph
         return f"<p>{self._parse_inline_elements(line)}</p>"
     
-
     def to_html(self, markdown_text: str) -> str:
         """Converts an entire markdown document string into an HTML string."""
-        raw_lines = markdown_text.splitlines()
-        cleaned_lines = self._clean_metadata(raw_lines)
-
+        lines_iterator = self._clean_metadata(IOUtility.text_to_lines_iterator(markdown_text))
+        lines_iterator = self._parse_multiline_html_tag(lines_iterator)
+    
         html_blocks = []
-        for line in cleaned_lines:
+        for line in lines_iterator:
+            
             parsed = self.parse_line(line)
             if parsed:
-                html_blocks.append(parsed)
+                html_blocks.append("\t" + parsed)
 
         return "\n".join(html_blocks)
     
@@ -92,26 +113,22 @@ class MarkdownParser:
 class MarkdownConverterFacade:
     """Clean operational interface for client applications."""
 
-    def __init__(self, parser: MarkdownParser = None) -> None:
-        self.parser = parser or MarkdownParser()
+    def __init__(self, parser: MarkdownParser = MarkdownParser()) -> None:
+        self.parser = parser
 
-    def convert_file(self, input_path:str, output_path: str = None) -> str:
+    def convert_file(self, input_path:str, output_path: str = "") -> str:
         """Reads markdown from file, converts it, and writes out HTML."""
-        markdown_content = FileOperationsUtility.read_decoded(input_path)
-        html_content = self.parser.to_html(markdown_content)
+        html_content = self.parser.to_html(IOUtility.read_decoded(input_path))
         if output_path:
-            FileOperationsUtility.write_encoded(output_path, html_content)
+            IOUtility.write_encoded(output_path, html_content)
         return html_content
 
     def convert_text(self, text: str) -> str:
         """Direct string interface."""
         return self.parser.to_html(text)
 
-    @staticmethod
-    def md_text_to_html_file(html_file_path, html_content): FileOperations.write_html_file(html_file_path, html_content)
+    def md_text_to_html_file(self, html_file_path: str, html_content: str): IOUtility.write_encoded(html_file_path, html_content)
 
-    @staticmethod
-    def gen_html_from_md_file(markdown_file_path): return MarkdownParser.parse(FileOperations.read_markdown_file(markdown_file_path).split("\n"))
+    def gen_html_from_md_file(self, markdown_file_path: str): return self.parser.to_html(IOUtility.read_decoded(markdown_file_path))
     
-    @staticmethod
-    def gen_html_from_md_text(md_text): return MarkdownParser.parse(md_text.split("\n"))
+    def gen_html_from_md_text(self, md_text): return self.parser.to_html(md_text.split("\n"))

@@ -1,0 +1,3 @@
+Composition over abstraction
+
+IOUtility.text_to_lines_iterator(IOUtility.read_decoded(file_path))

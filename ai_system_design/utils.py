@@ -1,17 +1,21 @@
 # utils.py
+from typing import Generator
 
-from ai_systems_design import logger
+from ai_system_design import logger
 
-class FileOperationsUtility:
+class IOUtility:
     """Provides atomic, type-safe filesystem I/O operations with explicit encoding safeguards."""
+
+    @staticmethod
+    def text_to_lines_iterator(text: str) -> Generator[str, None, None]:
+        for line in iter(text.splitlines()): yield line.strip()
     
     @staticmethod
     def read_decoded(file_path: str, encoding: str = 'utf-8', errors: str = 'replace') -> str:
         """Reads a filesystem file safely, handling decoding anomalies with fallback flags."""
         try:
             with open(file_path, mode='rb') as target_file:
-                binary_payload = target_file.read()
-                return binary_payload.decode(encoding, errors=errors)
+                return target_file.read().decode(encoding, errors=errors)
         except FileNotFoundError:
             logger.error(f"IO Failure: Targeted file asset path not found: '{file_path}'")
             raise

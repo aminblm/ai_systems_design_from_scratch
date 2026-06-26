@@ -2,8 +2,8 @@
 import sys
 from typing import Optional
 
-from ai_systems_design.socket_client import SocketClient
-from ai_systems_design import logger
+from ai_system_design.socket_client import SocketClient
+from ai_system_design import logger
 
 
 class ContainerManagerClient(SocketClient):

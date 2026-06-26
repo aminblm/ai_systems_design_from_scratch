@@ -79,7 +79,6 @@ def _clean_metadata(self, lines: List[str]) -> Generator[str, None, None]:
                     break
             continue
         yield cleaned
-
 ```
 
 ## Why Generators Win

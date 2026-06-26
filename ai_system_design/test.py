@@ -1,26 +1,26 @@
 import logging, sys, argparse
 
-from ai_systems_design.site_generator.site_generator import SiteGenerator 
-from ai_systems_design.slug_generator import JekyllFilenameController
-from ai_systems_design.engine_scheduler import Task, DAG, EngineScheduler
-from ai_systems_design.socket_client import SocketClient
-from ai_systems_design.container_manager_client import ContainerManagerClient
-from ai_systems_design.container_manager_server import ContainerManagerServer
-from ai_systems_design.scalable_index import ScalableIndex
-from ai_systems_design.reactive_frontend import ReconcileUI, ButtonComponent
-from ai_systems_design.git_rpc_client import GitRPCClient
-from ai_systems_design.git_rpc_server import GitRPCServer
-from ai_systems_design.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
-from ai_systems_design.distributed_no_sql_database import DistributedDatabase
-from ai_systems_design.intent_matching_engine import IntentMatchingEngine
-from ai_systems_design.realtime_redis_engine import RealtimeRedisEngine
-from ai_systems_design.rest_api_client import RESTAPIClient
-from ai_systems_design.rest_api_server import RESTAPIServer
-from ai_systems_design.socket_server import SocketServer
-from ai_systems_design.safe_yaml_parser import ConfigurationBuilder
-from ai_systems_design.architecture_renderer import ArchitectureRenderer, ArchComponent
-from ai_systems_design.process_posts import process_posts, clean_posts, clean_author
-from ai_systems_design import logger
+from ai_system_design.site_generator.site_generator import SiteGenerator 
+from ai_system_design.slug_generator import JekyllFilenameController
+from ai_system_design.engine_scheduler import Task, DAG, EngineScheduler
+from ai_system_design.socket_client import SocketClient
+from ai_system_design.container_manager_client import ContainerManagerClient
+from ai_system_design.container_manager_server import ContainerManagerServer
+from ai_system_design.scalable_index import ScalableIndex
+from ai_system_design.reactive_frontend import ReconcileUI, ButtonComponent
+from ai_system_design.git_rpc_client import GitRPCClient
+from ai_system_design.git_rpc_server import GitRPCServer
+from ai_system_design.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
+from ai_system_design.distributed_no_sql_database import DistributedDatabase
+from ai_system_design.intent_matching_engine import IntentMatchingEngine
+from ai_system_design.realtime_redis_engine import RealtimeRedisEngine
+from ai_system_design.rest_api_client import RESTAPIClient
+from ai_system_design.rest_api_server import RESTAPIServer
+from ai_system_design.socket_server import SocketServer
+from ai_system_design.safe_yaml_parser import ConfigurationBuilder
+from ai_system_design.architecture_renderer import ArchitectureRenderer, ArchComponent
+from ai_system_design.process_posts import process_posts, clean_posts, clean_author
+from ai_system_design import logger
 
 
 SERVER_HOST = "127.0.0.1"
@@ -56,7 +56,7 @@ INTENT_DATA_REPOS = {
 
 
 def test_generate_site():
-    base_path = 'ai_systems_design/site_generator/'
+    base_path = 'ai_system_design/site_generator/'
     test_path = 'test/'
     SiteGenerator(f'{base_path}layout.html', f'{base_path}config.yaml').generate_site(f'{test_path}sg_input')
 
