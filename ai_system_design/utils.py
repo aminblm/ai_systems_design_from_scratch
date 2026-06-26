@@ -8,7 +8,7 @@ class IOUtility:
     """Provides atomic, type-safe filesystem I/O operations with explicit encoding safeguards."""
 
     @staticmethod
-    def text_to_lines_iterator(text: str) -> Generator[str, None, None]:
+    def text_to_lines_generator(text: str) -> Generator[str, None, None]:
         for line in iter(text.splitlines()): yield line
     
     @staticmethod
@@ -25,12 +25,13 @@ class IOUtility:
             raise
 
     @staticmethod
-    def write_encoded(file_path: str | Path, content: str, encoding: str = 'utf-8') -> None:
+    def write_encoded(file_path: str | Path, content_generator: Generator[str, None, None], encoding: str = 'utf-8') -> None:
         """Writes text strings directly to disk storage volumes using strict encoding formats."""
         try:
-            binary_payload = content.encode(encoding)
             with open(file_path, mode='wb') as target_file:
-                target_file.write(binary_payload)
+                for line in content_generator:
+                    binary_payload = (line + "\n").encode(encoding)
+                    target_file.write(binary_payload)
         except Exception as error:
             logger.error(f"Unexpected file system write execution error on path '{file_path}': {error}")
             raise

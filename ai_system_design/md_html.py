@@ -149,7 +149,7 @@ class MarkdownParser:
                 self._parse_multiline_code(
                     self._parse_multiline_html_tags(
                         self._clean_metadata(
-                            IOUtility.text_to_lines_iterator(markdown_text)
+                            IOUtility.text_to_lines_generator(markdown_text)
                         )
                     )
                 )
@@ -167,18 +167,18 @@ class MarkdownConverterFacade:
     def __init__(self, parser: MarkdownParser = MarkdownParser()) -> None:
         self.parser = parser
 
-    def convert_file(self, input_path: str | Path, output_path: str | Path = None) -> str:
+    def convert_file(self, input_path: str | Path, output_path: str | Path = None) -> Generator[str, None, None]:
         """Reads markdown from file, converts it, and writes out HTML."""
-        html_content = self.parser.to_html(IOUtility.read_decoded(input_path))
+        html_content_iterator = self.parser.to_html(IOUtility.read_decoded(input_path))
         if output_path:
-            IOUtility.write_encoded(output_path, html_content)
-        return html_content
+            IOUtility.write_encoded(output_path, html_content_iterator)
+        return html_content_iterator
 
     def convert_text(self, text: str) -> str:
         """Direct string interface."""
         return self.parser.to_html(text)
 
-    def md_text_to_html_file(self, html_file_path: str | Path, html_content: str): IOUtility.write_encoded(html_file_path, html_content)
+    def md_text_to_html_file(self, html_file_path: str | Path, html_content: Generator[str, None, None]): IOUtility.write_encoded(html_file_path, html_content)
 
     def gen_html_from_md_file(self, markdown_file_path: str | Path): return self.parser.to_html(IOUtility.read_decoded(markdown_file_path))
     

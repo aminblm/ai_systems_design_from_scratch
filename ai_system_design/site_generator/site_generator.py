@@ -68,7 +68,7 @@ class SiteGenerator:
                 src_path, dest_path = self._resolve_paths(file_path, input_dir, output_dir)
                 rendered_content = self._render_html(src_path)
 
-                IOUtility.write_encoded(dest_path, rendered_content)
+                IOUtility.write_encoded(dest_path, IOUtility.text_to_lines_generator(rendered_content))
                 logger.info(f" Successfully generate page: {dest_path.name}")
 
             except Exception as err:

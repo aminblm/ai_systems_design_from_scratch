@@ -72,12 +72,12 @@ class ConfigurationBuilder:
     def from_text(self, yaml_text: str) -> ConfigurationBuilder:
         """Loads configuration variables straight from a raw multi-line string sequence."""
                              
-        self._text_iterator = IOUtility.text_to_lines_iterator(yaml_text)
+        self._text_iterator = IOUtility.text_to_lines_generator(yaml_text)
         return self
 
     def from_file(self, file_path: str) -> ConfigurationBuilder:
         """Configuration ingestion from disk files via platform utility helpers."""
-        self._text_iterator = IOUtility.text_to_lines_iterator(IOUtility.read_decoded(file_path))
+        self._text_iterator = IOUtility.text_to_lines_generator(IOUtility.read_decoded(file_path))
         return self
 
     def build(self) -> ConfigurationEngine:
