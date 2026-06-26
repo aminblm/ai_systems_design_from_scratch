@@ -18,7 +18,7 @@ class ResilientHTTPRawClient:
         self.timeout = timeout
         self._socket: Optional[Socket] = None
 
-    def __enter__(self) -> "ResilientHTTPRawClient":
+    def __enter__(self) -> ResilientHTTPRawClient:
         logger.info(f"Connecting to raw target remote node interface at {self.host}:{self.port}...")
         self._socket = SocketUtility.connect_to_socket_server(self.host, self.port, 'REST API')
         self._socket.settimeout(self.timeout)

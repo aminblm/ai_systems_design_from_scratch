@@ -17,7 +17,7 @@ class ContainerManagerClient:
         self.timeout = timeout
         self._socket = None
 
-    def __enter__(self) -> "ContainerManagerClient":
+    def __enter__(self) -> ContainerManagerClient:
         """Establishes the connection to Container Manager Core when entering a context manager block."""
         try:
             logger.info(f"Establishing connection to Container Manager Core at {self.host}:{self.port}...")

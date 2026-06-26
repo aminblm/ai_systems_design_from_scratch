@@ -268,6 +268,12 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **SLMs**
 * [ ] **Supabase**
 
+### Engineering Principles:
+* [ ] SOLID (Single responsibility)
+* [ ] DRY (So not repeat yourself)
+* [ ] TDD 
+* [ ] DDD
+
 ### Fundamentals of System Design
 
 * [x] [**Load Balancer**](src/py_load_balancer.py) (Traffic distribution mechanics featuring Round-Robin and Least-Connections)

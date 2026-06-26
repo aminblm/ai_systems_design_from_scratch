@@ -18,7 +18,7 @@ class ResilientGitRPCClient:
         self.timeout = timeout_seconds
         self._socket = None
 
-    def __enter__(self) -> "ResilientGitRPCClient":
+    def __enter__(self) -> ResilientGitRPCClient:
         """Context initialization establishing active transport channels."""
         try:
             logger.info(f"Connecting to remote orchestration pipeline worker on {self.host}:{self.port}...")

@@ -16,7 +16,7 @@ class ResilientClientSocket:
         self.timeout = timeout_seconds
         self._socket = None
 
-    def __enter__(self) -> "ResilientClientSocket":
+    def __enter__(self) -> ResilientClientSocket:
         """Establishes the connection when entering a context manager block."""
         try:
             logger.info(f"Establishing connection to {self.host}:{self.port}...")
