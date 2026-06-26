@@ -51,7 +51,7 @@ class MarkdownParser:
             if line.strip().startswith("<") and line.strip().endswith('"'): 
                 content = line.strip()
                 for close_line in lines_iterator:
-                    content += " " + close_line
+                    content += " " + close_line.strip()
                     if close_line.startswith("</"):
                         break
                 yield content
@@ -90,7 +90,7 @@ class MarkdownParser:
         """Generator to parse multi-line tables."""
         for line in lines_iterator:
             if line.startswith("| ") and line.endswith(' |'): 
-                content = "<table>\n\t<thead>\n\t\t<tr>\n"
+                content = '<table border="1" border-collapse="collapse">\n\t<thead>\n\t\t<tr>\n'
                 for table_head in line.split("|")[1: -1]:
                     content += f"\t\t\t<th>{self._parse_inline_elements(table_head.strip())}</th>\n"
                 content += "\t\t</tr>\n\t</thead>\n\t<tbody>\n"
@@ -98,13 +98,13 @@ class MarkdownParser:
                     if "--- |" in close_line:
                         continue
                     if close_line.startswith("| ") and close_line.endswith(' |'):
-                        content += "\t\t<tr>"
+                        content += "\t\t<tr>\n"
                         for table_body in close_line.split("|")[1: -1]:
                             content += f"\t\t\t<td>{self._parse_inline_elements(table_body.strip())}</td>\n"
-                        content += "\t\t</tr>"
+                        content += "\t\t</tr>\n"
                     else:
                         break
-                content += "\t</tbody>\n</table>"
+                content += "\t</tbody>\n</table>\n"
                 yield content
                 continue
             yield line
