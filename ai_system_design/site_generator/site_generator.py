@@ -30,17 +30,29 @@ class SiteGenerator:
         return IOUtility.read_decoded(self.layout_path)
     
     def _load_config(self) -> Dict[str, str]:
-        return ConfigurationBuilder().from_file(str(self.config_file_path)).build().to_dict()
+        return ConfigurationBuilder().from_file(self.config_file_path).build().to_dict()
     
     def _render_html(self, md_file_path: Path) -> str:
         """Injects compiled markdown content and config mappings into the layout"""
 
+        markdown_file_converter = MarkdownConverterFacade()
+
         # Hydrate primary content block
-        html = self.layout_template.replace('{{ site.content }}', "\n\t\t\t\t".join(MarkdownConverterFacade().convert_file(md_file_path)))
+        html = self.layout_template.replace('{{ site.content }}', "\n\t\t\t\t".join(markdown_file_converter.convert_file(md_file_path)))
 
         # Hydrate,etadata key/value template tokens
         for key, value in self.config_mappings.items():
             html = html.replace(f'{{{{ site.{key} }}}}', str(value))
+            html = html.replace(f'{{{{ page.{key} | default: site.{key} }}}}', str(value))
+
+        # Load Markdown Page Config
+        markdown_config_mappings = ConfigurationBuilder().from_text(markdown_file_converter.get_yaml_config()).build().to_dict()
+        
+        # Hydrate,etadata key/value template tokens in individual files
+        for key, value in markdown_config_mappings.items():
+            html = html.replace(f'{{{{ page.{key} }}}}', str(value))
+            html = html.replace(f'{{{{ page.{key} | default: site.{key} }}}}', str(value))
+
         return html
     
     def _resolve_paths(self, md_file: Path, input_dir: Path, output_dir: Path) -> Tuple[Path, Path]:

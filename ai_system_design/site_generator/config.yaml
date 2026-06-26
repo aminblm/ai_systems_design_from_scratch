@@ -4,3 +4,4 @@ url: https://aminblm.github.io/ai_systems_design_from_scratch
 css: ../../ai_system_design/site_generator/styles.css
 author: Amin Boulouma
 footer_text: AI Systems Design From First Principles
+baseurl: ""

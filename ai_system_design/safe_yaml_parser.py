@@ -1,6 +1,7 @@
 # safe_yaml_parser.py
 import re
 from typing import Dict, Any, Optional, Generator
+from pathlib import Path
 
 from ai_system_design.utils import IOUtility
 from ai_system_design import logger
@@ -75,7 +76,7 @@ class ConfigurationBuilder:
         self._text_iterator = IOUtility.text_to_lines_generator(yaml_text)
         return self
 
-    def from_file(self, file_path: str) -> ConfigurationBuilder:
+    def from_file(self, file_path: str | Path) -> ConfigurationBuilder:
         """Configuration ingestion from disk files via platform utility helpers."""
         self._text_iterator = IOUtility.text_to_lines_generator(IOUtility.read_decoded(file_path))
         return self

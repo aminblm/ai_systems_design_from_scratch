@@ -5,6 +5,7 @@ from typing import Generator
 from pathlib import Path
 
 from ai_system_design.utils import IOUtility
+from ai_system_design.safe_yaml_parser import SafeYAMLParser
 from ai_system_design import logger
 
 
@@ -28,6 +29,7 @@ class MarkdownParser:
             (MDSpecialCases.LINK.value, r'<a href="\2">\1</a>'),
             (MDSpecialCases.IMAGE.value, r'<img src="\2" alt="\1">'),
         ]
+        self.yaml_config: str = ""
 
     def _parse_inline_elements(self, text: str) -> str:
         """Applies regex conversions for inline specials (bold, italic, links)."""
@@ -35,7 +37,7 @@ class MarkdownParser:
             text = re.sub(pattern, replacement, text)
         return text
     
-    def _clean_metadata(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
+    def _parse_metadata(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
         """Generator to strip front-matter metadata (lines between '---')."""
         for line in lines_iterator:
             if line == '---':
@@ -43,6 +45,8 @@ class MarkdownParser:
                 for close_line in lines_iterator:
                     if close_line.strip() == '---':
                         break
+                    else:
+                        self.yaml_config += close_line + "\n"
                 continue
             yield line
 
@@ -153,7 +157,7 @@ class MarkdownParser:
             self._parse_bullet_points(
                 self._parse_multiline_code(
                     self._parse_multiline_html_tags(
-                        self._clean_metadata(
+                        self._parse_metadata(
                             markdown_generator
                         )
                     )
@@ -165,6 +169,7 @@ class MarkdownParser:
             parsed = self.parse_line(line.strip())
             if parsed:
                 yield parsed
+        
 
 class MarkdownConverterFacade:
     """Clean operational interface for client applications."""
@@ -172,6 +177,9 @@ class MarkdownConverterFacade:
     def __init__(self, parser: MarkdownParser = MarkdownParser()) -> None:
         self.parser = parser
 
+    def get_yaml_config(self) -> str:
+        return self.parser.yaml_config
+    
     def convert_file(self, input_path: str | Path, output_path: str | Path = None) -> Generator[str, None, None]:
         """Reads markdown from file, converts it, and writes out HTML."""
         html_content_generator = self.parser.to_html(IOUtility.text_to_lines_generator(IOUtility.read_decoded(input_path), strip=True))
