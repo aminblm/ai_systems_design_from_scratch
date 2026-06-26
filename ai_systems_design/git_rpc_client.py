@@ -1,42 +1,18 @@
 # resilient_git_rpc_client.py
 import json, logging
-from types import TracebackType
-from typing import Optional, Type, Dict, Any
+from typing import Dict, Any
 
-from ai_systems_design.utils import SocketUtility
+from ai_systems_design.socket_client import ResilientBaseSocketClient
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
 
-class ResilientGitRPCClient:
+class GitRPCClient(ResilientBaseSocketClient):
     """A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames."""
 
-    def __init__(self, host: str, port: int, timeout_seconds: float = 30.0) -> None:
-        self.host = host
-        self.port = port
-        self.timeout = timeout_seconds
-        self._socket = None
-
-    def __enter__(self) -> ResilientGitRPCClient:
-        """Context initialization establishing active transport channels."""
-        try:
-            logger.info(f"Connecting to remote orchestration pipeline worker on {self.host}:{self.port}...")
-            self._socket = SocketUtility.connect_to_socket_server(self.host, self.port, "Git Client")
-            self._socket.settimeout(self.timeout)
-            return self
-        except Exception as err:
-            logger.error(f"Failed establishing TCP handshake socket initialization path: {err}")
-            self.close()
-            raise
-
-    def __exit__(
-        self,
-        exc_type: Optional[Type[BaseException]],
-        exc_val: Optional[BaseException],
-        exc_tb: Optional[TracebackType]
-    ) -> None:
-        self.close()
+    def __enter__(self, context : str = "Git RPC Client") -> Any:
+        return super().__enter__(context)
 
     def _send_frame(self, payload_dict: Dict[str, Any]) -> None:
         """Serializes payload to JSON and transmits it with a clear newline delimiter boundary."""
@@ -78,12 +54,3 @@ class ResilientGitRPCClient:
         except Exception as err:
             logger.error(f"Failed to execute target payload exchange pattern: {err}")
             raise
-
-    def close(self) -> None:
-        if self._socket:
-            try:
-                self._socket.close()
-            except Exception:
-                pass
-            finally:
-                self._socket = None

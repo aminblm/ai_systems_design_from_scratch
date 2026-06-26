@@ -267,6 +267,11 @@ They are organized by operational domain so that you can easily copy and paste t
 * [ ] **Hadoop**
 * [ ] **SLMs**
 * [ ] **Supabase**
+* [ ] **CNN**
+* [ ] **RNN**
+* [ ] **Transformer**
+* [ ] **Kappa**
+
 
 ### Engineering Principles:
 * [ ] SOLID (Single responsibility)

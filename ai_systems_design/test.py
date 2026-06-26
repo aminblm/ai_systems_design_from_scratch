@@ -3,12 +3,12 @@ import logging, sys, argparse
 from ai_systems_design.site_generator.site_generator import SiteGenerator 
 from ai_systems_design.resilient_slug_generator import JekyllFilenameController
 from ai_systems_design.engine_scheduler import Task, DAG, EngineScheduler
-from ai_systems_design.resilient_client_socket import ResilientClientSocket
+from ai_systems_design.socket_client import SocketClient
 from ai_systems_design.container_manager_client import ContainerManagerClient
 from ai_systems_design.threaded_container_manager import ThreadedContainerManager
 from ai_systems_design.scalable_index import ScalableIndex
 from ai_systems_design.reactive_frontend import ReconcileUI, ButtonComponent
-from ai_systems_design.resilient_git_rpc_client import ResilientGitRPCClient
+from ai_systems_design.git_rpc_client import GitRPCClient
 from ai_systems_design.threaded_git_rpc_server import ThreadedGitRPCServer
 from ai_systems_design.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
 from ai_systems_design.distributed_no_sql_database import DistributedDatabase
@@ -81,10 +81,10 @@ def test_engine_scheduler():
     # Run the execution agent loop
     scheduler.run_forever(tick_rate_seconds=0.5)
 
-def test_resilient_client_socket():
+def test_socket_client():
     # Using a context manager completely replaces manual tracking of .close()
     try:
-        with ResilientClientSocket(SERVER_HOST, SERVER_PORT) as client:
+        with SocketClient(SERVER_HOST, SERVER_PORT) as client:
             server_handshake = client.receive_message()
             if server_handshake:
                 print(f"\n[Server]: {server_handshake}")
@@ -182,10 +182,10 @@ def test_reactive_frontend():
     logger.info("Simulating hardware user mouse click action targeting the component...")
     app.event.dispatch("btn_click", event_data={"cursor_x": 142, "cursor_y": 80})
 
-def test_resilient_git_rpc_client():
+def test_git_rpc_client():
     # Context manager implementation replaces sequential manual channel closes entirely
     try:
-        with ResilientGitRPCClient(SERVER_HOST, SERVER_PORT) as git_agent:
+        with GitRPCClient(SERVER_HOST, SERVER_PORT) as git_agent:
             server_feedback = git_agent.dispatch_clone(repository_url=TARGET_REPO)
             print(f"\n[Execution Worker Response]: {server_feedback}")
             
@@ -394,13 +394,13 @@ def test_modules():
         case "generate_site": test_generate_site()
         case "resilient_slug_generator": test_resilient_slug_generator()
         case "engine_scheduler": test_engine_scheduler()
-        case "resilient_client_socket": test_resilient_client_socket()
+        case "socket_client": test_socket_client()
         case "container_manager_client": test_container_manager_client()
         #TODO - TEST FAIL - ThreadedContainerManager
         case "threaded_container_manager": test_threaded_container_manager()
         case "scalable_index": test_scalable_index()
         case "reactive_frontend": test_reactive_frontend()
-        case "resilient_git_rpc_client": test_resilient_git_rpc_client()
+        case "git_rpc_client": test_git_rpc_client()
         case "threaded_git_rpc_server": test_threaded_git_rpc_server()
         case "round_robin_load_balancer": test_round_robin_load_balancer()
         case "distributed_no_sql_database": test_distributed_no_sql_database()

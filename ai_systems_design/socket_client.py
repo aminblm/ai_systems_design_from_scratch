@@ -1,14 +1,14 @@
 # resilient_client_socket.py
-import logging, sys
+import logging
 from types import TracebackType
-from typing import Optional, Type
+from typing import Optional, Type, Any
 from ai_systems_design.utils import SocketUtility
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
 
-class ResilientClientSocket:
+class ResilientBaseSocketClient:
     """A defensive wrapper around client-side sockets ensuring deterministic lifecycle cleanup."""
     def __init__(self, host: str, port: int, timeout_seconds: float = 10.0) -> None:
         self.host = host
@@ -16,18 +16,19 @@ class ResilientClientSocket:
         self.timeout = timeout_seconds
         self._socket = None
 
-    def __enter__(self) -> ResilientClientSocket:
+    def __enter__(self, context: str) -> Any:
         """Establishes the connection when entering a context manager block."""
         try:
             logger.info(f"Establishing connection to {self.host}:{self.port}...")
             self._socket = SocketUtility.connect_to_socket_server(
-                self.host, self.port, "Client Socket"
+                self.host, self.port, context
             )
             self._socket.settimeout(self.timeout)
             return self
         except Exception as err:
             logger.error(f"Failed to connect to server backend: {err}")
-            self.close()
+            if self._socket:
+                self._socket.close()
             raise
 
     def __exit__(
@@ -37,9 +38,28 @@ class ResilientClientSocket:
         exc_tb: Optional[TracebackType],
     ) -> Optional[bool]:
         """Guarantees socket closure regardless of internal loop exceptions."""
-        self.close()
-        #returning None or False lets any bubbling runtime exceptions propagate normally
-        return False
+        if self._socket:
+            self._socket.close()
+            #returning None or False lets any bubbling runtime exceptions propagate normally
+            return False
+    
+    def close(self) -> None:
+        """Idempotently flushes and dismantles low-level kernel descriptors."""
+        if self._socket:
+            try:
+                logger.info("Dismantling low-level TCP connection channels cleanly...")
+                self._socket.close()
+            except Exception as err:
+                logger.debug(f"Silent ignore during interface termination: {err}")
+            finally:
+                self._socket = None
+
+
+class SocketClient(ResilientBaseSocketClient):
+    """A defensive client-side socket ensuring deterministic lifecycle cleanup."""
+
+    def __enter__(self, context : str = "Client Socket") -> Any:
+        return super().__enter__(context)
     
     def receive_message(self, max_buffer_size: int = 4096) -> str:
         """Safely reads inbound streams from the remote host buffer."""
@@ -77,14 +97,3 @@ class ResilientClientSocket:
         except Exception as err:
             logger.error(f"Failed sending outbound message package stream: {err}")
             raise
-
-    def close(self) -> None:
-        """Idempotently flushes and dismantles low-level kernel descriptors."""
-        if self._socket:
-            try:
-                logger.info("Dismantling low-level TCP connection channels cleanly...")
-                self._socket.close()
-            except Exception as err:
-                logger.debug(f"Silent ignore during interface termination: {err}")
-            finally:
-                self._socket = None

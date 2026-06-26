@@ -65,7 +65,7 @@ class SocketUtility:
             client_socket.settimeout(timeout)
             
             client_socket.connect((host, port))
-            logger.info(f"Successfully bridged communications channel outbound link to [{context.upper()}] server.")
+            logger.info(f"[{context.upper()}] Successfully bridged communications channel outbound link to {host}:{port} server.")
             return client_socket
         except socket.error as conn_err:
             logger.error(f"Network transport handshake failure routing towards tcp://{host}:{port} -> {conn_err}")
