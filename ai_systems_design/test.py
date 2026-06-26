@@ -5,11 +5,11 @@ from ai_systems_design.resilient_slug_generator import JekyllFilenameController
 from ai_systems_design.engine_scheduler import Task, DAG, EngineScheduler
 from ai_systems_design.socket_client import SocketClient
 from ai_systems_design.container_manager_client import ContainerManagerClient
-from ai_systems_design.threaded_container_manager import ThreadedContainerManager
+from ai_systems_design.container_manager import ContainerManager
 from ai_systems_design.scalable_index import ScalableIndex
 from ai_systems_design.reactive_frontend import ReconcileUI, ButtonComponent
 from ai_systems_design.git_rpc_client import GitRPCClient
-from ai_systems_design.threaded_git_rpc_server import ThreadedGitRPCServer
+from ai_systems_design.git_rpc_server import GitRPCServer
 from ai_systems_design.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
 from ai_systems_design.distributed_no_sql_database import DistributedDatabase
 from ai_systems_design.intent_matching_engine import IntentMatchingEngine
@@ -112,9 +112,9 @@ def test_container_manager_client():
     except Exception as fatal_err:
         logger.critical(f"Failed to run service management shell: {fatal_err}")
 
-def test_threaded_container_manager():
-    manager = ThreadedContainerManager(SERVER_HOST, CONTAINER_MANAGER_PORT)
-    manager.start_server()
+def test_container_manager():
+    manager = ContainerManager(SERVER_HOST, CONTAINER_MANAGER_PORT)
+    manager.start_container_manager_server()
 
 def test_scalable_index():
     # Initialise index schema configuration boundaries safely
@@ -195,9 +195,9 @@ def test_git_rpc_client():
     except Exception as fatal_error:
         logger.critical(f"Abrupt termination handling repository pipeline sequence tasks: {fatal_error}")
 
-def test_threaded_git_rpc_server():
-    git_server = ThreadedGitRPCServer(SERVER_HOST, GIT_RPC_SERVER_PORT)
-    git_server.start_server()
+def test_git_rpc_server():
+    git_server = GitRPCServer(SERVER_HOST, GIT_RPC_SERVER_PORT)
+    git_server.start_git_rpc_server()
 
 def test_round_robin_load_balancer():
     # Cluster nodes are registered as uniform units inside the balancing array pool
@@ -399,16 +399,16 @@ def test_modules():
         case "engine_scheduler": test_engine_scheduler()
         case "socket_client": test_socket_client()
         case "container_manager_client": test_container_manager_client()
-        # TODO - TEST FAIL - ThreadedContainerManager
+        # TODO - TEST FAIL - ContainerManager
         # cmd> run
         # Enter container name: python
         # 2026-06-26 05:14:26,834 [WARNING] Remote host has closed the connection stream channel.
         # [Server Response]:
-        case "threaded_container_manager": test_threaded_container_manager()
+        case "container_manager": test_container_manager()
         case "scalable_index": test_scalable_index()
         case "reactive_frontend": test_reactive_frontend()
         case "git_rpc_client": test_git_rpc_client()
-        case "threaded_git_rpc_server": test_threaded_git_rpc_server()
+        case "git_rpc_server": test_git_rpc_server()
         case "round_robin_load_balancer": test_round_robin_load_balancer()
         case "distributed_no_sql_database": test_distributed_no_sql_database()
         case "intent_matching_engine": test_intent_matching_engine()

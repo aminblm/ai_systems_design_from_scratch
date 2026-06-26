@@ -20,7 +20,7 @@ class ResilientMultiThreadedServer:
         # Create and bind the socket server safely using utility helpers
         server_socket = SocketUtility.create_socket_server(self.host, self.port, self.context)
         self._is_running = True
-        logger.info(f"TCP Multi-Threaded Server successfully running on {self.host}:{self.port}")
+        logger.info(f"[{self.context.upper()}] Server successfully running on {self.host}:{self.port}")
 
         try:
             while self._is_running:
