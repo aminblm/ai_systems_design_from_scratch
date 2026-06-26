@@ -20,7 +20,7 @@ from ai_systems_design.socket_server import SocketServer
 from ai_systems_design.safe_yaml_parser import ConfigurationBuilder
 from ai_systems_design.architecture_renderer import ArchitectureRenderer, ArchComponent
 from ai_systems_design.process_posts import process_posts, clean_posts, clean_author
-from ai_systems_design.utils import logger
+from ai_systems_design import logger
 
 
 SERVER_HOST = "127.0.0.1"

@@ -1,7 +1,7 @@
 # distributed_no_sql_database.py
 from typing import Dict, Any, List, Optional
 
-from ai_systems_design.utils import logger
+from ai_systems_design import logger
 
 
 class Collection:

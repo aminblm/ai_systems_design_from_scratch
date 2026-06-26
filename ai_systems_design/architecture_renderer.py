@@ -1,10 +1,9 @@
 # architecture_renderer.py
-import logging
 from dataclasses import dataclass, field
-from typing import List, Dict, Any
+from typing import List
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
+from ai_systems_design import logger
+
 
 @dataclass
 class ArchComponent:

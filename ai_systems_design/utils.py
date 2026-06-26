@@ -1,9 +1,6 @@
 # utils.py
-import logging, socket
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
-
+from ai_systems_design import logger
 
 class FileOperationsUtility:
     """Provides atomic, type-safe filesystem I/O operations with explicit encoding safeguards."""

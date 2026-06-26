@@ -3,7 +3,7 @@ import re
 from typing import Dict, Any, Optional
 
 from ai_systems_design.utils import FileOperationsUtility
-from ai_systems_design.utils import logger
+from ai_systems_design import logger
 
 
 class SafeYAMLParser:

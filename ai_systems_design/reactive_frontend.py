@@ -1,7 +1,7 @@
 # reactive_frontend.py
 from typing import Callable, Any, Dict, List
 
-from ai_systems_design.utils import logger
+from ai_systems_design import logger
 
 
 

@@ -3,7 +3,7 @@ import json
 from typing import Callable, Dict, Tuple
 
 from ai_systems_design.socket_server import SocketServer
-from ai_systems_design.utils import logger
+from ai_systems_design import logger
 
 
 class RESTAPIServer(SocketServer):
