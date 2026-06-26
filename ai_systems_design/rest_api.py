@@ -1,15 +1,15 @@
 # concurrent_rest_engine.py
-import json, logging, threading
+import json, threading
 from socket import socket as Socket
-from typing import Callable, Dict, Tuple, Optional
+from typing import Callable, Dict, Tuple
 
-from ai_systems_design.utils import SocketUtility
-from ai_systems_design.utils import logger
 from ai_systems_design.resilient_multi_threaded_server import ResilientMultiThreadedServer
+from ai_systems_design.utils import logger
 
 
-class ConcurrentRESTEngine(ResilientMultiThreadedServer):
-    def __init__(self) -> None:
+class RESTAPI(ResilientMultiThreadedServer):
+    def __init__(self, host, port, context="REST API") -> None:
+        super().__init__(host, port, context)
         # Explicit route mapping tree structure
         # Layout: self._routes[HTTP_METHOD][URL_PATH] = Handler_Callback
         self._routes: Dict[str, Dict[str, Callable[[str], Tuple[int, str, str]]]] = {
@@ -25,42 +25,9 @@ class ConcurrentRESTEngine(ResilientMultiThreadedServer):
         self._routes["PUT"]["/data"] = lambda body: (200, "application/json", json.dumps({"status": "updated"}))
         self._routes["DELETE"]["/data"] = lambda body: (200, "text/plain", "Resource deleted successfully.")
 
-    def start_server(self):
+    def start_http_server(self):
         """Spins up the master bound socket loop, isolating active connections to worker threads."""
-        server_socket = SocketUtility.create_socket_server(self.host, self.port, 'REST API')
-
-        try:
-            while True:
-                client_sock, client_address = server_socket.accept()
-                
-                # Protect execution timeline from blocking traps via background threads
-                worker = threading.Thread(
-                    target=self._connection_handler_lifecycle,
-                    args=(client_sock, client_address),
-                    daemon=True
-                )
-                worker.start()
-        except KeyboardInterrupt:
-            logger.info("Server master listener downing operations via local SIGINT intercept.")
-        finally:
-            server_socket.close()
-
-    def _connection_handler_lifecycle(self, client_sock: Socket, client_address: Tuple[str, int]) -> None:
-        """Manages the network transport layer for an isolated client connection."""
-        client_sock.settimeout(10.0)  # Evict slow or dead hanging connection loops
-        try:
-            raw_data = client_sock.recv(4096)
-            if not raw_data:
-                return
-
-            request_text = raw_data.decode('utf-8')
-            response_bytes = self._process_http_transaction(request_text)
-            client_sock.sendall(response_bytes)
-            
-        except Exception as err:
-            logger.error(f"Error executing HTTP transaction pipeline for {client_address}: {err}")
-        finally:
-            client_sock.close()
+        self.start_server(self._process_http_transaction)
 
     def _process_http_transaction(self, request_text: str) -> bytes:
         """Parses raw text frames and constructs fully compliant HTTP/1.1 response bytes."""

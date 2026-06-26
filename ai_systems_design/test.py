@@ -15,7 +15,7 @@ from ai_systems_design.distributed_no_sql_database import DistributedDatabase
 from ai_systems_design.intent_matching_engine import IntentMatchingEngine
 from ai_systems_design.realtime_redis_engine import RealtimeRedisEngine
 from ai_systems_design.http_client import HTTPClient
-from ai_systems_design.concurrent_rest_engine import ConcurrentRESTEngine
+from ai_systems_design.rest_api import RESTAPI
 from ai_systems_design.resilient_multi_threaded_server import ResilientMultiThreadedServer
 from ai_systems_design.safe_yaml_parser import ConfigurationBuilder
 from ai_systems_design.architecture_renderer import ArchitectureRenderer, ArchComponent
@@ -97,7 +97,7 @@ def test_socket_client():
         
             if user_input:
                 client.send_message(user_input)
-                client.receive_message()
+                print(client.receive_message())
     
     except (KeyboardInterrupt, SystemExit):
         logger.info("\nExecution cancelled by user signal interrupt. Exiting safely.")
@@ -320,13 +320,13 @@ def test_http_client():
     except Exception as initialization_failure:
         logger.critical(f"Failed to engage network testing suite system execution nodes: {initialization_failure}")
 
-def test_concurrent_rest_engine():
-    app = ConcurrentRESTEngine(SERVER_HOST, REST_API_PORT)
-    app.start_server()
+def test_rest_api():
+    app = RESTAPI(SERVER_HOST, REST_API_PORT)
+    app.start_http_server()
 
 def test_resilient_multi_threaded_server():
     server = ResilientMultiThreadedServer(SERVER_HOST, SOCKET_SERVER_PORT)
-    server.start_server()
+    server.start_socket_server()
 
 def test_safe_yaml_parser():
     # Test Scenario A: Dynamic text stream ingestion
@@ -414,7 +414,7 @@ def test_modules():
         case "intent_matching_engine": test_intent_matching_engine()
         case "realtime_redis_engine": test_realtime_redis_engine()
         case "http_client": test_http_client()
-        case "concurrent_rest_engine": test_concurrent_rest_engine()
+        case "rest_api": test_rest_api()
         case "resilient_multi_threaded_server": test_resilient_multi_threaded_server()
         case "safe_yaml_parser": test_safe_yaml_parser()
         case "architecture_renderer": test_architecture_renderer()
