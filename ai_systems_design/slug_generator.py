@@ -1,12 +1,10 @@
 # resilient_slug_generator.py
-import datetime, logging, re, sys, unicodedata
-from typing import Optional
+import datetime, re, sys, unicodedata
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
+from ai_systems_design.utils import logger
 
 
-class ResilientSlugGenerator:
+class SlugGenerator:
     """Handles the transformation of raw text titles into clean, web-safe SEO slugs."""
     
     def __init__(self, allow_unicode: bool = False):
@@ -39,7 +37,7 @@ class ResilientSlugGenerator:
 class JekyllFilenameController:
     """Orchestrates interactive terminal interfaces and handles dynamic filesystem name routing."""
 
-    def __init__(self, generator: ResilientSlugGenerator = ResilientSlugGenerator(allow_unicode=False)) -> None:
+    def __init__(self, generator: SlugGenerator = SlugGenerator(allow_unicode=False)) -> None:
         self.generator = generator
 
     @property

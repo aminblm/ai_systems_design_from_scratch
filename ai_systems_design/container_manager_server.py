@@ -1,13 +1,12 @@
 # threaded_container_manager.py
-import json, logging, threading
-from socket import socket as Socket
-from typing import Dict, Any, List
+import json, threading
+from typing import Dict, List
 
-from ai_systems_design.resilient_multi_threaded_server import ResilientMultiThreadedServer
+from ai_systems_design.socket_server import SocketServer
 from ai_systems_design.utils import logger
 
 
-class ContainerManager(ResilientMultiThreadedServer):
+class ContainerManagerServer(SocketServer):
     """A thread-safe, concurrent TCP daemon for managing mock container environment."""
     def __init__(self, host: str, port: int, context: str = "Container Manager") -> None:
         super().__init__(host, port, context)

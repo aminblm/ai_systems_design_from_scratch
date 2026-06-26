@@ -36,11 +36,11 @@ class Component:
     def __init__(self, name: str, render_fn: Callable[["Component"], str]) -> None:
         self.name = name
         self._render_fn = render_fn
-        self._is_dirty = True
+        self._is_dirty: ReactiveState = ReactiveState(True)
         self._cached_dom = ""
 
     def make_dirty(self) -> None:
-        self._is_dirty = True
+        self._is_dirty = ReactiveState(True)
     
     def render(self) -> str:
         """Renders cleanly, leveraging caching unless state mutations have dirtied the view."""

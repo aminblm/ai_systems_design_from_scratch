@@ -2,11 +2,11 @@
 import json, logging
 from typing import Dict, Any
 
-from ai_systems_design.socket_client import ResilientBaseSocketClient
+from ai_systems_design.socket_client import BaseSocketClient
 from ai_systems_design.utils import logger
 
 
-class GitRPCClient(ResilientBaseSocketClient):
+class GitRPCClient(BaseSocketClient):
     """A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames."""
 
     def __enter__(self, context : str = "Git RPC Client") -> GitRPCClient:

@@ -1,11 +1,11 @@
 import logging, sys, argparse
 
 from ai_systems_design.site_generator.site_generator import SiteGenerator 
-from ai_systems_design.resilient_slug_generator import JekyllFilenameController
+from ai_systems_design.slug_generator import JekyllFilenameController
 from ai_systems_design.engine_scheduler import Task, DAG, EngineScheduler
 from ai_systems_design.socket_client import SocketClient
 from ai_systems_design.container_manager_client import ContainerManagerClient
-from ai_systems_design.container_manager import ContainerManager
+from ai_systems_design.container_manager_server import ContainerManagerServer
 from ai_systems_design.scalable_index import ScalableIndex
 from ai_systems_design.reactive_frontend import ReconcileUI, ButtonComponent
 from ai_systems_design.git_rpc_client import GitRPCClient
@@ -14,9 +14,9 @@ from ai_systems_design.round_robin_load_balancer import RoundRobinLoadBalancer, 
 from ai_systems_design.distributed_no_sql_database import DistributedDatabase
 from ai_systems_design.intent_matching_engine import IntentMatchingEngine
 from ai_systems_design.realtime_redis_engine import RealtimeRedisEngine
-from ai_systems_design.http_client import HTTPClient
-from ai_systems_design.rest_api import RESTAPI
-from ai_systems_design.resilient_multi_threaded_server import ResilientMultiThreadedServer
+from ai_systems_design.rest_api_client import RESTAPIClient
+from ai_systems_design.rest_api_server import RESTAPIServer
+from ai_systems_design.socket_server import SocketServer
 from ai_systems_design.safe_yaml_parser import ConfigurationBuilder
 from ai_systems_design.architecture_renderer import ArchitectureRenderer, ArchComponent
 from ai_systems_design.process_posts import process_posts, clean_posts, clean_author
@@ -29,7 +29,7 @@ HTTP_SERVER_PORT = 8081
 CONTAINER_MANAGER_PORT = 8082
 REST_API_PORT = 8083
 GIT_RPC_SERVER_PORT = 8084
-TARGET_REPO = "https://github.com/user/repo.git"
+TARGET_REPO = "https://github.com/aminblm/ai_systems_design_from_scratch.git"
 
 INTENT_DATA_REPOS = {
     "greetings": {
@@ -60,7 +60,7 @@ def test_generate_site():
     test_path = 'test/'
     SiteGenerator(f'{base_path}layout.html', f'{base_path}config.yaml').generate_site(f'{test_path}sg_input')
 
-def test_resilient_slug_generator():
+def test_slug_generator():
     JekyllFilenameController().start_generator_interface()
 
 def test_engine_scheduler():
@@ -113,7 +113,7 @@ def test_container_manager_client():
         logger.critical(f"Failed to run service management shell: {fatal_err}")
 
 def test_container_manager():
-    manager = ContainerManager(SERVER_HOST, CONTAINER_MANAGER_PORT)
+    manager = ContainerManagerServer(SERVER_HOST, CONTAINER_MANAGER_PORT)
     manager.start_container_manager_server()
 
 def test_scalable_index():
@@ -315,17 +315,17 @@ def test_realtime_redis_engine():
 def test_http_client():
     # Context manager pattern ensures explicit teardown safeguards apply uniformly
     try:
-        with HTTPClient(SERVER_HOST, REST_API_PORT) as client_runtime:
+        with RESTAPIClient(SERVER_HOST, REST_API_PORT) as client_runtime:
             client_runtime.start_repl_loop()
     except Exception as initialization_failure:
         logger.critical(f"Failed to engage network testing suite system execution nodes: {initialization_failure}")
 
 def test_rest_api():
-    app = RESTAPI(SERVER_HOST, REST_API_PORT)
+    app = RESTAPIServer(SERVER_HOST, REST_API_PORT)
     app.start_http_server()
 
 def test_resilient_multi_threaded_server():
-    server = ResilientMultiThreadedServer(SERVER_HOST, SOCKET_SERVER_PORT)
+    server = SocketServer(SERVER_HOST, SOCKET_SERVER_PORT)
     server.start_socket_server()
 
 def test_safe_yaml_parser():
@@ -389,13 +389,13 @@ def test_process_posts():
 
 def test_modules():
     """Example testing module: 
-    python test.py --test resilient_slug_generator"""
+    python test.py --test slug_generator"""
     parser = argparse.ArgumentParser(description="Test AI Systems Design")
     parser.add_argument("--test", required=True)
     args = parser.parse_args()
     match args.test:
         case "generate_site": test_generate_site()
-        case "resilient_slug_generator": test_resilient_slug_generator()
+        case "slug_generator": test_slug_generator()
         case "engine_scheduler": test_engine_scheduler()
         case "socket_client": test_socket_client()
         case "container_manager_client": test_container_manager_client()

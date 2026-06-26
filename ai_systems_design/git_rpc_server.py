@@ -1,18 +1,16 @@
 # threaded_git_rpc_server.py
-import json, threading
-from socket import socket as Socket
-from typing import Any, Dict, Tuple
+import json
+from typing import Any, Dict
 
-from ai_systems_design.resilient_multi_threaded_server import ResilientMultiThreadedServer
+from ai_systems_design.socket_server import SocketServer
 from ai_systems_design.utils import logger
 
 
-class GitRPCServer(ResilientMultiThreadedServer):
+class GitRPCServer(SocketServer):
     """A safe, multi-threaded RPC server for orchestrating remote Git workflow operations."""
     
     def __init__(self, host: str, port: int, context: str = "Git RPC Server") -> None:
         super().__init__(host, port, context)
-
 
     def start_git_rpc_server(self):
         """Initializes listener interfaces and delegates incoming connections to workers."""

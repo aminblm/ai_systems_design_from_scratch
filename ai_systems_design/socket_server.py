@@ -6,7 +6,7 @@ from ai_systems_design.utils import SocketUtility
 from ai_systems_design.utils import logger
 
 
-class ResilientMultiThreadedServer:
+class SocketServer:
     """A robust, concurrent TCP server that safely manages multi-client connection Lifecycles."""
     
     def __init__(self, host: str, port: int, context: str = 'Socket Server') -> None:

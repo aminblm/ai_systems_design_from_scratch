@@ -1,12 +1,12 @@
 # container_manager_client.py
 import sys
-from typing import Optional, Any
+from typing import Optional
 
-from ai_systems_design.socket_client import ResilientBaseSocketClient
+from ai_systems_design.socket_client import BaseSocketClient
 from ai_systems_design.utils import logger
 
 
-class ContainerManagerClient(ResilientBaseSocketClient):
+class ContainerManagerClient(BaseSocketClient):
     """A clean, defencive CLI client for interacting with a remote container management service."""
 
     def __enter__(self, context : str = "Container Manager Client") -> ContainerManagerClient:
@@ -49,7 +49,8 @@ class ContainerManagerClient(ResilientBaseSocketClient):
 
                 if command in ("exit", "quit"):
                     # Gracefully alert daemon we are breaking the socket connection
-                    self._socket.sendall("exit".encode('utf-8'))
+                    if self._socket:
+                        self._socket.sendall("exit".encode('utf-8'))
                     print("Goodbye.")
                     break
 

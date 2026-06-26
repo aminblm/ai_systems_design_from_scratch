@@ -3,11 +3,11 @@ import json, threading
 from socket import socket as Socket
 from typing import Callable, Dict, Tuple
 
-from ai_systems_design.resilient_multi_threaded_server import ResilientMultiThreadedServer
+from ai_systems_design.socket_server import SocketServer
 from ai_systems_design.utils import logger
 
 
-class RESTAPI(ResilientMultiThreadedServer):
+class RESTAPIServer(SocketServer):
     def __init__(self, host, port, context="REST API") -> None:
         super().__init__(host, port, context)
         # Explicit route mapping tree structure

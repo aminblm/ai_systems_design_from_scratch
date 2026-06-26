@@ -5,7 +5,7 @@ from typing import Optional, Type, Any
 from ai_systems_design.utils import SocketUtility, logger
 
 
-class ResilientBaseSocketClient:
+class BaseSocketClient:
     """A defensive wrapper around client-side sockets ensuring deterministic lifecycle cleanup."""
     def __init__(self, host: str, port: int, timeout_seconds: float = 10.0) -> None:
         self.host = host
@@ -52,7 +52,7 @@ class ResilientBaseSocketClient:
                 self._socket = None
 
 
-class SocketClient(ResilientBaseSocketClient):
+class SocketClient(BaseSocketClient):
     """A defensive client-side socket ensuring deterministic lifecycle cleanup."""
 
     def __enter__(self, context : str = "Socket Client") -> SocketClient:
