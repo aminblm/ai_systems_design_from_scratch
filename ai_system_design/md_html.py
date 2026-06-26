@@ -62,7 +62,7 @@ class MarkdownParser:
         """Generator to parse multi-line code blocks."""
         for line in lines_iterator:
             if line.startswith("```") and not line.endswith('```'): 
-                content = line
+                content = line.replace(line.split("```")[1], '')
                 for close_line in lines_iterator:
                     content += "\n" + close_line
                     if close_line.startswith("```"):
