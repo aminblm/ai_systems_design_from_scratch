@@ -1,5 +1,6 @@
 # utils.py
 from typing import Generator
+from pathlib import Path 
 
 from ai_system_design import logger
 
@@ -11,7 +12,7 @@ class IOUtility:
         for line in iter(text.splitlines()): yield line
     
     @staticmethod
-    def read_decoded(file_path: str, encoding: str = 'utf-8', errors: str = 'replace') -> str:
+    def read_decoded(file_path: str | Path, encoding: str = 'utf-8', errors: str = 'replace') -> str:
         """Reads a filesystem file safely, handling decoding anomalies with fallback flags."""
         try:
             with open(file_path, mode='rb') as target_file:
@@ -24,7 +25,7 @@ class IOUtility:
             raise
 
     @staticmethod
-    def write_encoded(file_path: str, content: str, encoding: str = 'utf-8') -> None:
+    def write_encoded(file_path: str | Path, content: str, encoding: str = 'utf-8') -> None:
         """Writes text strings directly to disk storage volumes using strict encoding formats."""
         try:
             binary_payload = content.encode(encoding)

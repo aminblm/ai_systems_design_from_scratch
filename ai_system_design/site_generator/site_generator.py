@@ -1,7 +1,7 @@
 # site_generator.py
 import traceback
 from pathlib import Path
-from typing import Dict, Union, Tuple 
+from typing import Dict, Tuple 
 
 from ai_system_design.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.md_html import MarkdownConverterFacade
@@ -12,7 +12,7 @@ from ai_system_design import logger
 class SiteGenerator:
     """Coordinater class to orchestrate the MArkdown to Template-bound HTML building process"""
 
-    def __init__(self, layout_path: Union[str, Path], config_file_path: Union[str, Path]) -> None:
+    def __init__(self, layout_path: str | Path, config_file_path: str | Path) -> None:
         self.layout_path = Path(layout_path)
         self.config_file_path = Path(config_file_path)
 
@@ -26,17 +26,16 @@ class SiteGenerator:
         return None
     
     def _load_layout(self) -> str:
-        return IOUtility.read_decoded(str(self.layout_path))
+        return IOUtility.read_decoded(self.layout_path)
     
     def _load_config(self) -> Dict[str, str]:
         return ConfigurationBuilder().from_file(str(self.config_file_path)).build().to_dict()
     
     def _render_html(self, md_file_path: Path) -> str:
         """Injects compiled markdown content and config mappings into the layout"""
-        md_html_content = MarkdownConverterFacade().convert_file(str(md_file_path))
 
         # Hydrate primary content block
-        html = self.layout_template.replace('{{ site.content }}', md_html_content)
+        html = self.layout_template.replace('{{ site.content }}', "\n".join(MarkdownConverterFacade().convert_file(md_file_path)))
 
         # Hydrate,etadata key/value template tokens
         for key, value in self.config_mappings.items():
@@ -49,7 +48,7 @@ class SiteGenerator:
         html_filename = f"{md_file.stem}.html"
         return md_file, output_dir / html_filename
     
-    def generate_site(self, input_directory: Union[str, Path]) -> None:
+    def generate_site(self, input_directory: str | Path) -> None:
         """Processes all Markdown files within the targeted input directory."""
         input_dir = Path(input_directory)
 
@@ -69,7 +68,7 @@ class SiteGenerator:
                 src_path, dest_path = self._resolve_paths(file_path, input_dir, output_dir)
                 rendered_content = self._render_html(src_path)
 
-                IOUtility.write_encoded(str(dest_path), rendered_content)
+                IOUtility.write_encoded(dest_path, rendered_content)
                 logger.info(f" Successfully generate page: {dest_path.name}")
 
             except Exception as err:

@@ -2,6 +2,7 @@
 from enum import Enum 
 import re
 from typing import Generator
+from pathlib import Path
 
 from ai_system_design.utils import IOUtility
 from ai_system_design import logger
@@ -45,7 +46,7 @@ class MarkdownParser:
                 continue
             yield line
 
-    def _parse_multiline_html_tag(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
+    def _parse_multiline_html_tags(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
         """Generator to parse multi-line html tags."""
         for line in lines_iterator:
             if line.strip().startswith("<") and line.strip().endswith('"'): 
@@ -141,23 +142,24 @@ class MarkdownParser:
         # Default paragraph
         return f"<p>{self._parse_inline_elements(line)}</p>"
     
-    def to_html(self, markdown_text: str) -> str:
+    def to_html(self, markdown_text: str) -> Generator[str, None, None]:
         """Converts an entire markdown document string into an HTML string."""
-        lines_iterator = self._clean_metadata(IOUtility.text_to_lines_iterator(markdown_text))
-        lines_iterator = self._parse_multiline_html_tag(lines_iterator)
-        lines_iterator = self._parse_multiline_code(lines_iterator)
-        lines_iterator = self._parse_bullet_points(lines_iterator)
-        lines_iterator = self._parse_tables(lines_iterator)
+        cleaned_lines_iterator = self._parse_tables(
+            self._parse_bullet_points(
+                self._parse_multiline_code(
+                    self._parse_multiline_html_tags(
+                        self._clean_metadata(
+                            IOUtility.text_to_lines_iterator(markdown_text)
+                        )
+                    )
+                )
+            )
+        )
     
-        html_blocks = []
-        for line in lines_iterator:
-            
+        for line in cleaned_lines_iterator:
             parsed = self.parse_line(line.strip())
             if parsed:
-                html_blocks.append("\t" + parsed)
-
-        return "\n".join(html_blocks)
-    
+                yield parsed
 
 class MarkdownConverterFacade:
     """Clean operational interface for client applications."""
@@ -165,7 +167,7 @@ class MarkdownConverterFacade:
     def __init__(self, parser: MarkdownParser = MarkdownParser()) -> None:
         self.parser = parser
 
-    def convert_file(self, input_path:str, output_path: str = "") -> str:
+    def convert_file(self, input_path: str | Path, output_path: str | Path = None) -> str:
         """Reads markdown from file, converts it, and writes out HTML."""
         html_content = self.parser.to_html(IOUtility.read_decoded(input_path))
         if output_path:
@@ -176,8 +178,8 @@ class MarkdownConverterFacade:
         """Direct string interface."""
         return self.parser.to_html(text)
 
-    def md_text_to_html_file(self, html_file_path: str, html_content: str): IOUtility.write_encoded(html_file_path, html_content)
+    def md_text_to_html_file(self, html_file_path: str | Path, html_content: str): IOUtility.write_encoded(html_file_path, html_content)
 
-    def gen_html_from_md_file(self, markdown_file_path: str): return self.parser.to_html(IOUtility.read_decoded(markdown_file_path))
+    def gen_html_from_md_file(self, markdown_file_path: str | Path): return self.parser.to_html(IOUtility.read_decoded(markdown_file_path))
     
     def gen_html_from_md_text(self, md_text): return self.parser.to_html(md_text.split("\n"))
