@@ -9,7 +9,7 @@ from ai_systems_design.utils import logger
 class GitRPCClient(ResilientBaseSocketClient):
     """A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames."""
 
-    def __enter__(self, context : str = "Git RPC Client") -> Any:
+    def __enter__(self, context : str = "Git RPC Client") -> GitRPCClient:
         return super().__enter__(context)
 
     def _send_frame(self, payload_dict: Dict[str, Any]) -> None:

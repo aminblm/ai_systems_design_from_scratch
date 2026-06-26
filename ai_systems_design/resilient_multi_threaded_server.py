@@ -9,15 +9,16 @@ from ai_systems_design.utils import logger
 class ResilientMultiThreadedServer:
     """A robust, concurrent TCP server that safely manages multi-client connection Lifecycles."""
     
-    def __init__(self, host: str, port: int) -> None:
+    def __init__(self, host: str, port: int, context: str = 'Socket Server') -> None:
         self.host = host
         self.port = port
         self._is_running = False
+        self.context = context
 
     def start_server(self) -> None:
         """Binds the underlying socket and enters the concurrent client acceptance loop."""
         # Create and bind the socket server safely using utility helpers
-        server_socket = SocketUtility.create_socket_server(self.host, self.port, 'Socket Server')
+        server_socket = SocketUtility.create_socket_server(self.host, self.port, self.context)
         self._is_running = True
         logger.info(f"TCP Multi-Threaded Server successfully running on {self.host}:{self.port}")
 
@@ -77,5 +78,6 @@ class ResilientMultiThreadedServer:
 
     def _process_socket_transaction(self, request_text: str) -> bytes:
         """Parses raw text frames and constructs fully compliant HTTP/1.1 response bytes."""
-        return f"[Socket Server] {request_text}".encode('utf-8')
+
+        return f"[{self.context.upper()}] {request_text}".encode('utf-8')
         

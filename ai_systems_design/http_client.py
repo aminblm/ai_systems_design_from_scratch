@@ -9,7 +9,7 @@ from ai_systems_design.utils import logger
 class HTTPClient(ResilientBaseSocketClient):
     """A clean raw-socket HTTP client implementating defensive parsing frames over TCP streams."""
 
-    def __enter__(self, context : str = "HTTP Client") -> Any:
+    def __enter__(self, context : str = "HTTP Client") -> HTTPClient:
         return super().__enter__(context)
     
     def send_http_request(self, method: str, path: str, body: Optional[str] = None) -> None:

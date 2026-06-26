@@ -97,6 +97,7 @@ def test_socket_client():
         
             if user_input:
                 client.send_message(user_input)
+                client.receive_message()
     
     except (KeyboardInterrupt, SystemExit):
         logger.info("\nExecution cancelled by user signal interrupt. Exiting safely.")

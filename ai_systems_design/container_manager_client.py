@@ -9,7 +9,7 @@ from ai_systems_design.utils import logger
 class ContainerManagerClient(ResilientBaseSocketClient):
     """A clean, defencive CLI client for interacting with a remote container management service."""
 
-    def __enter__(self, context : str = "Container Manager Client") -> Any:
+    def __enter__(self, context : str = "Container Manager Client") -> ContainerManagerClient:
         return super().__enter__(context)
     
     def _send_and_receive(self, payload: str, max_buffer_size: int = 4096) -> str:
