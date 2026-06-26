@@ -71,6 +71,21 @@ class MarkdownParser:
                 continue
             yield line
 
+    def _parse_bullet_points(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
+        """Generator to parse multi-line html tags."""
+        for line in lines_iterator:
+            if line.startswith("* ") or line.endswith('- '): 
+                content = f"<ul>\n\t<li>{self._parse_inline_elements(line[2:].strip())}</li>"
+                for close_line in lines_iterator:
+                    if close_line.startswith("* ") or close_line.endswith('- '):
+                        content += f"\n\t<li>{self._parse_inline_elements(close_line[2:].strip())}</li>"
+                    else:
+                        content += f"\n</ul>"
+                        break
+                yield content
+                continue
+            yield line
+
     def parse_line(self, line: str) -> str:
         """Parses block-level elements."""
         if not line: 
@@ -91,11 +106,6 @@ class MarkdownParser:
             content = line[1:].strip()
             return f"<blockquote>{self._parse_inline_elements(content)}</blockquote>"
 
-        # Bullet points
-        if line.startswith(('* ', '- ')):
-            content = line[2:].strip()
-            return f"<li>{self._parse_inline_elements(content)}</li>"
-
         # Multiline code blocks (Simplistic structural handling)
         if line.startswith('```') and line.endswith('```'):
             content = line.strip('`').strip()
@@ -113,6 +123,7 @@ class MarkdownParser:
         lines_iterator = self._clean_metadata(IOUtility.text_to_lines_iterator(markdown_text))
         lines_iterator = self._parse_multiline_html_tag(lines_iterator)
         lines_iterator = self._parse_multiline_code(lines_iterator)
+        lines_iterator = self._parse_bullet_points(lines_iterator)
     
         html_blocks = []
         for line in lines_iterator:
