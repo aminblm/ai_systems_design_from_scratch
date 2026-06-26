@@ -2,7 +2,6 @@
 import traceback
 from pathlib import Path
 from typing import Dict, Tuple 
-from pprint import pprint
 
 from ai_system_design.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.md_html import MarkdownConverterFacade

@@ -92,6 +92,21 @@ class MarkdownParser:
                 continue
             yield line
 
+    def _parse_ordered_list(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
+        """Generator to parse multi-line ordered list."""
+        for line in lines_iterator:
+            if line.strip() and line.split(maxsplit=1)[0][:-1].isdigit() and line.split(maxsplit=1)[0][-1] == ".": 
+                yield f"\n<ol>"
+                yield f"\t<li>{self._parse_inline_elements(line[2:].strip())}</li>"
+                for close_line in lines_iterator:
+                    if close_line and close_line.split(maxsplit=1)[0][:-1].isdigit() and close_line.split(maxsplit=1)[0][-1] == ".":
+                        yield f"\t<li>{self._parse_inline_elements(close_line[2:].strip())}</li>"
+                    else:
+                        yield f"</ol>\n"
+                        break
+                continue
+            yield line
+
     def _parse_tables(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
         """Generator to parse multi-line tables."""
         for line in lines_iterator:
@@ -155,10 +170,12 @@ class MarkdownParser:
         """Converts an entire markdown document string into an HTML string."""
         cleaned_lines_generator = self._parse_tables(
             self._parse_bullet_points(
-                self._parse_multiline_code(
-                    self._parse_multiline_html_tags(
-                        self._parse_metadata(
-                            markdown_generator
+                self._parse_ordered_list(
+                    self._parse_multiline_code(
+                        self._parse_multiline_html_tags(
+                            self._parse_metadata(
+                                markdown_generator
+                            )
                         )
                     )
                 )
