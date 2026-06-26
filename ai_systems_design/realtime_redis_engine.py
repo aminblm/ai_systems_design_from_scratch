@@ -1,10 +1,10 @@
 # realtime_redis_engine.py
-import logging, sys, time
+import time
 from dataclasses import dataclass, field
 from typing import Dict, Any, List, Optional, Callable
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
+from ai_systems_design.utils import logger
+
 
 @dataclass
 class RedisObject:

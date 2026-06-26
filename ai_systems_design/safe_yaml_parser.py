@@ -1,12 +1,9 @@
 # safe_yaml_parser.py
-import logging, re
+import re
 from typing import Dict, Any, Optional
 
 from ai_systems_design.utils import FileOperationsUtility
-
-
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
+from ai_systems_design.utils import logger
 
 
 class SafeYAMLParser:

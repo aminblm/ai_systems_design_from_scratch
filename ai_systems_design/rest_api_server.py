@@ -1,6 +1,5 @@
 # concurrent_rest_engine.py
-import json, threading
-from socket import socket as Socket
+import json
 from typing import Callable, Dict, Tuple
 
 from ai_systems_design.socket_server import SocketServer

@@ -1,5 +1,5 @@
 # resilient_git_rpc_client.py
-import json, logging
+import json
 from typing import Dict, Any
 
 from ai_systems_design.socket_client import BaseSocketClient

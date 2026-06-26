@@ -1,10 +1,9 @@
 # engine_scheduler.py
-import time, logging
+import time
 from dataclasses import dataclass, field
 from typing import Callable, Set, Dict
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
+from ai_systems_design.utils import logger
 
 
 @dataclass

@@ -1,9 +1,8 @@
 # scalable_index.py
-import collections, logging
+import collections
 from typing import Dict, Any, List
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
+from ai_systems_design.utils import logger
 
 
 class Shard:

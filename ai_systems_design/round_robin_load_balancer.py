@@ -1,9 +1,8 @@
 # round_robin_load_balancer.py
-import logging, sys
-from typing import Callable, List, Optional, Dict, Any
+from typing import Callable, List, Dict, Any
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
+from ai_systems_design.utils import logger
+
 
 
 class RoundRobinLoadBalancer:

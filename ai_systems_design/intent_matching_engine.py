@@ -1,9 +1,8 @@
 # intent_matching_engine.py
-import logging, re, sys
-from typing import Dict, Optional, List, Tuple, Any
+import re
+from typing import Dict, Optional, Any
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
+from ai_systems_design.utils import logger
 
 
 class IntentMatchingEngine:
