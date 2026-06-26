@@ -48,11 +48,24 @@ class MarkdownParser:
     def _parse_multiline_html_tag(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
         """Generator to parse multi-line html tags."""
         for line in lines_iterator:
-            if line.startswith("<") and line.endswith('"'): 
-                content = line
+            if line.strip().startswith("<") and line.strip().endswith('"'): 
+                content = line.strip()
                 for close_line in lines_iterator:
                     content += " " + close_line
                     if close_line.startswith("</"):
+                        break
+                yield content
+                continue
+            yield line
+    
+    def _parse_multiline_code(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
+        """Generator to parse multi-line html tags."""
+        for line in lines_iterator:
+            if line.startswith("```") and not line.endswith('```'): 
+                content = line
+                for close_line in lines_iterator:
+                    content += "\n" + close_line
+                    if close_line.startswith("```"):
                         break
                 yield content
                 continue
@@ -99,11 +112,12 @@ class MarkdownParser:
         """Converts an entire markdown document string into an HTML string."""
         lines_iterator = self._clean_metadata(IOUtility.text_to_lines_iterator(markdown_text))
         lines_iterator = self._parse_multiline_html_tag(lines_iterator)
+        lines_iterator = self._parse_multiline_code(lines_iterator)
     
         html_blocks = []
         for line in lines_iterator:
             
-            parsed = self.parse_line(line)
+            parsed = self.parse_line(line.strip())
             if parsed:
                 html_blocks.append("\t" + parsed)
 

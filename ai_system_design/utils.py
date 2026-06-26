@@ -8,7 +8,7 @@ class IOUtility:
 
     @staticmethod
     def text_to_lines_iterator(text: str) -> Generator[str, None, None]:
-        for line in iter(text.splitlines()): yield line.strip()
+        for line in iter(text.splitlines()): yield line
     
     @staticmethod
     def read_decoded(file_path: str, encoding: str = 'utf-8', errors: str = 'replace') -> str:
