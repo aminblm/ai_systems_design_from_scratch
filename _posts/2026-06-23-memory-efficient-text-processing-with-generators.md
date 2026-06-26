@@ -50,11 +50,11 @@ layout: default
 # Memory-Efficient Text Processing with Generators
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-When parsing large text files—such as long-form Markdown documents or logs—loading the entire file into a list (a "buffer") is a recipe for disaster. As your input grows, so does your memory consumption, eventually leading to `MemoryError` or system slowdowns. **Generator-based filtering** is the solution, allowing you to process data in a stream rather than a bulk load.
+When parsing large text files, such as long-form Markdown documents or logs, loading the entire file into a list (a "buffer") is a recipe for disaster. As your input grows, so does your memory consumption, eventually leading to `MemoryError` or system slowdowns. **Generator-based filtering** is the solution, allowing you to process data in a stream rather than a bulk load.
 
 ## The Problem: The "All-at-Once" Buffer
 Standard functions that return a `List[str]` require the entire file content to exist in RAM before the first line is even processed. For a gigabyte-scale document, this is inherently inefficient and unscalable.
@@ -91,7 +91,7 @@ def _clean_metadata(self, lines: List[str]) -> Generator[str, None, None]:
 
 | Feature | Bulk List Processing | Generator Stream Processing |
 | --- | --- | --- |
-| **Memory Usage** | O(N) — Grows with file size | O(1) — Constant memory |
+| **Memory Usage** | O(N),  Grows with file size | O(1),  Constant memory |
 | **Speed** | Fast for small data | Efficient for all data sizes |
 | **Scalability** | Poor | High |
 | **Responsiveness** | High latency (waits for load) | Immediate |

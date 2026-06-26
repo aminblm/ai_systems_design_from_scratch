@@ -41,7 +41,7 @@ description: "Demystifying network layer fundamentals: Implementing an event-dri
 # Building a Stateful TCP Chat Server From Scratch
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 At the bedrock of every real-time messaging network, multiplayer gaming engine, and streaming infrastructure sits a fundamental network layer construct: the **TCP Socket Server**. Unlike stateless HTTP exchanges, a TCP daemon opens persistent, bidirectional communication pipes directly with incoming clients. The server's primary system responsibility is to bind to a local adapter interface, listen continuously for hardware requests, and orchestrate two-way byte packet transactions.
@@ -187,7 +187,7 @@ Connection with ('127.0.0.1', 54311) closed smoothly.
 
 ## Next Evolutionary Milestones
 
-While this server engine demonstrates core socket lifecycles and stateful bidirectional synchronization loops, it blocks processes synchronously—meaning it can only manage one single client chat connection at a time.
+While this server engine demonstrates core socket lifecycles and stateful bidirectional synchronization loops, it blocks processes synchronously, meaning it can only manage one single client chat connection at a time.
 
 To transform this script module into a concurrent, high-scale chat platform, our engineering goals target these upgrades:
 

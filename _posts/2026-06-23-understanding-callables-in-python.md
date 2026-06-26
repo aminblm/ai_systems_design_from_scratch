@@ -50,7 +50,7 @@ layout: default
 # Understanding Callables in Python
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -98,7 +98,7 @@ print(double.count) # 1
 
 1. **State Management**: As shown above, callables can remember data between calls without relying on global scope or nested `closure` variables.
 2. **Configuration**: You can "pre-configure" a callable upon initialization (like setting the multiplier factor) and then reuse that instance throughout your application.
-3. **Unified Interface**: When designing APIs, you can provide an interface where the user doesn't need to know if they are calling a function or a complex object—the syntax remains `obj()`.
+3. **Unified Interface**: When designing APIs, you can provide an interface where the user doesn't need to know if they are calling a function or a complex object, the syntax remains `obj()`.
 
 ## Comparison: Function vs. Callable Instance
 

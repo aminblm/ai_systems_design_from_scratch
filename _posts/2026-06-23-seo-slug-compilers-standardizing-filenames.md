@@ -50,11 +50,11 @@ layout: default
 # SEO Slug Compilers: Standardizing Filenames
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-For static site generators like Jekyll, the post filename is not just metadata—it is the URL structure. A proper filename must adhere to strict rules: no special characters, no spaces, and standardized date-prefixing. The `ResilientSlugGenerator` and `JekyllFilenameController` classes demonstrate a professional-grade pipeline for this task.
+For static site generators like Jekyll, the post filename is not just metadata, it is the URL structure. A proper filename must adhere to strict rules: no special characters, no spaces, and standardized date-prefixing. The `ResilientSlugGenerator` and `JekyllFilenameController` classes demonstrate a professional-grade pipeline for this task.
 
 ## The Normalization Pipeline
 
@@ -69,7 +69,7 @@ The conversion process is a multi-stage "purification" pipeline. Every step ensu
 
 ## Architectural Workflow: Jekyll Controller
 
-The `JekyllFilenameController` encapsulates this logic and adds filesystem context—specifically, the **date-prefix requirement** (e.g., `YYYY-MM-DD-slug.md`).
+The `JekyllFilenameController` encapsulates this logic and adds filesystem context, specifically, the **date-prefix requirement** (e.g., `YYYY-MM-DD-slug.md`).
 
 * **Dynamic Date Computation**: By using a property `current_date_string` rather than a static variable in `__init__`, the compiler avoids "date drift." If the application runs across midnight, it will accurately pick up the new date without requiring a restart.
 * **CLI Interaction Loop**: The `start_generator_interface` manages the user's terminal experience, providing an "infinite polling" mode that handles signals like `Ctrl+C` (KeyboardInterrupt) gracefully, ensuring no terminal state corruption occurs upon exit.
@@ -90,7 +90,7 @@ def transform_to_slug(self, text: str) -> str:
 
 * **Fail Fast**: If the input is empty or contains no alphanumeric characters, the engine informs the user immediately rather than generating a broken filename like `2026-06-23-.md`.
 * **Idempotency**: The engine takes the same input and produces the same output every time, ensuring that even if you re-run the compiler, your file naming remains consistent.
-* **Separation of Concerns**: The `ResilientSlugGenerator` is pure logic—it doesn't know about files, dates, or Jekyll. The `JekyllFilenameController` handles the "business logic" of how that slug fits into your project folder. This makes the generator highly reusable in other parts of your system.
+* **Separation of Concerns**: The `ResilientSlugGenerator` is pure logic, it doesn't know about files, dates, or Jekyll. The `JekyllFilenameController` handles the "business logic" of how that slug fits into your project folder. This makes the generator highly reusable in other parts of your system.
 
 By decomposing your slug generation into these modular steps, you create a system that is easily testable, highly predictable, and perfectly suited for automation.
 

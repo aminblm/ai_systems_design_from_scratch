@@ -50,11 +50,11 @@ layout: default
 # Multi-Pattern Matching: Beyond Single StartsWith
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-When writing parsers, command-line interfaces, or stream processors, you often need to check if a string begins with any one of several characters or prefixes. The naive approach—chaining `or` statements—is not only verbose but difficult to maintain.
+When writing parsers, command-line interfaces, or stream processors, you often need to check if a string begins with any one of several characters or prefixes. The naive approach, chaining `or` statements, is not only verbose but difficult to maintain.
 
 ## The Problem: The "OR" Chain Trap
 

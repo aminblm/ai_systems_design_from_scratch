@@ -40,7 +40,7 @@ description: "Demystifying component-based web architectures: Implementing a dec
 # Building a Reactive Frontend Framework from Scratch
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 Modern client-side web development is dominated by component-driven frameworks like React, Vue, and Angular. These platforms abstract away direct, tedious DOM manipulations by introducing high-level software design patterns: **Component Isolation**, **Data Binding**, and **Decoupled Event Dispatching**. Instead of writing imperatively, you declare your state, and the core engine reflects those data states dynamically onto the user interface view.
@@ -196,7 +196,7 @@ Notice that although the `button` instance was initialized with a default text p
 
 ## Next Evolutionary Milestones
 
-While this pattern demonstrates component initialization and data lookup mechanisms, it operates as a pull-based framework—meaning rendering only occurs when we manually invoke the `run()` system method.
+While this pattern demonstrates component initialization and data lookup mechanisms, it operates as a pull-based framework, meaning rendering only occurs when we manually invoke the `run()` system method.
 
 To upgrade this framework into a highly interactive, push-based client emulator, our architecture roadmap highlights these feature enhancements:
 

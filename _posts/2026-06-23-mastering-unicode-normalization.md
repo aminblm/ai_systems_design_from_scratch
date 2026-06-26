@@ -50,7 +50,7 @@ layout: default
 # Mastering Unicode Normalization
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -104,7 +104,7 @@ text = unicodedata.normalize('NFKC', text)
 ## Best Practices
 
 * **Don't Forget the Decode**: When using `encode('ascii', 'ignore')`, always follow up with `.decode('ascii')` to bring your data back into the Python `str` type.
-* **Normalize Early**: Always normalize text at the "edge" of your application—when it first enters your system—to ensure that all subsequent logic operates on clean, predictable data.
+* **Normalize Early**: Always normalize text at the "edge" of your application, when it first enters your system, to ensure that all subsequent logic operates on clean, predictable data.
 * **Be Careful with `ignore**`: Using `'ignore'` in the encoder is destructive. If you need to preserve data, consider using a transliteration library like `unidecode` instead of dropping characters.
 
 By applying the correct normalization form, you ensure your text processing is resilient, platform-independent, and ready for global user inputs.

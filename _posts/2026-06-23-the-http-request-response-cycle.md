@@ -50,7 +50,7 @@ layout: default
 # The HTTP Request-Response Cycle
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -80,7 +80,7 @@ The server's response is equally structured. The first line of the response cont
 ## Key Operational Concepts
 
 1. **Keep-Alive**: By using the `Connection: keep-alive` header, we instruct the server to maintain the underlying TCP socket connection, allowing us to send multiple requests without performing a fresh "TCP Handshake" every time.
-2. **Defensive Processing**: The client uses pattern matching (`match status_code`) to categorize responses. This is a critical step in building robust systems, as it allows the client to react appropriately—not just by displaying the raw response, but by understanding the *meaning* behind the status code.
+2. **Defensive Processing**: The client uses pattern matching (`match status_code`) to categorize responses. This is a critical step in building robust systems, as it allows the client to react appropriately, not just by displaying the raw response, but by understanding the *meaning* behind the status code.
 3. **Socket Lifecycle**: Because raw sockets are a finite system resource, the use of a context manager (`__enter__` and `__exit__`) is the industry standard for ensuring that sockets are closed promptly after use, preventing resource leaks.
 
 ## Best Practices for Socket-Level Clients

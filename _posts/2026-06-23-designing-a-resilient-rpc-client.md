@@ -50,7 +50,7 @@ layout: default
 # Designing a Resilient RPC Client
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -65,7 +65,7 @@ A resilient RPC client doesn't just send raw commands; it encapsulates them into
 ## Key Pillars of Resilience
 
 ### 1. Frame-Based Communication
-As established in our previous discussions, raw TCP streams are not message-based. We must use an explicit delimiter—like a newline (`\n`)—to define the boundaries of our Git task payloads.
+As established in our previous discussions, raw TCP streams are not message-based. We must use an explicit delimiter, like a newline (`\n`), to define the boundaries of our Git task payloads.
 
 ```python
 def send_git_task(sock, task_data: dict):

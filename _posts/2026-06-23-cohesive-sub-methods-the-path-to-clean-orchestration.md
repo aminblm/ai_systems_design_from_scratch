@@ -50,11 +50,11 @@ layout: default
 # Cohesive Sub-methods: The Path to Clean Orchestration
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-A common architectural trap in Python development is the "God Method"—a single, monolithic function that handles user input, processes business logic, and manages network communication. This creates code that is nearly impossible to test and terrifying to modify.
+A common architectural trap in Python development is the "God Method", a single, monolithic function that handles user input, processes business logic, and manages network communication. This creates code that is nearly impossible to test and terrifying to modify.
 
 The solution is **Functional Cohesion**. By separating distinct responsibilities into dedicated sub-methods, you turn an opaque "orchestrator" into a clean, readable, and highly testable workflow.
 
@@ -105,7 +105,7 @@ class GitTaskOrchestrator:
 * **Keep Orchestrators Slim**: If your orchestrator method is longer than 10–15 lines, it is likely doing too much. Extract logic until the orchestrator is just a series of function calls.
 * **Refactor by "Pain"**: If you find yourself changing the network logic and worrying about accidentally breaking the input logic, that is a clear sign that the two should be separated.
 
-By decomposing your complex methods into small, cohesive sub-methods, you don't just write "better" code—you write code that is modular, flexible, and fundamentally easier to reason about.
+By decomposing your complex methods into small, cohesive sub-methods, you don't just write "better" code, you write code that is modular, flexible, and fundamentally easier to reason about.
 
 {% raw %}
 

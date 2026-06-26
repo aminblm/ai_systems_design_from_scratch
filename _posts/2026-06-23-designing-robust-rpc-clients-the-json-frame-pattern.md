@@ -50,7 +50,7 @@ layout: default
 # Designing Robust RPC Clients: The JSON-Frame Pattern
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -85,7 +85,7 @@ The `ResilientGitRPCClient` encapsulates this logic, keeping the application cod
 
 * **Schema Evolution**: Always include a `type` field in your JSON payloads. This acts as a header, allowing the server to route the request to the correct handler function (a "Command Pattern").
 * **Timeout Guards**: Network calls should never block indefinitely. Always set a socket timeout to prevent your client from hanging if the remote server becomes unresponsive or drops off the network.
-* **Payload Validation**: Before serializing, validate your inputs. The `dispatch_clone` method checks repository URL patterns *before* hitting the network—a technique known as "Fail Fast."
+* **Payload Validation**: Before serializing, validate your inputs. The `dispatch_clone` method checks repository URL patterns *before* hitting the network, a technique known as "Fail Fast."
 
 By combining JSON serialization for flexibility, newline-based framing for reliability, and context management for resource safety, you create a robust RPC client capable of handling sophisticated orchestration tasks across a network.
 

@@ -41,7 +41,7 @@ description: "Demystifying static site data pipelines: Implementing a text token
 # Building an OOP Jekyll Slug Generator From Scratch
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 In static site generators like Jekyll, Hugo, or Astro, routing patterns rely on strict file system naming conventions. For instance, to publish a blog post, your Markdown file must live inside a dedicated local `_posts/` directory and match an explicit metadata naming standard: `YYYY-MM-DD-hyphenated-slug.md`. 
@@ -167,7 +167,7 @@ def __init__(self, generator: SlugGenerator):
 
 ```
 
-The `TerminalInterface` explicitly requires a pre-built `SlugGenerator` context passed into its constructor. This structural decoupling keeps our business data transformation logic completely separated from user interface constraints—allowing engineers to swap components or run isolated unit tests seamlessly.
+The `TerminalInterface` explicitly requires a pre-built `SlugGenerator` context passed into its constructor. This structural decoupling keeps our business data transformation logic completely separated from user interface constraints, allowing engineers to swap components or run isolated unit tests seamlessly.
 
 ### 2. Multi-Stage Token Cleaning Pipeline
 

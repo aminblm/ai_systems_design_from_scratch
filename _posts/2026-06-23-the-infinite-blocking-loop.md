@@ -50,7 +50,7 @@ layout: default
 # The Infinite Blocking Loop
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -64,7 +64,7 @@ In a single-threaded loop, time is a zero-sum game. If your task orchestrator sp
 
 ### Why `while True` + `time.sleep` Kills Performance
 1.  **Serialization**: Even if you have 100 tasks, they are forced to run one after another.
-2.  **Latency Spikes**: If task A takes longer than expected, task B—which might be time-critical—is delayed indefinitely.
+2.  **Latency Spikes**: If task A takes longer than expected, task B, which might be time-critical, is delayed indefinitely.
 3.  **Lack of Responsiveness**: The orchestrator cannot check for new tasks, handle cancellation requests, or perform health checks while trapped in a blocking `sleep()` call.
 
 ## The Solution: Asynchronous Scheduling

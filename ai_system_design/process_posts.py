@@ -50,7 +50,7 @@ LINKS_DIV = f"""
 
 AUTHOR_CARD = """
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 """
 
@@ -139,12 +139,12 @@ def clean_author(input_dir, output_dir):
 
     # Regex to capture the {% raw %} wrapped author card block
     raw_author_pattern = re.compile(
-        r'\{%\s*raw\s*%\}\s*<div class="author-card">\s*<p><strong>\{\{\s*site\.author\.name\s*\}\}</strong>\s*—\s*<i>\{\{\s*site\.author\.bio\s*\}\}</i></p>\s*</div>\s*\{%\s*endraw\s*%\}',
+        r'\{%\s*raw\s*%\}\s*<div class="author-card">\s*<p><strong>\{\{\s*site\.author\.name\s*\}\}</strong>\s*, \s*<i>\{\{\s*site\.author\.bio\s*\}\}</i></p>\s*</div>\s*\{%\s*endraw\s*%\}',
         re.MULTILINE
     )
 
     clean_author_html = """<div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>"""
 
     for filename in os.listdir(input_dir):

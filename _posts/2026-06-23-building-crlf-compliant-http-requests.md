@@ -50,7 +50,7 @@ layout: default
 # Building CRLF-Compliant HTTP Requests
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -64,7 +64,7 @@ The HTTP/1.1 specification (RFC 7230) explicitly requires `\r\n` as the line ter
 
 ### The Danger of Ignoring CRLF
 1.  **Protocol Rejection**: Many robust web servers (like Nginx or Apache) are strictly compliant. Using only `\n` may cause your request to be rejected with a `400 Bad Request`.
-2.  **Request Splitting/Smuggling**: If you allow user-supplied data to be injected into headers without sanitizing `\r` and `\n` characters, an attacker can craft a malicious string that terminates your request early and injects a completely different request—this is the foundation of **HTTP Request Smuggling**.
+2.  **Request Splitting/Smuggling**: If you allow user-supplied data to be injected into headers without sanitizing `\r` and `\n` characters, an attacker can craft a malicious string that terminates your request early and injects a completely different request, this is the foundation of **HTTP Request Smuggling**.
 
 ## Crafting Compliant Requests
 

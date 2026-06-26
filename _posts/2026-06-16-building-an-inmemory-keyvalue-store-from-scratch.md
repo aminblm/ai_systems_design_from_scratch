@@ -42,7 +42,7 @@ description: "Demystifying high-performance data structures: Implementing a stat
 # Building an In-Memory Key-Value Store From Scratch
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 High-performance caching platforms like Redis are structural pillars in modern distributed computing. They operate as sub-millisecond, **In-Memory Key-Value Stores**, caching expensive database queries, managing volatile web sessions, and acting as fast message brokers. 
@@ -225,7 +225,7 @@ To shield state datasets from loss during sudden host reboots, our engine lays t
 
 ### 3. HyperLogLog and Key Metadata Fields
 
-Our layout exposes advanced data tracking operations like `pfadd` and `pfcount`. In standard data clustering environments, these primitives map to **HyperLogLog (HLL)** algorithms. HLL acts as a probabilistic data structure that estimates the unique cardinality of enormous streams using constrained, constant memory profiles—saving huge amounts of space compared to tracking elements in traditional, uncompressed set structures.
+Our layout exposes advanced data tracking operations like `pfadd` and `pfcount`. In standard data clustering environments, these primitives map to **HyperLogLog (HLL)** algorithms. HLL acts as a probabilistic data structure that estimates the unique cardinality of enormous streams using constrained, constant memory profiles, saving huge amounts of space compared to tracking elements in traditional, uncompressed set structures.
 
 ---
 

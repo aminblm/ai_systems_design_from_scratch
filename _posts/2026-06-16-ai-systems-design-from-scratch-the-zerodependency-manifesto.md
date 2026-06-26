@@ -44,7 +44,7 @@ author:
 # AI Systems Design From Scratch: The Zero-Dependency Manifesto
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 In an era dominated by sprawling package dependency trees and heavy vendor abstractions, modern software engineering has increasingly detached itself from the foundational primitives of computer science. We install frameworks before we understand their protocols. We deploy machine learning libraries before we grasp their linear algebra engines. 

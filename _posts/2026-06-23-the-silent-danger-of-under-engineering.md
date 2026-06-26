@@ -50,7 +50,7 @@ layout: default
 # The Silent Danger of Under-Engineering
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -108,7 +108,7 @@ The goal is not to "over-engineer" every project with layers of abstraction you 
 
 ## Best Practices
 
-* **Test the Failures**: If your system works when everything is fine, that's not engineering—that's luck. Write tests for timeouts, network drops, and corrupted inputs.
+* **Test the Failures**: If your system works when everything is fine, that's not engineering, that's luck. Write tests for timeouts, network drops, and corrupted inputs.
 * **Monitor the Gaps**: If you don't know how many file descriptors your process has open or how often your handlers fail, you are flying blind.
 * **Adopt Pythonic Rigor**: Leverage PEP 8, static type checking, and linters to catch the "easy" mistakes before they hit production.
 

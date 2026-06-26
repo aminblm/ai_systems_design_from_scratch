@@ -41,7 +41,7 @@ description: "Demystifying transport-layer utilities: Implementing encapsulated 
 # Building a Reusable Socket Bootstrap Utility
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 In networked applications and distributed environments, individual software modules must continuously open point-to-point communication tunnels. Whether you are constructing a custom load balancer, a NoSQL data node, an HTTP web server, or a real-time messaging layer, they all share a low-level dependency: **Transport-Layer Network Sockets**. 
@@ -123,7 +123,7 @@ This utility rule lets your server immediately reclaim and reuse local port allo
 
 ### 3. Context-Driven Logging and Diagnostics
 
-The `context` metadata parameter acts as a simple but highly effective diagnostic tool. When different application tiers—like our HTTP REST Engine, the NoSQL Database, or a Chat Daemon—import this module, they pass their own specific names down into the factory method. This ensures that initialization logs remain descriptive and easily auditable inside standard out streams, saving you from sorting through vague, ambiguous terminal readouts during debugging sessions.
+The `context` metadata parameter acts as a simple but highly effective diagnostic tool. When different application tiers, like our HTTP REST Engine, the NoSQL Database, or a Chat Daemon, import this module, they pass their own specific names down into the factory method. This ensures that initialization logs remain descriptive and easily auditable inside standard out streams, saving you from sorting through vague, ambiguous terminal readouts during debugging sessions.
 
 ---
 

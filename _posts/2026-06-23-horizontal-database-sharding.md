@@ -50,7 +50,7 @@ layout: default
 # Horizontal Database Sharding
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -87,7 +87,7 @@ class ShardingRouter:
 
 1. **Uniform Distribution**: Consistent hashing prevents "hot shards" where one node becomes overloaded while others remain idle.
 2. **Scalability**: By encapsulating the routing logic, you can transition to more complex algorithms (like Ketama hashing or jump consistent hash) without changing the business logic that consumes the data.
-3. **Predictability**: Because the mapping is mathematical, you never need to query a central "directory" to find where a record lives—you simply calculate its address.
+3. **Predictability**: Because the mapping is mathematical, you never need to query a central "directory" to find where a record lives, you simply calculate its address.
 
 ## Sharding Strategies
 

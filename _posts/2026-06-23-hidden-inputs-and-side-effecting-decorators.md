@@ -50,11 +50,11 @@ layout: default
 # Hidden Inputs and Side-Effecting Decorators
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-Decorators are powerful tools for cross-cutting concerns, but they become a liability when they depend on *how* a function is called rather than *what* a function is. Relying on `kwargs` for validation—like looking for `input_dir` inside a decorator—creates an API where the slightest deviation in calling syntax causes security and logic failures.
+Decorators are powerful tools for cross-cutting concerns, but they become a liability when they depend on *how* a function is called rather than *what* a function is. Relying on `kwargs` for validation, like looking for `input_dir` inside a decorator, creates an API where the slightest deviation in calling syntax causes security and logic failures.
 
 ## The Problem: Positional vs. Keyword Fragility
 

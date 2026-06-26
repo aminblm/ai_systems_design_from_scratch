@@ -40,10 +40,10 @@ description: "Demystifying static site generators: Implementing a zero-dependenc
 # Building a Minimalist Jekyll Clone From Scratch in Python
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
-Have you ever wondered how static site generators like Jekyll actually work under the hood? They feel like magic: you throw in some Markdown files, a YAML configuration, and an HTML layout, and boom—out pops a fully rendered website.
+Have you ever wondered how static site generators like Jekyll actually work under the hood? They feel like magic: you throw in some Markdown files, a YAML configuration, and an HTML layout, and boom, out pops a fully rendered website.
 
 Instead of relying on heavy third-party frameworks, we can build our own minimalist Jekyll clone using native architectural patterns and a custom, local toolchain. Here is a breakdown of how to build a static site engine using clean code principles and Python.
 

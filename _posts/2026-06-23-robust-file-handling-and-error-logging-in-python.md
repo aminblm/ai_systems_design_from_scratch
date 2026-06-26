@@ -50,11 +50,11 @@ layout: default
 # Robust File Handling and Error Logging in Python
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-When building automated systems—such as a static site generator—handling file system operations and unexpected errors gracefully is critical. In this tutorial, we explore how to leverage standard library modules to create a reliable processing pipeline.
+When building automated systems, such as a static site generator, handling file system operations and unexpected errors gracefully is critical. In this tutorial, we explore how to leverage standard library modules to create a reliable processing pipeline.
 
 ## Essential Libraries for File Systems
 - **`pathlib`**: The modern, object-oriented approach to handling file system paths. It simplifies joining, traversing, and manipulating file extensions compared to the legacy `os.path`.

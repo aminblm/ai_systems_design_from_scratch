@@ -50,7 +50,7 @@ layout: default
 # Mastering Python's `match-case` (Structural Pattern Matching)
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 

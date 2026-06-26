@@ -50,11 +50,11 @@ layout: default
 # Resource Lifecycle Management: The Context Manager Pattern
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-In network programming, managing the lifecycle of resources—like TCP sockets—is a major source of technical debt. If a network operation crashes, a naive implementation might leave the socket file descriptor open, eventually leading to exhaustion and system instability.
+In network programming, managing the lifecycle of resources, like TCP sockets, is a major source of technical debt. If a network operation crashes, a naive implementation might leave the socket file descriptor open, eventually leading to exhaustion and system instability.
 
 The **Context Manager Pattern** (`__enter__` and `__exit__`) is the Pythonic solution. It guarantees that regardless of how your code exits (successful completion, runtime exception, or user signal), your resources are cleaned up cleanly.
 

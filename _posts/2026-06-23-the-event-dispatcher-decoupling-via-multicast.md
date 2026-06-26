@@ -50,7 +50,7 @@ layout: default
 # The Event Dispatcher: Decoupling via Multicast
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -61,7 +61,7 @@ When your Git task logic must directly call your UI logic, your database logger,
 
 ## The Solution: The Multicast Observer Pattern
 
-The `EventDispatcher` acts as a middleware. Producers "dispatch" events to the broker, and "subscribers" listen for events they care about. The producer doesn't know who—or even if—anyone is listening.
+The `EventDispatcher` acts as a middleware. Producers "dispatch" events to the broker, and "subscribers" listen for events they care about. The producer doesn't know who, or even if, anyone is listening.
 
 ### Implementing the Broker
 ```python

@@ -50,11 +50,11 @@ layout: default
 # Breaking the Monolith: Refactoring CLI Interfaces
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-When building command-line interfaces (CLI), it is tempting to dump all your logic—input collection, validation, and network communication—into a single `while True:` loop. While this works for a tiny script, it quickly becomes a "God Method" that is impossible to test, maintain, or extend. This is a clear violation of the **Single Responsibility Principle (SRP)**.
+When building command-line interfaces (CLI), it is tempting to dump all your logic, input collection, validation, and network communication, into a single `while True:` loop. While this works for a tiny script, it quickly becomes a "God Method" that is impossible to test, maintain, or extend. This is a clear violation of the **Single Responsibility Principle (SRP)**.
 
 ## The Problem: The Monolithic CLI Loop
 
@@ -109,7 +109,7 @@ class CLIInterface:
 * **Return, Don't Print**: Have your validation methods return objects or `None` rather than printing errors directly inside the validator. This keeps your logic pure and separates it from the user interface.
 * **Composition over Inheritance**: Use composition to pass the network client to your CLI interface, making it easier to swap in a "mock" client during testing.
 
-By breaking the monolith, you turn a fragile script into a robust application. You are no longer writing code that "just works"—you are building a maintainable system that can grow with your project's needs.
+By breaking the monolith, you turn a fragile script into a robust application. You are no longer writing code that "just works", you are building a maintainable system that can grow with your project's needs.
 
 {% raw %}
 

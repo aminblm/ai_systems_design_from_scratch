@@ -50,7 +50,7 @@ layout: default
 # The Single-Threaded Head-of-Line Blocking Trap
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -58,7 +58,7 @@ In network programming, the "Head-of-Line" (HOL) blocking trap is the most commo
 
 ## The Problem: The Blocking Infinite Loop
 
-When your `_handle_client()` method enters an infinite `while True:` loop to process a client's data, it does not just handle that client—it **hijacks the entire process**. Because the main loop is stuck inside that method, it cannot return to the `accept()` call to pull new connections off the kernel's listen queue.
+When your `_handle_client()` method enters an infinite `while True:` loop to process a client's data, it does not just handle that client, it **hijacks the entire process**. Because the main loop is stuck inside that method, it cannot return to the `accept()` call to pull new connections off the kernel's listen queue.
 
 
 

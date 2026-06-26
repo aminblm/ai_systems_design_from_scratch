@@ -50,11 +50,11 @@ layout: default
 # The Pyramids of Doom (Deep Nesting)
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-The "Pyramid of Doom" is the visual manifestation of poor logic flow. It occurs when your search and aggregation functions grow deep, horizontally-growing forests of `if` statements. This pattern—where code progressively drifts further and further to the right—makes your logic unreadable, fragile, and difficult to test.
+The "Pyramid of Doom" is the visual manifestation of poor logic flow. It occurs when your search and aggregation functions grow deep, horizontally-growing forests of `if` statements. This pattern, where code progressively drifts further and further to the right, makes your logic unreadable, fragile, and difficult to test.
 
 ## The Problem: The Cost of Nesting
 

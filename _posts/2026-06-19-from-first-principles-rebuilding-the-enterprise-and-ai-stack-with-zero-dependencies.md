@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Engineering Log: Evolution of a First-Principles Architectural Paradigm"
-description: "A deep-tech architectural blueprint for rebuilding enterprise infrastructure—including distributed load balancers, custom storage engines, container daemons, and natural language interfaces—entirely from first principles using a strict zero-dependency mandate."
+description: "A deep-tech architectural blueprint for rebuilding enterprise infrastructure, including distributed load balancers, custom storage engines, container daemons, and natural language interfaces, entirely from first principles using a strict zero-dependency mandate."
 ---
 
 <head>
@@ -41,7 +41,7 @@ description: "A deep-tech architectural blueprint for rebuilding enterprise infr
 # From First Principles: Rebuilding the Enterprise and AI Stack with Zero Dependencies
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -57,7 +57,7 @@ Welcome to the **Zero-Dependency Manifesto**.
 
 ## Why Build from Scratch?
 
-Building infrastructure using only a language's standard library isn't an exercise in masochism—it is an exercise in mastery. When you enforce a strict zero-dependency mandate, you force yourself to solve the core architectural problems that popular tools hide behind sleek APIs:
+Building infrastructure using only a language's standard library isn't an exercise in masochism, it is an exercise in mastery. When you enforce a strict zero-dependency mandate, you force yourself to solve the core architectural problems that popular tools hide behind sleek APIs:
 
 * **Ultimate Determinism:** No unexpected breaking changes from third-party semantic versioning updates.
 * **Minimal Attack Surface:** Securing an enterprise application becomes drastically simpler when your supply chain dependency graph is completely empty.
@@ -95,7 +95,7 @@ An AI model is only as powerful as its access to data. Relying blindly on massiv
 
 ### 4. The AI & Processing Surface
 
-At the apex of the stack sits the processing pipeline—turning raw user input into deterministic, structured data or natural language interactions:
+At the apex of the stack sits the processing pipeline, turning raw user input into deterministic, structured data or natural language interactions:
 
 * **Stateless Lexical Reply Engines:** Structuring in-memory routing matrices and standard input loops to build deterministic, natural language interfaces.
 * **Custom Text Pipelines:** Writing lightweight, line-by-line Markdown parsers using the Fluent Builder pattern (omitting heavy abstract syntax trees) alongside custom tokenization pipes for clean, URL-safe data compilation.

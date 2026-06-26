@@ -50,11 +50,11 @@ layout: default
 # Reactive State and UI Reconciliation
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-Modern UI frameworks rely on "reactivity"—the ability of a system to automatically update the view when the underlying state changes. In Python, we can simulate this reactive behavior using the **Descriptor Protocol** (`__get__`, `__set__`) and a component-based lifecycle.
+Modern UI frameworks rely on "reactivity", the ability of a system to automatically update the view when the underlying state changes. In Python, we can simulate this reactive behavior using the **Descriptor Protocol** (`__get__`, `__set__`) and a component-based lifecycle.
 
 ## The Reactive State Descriptor
 

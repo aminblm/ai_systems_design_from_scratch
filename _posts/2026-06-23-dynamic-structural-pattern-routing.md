@@ -50,11 +50,11 @@ layout: default
 # Dynamic Structural Pattern Routing
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-As applications scale, hardcoded route handlers become an unmanageable burden. Moving toward a **Dynamic Structural Pattern**—where the backend decodes incoming JSON, extracts target metadata, and routes based on structural patterns—is the most effective way to decouple request processing from business logic.
+As applications scale, hardcoded route handlers become an unmanageable burden. Moving toward a **Dynamic Structural Pattern**, where the backend decodes incoming JSON, extracts target metadata, and routes based on structural patterns, is the most effective way to decouple request processing from business logic.
 
 ## The Architectural Shift
 

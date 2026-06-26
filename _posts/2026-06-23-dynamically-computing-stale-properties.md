@@ -50,7 +50,7 @@ layout: default
 # Dynamically Computing Stale Properties
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -112,7 +112,7 @@ While `@property` is safer, it does execute logic every time it is called.
 
 ## Best Practices
 
-* **Keep it Pure**: `@property` methods should ideally be "pure"—they should not have side effects that alter the state of the object.
+* **Keep it Pure**: `@property` methods should ideally be "pure", they should not have side effects that alter the state of the object.
 * **Avoid Hidden Costs**: If a property performs complex logic, document it. Consumers of your class should not be surprised by a performance hit when accessing what looks like a simple variable.
 * **Watch for Transitions**: Whenever you see code that depends on time, environment variables, or external system state, favor dynamic computation over static initialization.
 

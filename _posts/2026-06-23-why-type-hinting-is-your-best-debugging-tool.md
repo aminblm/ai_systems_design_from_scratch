@@ -50,16 +50,16 @@ render_with_liquid: true
 # Why Type Hinting is Your Best Debugging Tool
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-For years, Python’s "duck typing" philosophy—*if it walks like a duck and quacks like a duck, it must be a duck*—was celebrated for its simplicity. However, as codebases grow, that same flexibility often becomes a liability. **Type hinting** is the modern solution to this, turning runtime surprises into compile-time certainty.
+For years, Python’s "duck typing" philosophy, *if it walks like a duck and quacks like a duck, it must be a duck*, was celebrated for its simplicity. However, as codebases grow, that same flexibility often becomes a liability. **Type hinting** is the modern solution to this, turning runtime surprises into compile-time certainty.
 
 ## 1. The "Before-the-Run" Guardrail
 Static type checkers like `mypy`, `pyright`, or `pylance` act as an automated code reviewer that lives inside your editor.
 
-* **Error Prevention**: They detect mismatches—like passing a string to a function expecting an integer—before the code ever executes.
+* **Error Prevention**: They detect mismatches, like passing a string to a function expecting an integer, before the code ever executes.
 * **Logical Clarity**: By forcing you to define expected inputs and outputs, type hints act as a living contract for your functions.
 
 ## 2. Transforming the Developer Experience

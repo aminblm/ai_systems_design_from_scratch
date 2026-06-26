@@ -50,7 +50,7 @@ layout: default
 # Orchestrating Workflows: The DAG Scheduler
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -71,7 +71,7 @@ A DAG is a graph composed of nodes (tasks) and edges (dependencies), where the "
 
 The `validate_graph` method is a critical safeguard. Without it, a circular dependency could cause your engine to wait indefinitely, as no task would ever be "satisfied."
 
-Using **Depth-First Search (DFS)** with a `rec_stack` (recursion stack), the algorithm identifies if a node is revisited while still in the current traversal branch—the definitive indicator of a cycle.
+Using **Depth-First Search (DFS)** with a `rec_stack` (recursion stack), the algorithm identifies if a node is revisited while still in the current traversal branch, the definitive indicator of a cycle.
 
 ## Non-Blocking Execution Strategy
 

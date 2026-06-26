@@ -18,7 +18,7 @@
 # Engineering Blog Archive
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 Welcome to the first-principles systems design log. Below is a dynamically generted index of all architectural breakdowns implemented so far:

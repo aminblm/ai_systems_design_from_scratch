@@ -2,7 +2,7 @@
 
 
 title: "Beyond Whitespace: The Power of .strip()"
-description: "Discover why .strip() is more than a whitespace remover—it’s a versatile tool for cleaning delimiters and structural characters."
+description: "Discover why .strip() is more than a whitespace remover, it’s a versatile tool for cleaning delimiters and structural characters."
 layout: default
 
 
@@ -50,7 +50,7 @@ layout: default
 # Beyond Whitespace: The Power of .strip()
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 

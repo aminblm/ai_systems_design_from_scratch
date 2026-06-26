@@ -50,11 +50,11 @@ layout: default
 # Building Resilient Network Services: From Fragility to Fault Tolerance
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-In the world of distributed systems, network partitions, service restarts, and sudden drops are not "exceptional" events—they are inevitable realities. If your architecture assumes the network is 100% reliable, your services will be inherently fragile, crashing every time an upstream dependency flickers.
+In the world of distributed systems, network partitions, service restarts, and sudden drops are not "exceptional" events, they are inevitable realities. If your architecture assumes the network is 100% reliable, your services will be inherently fragile, crashing every time an upstream dependency flickers.
 
 ## The Problem: The "Crash-on-First-Error" Antipattern
 

@@ -30,15 +30,15 @@
 
 A comprehensive, zero-dependency implementation of artificial intelligence components and enterprise systems design patterns, built completely from first principles.
 
-**Amin Boulouma** — *Software Engineer*
+**Amin Boulouma**,  *Software Engineer*
 
 ---
 
 ## Repository Philosophy
 
-> *Zero-Dependency Engineering* > — Core Philosophy
+> *Zero-Dependency Engineering* >,  Core Philosophy
 
-> **What I cannot create, I do not understand.** > — Richard Feynman
+> **What I cannot create, I do not understand.** >,  Richard Feynman
 
 ## Getting started 
 

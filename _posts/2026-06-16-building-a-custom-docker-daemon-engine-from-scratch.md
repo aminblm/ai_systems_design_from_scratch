@@ -41,10 +41,10 @@ description: "Demystifying container orchestration backends: Implementing a stat
 # Building a Custom Docker Daemon Engine From Scratch
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
-When you execute a command through a client CLI tool, it communicates directly with a central structural service: the container runtime daemon. In a production environment, this is `dockerd`. The daemon acts as the stateful engine room of the platform—listening continuously for incoming socket connection packets, validating requests against an internal data schema, spinning up virtual sandboxes, and logging operational status matrices.
+When you execute a command through a client CLI tool, it communicates directly with a central structural service: the container runtime daemon. In a production environment, this is `dockerd`. The daemon acts as the stateful engine room of the platform, listening continuously for incoming socket connection packets, validating requests against an internal data schema, spinning up virtual sandboxes, and logging operational status matrices.
 
 By analyzing the daemon as a clean communication layer, we peel back the abstraction of infrastructure automation. 
 

@@ -50,7 +50,7 @@ layout: default
 # Beyond Fragile String Parsing
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -103,7 +103,7 @@ def parse_markdown(text: str) -> str:
 * **Watch for Escaping**: Remember that Regex itself uses special characters; when parsing Markdown, you must account for cases where the user wants to print a literal `*` instead of bolding text.
 * **Know When to Switch to AST**: If you find yourself writing complex, multi-layered Regex that is hard to read (the "Write-Only" code trap), it is time to use a proper parser library like `Mistune` or `Marko` that builds an AST.
 
-By delegating pattern resolution to the Regex engine, you treat your text as a data stream rather than a series of indices—resulting in cleaner, more resilient code.
+By delegating pattern resolution to the Regex engine, you treat your text as a data stream rather than a series of indices, resulting in cleaner, more resilient code.
 
 {% raw %}
 

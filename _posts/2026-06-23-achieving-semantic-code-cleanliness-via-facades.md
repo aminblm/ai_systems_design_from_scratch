@@ -50,7 +50,7 @@ layout: default
 # Achieving Semantic Code Cleanliness via Facades
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -64,7 +64,7 @@ The Facade pattern provides a unified, simplified interface to a complex subsyst
 
 ### The Refactoring: From Redundancy to Clarity
 
-By creating a `MarkdownConverterFacade`, you hide the internal wiring—the IO handling, the regex parsing, and the state tracking—behind a single, semantic interface.
+By creating a `MarkdownConverterFacade`, you hide the internal wiring, the IO handling, the regex parsing, and the state tracking, behind a single, semantic interface.
 
 ```python
 # Before: Fragmented, redundant builders
@@ -96,7 +96,7 @@ html_output = converter.to_html()
 ## Best Practices
 
 * **Don't Over-Wrap**: Do not create a facade for every single class. Use it only when the interaction between multiple classes creates a high burden on the client.
-* **Keep the Facade Thin**: The facade should orchestrate calls, not duplicate business logic. If your facade starts containing complex business rules, it’s no longer a facade—it's a new, monolithic object.
+* **Keep the Facade Thin**: The facade should orchestrate calls, not duplicate business logic. If your facade starts containing complex business rules, it’s no longer a facade, it's a new, monolithic object.
 * **Semantic Naming**: The name of your facade should describe the *purpose* (e.g., `MarkdownConverter`), not the technical implementation (e.g., `MarkdownClassWrapper`).
 
 By consolidating your logic into clear, purpose-driven facades, you turn an intimidating web of components into a clean, intuitive API that facilitates faster development and fewer integration errors.

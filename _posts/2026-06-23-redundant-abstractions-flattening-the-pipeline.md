@@ -50,16 +50,16 @@ layout: default
 # Redundant Abstractions: Flattening the Pipeline
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-In software engineering, we often feel that "more classes mean better design." However, when you see a pipeline containing `MarkdownToHTMLBuilder`, `MarkdownToHTML`, and `HTMLGenerator`, you aren't looking at "clean design"—you are looking at **Redundant Abstraction**.
+In software engineering, we often feel that "more classes mean better design." However, when you see a pipeline containing `MarkdownToHTMLBuilder`, `MarkdownToHTML`, and `HTMLGenerator`, you aren't looking at "clean design", you are looking at **Redundant Abstraction**.
 
-These layers exist as a web of dependencies, forcing the developer to track state and data passing through multiple wrappers that provide no actual benefit. This is a classic case of **"layering rot"**—where the architecture becomes a burden to the task it is supposed to perform.
+These layers exist as a web of dependencies, forcing the developer to track state and data passing through multiple wrappers that provide no actual benefit. This is a classic case of **"layering rot"**, where the architecture becomes a burden to the task it is supposed to perform.
 
 ## The Problem: Cognitive Overload
-A simple pipeline—transforming text into HTML—should be straightforward. When you add three layers of indirection, you force anyone reading the code to hold the entire "web of dependencies" in their head just to trace a single string transformation.
+A simple pipeline, transforming text into HTML, should be straightforward. When you add three layers of indirection, you force anyone reading the code to hold the entire "web of dependencies" in their head just to trace a single string transformation.
 
 
 

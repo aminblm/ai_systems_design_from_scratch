@@ -50,7 +50,7 @@ layout: default
 # Dataclasses vs. Normal Classes in Python
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -58,7 +58,7 @@ In modern Python development, the `dataclass` decorator (introduced in Python 3.
 
 ## The Problem: The Boilerplate Tax
 
-Standard classes often require repetitive code just to initialize attributes. This creates surface area for bugs—such as typos in variable names or inconsistent initializations.
+Standard classes often require repetitive code just to initialize attributes. This creates surface area for bugs, such as typos in variable names or inconsistent initializations.
 
 ### The Old Way (Standard Class)
 ```python

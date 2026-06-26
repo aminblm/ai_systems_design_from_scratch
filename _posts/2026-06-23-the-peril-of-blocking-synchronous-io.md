@@ -50,7 +50,7 @@ layout: default
 # The Peril of Blocking Synchronous I/O
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 

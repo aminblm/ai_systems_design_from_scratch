@@ -50,11 +50,11 @@ layout: default
 # The Builder Design Pattern
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-The **Builder Pattern** is a creational design pattern used to construct complex objects step by step. Instead of using a constructor with a massive list of parameters—which leads to the "telescoping constructor" anti-pattern—the Builder allows you to produce different types and representations of an object using the same construction code.
+The **Builder Pattern** is a creational design pattern used to construct complex objects step by step. Instead of using a constructor with a massive list of parameters, which leads to the "telescoping constructor" anti-pattern, the Builder allows you to produce different types and representations of an object using the same construction code.
 
 ## The Problem: Telescoping Constructors
 

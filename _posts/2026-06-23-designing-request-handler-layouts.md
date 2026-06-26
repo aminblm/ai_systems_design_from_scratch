@@ -50,11 +50,11 @@ layout: default
 # Designing Request-Handler Layouts
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-In Python web development, mapping incoming HTTP requests to specific logic is the backbone of any framework. Using a dictionary-based routing table—specifically structured as `self._routes[HTTP_METHOD][URL_PATH] = Handler_Callback`—is a highly efficient and performant way to manage application traffic.
+In Python web development, mapping incoming HTTP requests to specific logic is the backbone of any framework. Using a dictionary-based routing table, specifically structured as `self._routes[HTTP_METHOD][URL_PATH] = Handler_Callback`, is a highly efficient and performant way to manage application traffic.
 
 ## The Routing Architecture
 

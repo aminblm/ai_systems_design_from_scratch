@@ -50,11 +50,11 @@ layout: default
 # Preventing Resource Leaks: The "Dangling Socket" Problem
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-In robust networking, the most silent killer of services is not a logic bug, but a resource leak. If your code crashes during an I/O operation—like a `recv()` timeout or a user-triggered `Ctrl+C` interrupt—and it fails to execute the final `.close()` call, the underlying TCP socket remains held open by the operating system.
+In robust networking, the most silent killer of services is not a logic bug, but a resource leak. If your code crashes during an I/O operation, like a `recv()` timeout or a user-triggered `Ctrl+C` interrupt, and it fails to execute the final `.close()` call, the underlying TCP socket remains held open by the operating system.
 
 These "zombie" file descriptors accumulate rapidly. Eventually, your process hits the system limit for open files, causing your server to reject all incoming connections, effectively leading to a self-inflicted Denial of Service (DoS).
 
@@ -106,7 +106,7 @@ Network interruptions are a fact of life. If a client drops their connection wit
 3. **Set Socket Timeouts**: Never block indefinitely. A socket left waiting forever is just as bad as a leaked one. Use `client_socket.settimeout(60.0)` to ensure a hanging connection eventually triggers an exception you can catch and clean up.
 4. **Monitor File Descriptors**: On Linux systems, monitor your process’s open file count via `/proc/<pid>/fd/`. If this number climbs steadily while your service is running, you have a leak.
 
-A resilient server is a self-cleaning one. By wrapping your network operations in defensive cleanup blocks, you ensure that every socket—whether closed by intent or by interruption—is properly returned to the OS.
+A resilient server is a self-cleaning one. By wrapping your network operations in defensive cleanup blocks, you ensure that every socket, whether closed by intent or by interruption, is properly returned to the OS.
 
 {% raw %}
 

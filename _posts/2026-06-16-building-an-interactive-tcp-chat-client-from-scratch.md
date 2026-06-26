@@ -42,7 +42,7 @@ description: "Demystifying network communications: Implementing a streaming sock
 # Building an Interactive TCP Chat Client From Scratch
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 Every high-level chat application, terminal-based remote shell, or realtime streaming tool relies on a reliable transport layer protocol: **Transmission Control Protocol (TCP)**. When writing client-side code, systems engineers use socket interfaces to spin up virtual communication paths. This architecture establishes a full-duplex stream boundary that connects local user inputs straight to remote listening daemons over network adapters.
@@ -165,7 +165,7 @@ While this script provides a solid base for data serialization and point-to-poin
 
 To evolve this client script into a production-ready, real-time messaging application, our repository architecture roadmap targets these milestones:
 
-* **Asynchronous Duplex Threading Loops:** Splitting the network layer into two independent execution threads—one dedicated solely to capturing incoming server bytes and another continuously polling standard input, allowing for uninterrupted, simultaneous two-way chatting.
+* **Asynchronous Duplex Threading Loops:** Splitting the network layer into two independent execution threads, one dedicated solely to capturing incoming server bytes and another continuously polling standard input, allowing for uninterrupted, simultaneous two-way chatting.
 * **Structured Packet Length Framing:** Upgrading the byte stream protocol to prefix messages with length-encoded header markers (like length-prefixed text blocks), ensuring the client parses high-density text files perfectly without slicing multi-line message boundaries.
 * **Graceful Remote Disconnection Handling:** Refining the reading mechanism to safely catch empty server bytes (`b""`), allowing the client to instantly detect if the remote server crashes and close out local system resources gracefully.
 

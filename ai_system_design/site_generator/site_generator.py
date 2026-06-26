@@ -38,7 +38,7 @@ class SiteGenerator:
         # Hydrate primary content block
         html = self.layout_template.replace('{{ site.content }}', md_html_content)
 
-        # Hydrate ,etadata key/value template tokens
+        # Hydrate,etadata key/value template tokens
         for key, value in self.config_mappings.items():
             html = html.replace(f'{{{{ site.{key} }}}}', str(value))
         return html

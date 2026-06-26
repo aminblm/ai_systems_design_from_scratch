@@ -50,7 +50,7 @@ layout: default
 # Essential Design Patterns for Scalable Python
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -58,7 +58,7 @@ As your codebase grows, the challenge shifts from "making it work" to "making it
 
 ## Why Design Patterns Matter
 
-Without patterns, systems often devolve into "spaghetti code"—a monolithic mess where changing one line causes unexpected failures elsewhere. Patterns enforce **decoupling** and **single responsibility**.
+Without patterns, systems often devolve into "spaghetti code", a monolithic mess where changing one line causes unexpected failures elsewhere. Patterns enforce **decoupling** and **single responsibility**.
 
 ## The Three Pillars of Patterns
 

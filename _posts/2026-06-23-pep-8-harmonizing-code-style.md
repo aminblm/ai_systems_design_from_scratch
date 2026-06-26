@@ -50,14 +50,14 @@ layout: default
 # PEP 8: Harmonizing Code Style
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-Code is read far more often than it is written. In Python, following the **PEP 8 style guide** is not just about aesthetics—it is about reducing the cognitive load for everyone who interacts with your codebase. By standardizing naming conventions, you provide immediate, implicit context about the role of a variable, constant, or method.
+Code is read far more often than it is written. In Python, following the **PEP 8 style guide** is not just about aesthetics, it is about reducing the cognitive load for everyone who interacts with your codebase. By standardizing naming conventions, you provide immediate, implicit context about the role of a variable, constant, or method.
 
 ## The Problem: Naming Inconsistency
-When a codebase mixes naming styles—such as using `camelCase` for methods or `UPPERCASE` for simple classes—it signals that the project lacks internal discipline. This inconsistency forces developers to stop and think about *what* an object is, rather than focusing on *what it does*.
+When a codebase mixes naming styles, such as using `camelCase` for methods or `UPPERCASE` for simple classes, it signals that the project lacks internal discipline. This inconsistency forces developers to stop and think about *what* an object is, rather than focusing on *what it does*.
 
 ## The Standard: PascalCase and snake_case
 

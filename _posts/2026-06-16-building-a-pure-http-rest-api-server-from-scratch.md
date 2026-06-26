@@ -42,7 +42,7 @@ description: "Demystifying application-layer routing infrastructure: Implementin
 #  Building a Relational SQL Database Engine Abstraction From Scratch
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 Every time a web browser or client application fetches data from a backend service, it relies on an application-layer network protocol: **Hypertext Transfer Protocol (HTTP)**. In standard development, web servers like NGINX, Apache, or Python frameworks like Flask and FastPI capture these requests automatically. They shield engineers from raw TCP/IP data buffers by providing pre-parsed request parameters and automated status routing abstractions.
@@ -230,7 +230,7 @@ Routed Primitive: GET -> Targeted Resource: /hello
 
 ## Infrastructure Scaling Roadmap
 
-While this server engine handles basic state mapping, route evaluation, and protocol parsing loops, it functions as a single-threaded blocker—meaning it can only process one active network connection at a time.
+While this server engine handles basic state mapping, route evaluation, and protocol parsing loops, it functions as a single-threaded blocker, meaning it can only process one active network connection at a time.
 
 To scale this infrastructure module into a reliable, concurrent application-tier platform, our engineering goals target these upcoming code sprints:
 

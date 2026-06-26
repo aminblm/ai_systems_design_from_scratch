@@ -41,7 +41,7 @@ description: "Putting it all together: Validating the static site pipeline with 
 # End-to-End Integration Testing of Jekyll with Concrete Templates
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 We have constructed individual parsing processors for Markdown and YAML, implemented clean abstraction wrappers around network/file I/O operations, and engineered an orchestration facade. To tie our series together, let's look at an **end-to-end integration test case** using a concrete layout schema and global configuration payload.
@@ -171,7 +171,7 @@ Once `FileOperations.write_html_content` finishes committing the text stream to 
 
 ## Systems Review and Architecture Summary
 
-Over this multi-part series, we took a seemingly complex task—cloning an enterprise static site generator—and split it into lightweight, single-responsibility layers:
+Over this multi-part series, we took a seemingly complex task, cloning an enterprise static site generator, and split it into lightweight, single-responsibility layers:
 
 * **`Jekyll` Facade:** Provides a clean single-line API for compilation.
 * **`DependenciesManager`:** Decouples file lookups and loading from the transformation logic.

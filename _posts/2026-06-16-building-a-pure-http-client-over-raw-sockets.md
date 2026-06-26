@@ -40,7 +40,7 @@ description: "Demystifying application-layer transport protocols: Implementing a
 # Building a Pure HTTP Client over Raw Sockets
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 When we utilize abstractions like `requests.get()` in Python or `fetch()` in JavaScript, we are interacting with high-level clients wrapped around an application-layer network protocol: **Hypertext Transfer Protocol (HTTP)**. Beneath these convenient libraries, an HTTP request is nothing more than a structured ASCII text payload transmitted across a raw, transport-layer TCP socket stream.
@@ -207,7 +207,7 @@ status_code = lines[0].split()[1]
 
 ```
 
-By segmenting arrays this way, our logic isolates status tokens out of the index frame effortlessly—mirroring how heavy proxy tools analyze web traffic under the hood.
+By segmenting arrays this way, our logic isolates status tokens out of the index frame effortlessly, mirroring how heavy proxy tools analyze web traffic under the hood.
 
 ### 3. State Rectification Guardrails
 

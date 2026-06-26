@@ -50,7 +50,7 @@ layout: default
 # Building a Resilient Distributed System Integration Suite
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -69,7 +69,7 @@ In modern backend architecture, testing individual components is only half the b
 
 ## Unified Testing Harness Implementation
 
-The following implementation provides a central entry point for simulating various system behaviors—from intent matching and Redis interaction to distributed database sharding.
+The following implementation provides a central entry point for simulating various system behaviors, from intent matching and Redis interaction to distributed database sharding.
 
 ```python
 import logging

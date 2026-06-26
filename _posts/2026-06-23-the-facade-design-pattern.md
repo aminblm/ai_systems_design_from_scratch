@@ -50,7 +50,7 @@ layout: default
 # The Facade Design Pattern
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
@@ -58,7 +58,7 @@ The **Facade Pattern** is a structural design pattern that provides a simplified
 
 ## The Problem: Subsystem Complexity
 
-When your application interacts with a complex subsystem—such as a legacy codebase, a heavy external library, or a web of interconnected utility classes—the client code becomes tightly coupled to the internal mechanics. This creates a high barrier to entry for new developers and makes refactoring dangerous.
+When your application interacts with a complex subsystem, such as a legacy codebase, a heavy external library, or a web of interconnected utility classes, the client code becomes tightly coupled to the internal mechanics. This creates a high barrier to entry for new developers and makes refactoring dangerous.
 
 
 

@@ -50,11 +50,11 @@ layout: default
 # The Architectural Paradox: Shell vs. Core
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-In software design, we often fall into a trap of **misplaced priority**. We spend weeks crafting a beautiful, highly abstracted "structural layout"—with layers of interfaces, factories, and dependency injectors—while the actual "execution engine" that does the heavy lifting remains a fragile, monolithic `while True:` loop.
+In software design, we often fall into a trap of **misplaced priority**. We spend weeks crafting a beautiful, highly abstracted "structural layout", with layers of interfaces, factories, and dependency injectors, while the actual "execution engine" that does the heavy lifting remains a fragile, monolithic `while True:` loop.
 
 This is the **Architectural Paradox**: over-engineering the static structure while under-engineering the dynamic runtime.
 
@@ -87,7 +87,7 @@ To build robust systems, we must flip our priorities. A simple structure running
 Do you need five layers of interfaces, or can you use a simple function or a dataclass? If you aren't changing the implementation, you likely don't need the abstraction.
 
 ### 2. Strengthen the Engine
-The engine—your task scheduler, your network handler, your data pipeline—is where your value lives. Invest your time here:
+The engine, your task scheduler, your network handler, your data pipeline, is where your value lives. Invest your time here:
 * **Replace Blocking Loops**: Use `asyncio` or `ThreadPoolExecutor` to handle concurrent tasks.
 * **Implement Resiliency**: Wrap execution stages in `try-except` blocks.
 * **Isolate State**: Pass connections as local arguments rather than sharing them in `self`.

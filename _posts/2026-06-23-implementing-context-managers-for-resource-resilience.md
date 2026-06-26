@@ -50,11 +50,11 @@ layout: default
 # Implementing Context Managers for Resource Resilience
 
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong> — <i>Software Engineer</i></p>
+    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
 </div>
 
 
-When managing network clients, container interfaces, or RPC channels, ensuring that resources are closed correctly—even when errors occur—is vital. Python's **context manager** pattern (`with` statement) provides a standardized, clean way to handle setup and teardown logic automatically.
+When managing network clients, container interfaces, or RPC channels, ensuring that resources are closed correctly, even when errors occur, is vital. Python's **context manager** pattern (`with` statement) provides a standardized, clean way to handle setup and teardown logic automatically.
 
 ## Why Use Context Managers?
 - **Automatic Cleanup**: Resources (like sockets or database connections) are closed immediately when the `with` block exits, even if an exception is raised inside.
