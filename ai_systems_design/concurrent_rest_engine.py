@@ -4,16 +4,12 @@ from socket import socket as Socket
 from typing import Callable, Dict, Tuple, Optional
 
 from ai_systems_design.utils import SocketUtility
+from ai_systems_design.utils import logger
+from ai_systems_design.resilient_multi_threaded_server import ResilientMultiThreadedServer
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
 
-
-class ConcurrentRESTEngine:
-    def __init__(self, host: str, port: int) -> None:
-        self.host = host
-        self.port = port 
-
+class ConcurrentRESTEngine(ResilientMultiThreadedServer):
+    def __init__(self) -> None:
         # Explicit route mapping tree structure
         # Layout: self._routes[HTTP_METHOD][URL_PATH] = Handler_Callback
         self._routes: Dict[str, Dict[str, Callable[[str], Tuple[int, str, str]]]] = {

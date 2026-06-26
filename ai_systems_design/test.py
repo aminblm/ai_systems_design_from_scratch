@@ -24,7 +24,11 @@ from ai_systems_design.utils import logger
 
 
 SERVER_HOST = "127.0.0.1"
-SERVER_PORT = 8080
+SOCKET_SERVER_PORT = 8080
+HTTP_SERVER_PORT = 8081
+CONTAINER_MANAGER_PORT = 8082
+REST_API_PORT = 8083
+GIT_RPC_SERVER_PORT = 8084
 TARGET_REPO = "https://github.com/user/repo.git"
 
 INTENT_DATA_REPOS = {
@@ -82,7 +86,7 @@ def test_engine_scheduler():
 def test_socket_client():
     # Using a context manager completely replaces manual tracking of .close()
     try:
-        with SocketClient(SERVER_HOST, SERVER_PORT) as client:
+        with SocketClient(SERVER_HOST, SOCKET_SERVER_PORT) as client:
             server_handshake = client.receive_message()
             if server_handshake:
                 print(f"\n[Server]: {server_handshake}")
@@ -102,13 +106,13 @@ def test_socket_client():
 def test_container_manager_client():
     # Context manager auto-manages low-level cleanup on teardown or crash
     try:
-        with ContainerManagerClient(SERVER_HOST, SERVER_PORT) as client:
+        with ContainerManagerClient(SERVER_HOST, CONTAINER_MANAGER_PORT) as client:
             client.start_interface()
     except Exception as fatal_err:
         logger.critical(f"Failed to run service management shell: {fatal_err}")
 
 def test_threaded_container_manager():
-    manager = ThreadedContainerManager(SERVER_HOST, SERVER_PORT)
+    manager = ThreadedContainerManager(SERVER_HOST, CONTAINER_MANAGER_PORT)
     manager.start_server()
 
 def test_scalable_index():
@@ -183,7 +187,7 @@ def test_reactive_frontend():
 def test_git_rpc_client():
     # Context manager implementation replaces sequential manual channel closes entirely
     try:
-        with GitRPCClient(SERVER_HOST, SERVER_PORT) as git_agent:
+        with GitRPCClient(SERVER_HOST, GIT_RPC_SERVER_PORT) as git_agent:
             server_feedback = git_agent.dispatch_clone(repository_url=TARGET_REPO)
             print(f"\n[Execution Worker Response]: {server_feedback}")
             
@@ -191,7 +195,7 @@ def test_git_rpc_client():
         logger.critical(f"Abrupt termination handling repository pipeline sequence tasks: {fatal_error}")
 
 def test_threaded_git_rpc_server():
-    git_server = ThreadedGitRPCServer(SERVER_HOST, SERVER_PORT)
+    git_server = ThreadedGitRPCServer(SERVER_HOST, GIT_RPC_SERVER_PORT)
     git_server.start_server()
 
 def test_round_robin_load_balancer():
@@ -310,17 +314,17 @@ def test_realtime_redis_engine():
 def test_http_client():
     # Context manager pattern ensures explicit teardown safeguards apply uniformly
     try:
-        with HTTPClient(SERVER_HOST, SERVER_PORT) as client_runtime:
+        with HTTPClient(SERVER_HOST, REST_API_PORT) as client_runtime:
             client_runtime.start_repl_loop()
     except Exception as initialization_failure:
         logger.critical(f"Failed to engage network testing suite system execution nodes: {initialization_failure}")
 
 def test_concurrent_rest_engine():
-    app = ConcurrentRESTEngine(SERVER_HOST, SERVER_PORT)
+    app = ConcurrentRESTEngine(SERVER_HOST, REST_API_PORT)
     app.start_server()
 
 def test_resilient_multi_threaded_server():
-    server = ResilientMultiThreadedServer(SERVER_HOST, SERVER_PORT)
+    server = ResilientMultiThreadedServer(SERVER_HOST, SOCKET_SERVER_PORT)
     server.start_server()
 
 def test_safe_yaml_parser():

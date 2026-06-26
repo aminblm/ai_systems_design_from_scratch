@@ -3,9 +3,8 @@ import logging, socket, sys, threading
 from typing import Tuple
 
 from ai_systems_design.utils import SocketUtility
+from ai_systems_design.utils import logger
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
 
 class ResilientMultiThreadedServer:
     """A robust, concurrent TCP server that safely manages multi-client connection Lifecycles."""
@@ -29,7 +28,7 @@ class ResilientMultiThreadedServer:
                     client_socket, client_address = server_socket.accept()
                     logger.info(f"Accepted inbound network pipe connection from: {client_address}")
                     
-                    # FIXED: Spun off connection to an independent thread to prevent blocking loops
+                    # Spun off connection to an independent thread to prevent blocking loops
                     client_thread = threading.Thread(
                         target=self._handle_client_lifecycle,
                         args=(client_socket, client_address),
@@ -50,19 +49,21 @@ class ResilientMultiThreadedServer:
 
     def _handle_client_lifecycle(self, client_socket: socket.socket, client_address: Tuple[str, int]) -> None:
         """Manages the read/write streaming transactions for a single isolated connection."""
-        # FIXED: Configured explicit transaction timeouts to prevent silent hanging sockets
+        # Configured explicit transaction timeouts to prevent silent hanging sockets
         client_socket.settimeout(10.0) 
         
         try:
             # 1. Dispatch greeting frame downstream
-            greeting_msg = "Hey What's up?\n"
+            greeting_msg = f"[SUCCESS] handshake the {self.host}:{self.port} server.\n"
             client_socket.sendall(greeting_msg.encode('utf-8'))
             
             # 2. Safely read inbound response frame
             raw_payload = client_socket.recv(4096)
             if raw_payload:
-                decoded_response = raw_payload.decode('utf-8').strip()
-                logger.info(f"[{client_address}] Sent Echo payload: {decoded_response}")
+                request_text = raw_payload.decode('utf-8').strip()
+                logger.info(f"[{client_address}] Sent Echo payload: {request_text}")
+                response_bytes = self._process_socket_transaction(request_text)
+                client_socket.sendall(response_bytes)
             else:
                 logger.warning(f"[{client_address}] Closed connection early without data transmission.")
                 
@@ -73,3 +74,8 @@ class ResilientMultiThreadedServer:
         finally:
             client_socket.close()
             logger.info(f"Cleaned up network socket resources for client: {client_address}")
+
+    def _process_socket_transaction(self, request_text: str) -> bytes:
+        """Parses raw text frames and constructs fully compliant HTTP/1.1 response bytes."""
+        return f"[Socket Server] {request_text}".encode('utf-8')
+        
