@@ -9,8 +9,9 @@ from ai_systems_design.utils import logger
 class RESTAPIClient(BaseSocketClient):
     """A clean raw-socket HTTP client implementating defensive parsing frames over TCP streams."""
 
-    def __enter__(self, context : str = "REST API Client") -> RESTAPIClient:
-        return super().__enter__(context)
+    def __enter__(self) -> RESTAPIClient:
+        self.context = "REST API Client"
+        return super().__enter__()
     
     def send_http_request(self, method: str, path: str, body: Optional[str] = None) -> None:
         """Constructs and flushes compliant raw HTTP/1.1 text frames down the pipe."""

@@ -1,25 +1,38 @@
 # resilient_client_socket.py
 from types import TracebackType
 from typing import Optional, Type, Any
+import socket 
 
-from ai_systems_design.utils import SocketUtility, logger
+from ai_systems_design.utils import logger
 
 
 class BaseSocketClient:
     """A defensive wrapper around client-side sockets ensuring deterministic lifecycle cleanup."""
-    def __init__(self, host: str, port: int, timeout_seconds: float = 10.0) -> None:
+    def __init__(self, host: str, port: int, context: str = "Client Socket", timeout_seconds: float = 10.0) -> None:
         self.host = host
         self.port = port
         self.timeout = timeout_seconds
+        self.context = context
         self._socket = None
 
-    def __enter__(self, context: str) -> Any:
+    def connect_to_socket_server(self, timeout: float = 10.0) -> socket.socket:
+        """Establishes an active network pipe line link connection out to a target remote host."""
+        try:
+            client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            client_socket.settimeout(timeout)
+            
+            client_socket.connect((self.host, self.port))
+            logger.info(f"[{self.context.upper()}] Successfully bridged communications channel outbound link to {self.host}:{self.port} server.")
+            return client_socket
+        except socket.error as conn_err:
+            logger.error(f"Network transport handshake failure routing towards tcp://{self.host}:{self.port} -> {conn_err}")
+            raise
+
+    def __enter__(self) -> Any:
         """Establishes the connection when entering a context manager block."""
         try:
             logger.info(f"Establishing connection to {self.host}:{self.port}...")
-            self._socket = SocketUtility.connect_to_socket_server(
-                self.host, self.port, context
-            )
+            self._socket = self.connect_to_socket_server()
             self._socket.settimeout(self.timeout)
             return self
         except Exception as err:
@@ -55,8 +68,8 @@ class BaseSocketClient:
 class SocketClient(BaseSocketClient):
     """A defensive client-side socket ensuring deterministic lifecycle cleanup."""
 
-    def __enter__(self, context : str = "Socket Client") -> SocketClient:
-        return super().__enter__(context)
+    def __enter__(self) -> SocketClient:
+        return super().__enter__()
     
     def receive_message(self, max_buffer_size: int = 4096) -> str:
         """Safely reads inbound streams from the remote host buffer."""

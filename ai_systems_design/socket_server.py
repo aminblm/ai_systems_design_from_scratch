@@ -2,7 +2,6 @@
 import socket, threading
 from typing import Tuple, Callable
 
-from ai_systems_design.utils import SocketUtility
 from ai_systems_design.utils import logger
 
 
@@ -15,10 +14,28 @@ class SocketServer:
         self._is_running = False
         self.context = context
 
+    def create_socket_server(self, backlog: int = 128) -> socket.socket:
+        """Generates a bound TCP master socket server with non-blocking address reuse capabilities."""
+        try:
+            server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            
+            # SOLVES PORT COLLISION: Allows instant rebinding without waiting out OS TIME_WAIT delays
+            server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            
+            server_socket.bind((self.host, self.port))
+            # FIXED: Elevated the listening queue from a bottlenecked 1 up to an enterprise 128
+            server_socket.listen(backlog)
+            
+            logger.info(f"[{self.context.upper()} Gateway Core] Infrastructure initialized. Listening at -> tcp://{self.host}:{self.port}")
+            return server_socket
+        except socket.error as net_err:
+            logger.critical(f"Failed to bind socket network server interface down on {self.host}:{self.port} -> {net_err}")
+            raise
+
     def start_server(self, process_socket_transaction: Callable[[str], bytes]) -> None:
         """Binds the underlying socket and enters the concurrent client acceptance loop."""
         # Create and bind the socket server safely using utility helpers
-        server_socket = SocketUtility.create_socket_server(self.host, self.port, self.context)
+        server_socket = self.create_socket_server()
         self._is_running = True
         logger.info(f"[{self.context.upper()}] Server successfully running on {self.host}:{self.port}")
 
