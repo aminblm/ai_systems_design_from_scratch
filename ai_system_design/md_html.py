@@ -59,7 +59,7 @@ class MarkdownParser:
             yield line
     
     def _parse_multiline_code(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
-        """Generator to parse multi-line html tags."""
+        """Generator to parse multi-line code blocks."""
         for line in lines_iterator:
             if line.startswith("```") and not line.endswith('```'): 
                 content = line
@@ -72,16 +72,39 @@ class MarkdownParser:
             yield line
 
     def _parse_bullet_points(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
-        """Generator to parse multi-line html tags."""
+        """Generator to parse multi-line bullet points."""
         for line in lines_iterator:
-            if line.startswith("* ") or line.endswith('- '): 
+            if line.startswith("* ") or line.startswith('- '): 
                 content = f"<ul>\n\t<li>{self._parse_inline_elements(line[2:].strip())}</li>"
                 for close_line in lines_iterator:
-                    if close_line.startswith("* ") or close_line.endswith('- '):
+                    if close_line.startswith("* ") or close_line.startswith('- '):
                         content += f"\n\t<li>{self._parse_inline_elements(close_line[2:].strip())}</li>"
                     else:
                         content += f"\n</ul>"
                         break
+                yield content
+                continue
+            yield line
+
+    def _parse_tables(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
+        """Generator to parse multi-line tables."""
+        for line in lines_iterator:
+            if line.startswith("| ") and line.endswith(' |'): 
+                content = "<table>\n\t<thead>\n\t\t<tr>\n"
+                for table_head in line.split("|")[1: -1]:
+                    content += f"\t\t\t<th>{self._parse_inline_elements(table_head.strip())}</th>\n"
+                content += "\t\t</tr>\n\t</thead>\n\t<tbody>\n"
+                for close_line in lines_iterator:
+                    if "--- |" in close_line:
+                        continue
+                    if close_line.startswith("| ") and close_line.endswith(' |'):
+                        content += "\t\t<tr>"
+                        for table_body in close_line.split("|")[1: -1]:
+                            content += f"\t\t\t<td>{self._parse_inline_elements(table_body.strip())}</td>\n"
+                        content += "\t\t</tr>"
+                    else:
+                        break
+                content += "\t</tbody>\n</table>"
                 yield content
                 continue
             yield line
@@ -124,6 +147,7 @@ class MarkdownParser:
         lines_iterator = self._parse_multiline_html_tag(lines_iterator)
         lines_iterator = self._parse_multiline_code(lines_iterator)
         lines_iterator = self._parse_bullet_points(lines_iterator)
+        lines_iterator = self._parse_tables(lines_iterator)
     
         html_blocks = []
         for line in lines_iterator:
