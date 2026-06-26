@@ -2,11 +2,11 @@
 import sys
 from typing import Optional
 
-from ai_systems_design.socket_client import BaseSocketClient
+from ai_systems_design.socket_client import SocketClient
 from ai_systems_design import logger
 
 
-class RESTAPIClient(BaseSocketClient):
+class RESTAPIClient(SocketClient):
     """A clean raw-socket HTTP client implementating defensive parsing frames over TCP streams."""
 
     def __enter__(self) -> RESTAPIClient:

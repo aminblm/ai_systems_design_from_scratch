@@ -2,11 +2,11 @@
 import sys
 from typing import Optional
 
-from ai_systems_design.socket_client import BaseSocketClient
+from ai_systems_design.socket_client import SocketClient
 from ai_systems_design import logger
 
 
-class ContainerManagerClient(BaseSocketClient):
+class ContainerManagerClient(SocketClient):
     """A clean, defencive CLI client for interacting with a remote container management service."""
 
     def __enter__(self) -> ContainerManagerClient:

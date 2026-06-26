@@ -4,7 +4,6 @@ from typing import Callable, List, Dict, Any
 from ai_systems_design import logger
 
 
-
 class RoundRobinLoadBalancer:
     """A thread-safe, programmatic load balancer distributing homogeneous traffic evenly."""
     

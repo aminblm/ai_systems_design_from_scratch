@@ -112,7 +112,7 @@ def test_container_manager_client():
     except Exception as fatal_err:
         logger.critical(f"Failed to run service management shell: {fatal_err}")
 
-def test_container_manager():
+def test_container_manager_server():
     manager = ContainerManagerServer(SERVER_HOST, CONTAINER_MANAGER_PORT)
     manager.start_container_manager_server()
 
@@ -312,7 +312,7 @@ def test_realtime_redis_engine():
             print("\nTerminated via supervisor hardware signal line.")
             break
 
-def test_http_client():
+def test_rest_api_client():
     # Context manager pattern ensures explicit teardown safeguards apply uniformly
     try:
         with RESTAPIClient(SERVER_HOST, REST_API_PORT) as client_runtime:
@@ -320,11 +320,11 @@ def test_http_client():
     except Exception as initialization_failure:
         logger.critical(f"Failed to engage network testing suite system execution nodes: {initialization_failure}")
 
-def test_rest_api():
+def test_rest_api_server():
     app = RESTAPIServer(SERVER_HOST, REST_API_PORT)
     app.start_http_server()
 
-def test_resilient_multi_threaded_server():
+def test_socket_server():
     server = SocketServer(SERVER_HOST, SOCKET_SERVER_PORT)
     server.start_socket_server()
 
@@ -394,30 +394,53 @@ def test_modules():
     parser.add_argument("--test", required=True)
     args = parser.parse_args()
     match args.test:
-        case "generate_site": test_generate_site()
-        case "slug_generator": test_slug_generator()
-        case "engine_scheduler": test_engine_scheduler()
+        # Frontend
+        case "reactive_frontend": test_reactive_frontend()
+
+        # Load Balancing
+        case "round_robin_load_balancer": test_round_robin_load_balancer()
+
+        # Sockets
         case "socket_client": test_socket_client()
-        case "container_manager_client": test_container_manager_client()
+        case "socket_server": test_socket_server()
+
+        # REST APIs
+        case "rest_api_client": test_rest_api_client()
+        case "rest_api_server": test_rest_api_server()
+
+        # Git RPC
+        case "git_rpc_client": test_git_rpc_client()
+        case "git_rpc_server": test_git_rpc_server()
+        
         # TODO - TEST FAIL - ContainerManager
         # cmd> run
         # Enter container name: python
         # 2026-06-26 05:14:26,834 [WARNING] Remote host has closed the connection stream channel.
         # [Server Response]:
-        case "container_manager": test_container_manager()
+        # Container Management
+        case "container_manager_client": test_container_manager_client()
+        case "container_manager_server": test_container_manager_server()
+
+        # Databases
         case "scalable_index": test_scalable_index()
-        case "reactive_frontend": test_reactive_frontend()
-        case "git_rpc_client": test_git_rpc_client()
-        case "git_rpc_server": test_git_rpc_server()
-        case "round_robin_load_balancer": test_round_robin_load_balancer()
         case "distributed_no_sql_database": test_distributed_no_sql_database()
-        case "intent_matching_engine": test_intent_matching_engine()
+        
+        # Caching
         case "realtime_redis_engine": test_realtime_redis_engine()
-        case "http_client": test_http_client()
-        case "rest_api": test_rest_api()
-        case "resilient_multi_threaded_server": test_resilient_multi_threaded_server()
+
+        # AI - Intent matching enging
+        case "intent_matching_engine": test_intent_matching_engine()
+
+        # Tasks Scheduler
+        case "engine_scheduler": test_engine_scheduler()
+
+        # Site / Blog Posts / Internet Content Generator
+        case "generate_site": test_generate_site()
+        case "slug_generator": test_slug_generator()
         case "safe_yaml_parser": test_safe_yaml_parser()
         case "architecture_renderer": test_architecture_renderer()
         case "process_posts": test_process_posts()
+
+        # Edge-cases
         case _: logger.warning("Enter a valid test case.")
     pass
