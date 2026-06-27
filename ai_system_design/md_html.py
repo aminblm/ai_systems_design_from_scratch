@@ -76,6 +76,19 @@ class MarkdownParser:
                 yield "</code></pre>\n"
                 continue
             yield line
+    
+    def _parse_raw(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
+        """Generator to parse raw blocks."""
+        for line in lines_iterator:
+            if line == "{% raw %}": 
+                for close_line in lines_iterator:
+                    if close_line == "{% endraw %}":
+                        break
+                    else:
+                        if close_line != "{% endraw %}":
+                            yield close_line
+                continue
+            yield line
 
     def _parse_bullet_points(self, lines_iterator: Generator[str, None, None]) -> Generator[str, None, None]:
         """Generator to parse multi-line bullet points."""
@@ -172,9 +185,11 @@ class MarkdownParser:
             self._parse_bullet_points(
                 self._parse_ordered_list(
                     self._parse_multiline_code(
-                        self._parse_multiline_html_tags(
-                            self._parse_metadata(
-                                markdown_generator
+                        self._parse_raw(
+                            self._parse_multiline_html_tags(
+                                self._parse_metadata(
+                                    markdown_generator
+                                )
                             )
                         )
                     )
