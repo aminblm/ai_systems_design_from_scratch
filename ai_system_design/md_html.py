@@ -6,7 +6,7 @@ from pathlib import Path
 
 from ai_system_design.utils import IOUtility
 from ai_system_design.safe_yaml_parser import SafeYAMLParser
-from ai_system_design import logger
+from ai_system_design.logger import logger
 
 
 class MDSpecialCases(Enum):

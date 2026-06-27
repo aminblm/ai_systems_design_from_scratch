@@ -3,7 +3,7 @@ import json
 from typing import Dict, Any
 
 from ai_system_design.socket_client import SocketClient
-from ai_system_design import logger
+from ai_system_design.logger import logger
 
 
 class GitRPCClient(SocketClient):

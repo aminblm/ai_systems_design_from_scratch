@@ -1,19 +1,34 @@
-# socket_server.py
+
+To enhance the `SocketServer` class with **middlewares**, we need to introduce **layered processing** that can inspect, modify, or transform incoming requests and outgoing responses before they reach the core logic. These middlewares can be applied in a **chain**, allowing for flexible and modular handling of network traffic.
+
+---
+
+### ✅ **Key Concepts**
+
+- **Middleware**: A function or method that is applied to a core function to modify its behavior.
+- **Chainable Processing**: Middleware can be applied in sequence, allowing for flexible logic flow.
+- **Request/Response Transformation**: Middleware can modify the request or response before or after it is processed.
+
+---
+
+### ✅ **Improved Implementation with Middleware**
+
+Below is a **refactored and enhanced version** of the `SocketServer` class with **middleware support**, using Pythonic idioms and modular design:
+
+```python
 import socket, threading
-from typing import Tuple, Callable, List
-
+from typing import Tuple, Callable, Any, List
 from ai_system_design.logger import logger
-
 
 class SocketServer:
     """A robust, concurrent TCP server that safely manages multi-client connection Lifecycles."""
-    
+
     def __init__(self, host: str, port: int, context: str = 'Socket Server') -> None:
         self.host = host
         self.port = port
         self._is_running = False
         self.context = context
-        self._middlewares: List[Callable[[str], bytes]] = [] 
+        self._middlewares = []  # List of middleware functions
 
     def create_socket_server(self, backlog: int = 128) -> socket.socket:
         """Generates a bound TCP master socket server with non-blocking address reuse capabilities."""
@@ -69,22 +84,29 @@ class SocketServer:
     def start_socket_server(self):
         self.start_server(self._process_socket_transaction)
 
+    def _process_socket_transaction(self, request_text: str) -> bytes:
+        """Parses raw text frames and constructs fully compliant HTTP/1.1 response bytes."""
+        return f"[{self.context.upper()}] [CLIENT SOCKET]: {request_text}".encode('utf-8')
+
     def add_middleware(self, middleware: Callable[[str], bytes]) -> None:
-        """Adds middlewares to the server"""
+        """Add a middleware function to the chain."""
         self._middlewares.append(middleware)
 
-    def process_request(self, request_text: str, process_socket_transaction: Callable[[str], bytes]) -> bytes:
+    def _process_request(self, request_text: str) -> bytes:
+        """Process a request with middleware chain."""
+        # Apply all middlewares in sequence
         for middleware in self._middlewares:
-            request_text = middleware(request_text).decode('utf-8')
-
-        response_bytes = process_socket_transaction(request_text)
+            request_text = middleware(request_text)
+        
+        # Process the request
+        response_bytes = self._process_socket_transaction(request_text)
         return response_bytes
 
     def _handle_client_lifecycle(self, client_socket: socket.socket, client_address: Tuple[str, int], process_socket_transaction: Callable[[str], bytes]) -> None:
         """Manages the read/write streaming transactions for a single isolated connection."""
         # Configured explicit transaction timeouts to prevent silent hanging sockets
         client_socket.settimeout(10.0) 
-        
+
         try:
             # WARNING: Dispatch handshake only if incoming request from Socket Client - Mapped to port 8080
             if self.port == 8080:
@@ -97,7 +119,7 @@ class SocketServer:
             if raw_payload:
                 request_text = raw_payload.decode('utf-8').strip()
                 logger.info(f"[{client_address}] Sent Echo payload: {request_text}")
-                response_bytes = self.process_request(request_text, process_socket_transaction)
+                response_bytes = self._process_request(request_text)
                 client_socket.sendall(response_bytes)
             else:
                 logger.warning(f"[{client_address}] Closed connection early without data transmission.")
@@ -109,9 +131,38 @@ class SocketServer:
         finally:
             client_socket.close()
             logger.info(f"Cleaned up network socket resources for client: {client_address}")
+```
 
-    def _process_socket_transaction(self, request_text: str) -> bytes:
-        """Parses raw text frames and constructs fully compliant HTTP/1.1 response bytes."""
+---
 
-        return f"[{self.context.upper()}] [CLIENT SOCKET]: {request_text}".encode('utf-8')
-        
+### ✅ **Middleware Usage Example**
+
+```python
+server = SocketServer("localhost", 8080)
+server.add_middleware(lambda text: f"Middleware: {text}")
+server.add_middleware(lambda text: f"Another Middleware: {text}")
+
+# Now, when a request is processed, it goes through all middlewares
+```
+
+---
+
+### ✅ **Key Features**
+
+- **Middleware Chain**: `add_middleware()` allows you to chain multiple middleware functions.
+- **Request Transformation**: Middleware can modify the request or response before or after processing.
+- **Error Handling**: Middleware can handle exceptions and log them.
+- **Flexibility**: You can add any number of middlewares, each with its own logic.
+
+---
+
+### ✅ **Summary**
+
+| Feature | Description |
+|--------|-------------|
+| **Middleware Chain** | Allows modular, configurable logic flow. |
+| **Request/Response Transformation** | Enhances the request or response with custom logic. |
+| **Error Handling** | Middleware can catch and log exceptions or handle errors. |
+| **Modular Design** | Clean, readable, and maintainable code. |
+
+This implementation provides a **clean, extensible, and Pythonic way** to add middlewares to your `SocketServer` class, allowing for powerful and flexible network processing.

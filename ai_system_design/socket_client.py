@@ -3,7 +3,7 @@ from types import TracebackType
 from typing import Optional, Type, Any
 import socket 
 
-from ai_system_design import logger
+from ai_system_design.logger import logger
 
 
 class SocketClient:

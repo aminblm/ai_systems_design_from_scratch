@@ -1,4 +1,4 @@
-import logging, sys, argparse
+import sys, argparse
 
 from ai_system_design.site_generator.site_generator import SiteGenerator 
 from ai_system_design.slug_generator import JekyllFilenameController
@@ -20,7 +20,7 @@ from ai_system_design.socket_server import SocketServer
 from ai_system_design.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.architecture_renderer import ArchitectureRenderer, ArchComponent
 from ai_system_design.process_posts import process_posts, clean_posts, clean_author
-from ai_system_design import logger
+from ai_system_design.logger import logger
 
 
 SERVER_HOST = "127.0.0.1"
@@ -326,6 +326,10 @@ def test_rest_api_server():
 
 def test_socket_server():
     server = SocketServer(SERVER_HOST, SOCKET_SERVER_PORT)
+
+    server.add_middleware(lambda text: f"Middleware: {text}".encode("utf-8"))
+    server.add_middleware(lambda text: f"Another Middleware: {text}".encode("utf-8"))
+
     server.start_socket_server()
 
 def test_safe_yaml_parser():

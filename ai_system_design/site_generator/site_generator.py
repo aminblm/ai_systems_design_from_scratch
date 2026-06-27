@@ -6,7 +6,7 @@ from typing import Dict, Tuple, Generator
 from ai_system_design.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.md_html import MarkdownConverterFacade
 from ai_system_design.utils import IOUtility
-from ai_system_design import logger
+from ai_system_design.logger import logger
 
 
 class SiteGenerator:

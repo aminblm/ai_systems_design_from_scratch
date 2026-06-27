@@ -3,7 +3,7 @@ import json
 from typing import Callable, Dict, Tuple
 
 from ai_system_design.socket_server import SocketServer
-from ai_system_design import logger
+from ai_system_design.logger import logger
 
 
 class RESTAPIServer(SocketServer):
@@ -15,6 +15,21 @@ class RESTAPIServer(SocketServer):
             "GET": {}, "POST": {}, "PUT": {}, "DELETE": {}
         }
         self._register_core_endpoints()
+
+    def register_endpoint(self, method: str, path: str, status: int, content_type: str, content: str) -> None:
+        self._routes[method][path] = lambda body: (status, content_type, content)
+
+    def get(self, path: str):
+        pass
+
+    def post(self, path: str):
+        pass
+
+    def put(self, path: str):
+        pass
+
+    def delete(self, path: str):
+        pass
 
     def _register_core_endpoints(self) -> None:
         """Decouples application routing configuration definitions away from raw transport IO."""

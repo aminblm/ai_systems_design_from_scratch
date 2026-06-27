@@ -2,7 +2,7 @@
 import re
 from typing import Dict, Optional, Any
 
-from ai_system_design import logger
+from ai_system_design.logger import logger
 
 
 class IntentMatchingEngine:

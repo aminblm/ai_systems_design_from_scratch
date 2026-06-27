@@ -3,7 +3,7 @@ import sys
 from typing import Optional
 
 from ai_system_design.socket_client import SocketClient
-from ai_system_design import logger
+from ai_system_design.logger import logger
 
 
 class ContainerManagerClient(SocketClient):

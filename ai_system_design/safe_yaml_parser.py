@@ -4,11 +4,14 @@ from typing import Dict, Any, Optional, Generator, Any
 from pathlib import Path
 
 from ai_system_design.utils import IOUtility
-from ai_system_design import logger
+from ai_system_design.logger import logger
 
 
 class SafeYAMLParser:
     """A safe textual scanner utilizing regular expressions to process configuration properties."""
+
+    def dump(self):
+        """YAML dict to text"""
 
     @staticmethod
     def parse_to_dict(yaml_iterator: Generator[str, None, None]) -> Dict[str, Any]:
@@ -68,7 +71,7 @@ class ConfigurationBuilder:
     """A fluent builder interface ensuring valid construction sequences for configuration engines."""
 
     def __init__(self) -> None:
-        self._text_iterator: Generator[str, None, None] = None
+        self._text_iterator: Optional[Generator[str, None, None]] = None
 
     def from_text(self, yaml_text: str) -> ConfigurationBuilder:
         """Loads configuration variables straight from a raw multi-line string sequence."""
