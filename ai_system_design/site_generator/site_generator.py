@@ -1,7 +1,7 @@
 # site_generator.py
 import traceback
 from pathlib import Path
-from typing import Dict, Tuple 
+from typing import Dict, Tuple, Generator
 
 from ai_system_design.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.md_html import MarkdownConverterFacade
@@ -31,13 +31,35 @@ class SiteGenerator:
     def _load_config(self) -> Dict[str, str]:
         return ConfigurationBuilder().from_file(self.config_file_path).build().to_dict()
     
+    def _get_header_lines(self, html_generator: Generator[str, None, None]) -> Generator[str, None, None]:
+        for line in html_generator:
+            if line.strip() == "<head>":
+                for closed_line in html_generator:
+                    logger.debug(closed_line)
+                    if closed_line.strip() == "</head>":
+                        break 
+                    else:
+                        yield closed_line.strip()
+
+    def _clean_header_lines(self, html_generator: Generator[str, None, None]) -> Generator[str, None, None]:
+        for line in html_generator:
+            if line.strip() == "<head>":
+                for closed_line in html_generator:
+                    if closed_line.strip() == "</head>":
+                        break 
+                    continue
+            yield line
+
     def _render_html(self, md_file_path: Path) -> str:
         """Injects compiled markdown content and config mappings into the layout"""
 
         markdown_file_converter = MarkdownConverterFacade()
 
+        # Hydrate head content
+        html = self.layout_template.replace('{{ head.content }}', "\n\t\t".join(self._get_header_lines(markdown_file_converter.convert_file(md_file_path))))
+
         # Hydrate primary content block
-        html = self.layout_template.replace('{{ site.content }}', "\n\t\t\t\t".join(markdown_file_converter.convert_file(md_file_path)))
+        html = html.replace('{{ site.content }}', "\n\t\t\t\t".join(self._clean_header_lines(markdown_file_converter.convert_file(md_file_path))))
 
         # Hydrate,etadata key/value template tokens
         for key, value in self.config_mappings.items():
@@ -52,6 +74,7 @@ class SiteGenerator:
             html = html.replace(f'{{{{ page.{key} }}}}', str(value))
             html = html.replace(f'{{{{ page.{key} | default: site.{key} }}}}', str(value))
 
+        
         return html
     
     def _resolve_paths(self, md_file: Path, input_dir: Path, output_dir: Path) -> Tuple[Path, Path]:
