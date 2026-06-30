@@ -316,8 +316,7 @@ def test_realtime_redis_engine():
 def test_rest_api_client():
     # Context manager pattern ensures explicit teardown safeguards apply uniformly
     try:
-        with RESTAPIClient(SERVER_HOST, REST_API_PORT) as client_runtime:
-            client_runtime.start_repl_loop()
+        RESTAPIClient(SERVER_HOST, REST_API_PORT).start_repl_loop()
     except Exception as initialization_failure:
         logger.critical(f"Failed to engage network testing suite system execution nodes: {initialization_failure}")
 

@@ -103,9 +103,9 @@ class RESTAPIClient(SocketClient):
                         method = "GET" if choice == "1" else "DELETE"
                         print("Enter target path endpoint: ", end="", flush=True)
                         target_path = sys.stdin.readline().strip()
-                        
-                        self.send_http_request(method, target_path)
-                        self.receive_and_parse_response()
+                        with self:
+                            self.send_http_request(method, target_path)
+                            self.receive_and_parse_response()
 
                     case "2" | "3":
                         method = "POST" if choice == "2" else "PUT"
@@ -116,8 +116,9 @@ class RESTAPIClient(SocketClient):
                         print('Enter string body details: ', end="", flush=True)
                         payload_body = sys.stdin.readline().strip()
                         
-                        self.send_http_request(method, target_path, body=payload_body)
-                        self.receive_and_parse_response()
+                        with self: 
+                            self.send_http_request(method, target_path, body=payload_body)
+                            self.receive_and_parse_response()
 
                     case _:
                         print("❌ Input Choice must match a listed selection (1-5).")
