@@ -1553,3 +1553,60 @@ Ledger records history; truth remains forever immutable.
 
 Would you like to implement a **Cryptographic Hash Chain** to ensure your ledger cannot be tampered with?
 
+To achieve robust orchestration, the **Decision Layer** must be built on the principle of **idempotency**. In an agentic system, retries are inevitable due to network jitters, timeouts, or process failures. If your `AgentRunner` triggers a non-idempotent action (like charging a credit card or appending to a log) without a safety mechanism, retries will cause catastrophic side effects.
+
+# 42. The Idempotency Infrastructure
+
+To enforce this, we introduce the **Idempotency Key** pattern. Every task dispatched by the `EngineScheduler` must carry a unique, deterministic identifier that travels with the task throughout the entire lifecycle.
+
+```python
+import hashlib
+import json
+
+class IdempotentRunner:
+    """Orchestrator that ensures task idempotency via status tracking."""
+    def __init__(self, storage):
+        self.storage = storage # Your persistent database or ledger
+
+    def run(self, task_id: str, action_func, *args, **kwargs):
+        # 1. Check if the task has already been completed
+        if self.storage.exists(task_id):
+            return self.storage.get_result(task_id)
+        
+        # 2. Mark as IN_PROGRESS to prevent concurrent execution
+        self.storage.set_status(task_id, "IN_PROGRESS")
+        
+        try:
+            # 3. Execute the action
+            result = action_func(*args, **kwargs)
+            
+            # 4. Atomically save the result and mark as COMPLETED
+            self.storage.save_result(task_id, result, status="COMPLETED")
+            return result
+        except Exception as e:
+            self.storage.set_status(task_id, "FAILED")
+            raise e
+
+```
+
+### Pillars of Idempotent Orchestration
+
+* **The Idempotency Key**: This is a client-side generated UUID that identifies a unique logical intent. If the `AgentRunner` receives a request to "Transfer $50" with the same key twice, the system verifies the key, sees it was already processed, and returns the original result rather than processing a second transfer.
+* **Atomic State Transitions**: Use an "Insert-If-Not-Exists" strategy in your storage layer. By coupling the status update (`IN_PROGRESS`) with the record creation, you eliminate race conditions where multiple agents attempt the same task simultaneously.
+* **Result Persistence**: By caching the `result` alongside the task ID, you transform the orchestrator into a state machine. The system no longer cares *how* many times a task is requested; it only cares that the result is deterministic.
+
+### Design Principles for the Decision Layer
+
+1. **Deterministic Intent**: Ensure keys are generated *before* the request reaches the server. If the server generates the key, a network timeout during the first response will cause the client to retry with a *new* key, resulting in a duplicate execution.
+2. **Schema Enforcement**: Use typed schemas for all task payloads. If the payload for the same key changes, the system must reject the retry—this protects against "accidental" retries with modified parameters.
+3. **Graceful Degeneration**: If a task fails mid-execution, the `EngineScheduler` should not just retry blindly. It should inspect the `status` of the idempotency key to determine if it should resume from a checkpoint or abandon the operation.
+
+System reliability rests on the safety of the retry.
+
+---
+
+Would you like to implement a **Deduplication Store** using your `FinancialLedger` to ensure every task intent is strictly processed exactly once?
+
+Idempotency is the silent guardian of resilience.
+
+
