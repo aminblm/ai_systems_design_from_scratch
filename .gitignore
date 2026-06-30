@@ -5,3 +5,5 @@ md_to_html.html
 .venv
 ai_systems_design/py_jekyll/output
 test/*
+ai_system_design/modules/persistent_ai/data
+ai_system_design/modules/persistent_ai/system_state.json
