@@ -59,8 +59,8 @@ AUTHOR_CARD = f"""
 
 # --- Transformation Logic ---
 
-def wrap_raw(content: str) -> str:
-    return f"{{% raw %}}\n\n{content.strip()}\n\n{{% endraw %}}\n\n"
+def wrap_html_component(content: str) -> str:
+    return f"\n\n{content.strip()}\n\n"
 
 def transform_content(content: str) -> str:
     parts = re.split(r'^---', content, maxsplit=2, flags=re.MULTILINE)
@@ -70,14 +70,14 @@ def transform_content(content: str) -> str:
     body = re.sub(r'^\s*---\s*$', '', body, flags=re.MULTILINE)
     
     # 1. Header Assembly
-    header = f"{META_TEMPLATE}\n{AUTHOR_LINK_HTML}\n{PH_BADGE}\n{wrap_raw(LINKS_DIV)}"
+    header = f"{META_TEMPLATE}\n{AUTHOR_LINK_HTML}\n{PH_BADGE}\n{wrap_html_component(LINKS_DIV)}"
     
     # 2. Body Assembly
     # Inject Author Card after first H1
-    body = re.sub(r'(# .+\n)', r'\1\n' + wrap_raw(AUTHOR_CARD) + '\n', body, count=1)
+    body = re.sub(r'(# .+\n)', r'\1\n' + wrap_html_component(AUTHOR_CARD) + '\n', body, count=1)
     
     # 3. Footer Assembly
-    footer = wrap_raw(AUTHOR_LINK_HTML)
+    footer = wrap_html_component(AUTHOR_LINK_HTML)
     
     return f"---\n{front_matter}\n---\n{header}\n{body.strip()}\n\n{footer}"
 
