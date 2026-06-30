@@ -19,12 +19,12 @@ class MCPAdapter:
         if method == "tools/call":
             return self._execute_tool(params)
         
-        # TODO
+        #TODO
         # MCP: resources/read
         if method == "resources/read":
             self._read_resource()
 
-        # TODO
+        #TODO
         # MCP: prompts/list
         if method == "resources/read":
             self._list_prompts()

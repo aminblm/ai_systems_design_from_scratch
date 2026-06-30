@@ -37,7 +37,7 @@ class SiteGenerator(LoggableMixin):
         self.layout_template = self._load_layout()
         self.config_mappings = self._load_config()
 
-    # TODO
+    #TODO
     # Possible copy of the styles file to the output folder for dynamic styling
     def _copy_styles(self) -> None:
         return None

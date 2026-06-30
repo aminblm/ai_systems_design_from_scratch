@@ -84,7 +84,7 @@ class SocketServer(LoggableMixin):
                         self.logger.error(f"Socket acceptance pipeline exception: {sock_err}")
                     break
                 
-                # TODO Server not interuppting on System exit
+                #TODO Server not interuppting on System exit
                 except KeyboardInterrupt, SystemExit:
                     self.logger.info("Intercepted termination signal. Shutting down system interfaces...")
                     server_socket.close()

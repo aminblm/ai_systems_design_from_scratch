@@ -24,7 +24,7 @@ class InfrastructureAsCode(LoggableMixin):
     def _create_instance(self, module_name, settings):
         pass
 
-# TODO proper testing of IaC
+#TODO proper testing of IaC
 # topology.yaml
 # modules:
 #   db: { enabled: true, mode: "sharded" }

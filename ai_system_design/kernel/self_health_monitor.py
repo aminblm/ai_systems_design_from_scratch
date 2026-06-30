@@ -13,7 +13,7 @@ class TestSelfHealthService(TestMixin):
         self.logger.info("TestSelfHealthService initialized.")
 
     def test(self):
-        # TODO Proper testing of self health system
+        #TODO Proper testing of self health system
         REGISTRY = {}
         AGENT = lambda x: x
 

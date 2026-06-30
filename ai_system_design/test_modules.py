@@ -125,5 +125,10 @@ class TestModules(TestMixin):
                 from ai_system_design.kernel.doc_engine import TestDocEngine
                 TestDocEngine().test()
 
+            # State Sketcher
+            case "state_sketcher":
+                from ai_system_design.modules.state_sketcher import TestStateSketcher
+                TestStateSketcher().test()
+
             # Edge-cases
             case _: self.logger.warning("Enter a valid test case.") 
