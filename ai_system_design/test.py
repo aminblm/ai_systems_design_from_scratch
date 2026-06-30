@@ -1,62 +1,5 @@
-import sys, argparse
+import argparse
 
-from ai_system_design.modules.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
-from ai_system_design.modules.process_posts import run_pipeline
-from ai_system_design.kernel.debugger import test_debugger
-
-
-SERVER_HOST = "127.0.0.1"
-SOCKET_SERVER_PORT = 8080
-HTTP_SERVER_PORT = 8081
-CONTAINER_MANAGER_PORT = 8082
-REST_API_PORT = 8083
-GIT_RPC_SERVER_PORT = 8084
-TARGET_REPO = "https://github.com/aminblm/ai_systems_design_from_scratch.git"
-
-def test_round_robin_load_balancer():
-    # Cluster nodes are registered as uniform units inside the balancing array pool
-    cluster_pool = [web_node_alpha, web_node_beta, web_node_gamma]
-    load_balancer = RoundRobinLoadBalancer(backend_servers=cluster_pool)
-
-    print("\n=== Enterprise Load Balancer Core Engaged ===")
-    print("Submit message payloads below to test distribution loops. Type 'exit' to halt.")
-
-    while True:
-        try:
-            print("\nclient_payload> ", end="", flush=True)
-            user_payload = sys.stdin.readline().strip()
-
-            if user_payload.lower() in ("exit", "quit"):
-                print("Dismantling network configuration infrastructure layers cleanly.")
-                break
-
-            if not user_payload:
-                continue
-
-            # Package transaction argument contexts to simulate web parameters
-            mock_request = {"body": user_payload, "protocol": "HTTP/1.1"}
-            
-            # Dispatch traffic
-            gateway_response = load_balancer.route_request(mock_request)
-            print(f"Client Receives -> {gateway_response}")
-
-        except (KeyboardInterrupt, SystemExit):
-            print("\nSystem execution loop terminated via hardware interrupt signal.")
-            break
-
-
-
-
-def test_process_posts():
-    """Example usage> python test.py --input _posts/20260623-in --output _posts/20260623-out"""
-    parser = argparse.ArgumentParser(description="Inject metadata and links into Markdown posts.")
-    parser.add_argument("--input", required=True, help="Input directory containing markdown files")
-    parser.add_argument("--output", required=True, help="Output directory for processed files")
-    
-    args = parser.parse_args()
-    #process_posts(args.input, args.output)
-    #clean_posts(args.input, args.output)
-    #clean_author(args.input, args.output)
 
 def test_modules():
     """Example testing module: 
@@ -73,7 +16,9 @@ def test_modules():
             TestReactiveFrontent().test_reactive_frontend()
 
         # Load Balancing
-        case "round_robin_load_balancer": test_round_robin_load_balancer()
+        case "round_robin_load_balancer": 
+            from ai_system_design.modules.round_robin_load_balancer import TestRoundRobinLoadBalancer
+            TestRoundRobinLoadBalancer().test_round_robin_load_balancer()
 
         # Sockets
         case "socket_server": 
@@ -143,10 +88,14 @@ def test_modules():
         case "architecture_renderer": 
             from ai_system_design.modules.architecture_renderer import TestArchitectureRenderer
             TestArchitectureRenderer().test_architecture_renderer()
-        case "process_posts": test_process_posts()
+        case "process_posts": 
+            from ai_system_design.modules.process_posts import TestProcessPosts
+            TestProcessPosts().test_process_posts()
 
         # Deugger
-        case "debugger": test_debugger()
+        case "debugger": 
+            from ai_system_design.kernel.debugger import TestDebugger
+            TestDebugger().test_debugger()
 
         # Edge-cases
         case _:

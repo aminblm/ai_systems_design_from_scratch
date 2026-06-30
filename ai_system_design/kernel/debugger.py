@@ -13,11 +13,11 @@ class TestDebugger(TestMixin):
     def __init__(self) -> None:
         super().__init__()
         self.logger.info("TestDebugger initialized.")
-        
-        
-def test_debugger():
-    debugger = Debugger()
-    debugger.debug("debugger", debugger)
+
+    def test_debugger(self):
+        debugger = Debugger()
+        debugger.debug("debugger", debugger)
+          
 
 class Debugger(LoggableMixin):
     def __init__(self) -> None:

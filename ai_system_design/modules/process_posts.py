@@ -13,7 +13,16 @@ class TestProcessPosts(TestMixin):
     def __init__(self) -> None:
         super().__init__()
         self.logger.info("TestProcessPosts initialized.")
+
+    def test_process_posts(self):
+        """Example usage> python test.py --input _posts/20260623-in --output _posts/20260623-out"""
+        parser = argparse.ArgumentParser(description="Inject metadata and links into Markdown posts.")
+        parser.add_argument("--input", required=True, help="Input directory containing markdown files")
+        parser.add_argument("--output", required=True, help="Output directory for processed files")
         
+        args = parser.parse_args()
+        run_pipeline(args.input, args.output)
+
         
 # --- Configuration & Assets ---
 AUTHOR_NAME = "Amin Boulouma"
