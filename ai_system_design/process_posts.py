@@ -60,7 +60,7 @@ AUTHOR_CARD = f"""
 # --- Transformation Logic ---
 
 def wrap_raw(content: str) -> str:
-    return f"{{% raw %}}\n{content.strip()}\n{{% endraw %}}\n"
+    return f"{{% raw %}}\n\n{content.strip()}\n\n{{% endraw %}}\n\n"
 
 def transform_content(content: str) -> str:
     parts = re.split(r'^---', content, maxsplit=2, flags=re.MULTILINE)

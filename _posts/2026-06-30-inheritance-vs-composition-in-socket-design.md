@@ -36,20 +36,26 @@ layout: default
 <a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
 
 {% raw %}
+
 <div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
   <a href="https://aminblm.github.io/ai_systems_design_from_scratch/" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
   <a href="https://aminblm.github.io/ai_systems_design_from_scratch/blog" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">📝 Engineering Blog</a>
   <a href="https://github.com/aminblm/ai_systems_design_from_scratch" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">💻 GitHub Repository</a>
 </div>
+
 {% endraw %}
+
 
 # Inheritance vs. Composition in Socket Design
 
 {% raw %}
+
 <div class="author-card">
     <p><strong>Amin Boulouma</strong>, <i>Software Engineer</i></p>
 </div>
+
 {% endraw %}
+
 
 
 When building network-enabled applications, developers often face a design choice: should a `SocketServer` and `SocketClient` inherit from a shared `BaseSocket` class, or should they compose shared functionality? 
@@ -99,6 +105,7 @@ class SocketClient:
 Inheritance is powerful for *classification*, but composition is superior for *assembling functionality*. In network programming, where the requirements for a server (listening/managing pools) differ drastically from a client (connecting/polling), **composition** prevents your architecture from becoming an unmaintainable mess of shared states.
 
 {% raw %}
+
 <a href="https://linktr.ee/aminboulouma" 
    target="_blank" 
    rel="noopener noreferrer" 
@@ -106,4 +113,6 @@ Inheritance is powerful for *classification*, but composition is superior for *a
    style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #000000; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background-color 0.2s ease;">
    Connect with Amin Boulouma Official
 </a>
+
 {% endraw %}
+
