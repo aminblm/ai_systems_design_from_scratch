@@ -2,7 +2,7 @@
 from typing import Generator
 from pathlib import Path 
 
-from ai_system_design.logger import logger
+from ai_system_design.kernel.logger import logger
 
 class IOUtility:
     """Provides atomic, type-safe filesystem I/O operations with explicit encoding safeguards."""

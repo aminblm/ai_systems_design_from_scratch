@@ -2,8 +2,8 @@
 import json, threading
 from typing import Dict, List
 
-from ai_system_design.socket_server import SocketServer
-from ai_system_design.logger import logger
+from ai_system_design.kernel.socket_server import SocketServer
+from ai_system_design.kernel.logger import logger
 
 
 class ContainerManagerServer(SocketServer):

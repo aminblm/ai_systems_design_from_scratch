@@ -2,7 +2,7 @@
 import collections
 from typing import Dict, Any, List
 
-from ai_system_design.logger import logger
+from ai_system_design.kernel.logger import logger
 
 
 class Shard:

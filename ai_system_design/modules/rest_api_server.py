@@ -3,9 +3,9 @@ import json
 from typing import Callable, Dict, Tuple, List
 from functools import wraps
 
-from ai_system_design.socket_server import SocketServer
-from ai_system_design.logger import logger
-from ai_system_design.debugger import debug
+from ai_system_design.kernel.socket_server import SocketServer
+from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.debugger import debug
 
 
 class RESTAPIServer(SocketServer):

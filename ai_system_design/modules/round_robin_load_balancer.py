@@ -1,7 +1,7 @@
 # round_robin_load_balancer.py
 from typing import Callable, List, Dict, Any
 
-from ai_system_design.logger import logger
+from ai_system_design.kernel.logger import logger
 
 
 class RoundRobinLoadBalancer:

@@ -3,8 +3,8 @@ import re
 from typing import Dict, Any, Optional, Generator, Any
 from pathlib import Path
 
-from ai_system_design.utils import IOUtility
-from ai_system_design.logger import logger
+from ai_system_design.kernel.utils import IOUtility
+from ai_system_design.kernel.logger import logger
 
 
 class SafeYAMLParser:

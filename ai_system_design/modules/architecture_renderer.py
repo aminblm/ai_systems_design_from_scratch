@@ -2,7 +2,7 @@
 from dataclasses import dataclass, field
 from typing import List
 
-from ai_system_design.logger import logger
+from ai_system_design.kernel.logger import logger
 
 
 @dataclass

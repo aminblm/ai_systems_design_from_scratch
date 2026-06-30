@@ -3,11 +3,11 @@ import traceback
 from pathlib import Path
 from typing import Dict, Tuple, Generator
 
-from ai_system_design.safe_yaml_parser import ConfigurationBuilder
-from ai_system_design.md_html import MarkdownConverterFacade
-from ai_system_design.utils import IOUtility
-from ai_system_design.logger import logger
-from ai_system_design.debugger import debug
+from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
+from ai_system_design.modules.md_html import MarkdownConverterFacade
+from ai_system_design.kernel.utils import IOUtility
+from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.debugger import debug
 
 
 class SiteGenerator:

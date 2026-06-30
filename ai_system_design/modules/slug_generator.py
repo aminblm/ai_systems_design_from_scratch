@@ -1,7 +1,7 @@
 # slug_generator.py
 import datetime, re, sys, unicodedata
 
-from ai_system_design.logger import logger
+from ai_system_design.kernel.logger import logger
 
 
 class SlugGenerator:

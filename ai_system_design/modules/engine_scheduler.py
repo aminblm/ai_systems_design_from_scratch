@@ -3,7 +3,7 @@ import time
 from dataclasses import dataclass, field
 from typing import Callable, Set, Dict
 
-from ai_system_design.logger import logger
+from ai_system_design.kernel.logger import logger
 
 
 @dataclass
