@@ -14,8 +14,21 @@ class TestRESTAPIServer(TestMixin):
     def __init__(self) -> None:
         super().__init__()
         self.logger.info("TestRESTAPIServer initialized.")
-        
-        
+
+    def test_rest_api_server(self):
+        SERVER_HOST = "127.0.0.1"
+        REST_API_PORT = 8083
+
+        app = RESTAPIServer(SERVER_HOST, REST_API_PORT)
+
+        app.get("/test-get", "GET Test Path Registered Successfully.")
+        app.post("/test-post", '{"post": "POST Test Path Registered Successfully."}')
+        app.put("/test-put", '{"put": "PUT Test Path Registered Successfully."}')
+        app.delete("/test-delete", 'DELETE Test Path Registred Successfully.')
+
+        app.start_http_server()
+
+
 class RESTAPIServer(SocketServer, LoggableMixin):
     def __init__(self, host, port, context="REST API") -> None:
         super().__init__(host, port, context)

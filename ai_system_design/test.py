@@ -9,8 +9,6 @@ from ai_system_design.modules.round_robin_load_balancer import RoundRobinLoadBal
 from ai_system_design.modules.distributed_no_sql_database import DistributedDatabase
 from ai_system_design.modules.intent_matching_engine import IntentMatchingEngine
 from ai_system_design.modules.realtime_redis_engine import RealtimeRedisEngine
-from ai_system_design.modules.rest_api_client import RESTAPIClient
-from ai_system_design.modules.rest_api_server import RESTAPIServer
 from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.modules.architecture_renderer import ArchitectureRenderer, ArchComponent
 from ai_system_design.modules.process_posts import run_pipeline
@@ -226,22 +224,6 @@ def test_realtime_redis_engine():
             print("\nTerminated via supervisor hardware signal line.")
             break
 
-def test_rest_api_client():
-    # Context manager pattern ensures explicit teardown safeguards apply uniformly
-    try:
-        RESTAPIClient(SERVER_HOST, REST_API_PORT).start_repl_loop()
-    except Exception as initialization_failure:
-        logger.critical(f"Failed to engage network testing suite system execution nodes: {initialization_failure}")
-
-def test_rest_api_server():
-    app = RESTAPIServer(SERVER_HOST, REST_API_PORT)
-
-    app.get("/test-get", "GET Test Path Registered Successfully.")
-    app.post("/test-post", '{"post": "POST Test Path Registered Successfully."}')
-    app.put("/test-put", '{"put": "PUT Test Path Registered Successfully."}')
-    app.delete("/test-delete", 'DELETE Test Path Registred Successfully.')
-
-    app.start_http_server()
 
 
 def test_safe_yaml_parser():
@@ -329,8 +311,12 @@ def test_modules():
             TestSocketClient().test_socket_client()
 
         # REST APIs
-        case "rest_api_client": test_rest_api_client()
-        case "rest_api_server": test_rest_api_server()
+        case "rest_api_client": 
+            from ai_system_design.modules.rest_api_client import TestRESTAPIClient
+            TestRESTAPIClient().test_rest_api_client()
+        case "rest_api_server": 
+            from ai_system_design.modules.rest_api_server import TestRESTAPIServer
+            TestRESTAPIServer().test_rest_api_server()
 
         # Git RPC
         case "git_rpc_client": test_git_rpc_client()

@@ -13,6 +13,16 @@ class TestRESTAPIClient(TestMixin):
     def __init__(self) -> None:
         super().__init__()
         self.logger.info("TestRESTAPIClient initialized.")
+
+    def test_rest_api_client(self):
+        SERVER_HOST = "127.0.0.1"
+        REST_API_PORT = 8083
+        # Context manager pattern ensures explicit teardown safeguards apply uniformly
+        try:
+            RESTAPIClient(SERVER_HOST, REST_API_PORT).start_repl_loop()
+        except Exception as initialization_failure:
+            self.logger.critical(f"Failed to engage network testing suite system execution nodes: {initialization_failure}")
+
         
         
 class RESTAPIClient(SocketClient, LoggableMixin):
