@@ -1,7 +1,5 @@
 import sys, argparse
 
-from ai_system_design.modules.container_manager_client import ContainerManagerClient
-from ai_system_design.modules.container_manager_server import ContainerManagerServer
 from ai_system_design.modules.scalable_index import ScalableIndex
 from ai_system_design.modules.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
 from ai_system_design.modules.distributed_no_sql_database import DistributedDatabase
@@ -44,17 +42,7 @@ INTENT_DATA_REPOS = {
     }
 }
 
-def test_container_manager_client():
-    # Context manager auto-manages low-level cleanup on teardown or crash
-    try:
-        with ContainerManagerClient(SERVER_HOST, CONTAINER_MANAGER_PORT) as client:
-            client.start_interface()
-    except Exception as fatal_err:
-        logger.critical(f"Failed to run service management shell: {fatal_err}")
 
-def test_container_manager_server():
-    manager = ContainerManagerServer(SERVER_HOST, CONTAINER_MANAGER_PORT)
-    manager.start_container_manager_server()
 
 def test_scalable_index():
     # Initialise index schema configuration boundaries safely
@@ -311,15 +299,14 @@ def test_modules():
         case "git_rpc_server": 
             from ai_system_design.modules.git_rpc_server import TestGitRPCServer
             TestGitRPCServer().test_git_rpc_server()
-        
-        # TODO - TEST FAIL - ContainerManager
-        # cmd> run
-        # Enter container name: python
-        # 2026-06-26 05:14:26,834 [WARNING] Remote host has closed the connection stream channel.
-        # [Server Response]:
+
         # Container Management
-        case "container_manager_client": test_container_manager_client()
-        case "container_manager_server": test_container_manager_server()
+        case "container_manager_client": 
+            from ai_system_design.modules.container_manager_client import TestContainerManagerClient
+            TestContainerManagerClient().test_container_manager_client()
+        case "container_manager_server": 
+            from ai_system_design.modules.container_manager_server import TestContainerManagerServer
+            TestContainerManagerServer().test_container_manager_server()
 
         # Databases
         case "scalable_index": test_scalable_index()

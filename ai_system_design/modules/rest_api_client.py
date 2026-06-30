@@ -28,8 +28,8 @@ class TestRESTAPIClient(TestMixin):
 class RESTAPIClient(SocketClient, LoggableMixin):
     """A clean raw-socket HTTP client implementating defensive parsing frames over TCP streams."""
 
-    def init__(self) -> None:
-        super(LoggableMixin).__init__()
+    def init__(self, host: str, port: int) -> None:
+        super().__init__(host, port)
         self.logger.info("RESTAPIClient initialized.")
 
     def __enter__(self) -> RESTAPIClient:

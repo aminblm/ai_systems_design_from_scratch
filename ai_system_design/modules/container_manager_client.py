@@ -13,12 +13,29 @@ class TestContainerManagerClient(TestMixin):
     def __init__(self) -> None:
         super().__init__()
         self.logger.info("ContainerManagerClient initialized.")
+
+    def test_container_manager_client(self):
+        # TODO - TEST FAIL - ContainerManager
+        # cmd> run
+        # Enter container name: python
+        # 2026-06-26 05:14:26,834 [WARNING] Remote host has closed the connection stream channel.
+        # [Server Response]:
+        # Container Management
+        
+        SERVER_HOST = "127.0.0.1"
+        CONTAINER_MANAGER_PORT = 8082
+        # Context manager auto-manages low-level cleanup on teardown or crash
+        try:
+            with ContainerManagerClient(SERVER_HOST, CONTAINER_MANAGER_PORT) as client:
+                client.start_interface()
+        except Exception as fatal_err:
+            self.logger.critical(f"Failed to run service management shell: {fatal_err}")
         
 
 class ContainerManagerClient(SocketClient, LoggableMixin):
     """A clean, defencive CLI client for interacting with a remote container management service."""
-    def __init__(self) -> None:
-        super(LoggableMixin).__init__()
+    def __init__(self, host: str, port: int) -> None:
+        super().__init__(host, port)
         self.logger.info("ContainerManagerClient initialized.")
 
     def __enter__(self) -> ContainerManagerClient:

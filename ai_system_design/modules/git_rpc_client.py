@@ -32,7 +32,7 @@ class TestGitRPCClient(TestMixin):
 class GitRPCClient(SocketClient, LoggableMixin):
     """A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames."""
 
-    def __init__(self, host, port) -> None:
+    def __init__(self, host: str, port: int) -> None:
         super().__init__(host, port)
         self.logger.info("GitRPCClient initialized.")
 

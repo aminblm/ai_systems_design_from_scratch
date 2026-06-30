@@ -13,7 +13,14 @@ class TestContainerManagerServer(TestMixin):
     def __init__(self) -> None:
         super().__init__()
         self.logger.info("ContainerManagerServer initialized.")
-        
+
+    def test_container_manager_server(self):
+        SERVER_HOST = "127.0.0.1"
+        CONTAINER_MANAGER_PORT = 8082
+
+        manager = ContainerManagerServer(SERVER_HOST, CONTAINER_MANAGER_PORT)
+        manager.start_container_manager_server()
+
 
 class ContainerManagerServer(SocketServer, LoggableMixin):
     """A thread-safe, concurrent TCP daemon for managing mock container environment."""
