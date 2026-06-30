@@ -77,7 +77,7 @@ class TestModules(TestMixin):
 
             # AI - Intent matching enging
             case "intent_matching_engine": 
-                from ai_system_design.modules.intent_matching_engine import TestIntentMatchingEngine
+                from ai_system_design.kernel.intent_matching_engine import TestIntentMatchingEngine
                 TestIntentMatchingEngine().test()
 
             # Tasks Scheduler

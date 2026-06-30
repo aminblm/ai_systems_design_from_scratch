@@ -13,7 +13,7 @@ from ai_system_design.modules.git_rpc_client import GitRPCClient
 from ai_system_design.modules.git_rpc_server import GitRPCServer
 from ai_system_design.modules.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
 from ai_system_design.modules.distributed_no_sql_database import DistributedDatabase
-from ai_system_design.modules.intent_matching_engine import IntentMatchingEngine
+from ai_system_design.kernel.intent_matching_engine import IntentMatchingEngine
 from ai_system_design.modules.realtime_redis_engine import RealtimeRedisEngine
 from ai_system_design.modules.rest_api_client import RESTAPIClient
 from ai_system_design.modules.rest_api_server import RESTAPIServer
