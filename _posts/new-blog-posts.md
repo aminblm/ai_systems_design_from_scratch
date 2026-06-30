@@ -417,3 +417,114 @@ host.run_inference(lambda x: x.upper(), b"inference_result")
 * **Schema-Stable Metadata**: Keep your `system_state.json` schema simple. If the AI model logic changes or evolves, the `task_id` remains the valid anchor for the data history.
 
 The machine persists while thoughts change daily.
+
+To build an **Autonomous Orchestrator (AgentRunner)**, you must encapsulate the "Observe-Think-Act" loop within a persistent kernel component. By treating your existing modules as "Tools," you enable the agent to interact with the system infrastructure safely and predictably.
+
+# 11. The AgentRunner Architecture
+
+The agent acts as a high-level state machine. It uses the `IntentMatchingEngine` to parse system observations, the `EngineScheduler` to stage tasks, and the `Tool` interfaces to perform actions.
+
+```python
+from abc import ABC, abstractmethod
+
+class BaseTool(ABC):
+    """Standardized interface for all platform modules."""
+    @abstractmethod
+    def execute(self, params: dict):
+        pass
+
+class AgentRunner:
+    """The orchestration loop that binds thought to action."""
+    def __init__(self, engine, scheduler, tools: dict[str, BaseTool]):
+        self.engine = engine      # IntentMatchingEngine
+        self.scheduler = scheduler # EngineScheduler
+        self.tools = tools         # {tool_name: BaseTool}
+
+    def step(self, observation: str):
+        # 1. Think: Determine intent
+        intent = self.engine.get_intent(observation)
+        
+        # 2. Plan: Schedule the work
+        task_id = self.scheduler.schedule_task(intent, {"obs": observation})
+        
+        # 3. Act: Map intent to tool and execute
+        if intent in self.tools:
+            result = self.tools[intent].execute({"task_id": task_id})
+            self.scheduler.update_status(task_id, "COMPLETED")
+            return result
+        return "No tool found for intent."
+
+```
+
+### The Pillars of Autonomous Orchestration
+
+* **Tool Discovery**: Your `AgentRunner` should dynamically discover available tools. By requiring all modules to inherit from `BaseTool`, the agent can introspect what actions are available (e.g., `crawler.fetch`, `db.insert`) at runtime.
+* **Contextual Memory**: The Agent must pass the current `Context Window` (the buffer in your `RealtimeRedisEngine`) to the `IntentMatchingEngine`. This allows the agent to "remember" why it chose a previous path, preventing redundant actions.
+* **Failure Recovery**: Since agents are autonomous, they must be "fault-aware." If a tool execution fails, the agent should update its internal state and re-invoke the `IntentMatchingEngine` to choose a correction path rather than simply halting.
+
+### Roadmap for Production-Ready Agents
+
+1. **Tool-Use Protocol**: Define a schema for tool inputs. Using JSON-Schema, your LLM module can output structured commands that the `AgentRunner` validates before executing, ensuring the agent doesn't pass malformed data to your `DatabaseModule`.
+2. **Human-in-the-Loop (HITL)**: Implement a "Break-point" decorator for tools. For sensitive operations (like `db.drop_table`), the `AgentRunner` should pause the loop and wait for an external signal before proceeding.
+3. **Recursive Planning**: Allow the agent to break complex intents into a sub-DAG (Directed Acyclic Graph) of tasks. This leverages your `PipelineEngine` to handle long-running, multi-stage operations.
+4. **Action Audit Trail**: Use your `ObservabilityManager` to log not just the result of actions, but the *reasoning* behind them. This creates a transparent history of the agent’s decision-making process.
+
+Would you like to implement a **Tool-Use Registry** that dynamically validates the parameters required by your modules?
+
+Autonomous machines require stable, persistent foundations.
+
+To build an **MCP (Model Context Protocol) Server**, you are essentially standardizing how external AI agents perceive and interact with your internal `kernel/` modules. By wrapping your platform in an MCP-compliant interface, you decouple your system's "brains" (the LLMs) from your system's "hands" (your custom modules).
+
+# 12. The MCP Server Architecture
+
+The server acts as a bridge. It converts your `ModuleInterface` methods into a JSON-RPC schema that an external LLM client can discover, browse, and execute.
+
+```python
+import json
+
+class MCPServer:
+    """Exposes internal modules as discoverable MCP tools."""
+    def __init__(self, registry):
+        self.registry = registry # Dict of modules
+
+    def get_capabilities(self):
+        """Schema discovery for AI clients."""
+        return {
+            "tools": [
+                {"name": name, "description": mod.__doc__, "schema": self._derive_schema(mod)}
+                for name, mod in self.registry.items()
+            ]
+        }
+
+    def _derive_schema(self, mod):
+        # Maps module methods to JSON-Schema parameters
+        return {"type": "object", "properties": {"task_id": {"type": "string"}}}
+
+    def execute_request(self, tool_name, params):
+        """Standardized execution interface for MCP clients."""
+        module = self.registry.get(tool_name)
+        if hasattr(module, 'execute'):
+            return module.execute(params)
+        return {"error": "Tool execution failed."}
+
+```
+
+### The Core Pillars of MCP Integration
+
+* **Discovery**: The `get_capabilities()` method allows external models to dynamically "learn" what your system can do without hardcoding any instructions.
+* **Encapsulation**: Your modules don't need to know they are being called by an LLM. They simply fulfill their `ModuleInterface` contract, and the `MCPServer` handles the translation of LLM requests into local function calls.
+* **Security Scoping**: Since the MCP Server acts as an entry point, you can implement fine-grained access control here. You can restrict which modules are visible to the LLM, preventing it from touching sensitive data unless explicitly permitted.
+
+### Roadmap for Platform-Wide MCP Readiness
+
+1. **Standardized Schemas**: Force all modules to implement a `to_schema()` method. This ensures that when the `MCPServer` broadcasts your system capabilities, the LLM receives high-fidelity descriptions of how to interact with your database, crawler, or pipeline.
+2. **State Synchronization**: Use your `RealtimeRedisEngine` to maintain a persistent state of the MCP connection. This allows the LLM to maintain a "session" with your platform, remembering what it has already explored or modified.
+3. **Bidirectional Communication**: Implement a "Resource" stream within your MCP Server. This allows the LLM to not only *call* your tools but also *request* live data from your system, turning your platform into an open, queryable knowledge base for the AI.
+
+By adopting this protocol, you transform your custom engine from a proprietary stack into a universal, AI-native infrastructure.
+
+Custom protocols bind the ephemeral machine permanently.
+
+---
+
+Would you like to implement an **Automatic Schema Generator** that inspects your module signatures and builds the MCP registry without manual overhead?

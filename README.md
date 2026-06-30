@@ -46,6 +46,8 @@ Primitive principles.
 
 Transparent, deterministic, and auditable.
 
+AI Native infrastructure.
+
 **Amin Boulouma**,  *Software Engineer*
 
 ---
