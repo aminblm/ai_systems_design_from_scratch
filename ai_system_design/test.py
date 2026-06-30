@@ -1,8 +1,6 @@
 import sys, argparse
 
 from ai_system_design.modules.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
-from ai_system_design.modules.intent_matching_engine import IntentMatchingEngine
-from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.modules.architecture_renderer import ArchitectureRenderer, ArchComponent
 from ai_system_design.modules.process_posts import run_pipeline
 from ai_system_design.kernel.debugger import test_debugger
@@ -15,34 +13,6 @@ CONTAINER_MANAGER_PORT = 8082
 REST_API_PORT = 8083
 GIT_RPC_SERVER_PORT = 8084
 TARGET_REPO = "https://github.com/aminblm/ai_systems_design_from_scratch.git"
-
-INTENT_DATA_REPOS = {
-    "greetings": {
-        "keywords": ["hello", "hi", "hey", "greetings", "good day"],
-        "response": "Hello! How can I assist you today? 👋"
-    },
-    "state_of_being": {
-        "keywords": ["how are you", "hows it going", "how are things"],
-        "response": "I am operating optimally. How can I help you build today?"
-    },
-    "identity": {
-        "keywords": ["what is your name", "who are you", "your name"],
-        "response": "I am a refactored automation agent running on Python."
-    },
-    "capabilities": {
-        "keywords": ["what can you do", "help", "features", "options"],
-        "response": "I can process commands, normalize inputs, and route intents."
-    },
-    "farewells": {
-        "keywords": ["bye", "goodbye", "exit", "quit", "see ya"],
-        "response": "Goodbye! Have an excellent day."
-    }
-}
-
-
-
-
-
 
 def test_round_robin_load_balancer():
     # Cluster nodes are registered as uniform units inside the balancing array pool
@@ -76,60 +46,6 @@ def test_round_robin_load_balancer():
             break
 
 
-def test_intent_matching_engine():
-    # Instantiate engine cleanly parsing external mapping values
-    engine = IntentMatchingEngine(intents=INTENT_DATA_REPOS)
-
-    print("\n=== Robust Intent Processing Bot Interface Enabled ===")
-    print("Ask questions smoothly. Type 'exit' to terminate the runtime cycle.")
-
-    while True:
-        try:
-            print("\nUser> ", end="", flush=True)
-            user_raw_string = sys.stdin.readline().strip()
-
-            if user_raw_string.lower() in ("exit", "quit"):
-                print("Bot: Goodbye!")
-                break
-
-            if not user_raw_string:
-                continue
-
-            bot_reply = engine.extract_response(user_raw_string)
-            print(f"Bot: {bot_reply}")
-
-        except (KeyboardInterrupt, SystemExit):
-            print("\nSession killed via hardware interrupt signal.")
-            break
-
-
-
-def test_safe_yaml_parser():
-    # Test Scenario A: Dynamic text stream ingestion
-    raw_yaml_stream = """
-    # Infrastructure Environment Allocations
-    app_id: custom_microservice_node
-    max_retries: 5
-    api_key: 'secret_token_signature_hash'
-    malformed_line_test_without_spaces
-    """
-
-    print("--- Executing Fluent Builder Construction Pipeline ---")
-    config = (
-        ConfigurationBuilder()
-        .from_text(raw_yaml_stream)
-        .build()
-    )
-
-    # FIXED: Accessing keys immediately works without needing to call any middle-tier methods first!
-    print(f"Verified App ID   : {config.get('app_id')}")
-    print(f"Verified API Key  : {config.get('api_key')}")
-    # FIXED: Invalid configuration lines are skipped safely rather than crashing the loop
-    print(f"Missing Property  : {config.get('non_existent_key', 'fallback_default_value')}")
-
-    print("\n--- Executing Simulated File Ingestion Pipeline ---")
-    file_config = ConfigurationBuilder().from_file("_config.yaml").build()
-    print(f"Parsed Target Map : {file_config.to_dict()}")
 
 def test_architecture_renderer():
         # Define system topology declaratively
@@ -226,7 +142,9 @@ def test_modules():
             TestRealtimeRedisEngine().test_realtime_redis_engine()
 
         # AI - Intent matching enging
-        case "intent_matching_engine": test_intent_matching_engine()
+        case "intent_matching_engine": 
+            from ai_system_design.modules.intent_matching_engine import TestIntentMatchingEngine
+            TestIntentMatchingEngine().test_intent_matching_engine()
 
         # Tasks Scheduler
         case "engine_scheduler": 
@@ -240,7 +158,9 @@ def test_modules():
         case "slug_generator": 
             from ai_system_design.modules.slug_generator import TestSlugGenerator
             TestSlugGenerator().test_slug_generator()
-        case "safe_yaml_parser": test_safe_yaml_parser()
+        case "safe_yaml_parser": 
+            from ai_system_design.modules.safe_yaml_parser import TestSafeYAMLParser
+            TestSafeYAMLParser().test_safe_yaml_parser()
         case "architecture_renderer": test_architecture_renderer()
         case "process_posts": test_process_posts()
 
