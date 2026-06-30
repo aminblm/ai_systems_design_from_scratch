@@ -12,19 +12,40 @@ class TestArchitectureRenderer(TestMixin):
     def __init__(self) -> None:
         super().__init__()
         self.logger.info("TestArchitectureRenderer initialized.")
+
+    def test_architecture_renderer(self):
+        # Define system topology declaratively
+        topology = ArchComponent("Load Balancer", "lb", [
+            ArchComponent("API Service", "service", [
+                ArchComponent("User Database", "database"),
+                ArchComponent("Cache Layer", "service")
+            ]),
+            ArchComponent("API Service", "service", [
+                ArchComponent("User Database", "database"),
+                ArchComponent("Cache Layer", "service")
+            ])
+        ])
+
+        renderer = ArchitectureRenderer()
+        html_output = renderer.generate_html(topology)
         
+        with open("test/ar_output/arch_diagram.html", "w") as f:
+            f.write(html_output)
+        
+        self.logger.info("Artifact generation successful: 'arch_diagram.html' created.")    
+
         
 @dataclass
 class ArchComponent(LoggableMixin):
     """Represents a structural node in the architecture graph."""
 
-    def __init__(self) -> None:
+    def __init__(self, name: str, component_type: str, children: List['ArchComponent'] = list()) -> None:
         super().__init__()
+        self.name = name
+        self.component_type = component_type
+        self.children = children
         self.logger.info("ArchComponent initialized.")
-
-    name: str
-    component_type: str  # e.g., 'service', 'database', 'lb'
-    children: List['ArchComponent'] = field(default_factory=list)
+    
 
 class ArchitectureRenderer(LoggableMixin):
     """Translates high-level component graphs into rendered HTML/CSS media."""

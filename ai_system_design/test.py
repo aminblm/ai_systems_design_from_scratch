@@ -1,7 +1,6 @@
 import sys, argparse
 
 from ai_system_design.modules.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
-from ai_system_design.modules.architecture_renderer import ArchitectureRenderer, ArchComponent
 from ai_system_design.modules.process_posts import run_pipeline
 from ai_system_design.kernel.debugger import test_debugger
 
@@ -47,26 +46,6 @@ def test_round_robin_load_balancer():
 
 
 
-def test_architecture_renderer():
-        # Define system topology declaratively
-    topology = ArchComponent("Load Balancer", "lb", [
-        ArchComponent("API Service", "service", [
-            ArchComponent("User Database", "database"),
-            ArchComponent("Cache Layer", "service")
-        ]),
-        ArchComponent("API Service", "service", [
-            ArchComponent("User Database", "database"),
-            ArchComponent("Cache Layer", "service")
-        ])
-    ])
-
-    renderer = ArchitectureRenderer()
-    html_output = renderer.generate_html(topology)
-    
-    with open("test/ar_output/arch_diagram.html", "w") as f:
-        f.write(html_output)
-    
-    logger.info("Artifact generation successful: 'arch_diagram.html' created.")
 
 def test_process_posts():
     """Example usage> python test.py --input _posts/20260623-in --output _posts/20260623-out"""
@@ -161,7 +140,9 @@ def test_modules():
         case "safe_yaml_parser": 
             from ai_system_design.modules.safe_yaml_parser import TestSafeYAMLParser
             TestSafeYAMLParser().test_safe_yaml_parser()
-        case "architecture_renderer": test_architecture_renderer()
+        case "architecture_renderer": 
+            from ai_system_design.modules.architecture_renderer import TestArchitectureRenderer
+            TestArchitectureRenderer().test_architecture_renderer()
         case "process_posts": test_process_posts()
 
         # Deugger
