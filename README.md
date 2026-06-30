@@ -48,6 +48,10 @@ Transparent, deterministic, and auditable.
 
 AI Native infrastructure.
 
+Modules communication via dependency injection.
+
+
+
 **Amin Boulouma**,  *Software Engineer*
 
 ---
