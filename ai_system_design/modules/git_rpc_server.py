@@ -13,7 +13,13 @@ class TestGitRPCServer(TestMixin):
     def __init__(self) -> None:
         super().__init__()
         self.logger.info("TestGitRPCServer initialized.")
-        
+
+    def test_git_rpc_server(self):
+        SERVER_HOST = "127.0.0.1"
+        GIT_RPC_SERVER_PORT = 8084
+        git_server = GitRPCServer(SERVER_HOST, GIT_RPC_SERVER_PORT)
+        git_server.start_git_rpc_server()
+
         
 class GitRPCServer(SocketServer, LoggableMixin):
     """A safe, multi-threaded RPC server for orchestrating remote Git workflow operations."""

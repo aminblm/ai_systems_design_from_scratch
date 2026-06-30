@@ -13,13 +13,27 @@ class TestGitRPCClient(TestMixin):
     def __init__(self) -> None:
         super().__init__()
         self.logger.info("TestGitRPCClient initialized.")
+
+    def test_git_rpc_client(self):
+        SERVER_HOST = "127.0.0.1"
+        GIT_RPC_SERVER_PORT = 8084
+        TARGET_REPO = "https://github.com/aminblm/ai_systems_design_from_scratch.git"
+
+        # Context manager implementation replaces sequential manual channel closes entirely
+        try:
+            with GitRPCClient(SERVER_HOST, GIT_RPC_SERVER_PORT) as git_agent:
+                server_feedback = git_agent.dispatch_clone(repository_url=TARGET_REPO)
+                print(f"\n[Execution Worker Response]: {server_feedback}")
+                
+        except Exception as fatal_error:
+            self.logger.critical(f"Abrupt termination handling repository pipeline sequence tasks: {fatal_error}")
         
         
 class GitRPCClient(SocketClient, LoggableMixin):
     """A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames."""
 
-    def __init__(self) -> None:
-        super(LoggableMixin).__init__()
+    def __init__(self, host, port) -> None:
+        super().__init__(host, port)
         self.logger.info("GitRPCClient initialized.")
 
     def __enter__(self) -> GitRPCClient:

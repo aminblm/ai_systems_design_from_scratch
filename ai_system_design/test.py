@@ -3,8 +3,6 @@ import sys, argparse
 from ai_system_design.modules.container_manager_client import ContainerManagerClient
 from ai_system_design.modules.container_manager_server import ContainerManagerServer
 from ai_system_design.modules.scalable_index import ScalableIndex
-from ai_system_design.modules.git_rpc_client import GitRPCClient
-from ai_system_design.modules.git_rpc_server import GitRPCServer
 from ai_system_design.modules.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
 from ai_system_design.modules.distributed_no_sql_database import DistributedDatabase
 from ai_system_design.modules.intent_matching_engine import IntentMatchingEngine
@@ -97,19 +95,7 @@ def test_scalable_index():
     for shard in search_index.shards:
         print(f"Shard {shard.shard_id} allocation storage list size: {len(shard.documents)}") 
 
-def test_git_rpc_client():
-    # Context manager implementation replaces sequential manual channel closes entirely
-    try:
-        with GitRPCClient(SERVER_HOST, GIT_RPC_SERVER_PORT) as git_agent:
-            server_feedback = git_agent.dispatch_clone(repository_url=TARGET_REPO)
-            print(f"\n[Execution Worker Response]: {server_feedback}")
-            
-    except Exception as fatal_error:
-        logger.critical(f"Abrupt termination handling repository pipeline sequence tasks: {fatal_error}")
 
-def test_git_rpc_server():
-    git_server = GitRPCServer(SERVER_HOST, GIT_RPC_SERVER_PORT)
-    git_server.start_git_rpc_server()
 
 def test_round_robin_load_balancer():
     # Cluster nodes are registered as uniform units inside the balancing array pool
@@ -319,8 +305,12 @@ def test_modules():
             TestRESTAPIServer().test_rest_api_server()
 
         # Git RPC
-        case "git_rpc_client": test_git_rpc_client()
-        case "git_rpc_server": test_git_rpc_server()
+        case "git_rpc_client": 
+            from ai_system_design.modules.git_rpc_client import TestGitRPCClient
+            TestGitRPCClient().test_git_rpc_client()
+        case "git_rpc_server": 
+            from ai_system_design.modules.git_rpc_server import TestGitRPCServer
+            TestGitRPCServer().test_git_rpc_server()
         
         # TODO - TEST FAIL - ContainerManager
         # cmd> run
