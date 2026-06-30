@@ -17,7 +17,8 @@ class TestGenerateSite(TestMixin):
         super().__init__()
         self.logger.info("TestGenerateSite initialized.")
     
-    def test_generate_site(self):
+    def test(self):
+        super().test()
         base_path = 'ai_system_design/modules/site_generator/'
         test_path = 'test/'
         SiteGenerator(f'{base_path}layout.html', f'{base_path}config.yaml').generate_site(f'{test_path}sg_input')

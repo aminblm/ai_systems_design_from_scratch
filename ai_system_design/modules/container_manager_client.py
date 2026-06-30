@@ -14,7 +14,8 @@ class TestContainerManagerClient(TestMixin):
         super().__init__()
         self.logger.info("ContainerManagerClient initialized.")
 
-    def test_container_manager_client(self):
+    def test(self):
+        super().test()
         # TODO - TEST FAIL - ContainerManager
         # cmd> run
         # Enter container name: python

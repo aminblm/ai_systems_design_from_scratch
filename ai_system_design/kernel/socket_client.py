@@ -14,7 +14,8 @@ class TestSocketClient(TestMixin):
         super().__init__()
         self.logger.info("TestSocketClient initialized.")
     
-    def test_socket_client(self):
+    def test(self):
+        super().test()
         SERVER_HOST = "127.0.0.1"
         SOCKET_SERVER_PORT = 8080
         # Using a context manager completely replaces manual tracking of .close()

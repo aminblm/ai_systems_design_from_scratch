@@ -11,7 +11,8 @@ class TestSlugGenerator(TestMixin):
         super().__init__()
         self.logger.info("TestSlugGenerator initialized.")
 
-    def test_slug_generator(self):
+    def test(self):
+        super().test()
         JekyllFilenameController().start_generator_interface()
 
 class SlugGenerator(LoggableMixin):

@@ -14,7 +14,8 @@ class TestProcessPosts(TestMixin):
         super().__init__()
         self.logger.info("TestProcessPosts initialized.")
 
-    def test_process_posts(self):
+    def test(self):
+        super().test()
         """Example usage> python test.py --input _posts/20260623-in --output _posts/20260623-out"""
         parser = argparse.ArgumentParser(description="Inject metadata and links into Markdown posts.")
         parser.add_argument("--input", required=True, help="Input directory containing markdown files")

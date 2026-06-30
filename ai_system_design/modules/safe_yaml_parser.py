@@ -15,7 +15,8 @@ class TestSafeYAMLParser(TestMixin):
         super().__init__()
         self.logger.info("TestSafeYAMLParser initialized.")
 
-    def test_safe_yaml_parser(self):
+    def test(self):
+        super().test()
         # Test Scenario A: Dynamic text stream ingestion
         raw_yaml_stream = """
         # Infrastructure Environment Allocations

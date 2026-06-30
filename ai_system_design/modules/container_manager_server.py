@@ -14,7 +14,8 @@ class TestContainerManagerServer(TestMixin):
         super().__init__()
         self.logger.info("ContainerManagerServer initialized.")
 
-    def test_container_manager_server(self):
+    def test(self):
+        super().test()
         SERVER_HOST = "127.0.0.1"
         CONTAINER_MANAGER_PORT = 8082
 

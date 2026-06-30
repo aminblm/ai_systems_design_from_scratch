@@ -14,7 +14,8 @@ class TestGitRPCClient(TestMixin):
         super().__init__()
         self.logger.info("TestGitRPCClient initialized.")
 
-    def test_git_rpc_client(self):
+    def test(self):
+        super().test()
         SERVER_HOST = "127.0.0.1"
         GIT_RPC_SERVER_PORT = 8084
         TARGET_REPO = "https://github.com/aminblm/ai_systems_design_from_scratch.git"

@@ -13,7 +13,8 @@ class TestScalableIndex(TestMixin):
         super().__init__()
         self.logger.info("TestScalableIndex initialized.")
 
-    def test_scalable_index(self):
+    def test(self):
+        super().test()
         # Initialise index schema configuration boundaries safely
         schema_config = {
             "properties": {

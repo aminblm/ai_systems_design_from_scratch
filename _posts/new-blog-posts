@@ -3,3 +3,4 @@
 3. Debugger inheriting the mixin
 4. unit tests appended to each class and library
 5. Adding TestMixin to test independently the modules and inherit from same TestMixin
+6. Fully encaplusalated Test interface

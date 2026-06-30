@@ -14,7 +14,8 @@ class TestDebugger(TestMixin):
         super().__init__()
         self.logger.info("TestDebugger initialized.")
 
-    def test_debugger(self):
+    def test(self):
+        super().test()
         debugger = Debugger()
         debugger.debug("debugger", debugger)
           

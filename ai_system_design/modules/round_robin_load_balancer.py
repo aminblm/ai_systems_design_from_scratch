@@ -13,7 +13,8 @@ class TestRoundRobinLoadBalancer(TestMixin):
         super().__init__()
         self.logger.info("TestRoundRobinLoadBalancer initialized.")
 
-    def test_round_robin_load_balancer(self):
+    def test(self):
+        super().test()
         # Cluster nodes are registered as uniform units inside the balancing array pool
         cluster_pool = [web_node_alpha, web_node_beta, web_node_gamma]
         load_balancer = RoundRobinLoadBalancer(backend_servers=cluster_pool)

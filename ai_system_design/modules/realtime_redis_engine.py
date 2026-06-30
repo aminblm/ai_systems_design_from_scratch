@@ -14,7 +14,8 @@ class TestRealtimeRedisEngine(TestMixin):
         super().__init__()
         self.logger.info("TestRealtimeRedisEngine initialized.")
 
-    def test_realtime_redis_engine(self):
+    def test(self):
+        super().test()
         engine = RealtimeRedisEngine()
         print("\n=== Multi-Type Mock Redis Cluster Interface Engaged ===")
         print("Execute core commands [SET, GET, DEL, INCR, EXPIRE, TTL]. Type 'exit' to halt.")

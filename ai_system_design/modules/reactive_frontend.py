@@ -12,7 +12,8 @@ class TestReactiveFrontent(TestMixin):
         super().__init__()
         self.logger.info("TestReactiveFrontent initialized.")
 
-    def test_reactive_frontend(self):
+    def test(self):
+        super().test()
         # 1. Initialise the framework container shell
         app = ReconcileUI()
 

@@ -15,7 +15,8 @@ class TestRESTAPIServer(TestMixin):
         super().__init__()
         self.logger.info("TestRESTAPIServer initialized.")
 
-    def test_rest_api_server(self):
+    def test(self):
+        super().test()
         SERVER_HOST = "127.0.0.1"
         REST_API_PORT = 8083
 

@@ -14,7 +14,8 @@ class TestRESTAPIClient(TestMixin):
         super().__init__()
         self.logger.info("TestRESTAPIClient initialized.")
 
-    def test_rest_api_client(self):
+    def test(self):
+        super().test()
         SERVER_HOST = "127.0.0.1"
         REST_API_PORT = 8083
         # Context manager pattern ensures explicit teardown safeguards apply uniformly

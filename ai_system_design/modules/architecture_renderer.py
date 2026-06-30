@@ -13,7 +13,8 @@ class TestArchitectureRenderer(TestMixin):
         super().__init__()
         self.logger.info("TestArchitectureRenderer initialized.")
 
-    def test_architecture_renderer(self):
+    def test(self):
+        super().test()
         # Define system topology declaratively
         topology = ArchComponent("Load Balancer", "lb", [
             ArchComponent("API Service", "service", [

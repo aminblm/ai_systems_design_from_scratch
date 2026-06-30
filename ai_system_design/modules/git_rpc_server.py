@@ -14,7 +14,8 @@ class TestGitRPCServer(TestMixin):
         super().__init__()
         self.logger.info("TestGitRPCServer initialized.")
 
-    def test_git_rpc_server(self):
+    def test(self):
+        super().test()
         SERVER_HOST = "127.0.0.1"
         GIT_RPC_SERVER_PORT = 8084
         git_server = GitRPCServer(SERVER_HOST, GIT_RPC_SERVER_PORT)

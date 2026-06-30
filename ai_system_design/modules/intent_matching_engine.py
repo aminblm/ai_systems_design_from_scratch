@@ -13,7 +13,8 @@ class TestIntentMatchingEngine(TestMixin):
         super().__init__()
         self.logger.info("TestIntentMatchingEngine initialized.")
 
-    def test_intent_matching_engine(self):
+    def test(self):
+        super().test()
         INTENT_DATA_REPOS = {
             "greetings": {
                 "keywords": ["hello", "hi", "hey", "greetings", "good day"],

@@ -14,7 +14,8 @@ class TestEngineScheduler(TestMixin):
         super().__init__()
         self.logger.info("TestGenerateSite initialized.")
 
-    def test_engine_scheduler(self):
+    def test(self):
+        super().test()
         # Define clean decoupled topology
         sample_dag = DAG("Production_pipeline")
 

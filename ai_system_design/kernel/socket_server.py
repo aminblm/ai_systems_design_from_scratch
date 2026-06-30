@@ -13,7 +13,8 @@ class TestSocketServer(TestMixin):
         super().__init__()
         self.logger.info("TestSocketServer initialized.")
 
-    def test_socket_server(self):
+    def test(self):
+        super().test()
         SERVER_HOST = "127.0.0.1"
         SOCKET_SERVER_PORT = 8080
 
