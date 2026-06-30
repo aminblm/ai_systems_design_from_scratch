@@ -90,7 +90,6 @@ class SiteGenerator(LoggableMixin):
             html = html.replace(f'{{{{ page.{key} }}}}', str(value))
             html = html.replace(f'{{{{ page.{key} | default: site.{key} }}}}', str(value))
 
-        
         return html
     
     def _resolve_paths(self, md_file: Path, input_dir: Path, output_dir: Path) -> Tuple[Path, Path]:
