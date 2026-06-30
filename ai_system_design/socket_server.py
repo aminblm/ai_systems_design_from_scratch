@@ -59,8 +59,13 @@ class SocketServer:
                     if self._is_running:
                         logger.error(f"Socket acceptance pipeline exception: {sock_err}")
                     break
-        except KeyboardInterrupt:
-            logger.info("Intercepted termination signal. Shutting down system interfaces...")
+                
+                # TODO Server not interuppting on System exit
+                except KeyboardInterrupt, SystemExit:
+                    logger.info("Intercepted termination signal. Shutting down system interfaces...")
+                    server_socket.close()
+                    self._is_running = False
+                    break   
         finally:
             self._is_running = False
             server_socket.close()

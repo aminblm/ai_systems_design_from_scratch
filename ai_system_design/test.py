@@ -324,7 +324,10 @@ def test_rest_api_client():
 def test_rest_api_server():
     app = RESTAPIServer(SERVER_HOST, REST_API_PORT)
 
-    app.get("/test", "GET Test Path Registered Successfully.")
+    app.get("/test-get", "GET Test Path Registered Successfully.")
+    app.post("/test-post", '{"post": "POST Test Path Registered Successfully."}')
+    app.put("/test-put", '{"put": "PUT Test Path Registered Successfully."}')
+    app.delete("/test-delete", 'DELETE Test Path Registred Successfully.')
 
     app.start_http_server()
 

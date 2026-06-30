@@ -1,6 +1,6 @@
 # rest_api_server.py
 import json
-from typing import Callable, Dict, Tuple
+from typing import Callable, Dict, Tuple, List
 from functools import wraps
 
 from ai_system_design.socket_server import SocketServer
@@ -21,20 +21,35 @@ class RESTAPIServer(SocketServer):
     def register_endpoint(self, method: str, path: str, status: int, content_type: str, content: str) -> None:
         self._routes[method][path] = lambda body: (status, content_type, content)
 
-    def get_endpoints(self):
+    def get_endpoints(self) -> Dict[str, Dict[str, Callable[[str], Tuple[int, str, str]]]]:
         return self._routes.copy()
+    
+    def get_endpoints_documentation(self) -> Dict[str, List[str]]:
+        doc: Dict[str, List[str]] = {}
+        for k, v in self._routes.items():
+            doc[k] = list(v.keys())
+        return doc
 
     def get(self, path: str, content: str) -> None:
         """Register a GET Endpoint."""
         self._routes["GET"][path] = lambda body: (200, "text/plain", content)
 
+    def post(self, path: str, content: str) -> None:
+        """Register a POST Endpoint."""
+        self._routes["POST"][path] = lambda body: (200, "application/json", content)
+
+    def put(self, path: str, content: str) -> None:
+        """Register a PUT Endpoint."""
+        self._routes["PUT"][path] = lambda body: (200, "application/json", content)
+
+    def delete(self, path: str, content: str) -> None:
+        """Register a DELETE Endpoint."""
+        self._routes["DELETE"][path] = lambda body: (200, "text/plain", content)
+
     def _register_core_endpoints(self) -> None:
         """Decouples application routing configuration definitions away from raw transport IO."""
-        self._routes["GET"]["/"] = lambda body: (200, "text/plain", "Hello, World!")
-        self._routes["GET"]["/hello"] = lambda body: (200, "text/plain", "Hello from the server!")
-        self._routes["POST"]["/data"] = lambda body: (201, "application/json", json.dumps({"status": "created", "msg": "Payload received"}))
-        self._routes["PUT"]["/data"] = lambda body: (200, "application/json", json.dumps({"status": "updated"}))
-        self._routes["DELETE"]["/data"] = lambda body: (200, "text/plain", "Resource deleted successfully.")
+        self._routes["GET"]["/"] = lambda body: (200, "text/plain", "Welcome to the AI System Design from First Principle Repository")
+        self._routes["GET"]["/get-endpoints-documentation"] = lambda body: (200, "application/json", json.dumps(self.get_endpoints_documentation()))
 
     def start_http_server(self):
         """Spins up the master bound socket loop, isolating active connections to worker threads."""
