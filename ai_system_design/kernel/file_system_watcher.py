@@ -11,6 +11,7 @@ class TestFileSystemWatcher(TestMixin):
         self.logger.info("TestFileSystemWatcher initialized.")
 
     def test(self):
+        super().test()
         PATH_TO_WATCH = "ai_system_design/kernel"
         def on_change(file_path):
             self.logger.info(f"Change detected: {file_path}. Triggering build...")

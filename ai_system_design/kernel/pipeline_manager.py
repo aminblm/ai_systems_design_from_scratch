@@ -12,6 +12,7 @@ class TestPipelineManager(TestMixin):
         self.logger.info("TestPipelineManager initialized.")
 
     def test(self):
+        super().test()
         PATH_TO_WATCH = "ai_system_design/kernel"
         def start_dev_loop(path_to_watch):
             manager = PipelineManager()
