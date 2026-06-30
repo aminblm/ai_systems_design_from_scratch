@@ -1269,3 +1269,54 @@ Contracts simplify complexity through rigorous abstraction.
 
 Would you like to implement an **Interface Mock Generator** that automatically creates "Stubs" for any new interface you define?
 
+To master **Recursive Decomposition**, you must move away from sequential logic toward a pipeline of isolated primitives. When code becomes "deep," it loses its clarity; when it is "shallow," it gains testability and reuse.
+
+# 34. The Recursive Decomposition Engine
+
+This approach enforces a limit on function depth and size, using an **orchestrator** pattern to transform complex operations into a chain of three distinct, shallow steps.
+
+```python
+# The Orchestrator: Combines primitives into a shallow pipeline
+class DeepFeatureEngine:
+    """Decomposes complex logic into a chain of shallow primitives."""
+    
+    def process(self, data: dict) -> dict:
+        # Transformation pipeline (The "Rule of Three")
+        clean_data = self._step_one_sanitize(data)
+        result = self._step_two_transform(clean_data)
+        return self._step_three_format(result)
+
+    def _step_one_sanitize(self, data: dict) -> dict:
+        """Primitive 1: Filter and validate."""
+        return {k: v for k, v in data.items() if v is not None}
+
+    def _step_two_transform(self, data: dict) -> dict:
+        """Primitive 2: Core business logic."""
+        return {k: v * 2 for k, v in data.items() if isinstance(v, int)}
+
+    def _step_three_format(self, data: dict) -> dict:
+        """Primitive 3: Output structural mapping."""
+        return {"result": list(data.values()), "status": "ok"}
+
+```
+
+### Pillars of the "Rule of Three"
+
+* **Boundary Enforcement**: By keeping functions under 20 lines, you eliminate the cognitive load required to hold state in your working memory. The logic becomes "readable at a glance."
+* **The Orchestrator Pattern**: The main function becomes a declarative manifest of the process. It doesn't perform work; it orchestrates the flow. This makes debugging trivial—you simply inspect the output of each primitive.
+* **Testable Primitives**: You can now unit-test `_step_two_transform` in complete isolation from the input/output logic, ensuring that your core math or transformation logic is bulletproof.
+
+### Evolutionary Roadmap for Decomposition
+
+1. **Complexity Auditor**: Integrate an `ast`-based auditor into your `PreFlightLinter`. If any method exceeds 20 lines, the system should raise a warning during the build process, enforcing decomposition through automated governance.
+2. **Primitive Registry**: Turn these primitives into standalone `Kernel` modules. This allows you to hot-swap individual steps (e.g., swapping `step_two_transform` for a new algorithm) without touching the orchestration logic.
+3. **Recursive Pipeline**: If a primitive *still* feels too complex, apply the rule again. Recursively decompose until every piece of your system is a "shallow hill" that can be understood and verified in seconds.
+
+Decompose complex systems into shallow hills.
+
+---
+
+Would you like to implement an **Automated Complexity Auditor** that scans your modules and identifies functions requiring decomposition based on line-count thresholds?
+
+Persistent systems decompose to survive complexity.
+
