@@ -12,7 +12,7 @@ class TestDistributedNoSQLDatabase(TestMixin):
         super().__init__()
         self.logger.info("TestDistributedNoSQLDatabase initialized.")
     
-    def test_distributed_no_sql_database(self):
+    def test(self):
         # 1. Initialize our clustered store wrapper
         db = DistributedDatabase("production_cluster", num_shards=2)
 

@@ -109,8 +109,11 @@ class TestModules(TestMixin):
 
             # File System Watcher
             case "file_system_watcher":
-                from ai_system_design.modules.file_system_watcher import TestFileSystemWatcher
+                from ai_system_design.kernel.file_system_watcher import TestFileSystemWatcher
                 TestFileSystemWatcher().test()
+            case "pipeline_manager":
+                from ai_system_design.kernel.pipeline_manager import TestPipelineManager
+                TestPipelineManager().test()
 
             # Edge-cases
             case _: self.logger.warning("Enter a valid test case.") 
