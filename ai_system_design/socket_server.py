@@ -24,11 +24,12 @@ class SocketServer:
             server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             
             server_socket.bind((self.host, self.port))
-            # FIXED: Elevated the listening queue from a bottlenecked 1 up to an enterprise 128
+            # Elevated the listening queue from a bottlenecked 1 up to an enterprise 128
             server_socket.listen(backlog)
             
             logger.info(f"[{self.context.upper()} Gateway Core] Infrastructure initialized. Listening at -> tcp://{self.host}:{self.port}")
             return server_socket
+        
         except socket.error as net_err:
             logger.critical(f"Failed to bind socket network server interface down on {self.host}:{self.port} -> {net_err}")
             raise

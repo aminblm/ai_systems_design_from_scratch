@@ -1,8 +1,4 @@
-# cli.py
-import argparse, sys
-
-from .cli import main
-
+from ai_system_design.cli import cli
 
 if __name__ == "__main__":
-    main()
+    cli()
