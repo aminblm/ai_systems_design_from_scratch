@@ -17,8 +17,10 @@ class TestDocEngine(TestMixin):
         super().test()
         SRC_PATH = "ai_system_design"
         DOCUMENTATION_PATH = "docs/ARCHITECTURE.md"
+        DOCUMENTATION_PATH_TEST = "test/sg_input/ARCHITECTURE.md"
 
         DocEngine().generate_manifest(SRC_PATH, DOCUMENTATION_PATH)
+        DocEngine().generate_manifest(SRC_PATH, DOCUMENTATION_PATH_TEST)
 
 
 class DocEngine:
@@ -39,12 +41,13 @@ class DocEngine:
         with open(file_path, 'r') as f:
             try:
                 tree = ast.parse(f.read())
-                summary += f"\n## File: {os.path.basename(file_path)}\n\n"
+                summary += f"\n## File: `{os.path.basename(file_path)}`\n\n"
                 summary += f"> {ast.get_docstring(tree) or 'Upcoming documentation'}\n\n"
 
                 for node in ast.walk(tree):
                     if isinstance(node, ast.FunctionDef):
-                        summary += f"- **{node.name}**: {ast.get_docstring(node) or 'Upcoming documentation'}\n"
+                        summary += f"**`{node.name}`**\n\n"
+                        summary += f"> {ast.get_docstring(node) or 'Upcoming documentation'}\n"
             except Exception:
                 Debugger().debug('file_path', file_path)
         

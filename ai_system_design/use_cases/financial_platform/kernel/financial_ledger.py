@@ -25,7 +25,7 @@ class FinancialLedger:
         return entry.id 
     
     def get_balance(self, account_name):
-        """"Calculates balance from ledger history."""
+        """Calculates balance from ledger history."""
         balance = 0
         for entry in self._entries:
             if entry.debit == account_name: balance -= entry.amount
