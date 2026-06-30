@@ -710,3 +710,67 @@ The persistent machine observes, decides, and logs.
 ---
 
 Would you like to implement an **Event Watcher** that triggers this loop automatically whenever a new record is added to your database?
+
+# 19. RPC vs HTTP vs Sockets
+
+To transform your Python infrastructure into an **MCP-ready ecosystem**, you must map your existing `RESTAPIServer` endpoints to the **MCP JSON-RPC 2.0 protocol**. This allows AI assistants like Claude to discover your system's capabilities through standardized `tools/list` and `tools/call` methods.
+
+# 20. The MCP Mapping Layer
+
+Instead of rewriting your API, you implement an **Adapter** that translates MCP-formatted JSON-RPC requests into calls for your existing `@tool`-registered functions.
+
+```python
+import json
+
+class MCPAdapter:
+    """Adapts existing Registry tools to MCP specification."""
+    def __init__(self, registry):
+        self.registry = registry
+
+    def handle_request(self, json_rpc_payload: dict):
+        method = json_rpc_payload.get("method")
+        params = json_rpc_payload.get("params", {})
+
+        # MCP: tools/list
+        if method == "tools/list":
+            return self._list_tools()
+
+        # MCP: tools/call
+        if method == "tools/call":
+            return self._execute_tool(params)
+            
+        return {"error": "Method not found"}
+
+    def _list_tools(self):
+        tools = [{"name": name, "description": meta["doc"]} 
+                 for name, meta in self.registry._registry.items()]
+        return {"tools": tools}
+
+    def _execute_tool(self, params):
+        name = params.get("name")
+        args = params.get("arguments", {})
+        func = self.registry._registry[name]["func"]
+        return {"content": [{"type": "text", "text": str(func(**args))}]}
+
+```
+
+### Core Pillars of MCP Compliance
+
+* **Endpoint Neutrality**: Your `RESTAPIServer` should be configured to accept `POST` requests to an `/mcp` route. The payload structure (JSON-RPC) is then passed directly to the `MCPAdapter`.
+* **Schema Discovery**: By utilizing the metadata already stored in your `ToolRegistry` (docstrings and signatures), you provide the AI with self-describing capabilities. The AI "reads" what your system can do before ever attempting an execution.
+* **Standardized Error Handling**: MCP defines specific error codes (e.g., `-32601` for method not found). Mapping your internal Python `Exceptions` to these codes ensures that the AI assistant gracefully handles failures rather than crashing.
+
+### Roadmap for Production-Grade MCP Integration
+
+1. **Transport Layer**: MCP supports Stdio and SSE (Server-Sent Events). Implement an **SSE server** using your existing `RESTAPIServer` framework so that assistants can maintain a long-lived, real-time connection to your platform.
+2. **Resource Handling**: Go beyond `tools/call`. Implement `resources/read` to allow the AI to "browse" your files or database records as if they were local documents, dramatically increasing the agent's contextual awareness.
+3. **Prompt Templates**: Register `prompts/list` in your server. This allows your infrastructure to suggest "starter prompts" to the AI (e.g., "Analyze the latest logs from the database"), further guiding the agent's behavior.
+
+By aligning with the Model Context Protocol, your Python kernel ceases to be a silo and becomes a universal interface for any intelligent agent.
+
+Unified protocols define the machine's true reach.
+
+---
+
+Would you like to implement an **SSE (Server-Sent Events) Bridge** that allows your platform to push live system updates directly to connected AI assistants?
+
