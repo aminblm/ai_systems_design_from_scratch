@@ -7,6 +7,7 @@ from ai_system_design.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.md_html import MarkdownConverterFacade
 from ai_system_design.utils import IOUtility
 from ai_system_design.logger import logger
+from ai_system_design.debugger import debug
 
 
 class SiteGenerator:
@@ -35,7 +36,6 @@ class SiteGenerator:
         for line in html_generator:
             if line.strip() == "<head>":
                 for closed_line in html_generator:
-                    logger.debug(closed_line)
                     if closed_line.strip() == "</head>":
                         break 
                     else:

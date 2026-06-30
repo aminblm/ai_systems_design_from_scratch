@@ -1,9 +1,11 @@
 # rest_api_server.py
 import json
 from typing import Callable, Dict, Tuple
+from functools import wraps
 
 from ai_system_design.socket_server import SocketServer
 from ai_system_design.logger import logger
+from ai_system_design.debugger import debug
 
 
 class RESTAPIServer(SocketServer):
@@ -19,17 +21,12 @@ class RESTAPIServer(SocketServer):
     def register_endpoint(self, method: str, path: str, status: int, content_type: str, content: str) -> None:
         self._routes[method][path] = lambda body: (status, content_type, content)
 
-    def get(self, path: str):
-        pass
+    def get_endpoints(self):
+        return self._routes.copy()
 
-    def post(self, path: str):
-        pass
-
-    def put(self, path: str):
-        pass
-
-    def delete(self, path: str):
-        pass
+    def get(self, path: str, content: str) -> None:
+        """Register a GET Endpoint."""
+        self._routes["GET"][path] = lambda body: (200, "text/plain", content)
 
     def _register_core_endpoints(self) -> None:
         """Decouples application routing configuration definitions away from raw transport IO."""

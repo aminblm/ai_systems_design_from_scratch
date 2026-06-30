@@ -21,6 +21,7 @@ from ai_system_design.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.architecture_renderer import ArchitectureRenderer, ArchComponent
 from ai_system_design.process_posts import process_posts, clean_posts, clean_author
 from ai_system_design.logger import logger
+from ai_system_design.debugger import debug
 
 
 SERVER_HOST = "127.0.0.1"
@@ -322,6 +323,9 @@ def test_rest_api_client():
 
 def test_rest_api_server():
     app = RESTAPIServer(SERVER_HOST, REST_API_PORT)
+
+    app.get("/test", "GET Test Path Registered Successfully.")
+
     app.start_http_server()
 
 def test_socket_server():
