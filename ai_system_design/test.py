@@ -19,9 +19,9 @@ from ai_system_design.modules.rest_api_server import RESTAPIServer
 from ai_system_design.kernel.socket_server import SocketServer
 from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.modules.architecture_renderer import ArchitectureRenderer, ArchComponent
-from ai_system_design.modules.process_posts import process_posts, clean_posts, clean_author
+from ai_system_design.modules.process_posts import run_pipeline
 from ai_system_design.kernel.logger import logger
-from ai_system_design.kernel.debugger import debug
+from ai_system_design.kernel.debugger import test_debugger
 
 
 SERVER_HOST = "127.0.0.1"
@@ -450,6 +450,9 @@ def test_modules():
         case "safe_yaml_parser": test_safe_yaml_parser()
         case "architecture_renderer": test_architecture_renderer()
         case "process_posts": test_process_posts()
+
+        # Deugger
+        case "debugger": test_debugger()
 
         # Edge-cases
         case _: logger.warning("Enter a valid test case.")

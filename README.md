@@ -42,7 +42,9 @@ Edge-computing.
 
 Secure by design.
 
+Primitive principles.
 
+Transparent, deterministic, and auditable.
 
 **Amin Boulouma**,  *Software Engineer*
 

@@ -5,7 +5,6 @@ from functools import wraps
 
 from ai_system_design.kernel.socket_server import SocketServer
 from ai_system_design.kernel.logger import logger
-from ai_system_design.kernel.debugger import debug
 
 
 class RESTAPIServer(SocketServer):

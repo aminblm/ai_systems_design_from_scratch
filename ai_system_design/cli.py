@@ -22,7 +22,6 @@ from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.modules.architecture_renderer import ArchitectureRenderer, ArchComponent
 from ai_system_design.modules.process_posts import run_pipeline, Path
 from ai_system_design.kernel.logger import logger
-from ai_system_design.kernel.debugger import debug
 
 
 SERVER_HOST = "127.0.0.1"
