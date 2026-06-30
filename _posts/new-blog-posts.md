@@ -1116,3 +1116,60 @@ Would you like to implement an **Interface Validator** that uses Python's `ast` 
 
 Persistent rules guard the machine's purity.
 
+# 30. Documenting design / coding principle: No emojies in code
+
+To automate documentation, we create the `DocEngine`. By leveraging Python’s `ast` module, we treat your codebase as a data structure rather than plain text, ensuring your documentation is a perfect reflection of your source code’s current state.
+
+# 31. The DocEngine Implementation
+
+This module performs a static scan of your repository, extracting metadata from classes and methods to generate an up-to-date `README.md`.
+
+```python
+import ast
+import os
+
+class DocEngine:
+    """Extracts metadata from source to build automated docs."""
+    
+    def generate_manifest(self, folder_path: str):
+        output = "# System Architecture\n\n"
+        for root, _, files in os.walk(folder_path):
+            for file in files:
+                if file.endswith(".py"):
+                    output += self._parse_file(os.path.join(root, file))
+        
+        with open("ARCHITECTURE.md", "w") as f:
+            f.write(output)
+            
+    def _parse_file(self, file_path: str):
+        with open(file_path, 'r') as f:
+            tree = ast.parse(f.read())
+            
+        summary = f"## File: {os.path.basename(file_path)}\n"
+        summary += f"> {ast.get_docstring(tree) or 'No description'}\n\n"
+        
+        for node in ast.walk(tree):
+            if isinstance(node, ast.FunctionDef):
+                summary += f"- **{node.name}**: {ast.get_docstring(node) or 'No doc'}\n"
+        return summary + "\n"
+
+```
+
+### Pillars of "Live" Documentation
+
+* **Truth via Source**: Since the `DocEngine` executes as part of your `PipelineManager` (on every file save), your documentation can never fall behind your code. It is effectively "Compiled Documentation."
+* **Standardized Metadata**: By enforcing docstrings in your `PreFlightLinter`, the `DocEngine` is guaranteed to find descriptive content, turning your codebase into a self-documenting knowledge base.
+* **Format Agnosticism**: You can easily extend the `_parse_file` method to output JSON for your `MCPServer`, allowing external AI assistants to discover your system capabilities through a `system_capabilities.json` file.
+
+### Roadmap for Documentation Excellence
+
+1. **Dependency Mapping**: Extend the `DocEngine` to identify class inheritance and module imports, generating a visual dependency graph (e.g., Mermaid.js syntax) directly in your markdown file.
+2. **Versioning**: Include Git commit hashes in the generated header, ensuring that when you view the documentation, you know exactly which version of the OS it corresponds to.
+3. **Human-in-the-Loop Annotation**: Add a special comment tag (`# @manual: Some info`) that the `DocEngine` parses and inserts into the docs, allowing you to add high-level architectural notes that don't belong in the code logic itself.
+
+Code is truth; generated docs reflect it.
+
+---
+
+Would you like to implement a **Mermaid.js Generator** that maps your system topology into a visual flowchart within your documentation?
+

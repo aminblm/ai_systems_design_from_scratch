@@ -64,7 +64,7 @@ class ContainerManagerClient(SocketClient, LoggableMixin):
         print("Enter container name: ", end="", flush=True)
         name = sys.stdin.readline().strip()
         if not name:
-            print("❌ Validation Error: Container target name cannot be empty.")
+            print("Validation Error: Container target name cannot be empty.")
             return None
         return name
 
@@ -100,7 +100,7 @@ class ContainerManagerClient(SocketClient, LoggableMixin):
                         continue
 
                     case _:
-                        print(f"❌ Unknown internal command: '{command}'. Try run, stop, list, or exit.")
+                        print(f"Unknown internal command: '{command}'. Try run, stop, list, or exit.")
             
             except (KeyboardInterrupt, SystemExit):
                 print("\nSession aborted via user signal.")

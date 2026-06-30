@@ -1,0 +1,590 @@
+# System Architecture
+
+
+## File: cli.py
+
+> Upcoming documentation
+
+- **generate_site**: Upcoming documentation
+- **slug_generator**: Upcoming documentation
+- **engine_scheduler**: Upcoming documentation
+- **socket_client**: Upcoming documentation
+- **container_manager_client**: Upcoming documentation
+- **container_manager_server**: Upcoming documentation
+- **scalable_index**: Upcoming documentation
+- **reactive_frontend**: Upcoming documentation
+- **git_rpc_client**: Upcoming documentation
+- **git_rpc_server**: Upcoming documentation
+- **round_robin_load_balancer**: Upcoming documentation
+- **distributed_no_sql_database**: Upcoming documentation
+- **intent_matching_engine**: Upcoming documentation
+- **realtime_redis_engine**: Upcoming documentation
+- **rest_api_client**: Upcoming documentation
+- **rest_api_server**: Upcoming documentation
+- **socket_server**: Upcoming documentation
+- **safe_yaml_parser**: Upcoming documentation
+- **architecture_renderer**: Upcoming documentation
+- **process_posts**: Upcoming documentation
+- **cli**: Example module usage: 
+python main.py --module slug_generator
+- **extract**: Upcoming documentation
+- **transform**: Upcoming documentation
+- **load**: Upcoming documentation
+- **log_click_telemetry**: Upcoming documentation
+- **play_sound_effect**: Upcoming documentation
+- **render_button**: Upcoming documentation
+
+## File: test_modules.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+
+## File: __init__.py
+
+> AI System Design built from first principles, in pure python.
+
+
+## File: __main__.py
+
+> Upcoming documentation
+
+
+## File: agent_runner.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **step**: Upcoming documentation
+
+## File: base_tool.py
+
+> Upcoming documentation
+
+- **execute**: Upcoming documentation
+
+## File: datastructures.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **__init__**: Upcoming documentation
+
+## File: debugger.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **__repr__**: Upcoming documentation
+- **debug**: Debug function used for debugging
+
+## File: doc_engine.py
+
+> Generates documentation automatically.
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **generate_manifest**: Upcoming documentation
+- **_parse_file**: Upcoming documentation
+
+## File: exceptions.py
+
+> Define the hierarchy of AI System Design Exceptions.
+
+
+## File: file_system_watcher.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **_scan**: Build a snapshot of files and their modification time.
+- **watch**: Poll the file system for changes.
+- **on_change**: Upcoming documentation
+
+## File: inference_engine.py
+
+> Upcoming documentation
+
+- **preprocess**: Converts raw data to mathematical tensors/arrays.
+- **predict**: Performs the heavy computation.
+- **run**: Unified entry point for inference.
+- **format_results**: Translates raw model output into usable data.
+
+## File: infrastructure_as_code.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **_load_manifest**: Upcoming documentation
+- **bootstrap**: Dynamic instanciation based on the manifest.
+- **_create_instance**: Upcoming documentation
+
+## File: intent_matching_engine.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **_normalize_text**: Converts text to lowercase and strips trailing whitespace and basic punctuation.
+- **extract_response**: Evaluates token inclusion maps to select the highest-scoring response intent.
+
+## File: intent_provider.py
+
+> Upcoming documentation
+
+- **classify**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **get_intent**: Upcoming documentation
+- **classify**: Upcoming documentation
+
+## File: interface.py
+
+> Upcoming documentation
+
+- **start**: Initializes resources.
+- **stop**: Gracefully releases resources.
+- **get_status**: Returns operational health data.
+- **start**: Upcoming documentation
+- **stop**: Upcoming documentation
+- **get_status**: Upcoming documentation
+
+## File: json_serializable_mixin.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **to_json**: Upcoming documentation
+
+## File: loggable_mixin.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+
+## File: logger.py
+
+> Upcoming documentation
+
+
+## File: mcp_adapter.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **handle_request**: Upcoming documentation
+- **_list_tools**: Upcoming documentation
+- **_execute_tool**: Upcoming documentation
+- **_read_resource**: Upcoming documentation
+- **_list_prompts**: Upcoming documentation
+
+## File: mcp_server.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **get_capabilities**: Schema discovery for AI clients.
+- **_derive_schema**: Upcoming documentation
+- **execute_request**: Standardized execution interface for MCP Clients.
+
+## File: pipeline_manager.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **trigger_rebuild**: Upcoming documentation
+- **start_dev_loop**: Upcoming documentation
+
+## File: pre_flight_linter.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **check_file**: Upcoming documentation
+
+## File: self_health_monitor.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **monitor**: Upcoming documentation
+
+## File: skill.py
+
+> Upcoming documentation
+
+- **execute**: Standardized skill execution.
+Must always return a status and result payload.
+- **execute**: Upcoming documentation
+
+## File: socket_client.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **connect_to_socket_server**: Establishes an active network pipe line link connection out to a target remote host.
+- **__enter__**: Establishes the connection when entering a context manager block.
+- **__exit__**: Guarantees socket closure regardless of internal loop exceptions.
+- **close**: Idempotently flushes and dismantles low-level kernel descriptors.
+- **receive_message**: Safely reads inbound streams from the remote host buffer.
+- **send_message**: Transmits a raw payload strings safely out to the established network interface.
+
+## File: socket_server.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **create_socket_server**: Generates a bound TCP master socket server with non-blocking address reuse capabilities.
+- **start_server**: Binds the underlying socket and enters the concurrent client acceptance loop.
+- **start_socket_server**: Upcoming documentation
+- **add_middleware**: Adds middlewares to the server
+- **process_request**: Upcoming documentation
+- **_handle_client_lifecycle**: Manages the read/write streaming transactions for a single isolated connection.
+- **_process_socket_transaction**: Parses raw text frames and constructs fully compliant HTTP/1.1 response bytes.
+
+## File: test_mixin.py
+
+> TextMixin class to be inherited as a contract for the testing classes testing the modules.
+
+- **__init__**: TestMixin Constructor to initialize the test states.
+- **test**: Test method for all testing classes.
+- **__repr__**: A representation of the TestMixin class.
+
+## File: tool_registry.py
+
+> Upcoming documentation
+
+- **register**: Upcoming documentation
+- **fetch_weather**: Fetches real-time weather data for specific location.
+- **wrapper**: Upcoming documentation
+
+## File: utils.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **text_to_lines_generator**: Upcoming documentation
+- **read_decoded**: Reads a filesystem file safely, handling decoding anomalies with fallback flags.
+- **write_encoded**: Writes text strings directly to disk storage volumes using strict encoding formats.
+
+## File: architecture_renderer.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **generate_html**: Upcoming documentation
+- **_render_node**: Upcoming documentation
+
+## File: container_manager_client.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **__enter__**: Upcoming documentation
+- **_send_and_receive**: Helper to safely dispatch requests and await server acknowledgement frames.
+- **_prompt_container_name**: Collects and validates targeted resource descriptors.
+- **start_interface**: Runs the interactive application event loop.
+
+## File: container_manager_server.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **start_container_manager_server**: Launch the master connection listener loop.
+- **handle_client_session**: Processes transactional command lines sequentially for an isolated client socket thread.
+- **_route_command**: Routes and executes operations under thread-safe atomic transaction wrappers.
+- **_execute_run**: Upcoming documentation
+- **_execute_stop**: Upcoming documentation
+- **_execute_list**: Upcoming documentation
+
+## File: distributed_no_sql_database.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **insert_one**: Appends a document payload after performing basic schema type checks.
+- **find**: Evaluates document attributes against dictionary key-value search filter maps.
+- **aggregate**: Processes sequential aggregation operators matching input pipeline definitions.
+- **__init__**: Upcoming documentation
+- **allocate_record**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **create_collection**: Upcoming documentation
+- **shard_collection**: Distributes logical collection contents safely across backend partitions.
+
+## File: engine_scheduler.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **add_task**: Upcoming documentation
+- **validate_graph**: Simple cycle detection via DFS to guarantee the graph is acyclic.
+- **__init__**: Upcoming documentation
+- **_is_run_due**: Determines if a task is chronologically due for evaluation.
+- **_dependencies_satisfied**: Verifies if all upstream constrains have completed successfully.
+- **step**: A single non-blocking evaluation pass over all tasks.
+- **run_forever**: Runs the loop without causing a single task execution to block the cycle clock.
+- **extract**: Upcoming documentation
+- **transform**: Upcoming documentation
+- **load**: Upcoming documentation
+- **has_cycle**: Upcoming documentation
+
+## File: git_rpc_client.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **__enter__**: Upcoming documentation
+- **_send_frame**: Serializes payload to JSON and transmits it with a clear newline delimiter boundary.
+- **_receive_frame**: Awaits data bytes returning cleanly formatted feedback strings.
+- **dispatch_clone**: Sends a dynamic repository target out for evaluation execution.
+
+## File: git_rpc_server.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **start_git_rpc_server**: Initializes listener interfaces and delegates incoming connections to workers.
+- **_process_client_stream**: Reads frames and pushes payloads out to internal logic handlers.
+- **_route_rpc_request**: Parses json strings and handles business logic routing defensively.
+
+## File: md_html.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **_parse_inline_elements**: Applies regex conversions for inline specials (bold, italic, links).
+- **_parse_metadata**: Generator to strip front-matter metadata (lines between '---').
+- **_parse_multiline_html_tags**: Generator to parse multi-line html tags.
+- **_parse_multiline_code**: Generator to parse multi-line code blocks.
+- **_parse_raw**: Generator to parse raw blocks.
+- **_parse_bullet_points**: Generator to parse multi-line bullet points.
+- **_parse_ordered_list**: Generator to parse multi-line ordered list.
+- **_parse_tables**: Generator to parse multi-line tables.
+- **parse_line**: Parses block-level elements.
+- **to_html**: Converts an entire markdown document string into an HTML string.
+- **__init__**: Upcoming documentation
+- **get_yaml_config**: Upcoming documentation
+- **convert_file**: Reads markdown from file, converts it, and writes out HTML.
+- **convert_text**: Direct string interface.
+- **md_text_to_html_file**: Upcoming documentation
+- **gen_html_from_md_text**: Upcoming documentation
+
+## File: process_posts.py
+
+> Upcoming documentation
+
+- **wrap_html_component**: Upcoming documentation
+- **transform_content**: Upcoming documentation
+- **run_pipeline**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+
+## File: reactive_frontend.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **__set_name__**: Upcoming documentation
+- **__get__**: Upcoming documentation
+- **__set__**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **make_dirty**: Upcoming documentation
+- **render**: Renders cleanly, leveraging caching unless state mutations have dirtied the view.
+- **__init__**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **subscribe**: Appends a subscriber function without flattening existing tracking keys.
+- **dispatch**: Fires updates out safely to all registered callback hooks downstream.
+- **__init__**: Upcoming documentation
+- **register_component**: Upcoming documentation
+- **display**: Outputs the current visual state layer compilation frame.
+- **log_click_telemetry**: Upcoming documentation
+- **play_sound_effect**: Upcoming documentation
+- **render_button**: Upcoming documentation
+
+## File: realtime_redis_engine.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **is_expired**: Determines if the instance has surpassed its chronological survival window.
+- **__init__**: Upcoming documentation
+- **_get_valid_obj**: Fetches a record dynamically while perfoming passive lazy eviction pruning.
+- **set**: Upcoming documentation
+- **get**: Upcoming documentation
+- **delete**: Upcoming documentation
+- **incr**: Upcoming documentation
+- **expire**: Upcoming documentation
+- **ttl**: Upcoming documentation
+- **execute_command_string**: Parses raw text words into a multi-token signature mapping block.
+
+## File: rest_api_client.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **init__**: Upcoming documentation
+- **__enter__**: Upcoming documentation
+- **send_http_request**: Constructs and flushes compliant raw HTTP/1.1 text frames down the pipe.
+- **receive_and_parse_response**: Reads incoming network streams and outputs clear structural trace feedback blocks.
+- **start_repl_loop**: Triggers the primary prompt console loop interaction framework environment.
+
+## File: rest_api_server.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **register_endpoint**: Upcoming documentation
+- **get_endpoints**: Upcoming documentation
+- **get_endpoints_documentation**: Upcoming documentation
+- **get**: Register a GET Endpoint.
+- **post**: Register a POST Endpoint.
+- **put**: Register a PUT Endpoint.
+- **delete**: Register a DELETE Endpoint.
+- **_register_core_endpoints**: Decouples application routing configuration definitions away from raw transport IO.
+- **start_http_server**: Spins up the master bound socket loop, isolating active connections to worker threads.
+- **_process_http_transaction**: Parses raw text frames and constructs fully compliant HTTP/1.1 response bytes.
+- **_build_http_response**: Assembles compliant HTTP/1.1 text frames utilizing precise CRLF formatting structures.
+
+## File: round_robin_load_balancer.py
+
+> Upcoming documentation
+
+- **web_node_alpha**: Upcoming documentation
+- **web_node_beta**: Upcoming documentation
+- **web_node_gamma**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **route_request**: Balances incoming request loads across backend pools monotonically.
+
+## File: safe_yaml_parser.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **dump**: YAML dict to text
+- **parse_to_dict**: Parses flat key-value text lines, stripping comments and validating spacing.
+- **__init__**: Upcoming documentation
+- **get**: Fetches data properties safely while enforcing a default fallback strategy.
+- **to_dict**: Exposes an isolated copy of the internal configuration records.
+- **__init__**: Upcoming documentation
+- **from_text**: Loads configuration variables straight from a raw multi-line string sequence.
+- **from_file**: Configuration ingestion from disk files via platform utility helpers.
+- **build**: Triggers parsing transformations and returns an operational config container instance.
+
+## File: scalable_index.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **add_document**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **_get_shard_route**: Determines consistent deterministic shard placement using simple hashing
+- **add_document**: Validates incoming properties against active fields and routes to its shards.
+- **_all_documents**: Collects across distributed sub-partitions smoothly.
+- **search**: Performs a dynamic, decoupled data pass across all document collections.
+- **aggregate_counts**: Calculates item tallies safely in linear $O(N)$ runtime performance.
+
+## File: slug_generator.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **transform_to_slug**: Decomposes, purges, and reformats string text into clean hyphenated tokens.
+- **__init__**: Upcoming documentation
+- **current_date_string**: Dynamically computes the date stamp inline, avoiding stale cached properties over midnights.
+- **print_welcome_banner**: Renders structural terminal application interface system frames.
+- **evaluate_line_transaction**: Validates CLI entries, processes strings, and echoes valid Jekyll paths.
+- **start_generator_interface**: Engages infinite user interface validation entry polling blocks.
+
+## File: sse_server.py
+
+> Upcoming documentation
+
+
+## File: persistent_ai.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **_load_state**: Upcoming documentation
+- **_save_state**: Upcoming documentation
+- **schedule_task**: Upcoming documentation
+- **update_status**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **persist**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **run_inference**: Upcoming documentation
+
+## File: site_generator.py
+
+> Upcoming documentation
+
+- **__init__**: Upcoming documentation
+- **test**: Upcoming documentation
+- **__init__**: Upcoming documentation
+- **_copy_styles**: Upcoming documentation
+- **_load_layout**: Upcoming documentation
+- **_load_config**: Upcoming documentation
+- **_get_header_lines**: Upcoming documentation
+- **_clean_header_lines**: Upcoming documentation
+- **_render_html**: Injects compiled markdown content and config mappings into the layout
+- **_resolve_paths**: Calculates input and output targets safely using modern path objects.
+- **generate_site**: Processes all Markdown files within the targeted input directory.
+
+## File: __init__.py
+
+> Upcoming documentation
+
+
+## File: agentic_hello_world.py
+
+> Upcoming documentation
+
+- **query_db**: Queries the distributed database for records.
+- **append_log**: Appends data to local system log.
+- **__init__**: Upcoming documentation
+- **run_cycle**: Upcoming documentation

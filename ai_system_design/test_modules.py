@@ -120,5 +120,10 @@ class TestModules(TestMixin):
                 from ai_system_design.kernel.pre_flight_linter import TestPreFlightLinter
                 TestPreFlightLinter().test()
 
+            # Documentation generation
+            case "doc_engine":
+                from ai_system_design.kernel.doc_engine import TestDocEngine
+                TestDocEngine().test()
+
             # Edge-cases
             case _: self.logger.warning("Enter a valid test case.") 

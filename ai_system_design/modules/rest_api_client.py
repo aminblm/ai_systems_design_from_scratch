@@ -79,13 +79,13 @@ class RESTAPIClient(SocketClient, LoggableMixin):
         lines = response_text.split("\r\n")
         
         if not lines or not lines[0]:
-            print("❌ Invalid, unparseable or completely empty payload header returned.")
+            print("Invalid, unparseable or completely empty payload header returned.")
             return
         
         # Isolate Status Line tokens: e.g., ['HTTP/1.1', '200', 'OK']
         status_parts = lines[0].split(maxsplit=2)
         if len(status_parts) < 2:
-            print(f"❌ Corrupted HTTP header signature returned: {lines[0]}")
+            print(f"Corrupted HTTP header signature returned: {lines[0]}")
             return
 
         status_code = status_parts[1]
@@ -97,15 +97,15 @@ class RESTAPIClient(SocketClient, LoggableMixin):
         # Evaluate response metrics defensively using pattern matching properties
         match status_code:
             case _ if status_code.startswith("20"):
-                print(f"✅ Transaction Success! Status Code Match: {status_code}")
+                print(f"Transaction Success! Status Code Match: {status_code}")
             case "404":
-                print(f"❌ Routing Fault Error: Target resource not found (404)")
+                print(f"Routing Fault Error: Target resource not found (404)")
             case "405":
-                print(f"❌ Semantic Policy Error: Method Not Allowed (405)")
+                print(f"Semantic Policy Error: Method Not Allowed (405)")
             case "400":
-                print(f"❌ Protocol Formatting Error: Bad Request Structure (400)")
+                print(f"Protocol Formatting Error: Bad Request Structure (400)")
             case _:
-                print(f"⚠️ Unmapped operational feedback marker received: {status_code}")
+                print(f"Unmapped operational feedback marker received: {status_code}")
 
     def start_repl_loop(self) -> None:
         """Triggers the primary prompt console loop interaction framework environment."""
@@ -145,7 +145,7 @@ class RESTAPIClient(SocketClient, LoggableMixin):
                             self.receive_and_parse_response()
 
                     case _:
-                        print("❌ Input Choice must match a listed selection (1-5).")
+                        print("Input Choice must match a listed selection (1-5).")
 
             except (KeyboardInterrupt, SystemExit):
                 print("\nSession killed via hardware terminal close command.")

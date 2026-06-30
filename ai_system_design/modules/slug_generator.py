@@ -82,7 +82,7 @@ class JekyllFilenameController(LoggableMixin):
         slug = self.generator.transform_to_slug(cleaned_input)
         
         if not slug:
-            print("⚠️ Error: Input text strings contain no valid alphanumeric naming elements.")
+            print("Error: Input text strings contain no valid alphanumeric naming elements.")
             return True
 
         # Fetch fresh date data directly from properties loop

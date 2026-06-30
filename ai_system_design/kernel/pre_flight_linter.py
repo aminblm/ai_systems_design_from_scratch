@@ -1,6 +1,5 @@
 # pre_flight_linter.py
 
-"""Abstract Base Classes (ABCs) according to PEP 3119."""
 
 import ast
 
