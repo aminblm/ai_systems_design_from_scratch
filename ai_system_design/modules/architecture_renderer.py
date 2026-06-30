@@ -2,17 +2,31 @@
 from dataclasses import dataclass, field
 from typing import List
 
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
 
+class TestArchitectureRenderer(TestMixin):
+    """Test the architecture_renderer module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestArchitectureRenderer initialized.")
+        
+        
 @dataclass
-class ArchComponent:
+class ArchComponent(LoggableMixin):
     """Represents a structural node in the architecture graph."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("ArchComponent initialized.")
+
     name: str
     component_type: str  # e.g., 'service', 'database', 'lb'
     children: List['ArchComponent'] = field(default_factory=list)
 
-class ArchitectureRenderer:
+class ArchitectureRenderer(LoggableMixin):
     """Translates high-level component graphs into rendered HTML/CSS media."""
 
     CSS = """
@@ -22,6 +36,10 @@ class ArchitectureRenderer:
     .type-database { border-color: #e74c3c; background: #fdf2f2; margin: 10px;}
     .label { font-weight: bold; margin-bottom: 10px; display: block; margin: 10px;}
     """
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("ArchitectureRenderer initialized.")
 
     def generate_html(self, root: ArchComponent) -> str:
         return f"""

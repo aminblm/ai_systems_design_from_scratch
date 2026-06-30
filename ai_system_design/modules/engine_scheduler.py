@@ -3,25 +3,59 @@ import time
 from dataclasses import dataclass, field
 from typing import Callable, Set, Dict
 
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
+
+
+class TestEngineScheduler(TestMixin):
+    """Test the engine_scheduler module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestGenerateSite initialized.")
+
+    def test_engine_scheduler(self):
+        # Define clean decoupled topology
+        sample_dag = DAG("Production_pipeline")
+
+        def extract(): self.logger.info("[DB] Extracting raw ingestion assets...")
+        def transform(): self.logger.info("[Spark] Normalizing structural records...")
+        def load(): self.logger.info("[Warehouse] Committing target delta changes...")
+
+        task_a = Task("Extract_Data", execute_func=extract, interval_seconds=3)
+        task_b = Task("Transform_Data", execute_func=transform, interval_seconds=3, upstream_dependencies={"Extract_Data"})
+        task_c = Task("Load_Data", execute_func=load, interval_seconds=3, upstream_dependencies={"Transform_Data"})
+
+        sample_dag.add_task(task_a)
+        sample_dag.add_task(task_b)
+        sample_dag.add_task(task_c)
+
+        scheduler = EngineScheduler(sample_dag)
+        # Run the execution agent loop
+        scheduler.run_forever(tick_rate_seconds=0.5)
 
 
 @dataclass
-class Task:
-    name: str
-    execute_func: Callable[[], None]
-    interval_seconds: int = 5
-    # Keep track of names of tasks that MUST run before this one
-    upstream_dependencies: Set[str] = field(default_factory=set)
+class Task(LoggableMixin):
+    """Task classe to instanciate classes."""
+    def __init__(self, name: str, execute_func: Callable[[], None], interval_seconds: int, upstream_dependencies: Set[str] = set()) -> None:
+        super().__init__()
+        self.name = name
+        self.execute_func = execute_func
+        self.interval_seconds = interval_seconds
+        self.upstream_dependencies = upstream_dependencies
+        self.logger.info("Task initialized.")    
 
 
-class DAG:
+class DAG(LoggableMixin):
     """Represents a Directed Acyclic Graph of tasks and enforces structural integrity."""
 
     def __init__(self, name: str) -> None:
+        super().__init__()
         self.name = name
         self.tasks: Dict[str, Task] = {}
         self.downstream_edges: Dict[str, Set[str]] = {}
+        self.logger.info("DAG initialized.")
 
     def add_task(self, task: Task) -> None:
         if task.name in self.tasks:
@@ -61,14 +95,16 @@ class DAG:
         return True
 
 
-class EngineScheduler:
+class EngineScheduler(LoggableMixin):
     """Orchestrates DAG tasks using non-blocking structural evaluations."""
 
     def __init__(self, dag: DAG) -> None:
+        super().__init__()
         dag.validate_graph()
         self.dag = dag
         self.completed_tasks: Set[str] = set()
         self.last_run_times: Dict[str, float] = {}
+        self.logger.info("EngineScheduler initialized.")
 
     def _is_run_due(self, task: Task, current_timestamp: float) -> bool:
         """Determines if a task is chronologically due for evaluation."""
@@ -88,25 +124,25 @@ class EngineScheduler:
                 continue
 
             if not self._dependencies_satisfied(task):
-                logger.debug(f"Task '{task.name}' skipped; upstream deps not met.")
+                self.logger.debug(f"Task '{task.name}' skipped; upstream deps not met.")
                 continue
 
             # Execute the workload safely
-            logger.info(f"Executing Task: {task.name}")
+            self.logger.info(f"Executing Task: {task.name}")
             try:
                 task.execute_func()
                 self.completed_tasks.add(task.name)
                 self.last_run_times[task.name] = now
             except Exception as e:
-                logger.error(f"Task '{task.name}' failed with error: {e}")
+                self.logger.error(f"Task '{task.name}' failed with error: {e}")
 
     def run_forever(self, tick_rate_seconds: float = 1.0) -> None:
         """Runs the loop without causing a single task execution to block the cycle clock."""
-        logger.info(f"Scheduler started for DAG: {self.dag.name}")
+        self.logger.info(f"Scheduler started for DAG: {self.dag.name}")
         try:
             while True:
                 self.step()
                 time.sleep(tick_rate_seconds)
         except KeyboardInterrupt:
-            logger.info("Scheduler stopped cleanly.")
+            self.logger.info("Scheduler stopped cleanly.")
 

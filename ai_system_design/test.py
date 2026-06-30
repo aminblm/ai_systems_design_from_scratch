@@ -1,13 +1,8 @@
 import sys, argparse
 
-from ai_system_design.modules.site_generator.site_generator import SiteGenerator 
-from ai_system_design.modules.slug_generator import JekyllFilenameController
-from ai_system_design.modules.engine_scheduler import Task, DAG, EngineScheduler
-from ai_system_design.kernel.socket_client import SocketClient
 from ai_system_design.modules.container_manager_client import ContainerManagerClient
 from ai_system_design.modules.container_manager_server import ContainerManagerServer
 from ai_system_design.modules.scalable_index import ScalableIndex
-from ai_system_design.modules.reactive_frontend import ReconcileUI, ButtonComponent
 from ai_system_design.modules.git_rpc_client import GitRPCClient
 from ai_system_design.modules.git_rpc_server import GitRPCServer
 from ai_system_design.modules.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
@@ -16,11 +11,9 @@ from ai_system_design.modules.intent_matching_engine import IntentMatchingEngine
 from ai_system_design.modules.realtime_redis_engine import RealtimeRedisEngine
 from ai_system_design.modules.rest_api_client import RESTAPIClient
 from ai_system_design.modules.rest_api_server import RESTAPIServer
-from ai_system_design.kernel.socket_server import SocketServer
 from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.modules.architecture_renderer import ArchitectureRenderer, ArchComponent
 from ai_system_design.modules.process_posts import run_pipeline
-from ai_system_design.kernel.logger import logger
 from ai_system_design.kernel.debugger import test_debugger
 
 
@@ -54,56 +47,6 @@ INTENT_DATA_REPOS = {
         "response": "Goodbye! Have an excellent day."
     }
 }
-
-
-def test_generate_site():
-    base_path = 'ai_system_design/site_generator/'
-    test_path = 'test/'
-    SiteGenerator(f'{base_path}layout.html', f'{base_path}config.yaml').generate_site(f'{test_path}sg_input')
-
-def test_slug_generator():
-    JekyllFilenameController().start_generator_interface()
-
-def test_engine_scheduler():
-    # Define clean decoupled topology
-    sample_dag = DAG("Production_pipeline")
-
-    def extract(): logger.info("[DB] Extracting raw ingestion assets...")
-    def transform(): logger.info("[Spark] Normalizing structural records...")
-    def load(): logger.info("[Warehouse] Committing target delta changes...")
-
-    task_a = Task("Extract_Data", execute_func=extract, interval_seconds=3)
-    task_b = Task("Transform_Data", execute_func=transform, interval_seconds=3, upstream_dependencies={"Extract_Data"})
-    task_c = Task("Load_Data", execute_func=load, interval_seconds=3, upstream_dependencies={"Transform_Data"})
-
-    sample_dag.add_task(task_a)
-    sample_dag.add_task(task_b)
-    sample_dag.add_task(task_c)
-
-    scheduler = EngineScheduler(sample_dag)
-    # Run the execution agent loop
-    scheduler.run_forever(tick_rate_seconds=0.5)
-
-def test_socket_client():
-    # Using a context manager completely replaces manual tracking of .close()
-    try:
-        with SocketClient(SERVER_HOST, SOCKET_SERVER_PORT) as client:
-            server_handshake = client.receive_message()
-            if server_handshake:
-                print(f"\n[Server]: {server_handshake}")
-
-            #Collect explicit local buffer arguments
-            print("\nEnter outound payload message:")
-            user_input = sys.stdin.readline().strip()
-        
-            if user_input:
-                client.send_message(user_input)
-                print(client.receive_message())
-    
-    except (KeyboardInterrupt, SystemExit):
-        logger.info("\nExecution cancelled by user signal interrupt. Exiting safely.")
-    except Exception as general_failure:
-        logger.critical(f"Fatal application runtime termination event: {general_failure}")
 
 def test_container_manager_client():
     # Context manager auto-manages low-level cleanup on teardown or crash
@@ -155,36 +98,6 @@ def test_scalable_index():
     # Print out actual distributed allocation struction across partitions
     for shard in search_index.shards:
         print(f"Shard {shard.shard_id} allocation storage list size: {len(shard.documents)}") 
-
-def test_reactive_frontend():
-    # 1. Initialise the framework container shell
-    app = ReconcileUI()
-
-    # 2. Wire up shared event bus global listeners
-    def log_click_telemetry(data): logger.info(f"[Metrics App] Tracked user interaction click event. Metadata: {data}")
-    def play_sound_effect(data): logger.info(f"[Audio App] Playing click.wav asset...")
-
-    # 3. Instantiate a strongly-typed component passing structural layout patterns
-    def render_button(comp: ButtonComponent) -> str:
-        disable_attr = " disabled" if comp.is_disabled else ""
-        return f"<button id='{comp.name}'{disable_attr}>{comp.text}</button>"
-    
-    submit_button = ButtonComponent(name="submit-primary", render_fn=render_button)
-    app.register_component(submit_button)
-
-    # 4. Initial state display pass
-    app.display()
-
-    # 5. Perform runtime state mutations. Mutating directly triggers target reactivity loops!
-    submit_button.text = "Processing Request..."
-    submit_button.is_disabled = True
-
-    # 6. Displaying the viez tree updates immediately reflecting the underlying changes
-    app.display()
-
-    # 7. Fire runtime event hooks
-    logger.info("Simulating hardware user mouse click action targeting the component...")
-    app.event.dispatch("btn_click", event_data={"cursor_x": 142, "cursor_y": 80})
 
 def test_git_rpc_client():
     # Context manager implementation replaces sequential manual channel closes entirely
@@ -330,13 +243,6 @@ def test_rest_api_server():
 
     app.start_http_server()
 
-def test_socket_server():
-    server = SocketServer(SERVER_HOST, SOCKET_SERVER_PORT)
-
-    server.add_middleware(lambda text: f"Middleware: {text}".encode("utf-8"))
-    server.add_middleware(lambda text: f"Another Middleware: {text}".encode("utf-8"))
-
-    server.start_socket_server()
 
 def test_safe_yaml_parser():
     # Test Scenario A: Dynamic text stream ingestion
@@ -400,19 +306,27 @@ def test_process_posts():
 def test_modules():
     """Example testing module: 
     python test.py --test slug_generator"""
+
     parser = argparse.ArgumentParser(description="Test AI Systems Design")
     parser.add_argument("--test", required=True)
     args = parser.parse_args()
+
     match args.test:
         # Frontend
-        case "reactive_frontend": test_reactive_frontend()
+        case "reactive_frontend": 
+            from ai_system_design.modules.reactive_frontend import TestReactiveFrontent
+            TestReactiveFrontent().test_reactive_frontend()
 
         # Load Balancing
         case "round_robin_load_balancer": test_round_robin_load_balancer()
 
         # Sockets
-        case "socket_client": test_socket_client()
-        case "socket_server": test_socket_server()
+        case "socket_server": 
+            from ai_system_design.kernel.socket_server import TestSocketServer
+            TestSocketServer().test_socket_server()
+        case "socket_client": 
+            from ai_system_design.kernel.socket_client import TestSocketClient
+            TestSocketClient().test_socket_client()
 
         # REST APIs
         case "rest_api_client": test_rest_api_client()
@@ -442,11 +356,17 @@ def test_modules():
         case "intent_matching_engine": test_intent_matching_engine()
 
         # Tasks Scheduler
-        case "engine_scheduler": test_engine_scheduler()
+        case "engine_scheduler": 
+            from ai_system_design.modules.engine_scheduler import TestEngineScheduler
+            TestEngineScheduler().test_engine_scheduler()
 
         # Site / Blog Posts / Internet Content Generator
-        case "generate_site": test_generate_site()
-        case "slug_generator": test_slug_generator()
+        case "generate_site": 
+            from ai_system_design.modules.site_generator.site_generator import TestGenerateSite 
+            TestGenerateSite().test_generate_site()
+        case "slug_generator": 
+            from ai_system_design.modules.slug_generator import TestSlugGenerator
+            TestSlugGenerator().test_slug_generator()
         case "safe_yaml_parser": test_safe_yaml_parser()
         case "architecture_renderer": test_architecture_renderer()
         case "process_posts": test_process_posts()
@@ -455,5 +375,8 @@ def test_modules():
         case "debugger": test_debugger()
 
         # Edge-cases
-        case _: logger.warning("Enter a valid test case.")
+        case _:
+            # TODO Edge-case proper handling 
+            # logger.warning("Enter a valid test case.") 
+            pass
     pass

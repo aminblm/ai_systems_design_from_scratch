@@ -1,17 +1,28 @@
 # distributed_no_sql_database.py
 from typing import Dict, Any, List, Optional
 
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
 
-class Collection:
+class TestDistributedNoSQLDatabase(TestMixin):
+    """Test the distributed_no_sql_database module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestDistributedNoSQLDatabase initialized.")
+        
+        
+class Collection(LoggableMixin):
     """Manages an isolated namespace of document structures and index maps."""
 
     def __init__(self, name: str, schema_fields: Optional[Dict[str, str]] = None) -> None:  
+        super().__init__()
         self.name = name
         self.schema_fields = schema_fields or {} 
         self.documents: List[Dict[str, Any]] = []
         self.indexes: List[Dict[str, Any]] = []
+        self.logger.info("Collection initialized.")
 
     def insert_one(self, document: Dict[str, Any]) -> None:
         """Appends a document payload after performing basic schema type checks."""
@@ -54,12 +65,14 @@ class Collection:
         return output_metrics
 
 
-class DatabasePartition:
+class DatabasePartition(LoggableMixin):
     """Represents a distributed database shard grouping targeted record allocations."""
 
     def __init__(self, shard_id: int) -> None:
+        super().__init__()
         self.shard_id = shard_id
         self.collections: Dict[str, List[Dict[str, Any]]] = {}
+        self.logger.info("DatabasePartition initialized.")
 
     def allocate_record(self, collection_name: str, document: Dict[str, Any]) -> None:
         if collection_name not in self.collections:
@@ -67,13 +80,15 @@ class DatabasePartition:
         self.collections[collection_name].append(document)
 
     
-class DistributedDatabase:
+class DistributedDatabase(LoggableMixin):
     """Master controller managing global schemas and orchestrating horizontal shards."""
 
     def __init__(self, name: str, num_shards: int = 2) -> None:
+        super().__init__()
         self.name = name
         self.logical_collections: Dict[str, Collection] = {}
         self.shards = [DatabasePartition(shard_id=i) for i in range(num_shards)]
+        self.logger.info("DistributedDatabase initialized.")
 
     def create_collection(self, name: str, schema: Optional[Dict[str, str]] = None) -> Collection:
         coll = Collection(name, schema)
@@ -95,4 +110,4 @@ class DistributedDatabase:
             target_shard_idx = hash(str(val)) % len(self.shards)
             self.shards[target_shard_idx].allocate_record(collection_name, doc)
             
-        logger.info(f"Successfully re-sharded collection '{collection_name}' across clusters.")
+        self.logger.info(f"Successfully re-sharded collection '{collection_name}' across clusters.")

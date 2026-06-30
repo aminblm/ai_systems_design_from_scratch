@@ -3,11 +3,24 @@ import json
 from typing import Dict, Any
 
 from ai_system_design.kernel.socket_client import SocketClient
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
 
-class GitRPCClient(SocketClient):
+class TestGitRPCClient(TestMixin):
+    """Test the git_rpc_client module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestGitRPCClient initialized.")
+        
+        
+class GitRPCClient(SocketClient, LoggableMixin):
     """A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames."""
+
+    def __init__(self) -> None:
+        super(LoggableMixin).__init__()
+        self.logger.info("GitRPCClient initialized.")
 
     def __enter__(self) -> GitRPCClient:
         self.context = "Git RPC Client"
@@ -44,12 +57,12 @@ class GitRPCClient(SocketClient):
         }
 
         try:
-            logger.info(f"Dispatching clone target transaction payload details for: {repository_url}")
+            self.logger.info(f"Dispatching clone target transaction payload details for: {repository_url}")
             self._send_frame(payload)
             
             # Wait for execution response
             response = self._receive_frame()
             return response
         except Exception as err:
-            logger.error(f"Failed to execute target payload exchange pattern: {err}")
+            self.logger.error(f"Failed to execute target payload exchange pattern: {err}")
             raise

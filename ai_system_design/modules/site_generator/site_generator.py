@@ -6,15 +6,31 @@ from typing import Dict, Tuple, Generator
 from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.modules.md_html import MarkdownConverterFacade
 from ai_system_design.kernel.utils import IOUtility
-from ai_system_design.kernel.logger import logger
+
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
+
+class TestGenerateSite(TestMixin):
+    """Test the site_generator module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestGenerateSite initialized.")
+    
+    def test_generate_site(self):
+        base_path = 'ai_system_design/modules/site_generator/'
+        test_path = 'test/'
+        SiteGenerator(f'{base_path}layout.html', f'{base_path}config.yaml').generate_site(f'{test_path}sg_input')
 
 
-class SiteGenerator:
-    """Coordinater class to orchestrate the MArkdown to Template-bound HTML building process"""
+class SiteGenerator(LoggableMixin):
+    """Coordinater class to orchestrate the Markdown to Template-bound HTML building process"""
 
     def __init__(self, layout_path: str | Path, config_file_path: str | Path) -> None:
+        super().__init__()
         self.layout_path = Path(layout_path)
         self.config_file_path = Path(config_file_path)
+        self.logger.info("SiteGenerator initialized.")
 
         # Load assets during initialization rather than on every loop iteration
         self.layout_template = self._load_layout()
@@ -26,7 +42,7 @@ class SiteGenerator:
         return None
     
     def _load_layout(self) -> str:
-        return IOUtility.read_decoded(self.layout_path)
+        return IOUtility().read_decoded(self.layout_path)
     
     def _load_config(self) -> Dict[str, str]:
         return ConfigurationBuilder().from_file(self.config_file_path).build().to_dict()
@@ -102,9 +118,9 @@ class SiteGenerator:
                 src_path, dest_path = self._resolve_paths(file_path, input_dir, output_dir)
                 rendered_content = self._render_html(src_path)
 
-                IOUtility.write_encoded(dest_path, IOUtility.text_to_lines_generator(rendered_content, strip=False))
-                logger.info(f" Successfully generate page: {dest_path.name}")
+                IOUtility().write_encoded(dest_path, IOUtility().text_to_lines_generator(rendered_content, strip=False))
+                self.logger.info(f"Successfully generate page: {dest_path.name}")
 
             except Exception as err:
-                logger.error(f" Failed processing {file_path.name}: {err}")
-                logger.debug(traceback.format_exc())
+                self.logger.error(f" Failed processing {file_path.name}: {err}")
+                self.logger.debug(traceback.format_exc())

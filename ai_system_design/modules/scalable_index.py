@@ -2,26 +2,39 @@
 import collections
 from typing import Dict, Any, List
 
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
 
-class Shard:
+class TestScalableIndex(TestMixin):
+    """Test the scalable_index module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestScalableIndex initialized.")
+        
+        
+class Shard(LoggableMixin):
     """An independent data partition inside an Index containing localized segment sheets."""
 
     def __init__(self, shard_id: int) -> None:
+        super().__init__()
         self.shard_id = shard_id
         self.documents: List[Dict[str, Any]] = []
+        self.logger.info("Shard initialized.")
 
     def add_document(self, document: Dict[str, Any]) -> None:
         self.documents.append(document)
 
 
-class ScalableIndex:
+class ScalableIndex(LoggableMixin):
     """A resilient, schema-driven mock index utilizing linear data lookups and shard routing."""
 
     def __init__(self, name: str, mapping: Dict[str, Any], num_shards: int = 3) -> None:
+        super().__init__()
         self.name = name
         self.mapping = mapping.get("properties", {})
+        self.logger.info("ScalableIndex initialized.")
 
         # Instanciate structural underlying shards correctly
         self.shards = [Shard(shard_id=i) for i in range(num_shards)]
@@ -36,7 +49,7 @@ class ScalableIndex:
         # Schema field validation
         for field in document:
             if field not in self.mapping:
-                logger.warning(f"Unmapped field item dropped or ignored during ingestion: {field}")
+                self.logger.warning(f"Unmapped field item dropped or ignored during ingestion: {field}")
         
         target_shard = self._get_shard_route(document_id)
         target_shard.add_document(document)
@@ -60,7 +73,7 @@ class ScalableIndex:
 
         # Validate structural typing constraints
         if search_field not in self.mapping or self.mapping[search_field].get("type") != "text":
-            logger.error(f"Cannot perform text search operations on field type:'{search_field}'")
+            self.logger.error(f"Cannot perform text search operations on field type:'{search_field}'")
 
         # Abstract lookup: $O(N)$ linear filter scan replacing hardcoded rules
         return [

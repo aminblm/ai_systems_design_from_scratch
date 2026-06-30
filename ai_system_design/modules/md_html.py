@@ -1,12 +1,12 @@
 # md_html.py
 from enum import Enum 
 import re
-from typing import Generator
+from typing import Generator, Optional
 from pathlib import Path
 
 from ai_system_design.kernel.utils import IOUtility
 from ai_system_design.modules.safe_yaml_parser import SafeYAMLParser
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
 
 
 class MDSpecialCases(Enum):
@@ -18,10 +18,11 @@ class MDSpecialCases(Enum):
     IMAGE = r'!\[(.*?)\]\((.*?)\)'
 
 
-class MarkdownParser:
+class MarkdownParser(LoggableMixin):
     """Handles the transformation of Markdown text strings into structured HTML."""
     
     def __init__(self) -> None:
+        super().__init__()
         self.inline_rules = [
             (MDSpecialCases.BOLD.value, r'<strong>\1</strong>'),
             (MDSpecialCases.ITALIC.value, r'<em>\1</em>'),
@@ -30,6 +31,7 @@ class MarkdownParser:
             (MDSpecialCases.IMAGE.value, r'<img src="\2" alt="\1">'),
         ]
         self.yaml_config: str = ""
+        self.logger.info("MarkdownParser initialized.")
 
     def _parse_inline_elements(self, text: str) -> str:
         """Applies regex conversions for inline specials (bold, italic, links)."""
@@ -203,26 +205,28 @@ class MarkdownParser:
                 yield parsed
         
 
-class MarkdownConverterFacade:
+class MarkdownConverterFacade(LoggableMixin):
     """Clean operational interface for client applications."""
 
     def __init__(self, parser: MarkdownParser = MarkdownParser()) -> None:
+        super().__init__()
         self.parser = parser
+        self.logger.info("MarkdownConverterFacade initialized.")
 
     def get_yaml_config(self) -> str:
         return self.parser.yaml_config
     
-    def convert_file(self, input_path: str | Path, output_path: str | Path = None) -> Generator[str, None, None]:
+    def convert_file(self, input_path: str | Path, output_path: Optional[str | Path] = None) -> Generator[str, None, None]:
         """Reads markdown from file, converts it, and writes out HTML."""
-        html_content_generator = self.parser.to_html(IOUtility.text_to_lines_generator(IOUtility.read_decoded(input_path), strip=True))
+        html_content_generator = self.parser.to_html(IOUtility().text_to_lines_generator(IOUtility().read_decoded(input_path), strip=True))
         if output_path:
-            IOUtility.write_encoded(output_path, html_content_generator)
+            IOUtility().write_encoded(output_path, html_content_generator)
         return html_content_generator
 
     def convert_text(self, text: str) -> Generator[str, None, None]:
         """Direct string interface."""
-        return self.parser.to_html(IOUtility.text_to_lines_generator(text))
+        return self.parser.to_html(IOUtility().text_to_lines_generator(text))
 
-    def md_text_to_html_file(self, html_file_path: str | Path, html_content: Generator[str, None, None]): IOUtility.write_encoded(html_file_path, html_content)
+    def md_text_to_html_file(self, html_file_path: str | Path, html_content: Generator[str, None, None]): IOUtility().write_encoded(html_file_path, html_content)
     
     def gen_html_from_md_text(self, md_text): return self.parser.to_html(md_text.split("\n"))

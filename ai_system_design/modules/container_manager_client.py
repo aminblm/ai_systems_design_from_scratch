@@ -3,11 +3,23 @@ import sys
 from typing import Optional
 
 from ai_system_design.kernel.socket_client import SocketClient
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
 
-class ContainerManagerClient(SocketClient):
+class TestContainerManagerClient(TestMixin):
+    """Test the container_manager_client module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("ContainerManagerClient initialized.")
+        
+
+class ContainerManagerClient(SocketClient, LoggableMixin):
     """A clean, defencive CLI client for interacting with a remote container management service."""
+    def __init__(self) -> None:
+        super(LoggableMixin).__init__()
+        self.logger.info("ContainerManagerClient initialized.")
 
     def __enter__(self) -> ContainerManagerClient:
         self.context = "Container Manager Client"
@@ -19,12 +31,12 @@ class ContainerManagerClient(SocketClient):
             raise RuntimeError("Cannot write to an uninitialized or dead socket connection.")
         
         if not payload.strip():
-            logger.warning("Skipping empty message body transmission event.")
+            self.logger.warning("Skipping empty message body transmission event.")
             
         response_bytes = self._socket.recv(max_buffer_size)
         if not response_bytes:
             # A zero-byte read indivates the remote server performed a graceful shutdown
-            logger.warning("Remote host has closed the connection stream channel.")
+            self.logger.warning("Remote host has closed the connection stream channel.")
             return ""
         
         return response_bytes.decode('utf-8').strip()
@@ -75,5 +87,5 @@ class ContainerManagerClient(SocketClient):
             except (KeyboardInterrupt, SystemExit):
                 print("\nSession aborted via user signal.")
             except Exception as err:
-                logger.error(f"Network communication cycle faulted: {err}")
+                self.logger.error(f"Network communication cycle faulted: {err}")
                 break

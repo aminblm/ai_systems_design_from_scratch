@@ -1,20 +1,54 @@
 # socket_client.py
+import socket, sys 
 from types import TracebackType
 from typing import Optional, Type, Any
-import socket 
 
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
 
-class SocketClient:
+class TestSocketClient(TestMixin):
+    """Test the socket_client module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestSocketClient initialized.")
+    
+    def test_socket_client(self):
+        SERVER_HOST = "127.0.0.1"
+        SOCKET_SERVER_PORT = 8080
+        # Using a context manager completely replaces manual tracking of .close()
+        try:
+            with SocketClient(SERVER_HOST, SOCKET_SERVER_PORT) as client:
+                server_handshake = client.receive_message()
+                if server_handshake:
+                    print(f"\n[Server]: {server_handshake}")
+
+                #Collect explicit local buffer arguments
+                print("\nEnter outound payload message:")
+                user_input = sys.stdin.readline().strip()
+            
+                if user_input:
+                    client.send_message(user_input)
+                    print(client.receive_message())
+        
+        except (KeyboardInterrupt, SystemExit):
+            self.logger.info("\nExecution cancelled by user signal interrupt. Exiting safely.")
+        except Exception as general_failure:
+            self.logger.critical(f"Fatal application runtime termination event: {general_failure}")
+
+
+class SocketClient(LoggableMixin):
     """A defensive wrapper around client-side sockets ensuring deterministic lifecycle cleanup."""
 
     def __init__(self, host: str, port: int, context: str = "Client Socket", timeout_seconds: float = 10.0) -> None:
+        super().__init__()
         self.host = host
         self.port = port
         self.timeout = timeout_seconds
         self.context = context
         self._socket = None
+        self.logger.info("SocketClient initialized.")
 
     def connect_to_socket_server(self, timeout: float = 10.0) -> socket.socket:
         """Establishes an active network pipe line link connection out to a target remote host."""
@@ -23,21 +57,21 @@ class SocketClient:
             client_socket.settimeout(timeout)
             
             client_socket.connect((self.host, self.port))
-            logger.info(f"[{self.context.upper()}] Successfully bridged communications channel outbound link to {self.host}:{self.port} server.")
+            self.logger.info(f"[{self.context.upper()}] Successfully bridged communications channel outbound link to {self.host}:{self.port} server.")
             return client_socket
         except socket.error as conn_err:
-            logger.error(f"Network transport handshake failure routing towards tcp://{self.host}:{self.port} -> {conn_err}")
+            self.logger.error(f"Network transport handshake failure routing towards tcp://{self.host}:{self.port} -> {conn_err}")
             raise
 
     def __enter__(self) -> Any:
         """Establishes the connection when entering a context manager block."""
         try:
-            logger.info(f"Establishing connection to {self.host}:{self.port}...")
+            self.logger.info(f"Establishing connection to {self.host}:{self.port}...")
             self._socket = self.connect_to_socket_server()
             self._socket.settimeout(self.timeout)
             return self
         except Exception as err:
-            logger.error(f"Failed to connect to server backend: {err}")
+            self.logger.error(f"Failed to connect to server backend: {err}")
             if self._socket:
                 self._socket.close()
             raise
@@ -58,10 +92,10 @@ class SocketClient:
         """Idempotently flushes and dismantles low-level kernel descriptors."""
         if self._socket:
             try:
-                logger.info("Dismantling low-level TCP connection channels cleanly...")
+                self.logger.info("Dismantling low-level TCP connection channels cleanly...")
                 self._socket.close()
             except Exception as err:
-                logger.debug(f"Silent ignore during interface termination: {err}")
+                self.logger.debug(f"Silent ignore during interface termination: {err}")
             finally:
                 self._socket = None
     
@@ -74,15 +108,15 @@ class SocketClient:
             raw_bytes = self._socket.recv(max_buffer_size)
             if not raw_bytes:
                 # A zero-byte read indivates the remote server performed a graceful shutdown
-                logger.warning("Remote host has closed the connection stream channel.")
+                self.logger.warning("Remote host has closed the connection stream channel.")
                 return ""
             
             return raw_bytes.decode('utf-8').strip()
         except TimeoutError:
-            logger.error("Socket read operation timed out waiting for server response.")
+            self.logger.error("Socket read operation timed out waiting for server response.")
             raise
         except Exception as err:
-            logger.error(f"Network error reading transaction line payload: {err}")
+            self.logger.error(f"Network error reading transaction line payload: {err}")
             raise
 
     def send_message(self, message: str) -> None:
@@ -91,13 +125,13 @@ class SocketClient:
             raise RuntimeError("Cannot write to an uninitialized or dead socket connection.")
         
         if not message.strip():
-            logger.warning("Skipping empty message body transmission event.")
+            self.logger.warning("Skipping empty message body transmission event.")
             return
         
         try:
             # sendall blocks and continue puping chunks until the entire payload is drained
             self._socket.sendall(message.encode('utf-8'))
-            logger.info("Payload successfully flushed down-channel.")
+            self.logger.info("Payload successfully flushed down-channel.")
         except Exception as err:
-            logger.error(f"Failed sending outbound message package stream: {err}")
+            self.logger.error(f"Failed sending outbound message package stream: {err}")
             raise

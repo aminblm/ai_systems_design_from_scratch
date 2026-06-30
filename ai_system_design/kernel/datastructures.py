@@ -1,7 +1,18 @@
 # datastructures.py
 
-class Tensor:
-    """Class for the Tensor Data Structure"""
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
 
-class Array:
+
+class Tensor(LoggableMixin):
+    """Class for the Tensor Data Structure"""
+    
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("Tensor initialized.")
+
+class Array(LoggableMixin):
     """Class for the Array Data Structure"""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("Array initialized.")

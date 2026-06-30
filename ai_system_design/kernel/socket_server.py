@@ -2,18 +2,40 @@
 import socket, threading
 from typing import Tuple, Callable, List
 
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
 
-class SocketServer:
+class TestSocketServer(TestMixin):
+    """Test the socket_server module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestSocketServer initialized.")
+
+    def test_socket_server(self):
+        SERVER_HOST = "127.0.0.1"
+        SOCKET_SERVER_PORT = 8080
+
+        server = SocketServer(SERVER_HOST, SOCKET_SERVER_PORT)
+
+        server.add_middleware(lambda text: f"Middleware: {text}".encode("utf-8"))
+        server.add_middleware(lambda text: f"Another Middleware: {text}".encode("utf-8"))
+
+        server.start_socket_server()
+
+        
+class SocketServer(LoggableMixin):
     """A robust, concurrent TCP server that safely manages multi-client connection Lifecycles."""
     
     def __init__(self, host: str, port: int, context: str = 'Socket Server') -> None:
+        super().__init__()
         self.host = host
         self.port = port
         self._is_running = False
         self.context = context
         self._middlewares: List[Callable[[str], bytes]] = [] 
+        self.logger.info("SocketServer initialized.")
 
     def create_socket_server(self, backlog: int = 128) -> socket.socket:
         """Generates a bound TCP master socket server with non-blocking address reuse capabilities."""
@@ -27,11 +49,11 @@ class SocketServer:
             # Elevated the listening queue from a bottlenecked 1 up to an enterprise 128
             server_socket.listen(backlog)
             
-            logger.info(f"[{self.context.upper()} Gateway Core] Infrastructure initialized. Listening at -> tcp://{self.host}:{self.port}")
+            self.logger.info(f"[{self.context.upper()} Gateway Core] Infrastructure initialized. Listening at -> tcp://{self.host}:{self.port}")
             return server_socket
         
         except socket.error as net_err:
-            logger.critical(f"Failed to bind socket network server interface down on {self.host}:{self.port} -> {net_err}")
+            self.logger.critical(f"Failed to bind socket network server interface down on {self.host}:{self.port} -> {net_err}")
             raise
 
     def start_server(self, process_socket_transaction: Callable[[str], bytes]) -> None:
@@ -39,14 +61,14 @@ class SocketServer:
         # Create and bind the socket server safely using utility helpers
         server_socket = self.create_socket_server()
         self._is_running = True
-        logger.info(f"[{self.context.upper()}] Server successfully running on {self.host}:{self.port}")
+        self.logger.info(f"[{self.context.upper()}] Server successfully running on {self.host}:{self.port}")
 
         try:
             while self._is_running:
                 try:
                     # Await new incoming TCP connection streams
                     client_socket, client_address = server_socket.accept()
-                    logger.info(f"Accepted inbound network pipe connection from: {client_address}")
+                    self.logger.info(f"Accepted inbound network pipe connection from: {client_address}")
                     
                     # Spun off connection to an independent thread to prevent blocking loops
                     client_thread = threading.Thread(
@@ -58,19 +80,19 @@ class SocketServer:
                     
                 except socket.error as sock_err:
                     if self._is_running:
-                        logger.error(f"Socket acceptance pipeline exception: {sock_err}")
+                        self.logger.error(f"Socket acceptance pipeline exception: {sock_err}")
                     break
                 
                 # TODO Server not interuppting on System exit
                 except KeyboardInterrupt, SystemExit:
-                    logger.info("Intercepted termination signal. Shutting down system interfaces...")
+                    self.logger.info("Intercepted termination signal. Shutting down system interfaces...")
                     server_socket.close()
                     self._is_running = False
                     break   
         finally:
             self._is_running = False
             server_socket.close()
-            logger.info("Master server socket dropped cleanly.")
+            self.logger.info("Master server socket dropped cleanly.")
 
     def start_socket_server(self):
         self.start_server(self._process_socket_transaction)
@@ -102,19 +124,19 @@ class SocketServer:
             raw_payload = client_socket.recv(4096)
             if raw_payload:
                 request_text = raw_payload.decode('utf-8').strip()
-                logger.info(f"[{client_address}] Sent Echo payload: {request_text}")
+                self.logger.info(f"[{client_address}] Sent Echo payload: {request_text}")
                 response_bytes = self.process_request(request_text, process_socket_transaction)
                 client_socket.sendall(response_bytes)
             else:
-                logger.warning(f"[{client_address}] Closed connection early without data transmission.")
+                self.logger.warning(f"[{client_address}] Closed connection early without data transmission.")
                 
         except socket.timeout:
-            logger.warning(f"[{client_address}] Stream transmission timed out. Evicting client socket.")
+            self.logger.warning(f"[{client_address}] Stream transmission timed out. Evicting client socket.")
         except Exception as error:
-            logger.error(f"Exception handling transaction loops for client {client_address}: {error}")
+            self.logger.error(f"Exception handling transaction loops for client {client_address}: {error}")
         finally:
             client_socket.close()
-            logger.info(f"Cleaned up network socket resources for client: {client_address}")
+            self.logger.info(f"Cleaned up network socket resources for client: {client_address}")
 
     def _process_socket_transaction(self, request_text: str) -> bytes:
         """Parses raw text frames and constructs fully compliant HTTP/1.1 response bytes."""

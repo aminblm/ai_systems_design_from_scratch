@@ -3,14 +3,27 @@ import time
 from dataclasses import dataclass, field
 from typing import Dict, Any, List, Optional, Callable
 
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
+
+class TestRealtimeRedisEngine(TestMixin):
+    """Test the realtime_redis_engine module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestRealtimeRedisEngine initialized.")
+        
 
 @dataclass
-class RedisObject:
+class RedisObject(LoggableMixin):
     """An internal storage wrapper holding an explicit data payload and its eviction metadata."""
     value: Any
     expires_at: Optional[float] = None # Epoch timestamp representing absolute death boundary
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("RedisObject initialized.")
 
     def is_expired(self) -> bool:
         """Determines if the instance has surpassed its chronological survival window."""
@@ -19,12 +32,14 @@ class RedisObject:
         return time.time() >= self.expires_at
 
 
-class RealtimeRedisEngine:
+class RealtimeRedisEngine(LoggableMixin):
     """A type-safe, resilient in-memory data store replacing key Redis operations."""
 
     def __init__(self) -> None:
+        super().__init__()
         # A flat unified namespace map matches Redis's core architecture
         self._db: Dict[str, RedisObject] = {}
+        self.logger.info("RealtimeRedisEngine initialized.")
 
     def _get_valid_obj(self, key: str) -> Optional[RedisObject]:
         """Fetches a record dynamically while perfoming passive lazy eviction pruning."""
@@ -33,7 +48,7 @@ class RealtimeRedisEngine:
             return None
         
         if obj.is_expired():
-            logger.info(f"[Lazy Eviction] Key '{key}' has passed its TTL threshold.")
+            self.logger.info(f"[Lazy Eviction] Key '{key}' has passed its TTL threshold.")
             del self._db[key]
             return None
         

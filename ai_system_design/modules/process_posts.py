@@ -1,8 +1,20 @@
+# process_posts.py
 import re
 import argparse
 import shutil
 from pathlib import Path
 
+from ai_system_design.kernel.test_mixin import TestMixin
+
+
+class TestProcessPosts(TestMixin):
+    """Test the process_posts module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestProcessPosts initialized.")
+        
+        
 # --- Configuration & Assets ---
 AUTHOR_NAME = "Amin Boulouma"
 AUTHOR_LINK = "https://linktr.ee/aminboulouma"

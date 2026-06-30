@@ -1,15 +1,27 @@
 # slug_generator.py
 import datetime, re, sys, unicodedata
 
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
+class TestSlugGenerator(TestMixin):
+    """Test the slug_generator module functionality."""
 
-class SlugGenerator:
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestSlugGenerator initialized.")
+
+    def test_slug_generator(self):
+        JekyllFilenameController().start_generator_interface()
+
+class SlugGenerator(LoggableMixin):
     """Handles the transformation of raw text titles into clean, web-safe SEO slugs."""
     
     def __init__(self, allow_unicode: bool = False):
+        super().__init__()
         # Allow custom punctuation masks, defaulting to standard string punctuation
         self.allow_unicode = allow_unicode 
+        self.logger.info("SlugGenerator initialized.")
         
     def transform_to_slug(self, text: str) -> str:
         """Decomposes, purges, and reformats string text into clean hyphenated tokens."""
@@ -34,11 +46,13 @@ class SlugGenerator:
         return text.strip('-')
 
 
-class JekyllFilenameController:
+class JekyllFilenameController(LoggableMixin):
     """Orchestrates interactive terminal interfaces and handles dynamic filesystem name routing."""
 
     def __init__(self, generator: SlugGenerator = SlugGenerator(allow_unicode=False)) -> None:
+        super().__init__()
         self.generator = generator
+        self.logger.info("JekyllFilenameController initialized.")
 
     @property
     def current_date_string(self) -> str:

@@ -3,14 +3,24 @@ import json
 from typing import Any, Dict
 
 from ai_system_design.kernel.socket_server import SocketServer
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
 
-class GitRPCServer(SocketServer):
+class TestGitRPCServer(TestMixin):
+    """Test the git_rpc_server module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestGitRPCServer initialized.")
+        
+        
+class GitRPCServer(SocketServer, LoggableMixin):
     """A safe, multi-threaded RPC server for orchestrating remote Git workflow operations."""
     
     def __init__(self, host: str, port: int, context: str = "Git RPC Server") -> None:
         super().__init__(host, port, context)
+        self.logger.info("GitRPCServer initialized.")
 
     def start_git_rpc_server(self):
         """Initializes listener interfaces and delegates incoming connections to workers."""

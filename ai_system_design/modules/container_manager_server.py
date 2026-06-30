@@ -3,13 +3,23 @@ import json, threading
 from typing import Dict, List
 
 from ai_system_design.kernel.socket_server import SocketServer
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
 
-class ContainerManagerServer(SocketServer):
+class TestContainerManagerServer(TestMixin):
+    """Test the container_manager_server module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("ContainerManagerServer initialized.")
+        
+
+class ContainerManagerServer(SocketServer, LoggableMixin):
     """A thread-safe, concurrent TCP daemon for managing mock container environment."""
     def __init__(self, host: str, port: int, context: str = "Container Manager") -> None:
         super().__init__(host, port, context)
+        self.logger.info("ContainerManagerServer initialized.")
 
         # Enforce thread-safety since multiple client threads will read/write to memory storage
         self._lock = threading.Lock()
@@ -26,7 +36,7 @@ class ContainerManagerServer(SocketServer):
             if not payload:
                 continue
 
-            logger.info(f'Processing command sequence stream: {payload}')
+            self.logger.info(f'Processing command sequence stream: {payload}')
             parts = payload.split()
             command = parts[0]
 

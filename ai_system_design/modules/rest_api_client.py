@@ -3,11 +3,24 @@ import sys
 from typing import Optional
 
 from ai_system_design.kernel.socket_client import SocketClient
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
 
-class RESTAPIClient(SocketClient):
+class TestRESTAPIClient(TestMixin):
+    """Test the rest_api_client module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestRESTAPIClient initialized.")
+        
+        
+class RESTAPIClient(SocketClient, LoggableMixin):
     """A clean raw-socket HTTP client implementating defensive parsing frames over TCP streams."""
+
+    def init__(self) -> None:
+        super(LoggableMixin).__init__()
+        self.logger.info("RESTAPIClient initialized.")
 
     def __enter__(self) -> RESTAPIClient:
         self.context = "REST API Client"
@@ -40,7 +53,7 @@ class RESTAPIClient(SocketClient):
 
         raw_payload = "\r\n".join(request_buffer)
         self._socket.sendall(raw_payload.encode('utf-8'))
-        logger.info(f"Successfully flushed raw {method} request downstream.")
+        self.logger.info(f"Successfully flushed raw {method} request downstream.")
 
     def receive_and_parse_response(self) -> None:
         """Reads incoming network streams and outputs clear structural trace feedback blocks."""
@@ -127,5 +140,5 @@ class RESTAPIClient(SocketClient):
                 print("\nSession killed via hardware terminal close command.")
                 break
             except Exception as loop_fault:
-                logger.error(f"Execution handling cycle failed downstream: {loop_fault}")
+                self.logger.error(f"Execution handling cycle failed downstream: {loop_fault}")
                 break

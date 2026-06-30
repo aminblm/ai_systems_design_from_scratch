@@ -4,10 +4,19 @@ from typing import Callable, Dict, Tuple, List
 from functools import wraps
 
 from ai_system_design.kernel.socket_server import SocketServer
-from ai_system_design.kernel.logger import logger
+from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.test_mixin import TestMixin
 
 
-class RESTAPIServer(SocketServer):
+class TestRESTAPIServer(TestMixin):
+    """Test the rest_api_server module functionality."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.logger.info("TestRESTAPIServer initialized.")
+        
+        
+class RESTAPIServer(SocketServer, LoggableMixin):
     def __init__(self, host, port, context="REST API") -> None:
         super().__init__(host, port, context)
         # Explicit route mapping tree structure
@@ -16,6 +25,7 @@ class RESTAPIServer(SocketServer):
             "GET": {}, "POST": {}, "PUT": {}, "DELETE": {}
         }
         self._register_core_endpoints()
+        self.logger.info("RESTAPIServer initialized.")
 
     def register_endpoint(self, method: str, path: str, status: int, content_type: str, content: str) -> None:
         self._routes[method][path] = lambda body: (status, content_type, content)
@@ -86,7 +96,7 @@ class RESTAPIServer(SocketServer):
             status, content_type, payload = method_routes[path](body_content)
             return self._build_http_response(status, content_type, payload)
         except Exception as route_err:
-            logger.error(f"Internal Route Exception evaluating path '{path}': {route_err}")
+            self.logger.error(f"Internal Route Exception evaluating path '{path}': {route_err}")
             return self._build_http_response(500, "text/plain", "Internal Server Error")
 
     def _build_http_response(self, status_code: int, content_type: str, body: str) -> bytes:
