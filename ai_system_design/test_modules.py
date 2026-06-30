@@ -115,5 +115,10 @@ class TestModules(TestMixin):
                 from ai_system_design.kernel.pipeline_manager import TestPipelineManager
                 TestPipelineManager().test()
 
+            # Linter
+            case "pre_flight_linter":
+                from ai_system_design.kernel.pre_flight_linter import TestPreFlightLinter
+                TestPreFlightLinter().test()
+
             # Edge-cases
             case _: self.logger.warning("Enter a valid test case.") 
