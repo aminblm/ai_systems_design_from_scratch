@@ -1,16 +1,15 @@
-# process_posts.py
-import os
 import re
 import argparse
+import shutil
+from pathlib import Path
 
-# Configuration
+# --- Configuration & Assets ---
 AUTHOR_NAME = "Amin Boulouma"
 AUTHOR_LINK = "https://linktr.ee/aminboulouma"
 HUB_URL = "https://aminblm.github.io/ai_systems_design_from_scratch/"
 BLOG_URL = f"{HUB_URL}blog"
 GH_URL = "https://github.com/aminblm/ai_systems_design_from_scratch"
 
-# Templates
 META_TEMPLATE = """
 <head>
   <meta charset="utf-8">
@@ -40,6 +39,10 @@ AUTHOR_LINK_HTML = f"""
 </a>
 """
 
+PH_BADGE = """
+<a href="https://www.producthunt.com/products/ai-systems-design-from-first-principles?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-ai-systems-design-from-first-principles" target="_blank" rel="noopener noreferrer"><img alt="AI Systems Design From First Principles - An implementation of AI Systems Design From First Principles | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1173628&amp;theme=dark&amp;t=1781635927239"></a>
+"""
+
 LINKS_DIV = f"""
 <div style="text-align: center; margin: 2rem 0; padding-bottom: 1rem; border-bottom: 1px solid #e9ebec;">
   <a href="{HUB_URL}" class="btn" style="margin: 0.25rem; padding: 0.6rem 1rem; font-weight: normal; font-size: 0.9rem; background-color: #24292e; border-color: #24292e;">🏠 Documentation Hub</a>
@@ -48,132 +51,45 @@ LINKS_DIV = f"""
 </div>
 """
 
-AUTHOR_CARD = """
+AUTHOR_CARD = f"""
 <div class="author-card">
-    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
+    <p><strong>{AUTHOR_NAME}</strong>, <i>Software Engineer</i></p>
 </div>
 """
 
-def wrap_raw(content):
-    """Wraps the content in Jekyll raw tags."""
-    return f"{{% raw %}}\n{content}\n{{% endraw %}}\n"
+# --- Transformation Logic ---
 
-def process_posts(input_dir, output_dir):
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+def wrap_raw(content: str) -> str:
+    return f"{{% raw %}}\n{content.strip()}\n{{% endraw %}}\n"
 
-    for filename in os.listdir(input_dir):
-        if filename.endswith('.md'):
-            input_path = os.path.join(input_dir, filename)
-            output_path = os.path.join(output_dir, filename)
-            
-            with open(input_path, 'r', encoding='utf-8') as f:
-                content = f.read()
+def transform_content(content: str) -> str:
+    parts = re.split(r'^---', content, maxsplit=2, flags=re.MULTILINE)
+    if len(parts) < 3: return content
+    
+    front_matter, body = parts[1], parts[2]
+    body = re.sub(r'^\s*---\s*$', '', body, flags=re.MULTILINE)
+    
+    # 1. Header Assembly
+    header = f"{META_TEMPLATE}\n{AUTHOR_LINK_HTML}\n{PH_BADGE}\n{wrap_raw(LINKS_DIV)}"
+    
+    # 2. Body Assembly
+    # Inject Author Card after first H1
+    body = re.sub(r'(# .+\n)', r'\1\n' + wrap_raw(AUTHOR_CARD) + '\n', body, count=1)
+    
+    # 3. Footer Assembly
+    footer = wrap_raw(AUTHOR_LINK_HTML)
+    
+    return f"---\n{front_matter}\n---\n{header}\n{body.strip()}\n\n{footer}"
 
-            parts = re.split(r'^---', content, maxsplit=2, flags=re.MULTILINE)
-            if len(parts) < 3: continue
-            
-            front_matter, body = parts[1], parts[2]
-            
-            # Clean body of redundant horizontal rules
-            body = re.sub(r'^\s*---\s*$', '', body, flags=re.MULTILINE)
-            
-            # Reconstruct with Metas and wrapped HTML elements
-            new_content = f"---\n{front_matter}\n---\n{META_TEMPLATE}\n{wrap_raw(AUTHOR_LINK_HTML + '\n' + LINKS_DIV)}\n{body}"
-            
-            # Insert Author Card after the first H1
-            new_content = re.sub(r'(# .+\n)', r'\1\n' + wrap_raw(AUTHOR_CARD) + '\n', new_content, count=1)
-            
-            # Append Footer
-            new_content = new_content.rstrip() + "\n\n" + wrap_raw("\n" + AUTHOR_LINK_HTML) + "\n"
-            
-            with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(new_content)
-            print(f"Processed: {filename} -> {output_dir}")
+# --- Execution Engine ---
 
-def clean_posts(input_dir, output_dir):
-    """
-    Standardizes Markdown files by stripping non-breaking spaces 
-    and redundant separators to ensure Jekyll renders HTML correctly.
-    """
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-
-    for filename in os.listdir(input_dir):
-        if filename.endswith('.md'):
-            input_path = os.path.join(input_dir, filename)
-            output_path = os.path.join(output_dir, filename)
-            
-            with open(input_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-
-            # 1. Remove non-breaking spaces (Unicode U+00A0)
-            content = content.replace('\u00a0', ' ')
-            
-            # 2. Clean up redundant horizontal rules (---) inside body
-            # Split only on the first YAML boundary
-            parts = re.split(r'^---', content, maxsplit=2, flags=re.MULTILINE)
-            if len(parts) < 3: continue
-            
-            front_matter, body = parts[1], parts[2]
-            
-            # Remove isolated --- lines
-            body = re.sub(r'^\s*---\s*$', '', body, flags=re.MULTILINE)
-            
-            # 3. Ensure double newline between HTML and Markdown
-            # This is critical for Jekyll HTML rendering
-            body = re.sub(r'(</div>|</a>)\s*\n(?=#)', r'\1\n\n\n', body)
-            
-            # Write cleaned file
-            with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(f"---\n{front_matter}\n---\n{body}")
-            
-            print(f"Cleaned: {filename}")    
-
-def clean_author(input_dir, output_dir):
-    """
-    Sanitizes markdown files, injects components, and standardizes Jekyll rendering.
-    """
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-
-    # Regex to capture the {% raw %} wrapped author card block
-    raw_author_pattern = re.compile(
-        r'\{%\s*raw\s*%\}\s*<div class="author-card">\s*<p><strong>\{\{\s*site\.author\.name\s*\}\}</strong>\s*, \s*<i>\{\{\s*site\.author\.bio\s*\}\}</i></p>\s*</div>\s*\{%\s*endraw\s*%\}',
-        re.MULTILINE
-    )
-
-    clean_author_html = """<div class="author-card">
-    <p><strong>Amin Boulouma</strong>,  <i>Software Engineer</i></p>
-</div>"""
-
-    for filename in os.listdir(input_dir):
-        if filename.endswith('.md'):
-            input_path = os.path.join(input_dir, filename)
-            output_path = os.path.join(output_dir, filename)
-            
-            with open(input_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-
-            # 1. PURGE INVISIBLE CHARACTERS
-            # Remove non-breaking spaces (U+00A0) and other hidden control chars
-            content = content.replace('\u00a0', ' ')
-            
-            # 2. REPLACE WRAPPED AUTHOR CARD
-            content = raw_author_pattern.sub(clean_author_html, content)
-            
-            # 3. ENSURE RENDERING SPACING
-            # Force empty lines around div/a blocks if they precede headers
-            content = re.sub(r'(</div>|</a>)\s*\n(?=#)', r'\1\n\n\n', content)
-            
-            with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(content)
-            
-            print(f"Sanitized and Updated: {filename}")
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Process Markdown files.")
-    parser.add_argument("--input", required=True)
-    parser.add_argument("--output", required=True)
-    args = parser.parse_args()
-    process_posts(args.input, args.output)
+def run_pipeline(input_dir: Path, output_dir: Path):
+    if output_dir.exists():
+        shutil.rmtree(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    for md_file in input_dir.glob("*.md"):
+        content = md_file.read_text(encoding='utf-8')
+        transformed = transform_content(content)
+        (output_dir / md_file.name).write_text(transformed, encoding='utf-8')
+        print(f"Processed: {md_file.name}")

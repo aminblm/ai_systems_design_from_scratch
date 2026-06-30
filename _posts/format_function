@@ -1,2 +1,0 @@
-def _wrap(self, text, marker):
-        return "{}{}{}".format(marker, text, marker)

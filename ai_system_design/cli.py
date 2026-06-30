@@ -20,7 +20,7 @@ from ai_system_design.rest_api_server import RESTAPIServer
 from ai_system_design.socket_server import SocketServer
 from ai_system_design.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.architecture_renderer import ArchitectureRenderer, ArchComponent
-from ai_system_design.process_posts import clean_posts, clean_author
+from ai_system_design.process_posts import run_pipeline, Path
 from ai_system_design.logger import logger
 from ai_system_design.debugger import debug
 
@@ -387,22 +387,19 @@ def architecture_renderer():
     
     logger.info("Artifact generation successful: 'arch_diagram.html' created.")
 
-def process_posts():
-    """Example usage> python test.py --input _posts/20260623-in --output _posts/20260623-out"""
-    parser = argparse.ArgumentParser(description="Inject metadata and links into Markdown posts.")
-    parser.add_argument("--input", required=True, help="Input directory containing markdown files")
-    parser.add_argument("--output", required=True, help="Output directory for processed files")
-    
-    args = parser.parse_args()
-    #process_posts(args.input, args.output)
-    #clean_posts(args.input, args.output)
-    #clean_author(args.input, args.output)
+def process_posts(input, output):
+    run_pipeline(input, output)
 
 def cli():
     """Example module usage: 
     python main.py --module slug_generator"""
     parser = argparse.ArgumentParser(description="AI System Design Modules")
     parser.add_argument("--module", required=True)
+
+    # process_posts arguments
+    parser.add_argument("--input", required=False, type=Path, help="Input directory containing .md files")
+    parser.add_argument("--output", required=False, type=Path, help="Output directory for processed files")      
+    
     args = parser.parse_args()
     match args.module:
         # Frontend
@@ -450,8 +447,8 @@ def cli():
         case "slug_generator": slug_generator()
         case "safe_yaml_parser": safe_yaml_parser()
         case "architecture_renderer": architecture_renderer()
-        case "process_posts": process_posts()
+        case "process_posts": process_posts(args.input, args.output)
 
         # Edge-cases
-        case _: logger.warning("Enter a valid test case.")
+        case _: logger.warning("Enter a valid module.")
     pass
