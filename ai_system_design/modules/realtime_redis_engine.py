@@ -1,6 +1,6 @@
 # realtime_redis_engine.py
-import time
-from dataclasses import dataclass, field
+import time, sys
+from dataclasses import dataclass
 from typing import Dict, Any, List, Optional, Callable
 
 from ai_system_design.kernel.loggable_mixin import LoggableMixin
@@ -13,6 +13,30 @@ class TestRealtimeRedisEngine(TestMixin):
     def __init__(self) -> None:
         super().__init__()
         self.logger.info("TestRealtimeRedisEngine initialized.")
+
+    def test_realtime_redis_engine(self):
+        engine = RealtimeRedisEngine()
+        print("\n=== Multi-Type Mock Redis Cluster Interface Engaged ===")
+        print("Execute core commands [SET, GET, DEL, INCR, EXPIRE, TTL]. Type 'exit' to halt.")
+
+        while True:
+            try:
+                print("\nredis-cli> ", end="", flush=True)
+                input_line = sys.stdin.readline().strip()
+
+                if input_line.lower() in ('exist', 'quit'):
+                    print("Halting server instance engine state cleanly.")
+                    break
+
+                if not input_line:
+                    continue
+
+                execution_output = engine.execute_command_string(input_line)
+                print(execution_output)
+
+            except (KeyboardInterrupt, SystemExit):
+                print("\nTerminated via supervisor hardware signal line.")
+                break
         
 
 @dataclass

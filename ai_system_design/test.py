@@ -1,10 +1,7 @@
 import sys, argparse
 
-from ai_system_design.modules.scalable_index import ScalableIndex
 from ai_system_design.modules.round_robin_load_balancer import RoundRobinLoadBalancer, web_node_alpha, web_node_beta, web_node_gamma
-from ai_system_design.modules.distributed_no_sql_database import DistributedDatabase
 from ai_system_design.modules.intent_matching_engine import IntentMatchingEngine
-from ai_system_design.modules.realtime_redis_engine import RealtimeRedisEngine
 from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.modules.architecture_renderer import ArchitectureRenderer, ArchComponent
 from ai_system_design.modules.process_posts import run_pipeline
@@ -44,44 +41,6 @@ INTENT_DATA_REPOS = {
 
 
 
-def test_scalable_index():
-    # Initialise index schema configuration boundaries safely
-    schema_config = {
-        "properties": {
-            "title": {"type": "text"},
-            "author": {"type": "text"},
-            "date": {"type": "date"}
-        }
-    }
-
-    # Spin up an index containing 4 dinstinct shards
-    search_index = ScalableIndex("production_index", schema_config, num_shards=4)
-
-    # Ingest data targets passing distinct system ID routing handles
-    search_index.add_document(document_id=101, document={
-        "title": "Design Patterns", "author": "John Doe", "date": "2026-01-01"
-    })
-    search_index.add_document(document_id=102, document={
-        "title": "Concurrent Computing", "author": "John Pie", "date": "2026-03-15"
-    })
-    search_index.add_document(document_id=103, document={
-        "title": "Distributed Systems Handbook", "author": "John Doe", "date": "2026-05-20"
-    })
-
-    # Execute dynamic search query
-    pie_query = {"term": {"author": "John Pie"}}
-    doe_query = {"term": {"author": "John Doe"}}
-
-    print("Search Results (John Pie)", search_index.search(pie_query))
-    print("Search Results (John Doe)", search_index.search(doe_query))
-
-    # Evalue aggregations
-    author_aggregation = {"term": {"field": "author"}}
-    print("Aggregation Results (Author):", search_index.aggregate_counts(author_aggregation))
-
-    # Print out actual distributed allocation struction across partitions
-    for shard in search_index.shards:
-        print(f"Shard {shard.shard_id} allocation storage list size: {len(shard.documents)}") 
 
 
 
@@ -116,37 +75,6 @@ def test_round_robin_load_balancer():
             print("\nSystem execution loop terminated via hardware interrupt signal.")
             break
 
-def test_distributed_no_sql_database():
-    # 1. Initialize our clustered store wrapper
-    db = DistributedDatabase("production_cluster", num_shards=2)
-
-    # 2. Establish our collection metadata layout boundaries
-    users_schema = {"name": "text", "age": "int", "status": "text"}
-    users = db.create_collection("users", schema=users_schema)
-
-    # 3. Populate collection store variables
-    users.insert_one({"name": "Alice", "age": 30, "status": "active"})
-    users.insert_one({"name": "Bob", "age": 30, "status": "pending"})
-    users.insert_one({"name": "Charlie", "age": 25, "status": "active"})
-
-    # 4. Perform structured search query actions
-    search_results = users.find({"age": 30})
-    print("Search Results (age == 30):", search_results)
-
-    # 5. Execute explicit pipeline queries (Fully functional pipeline handling)
-    aggregation_pipeline = [
-        {"$match": {"status": "active"}},
-        {"$count": "active_users_count"}
-    ]
-    agg_results = users.aggregate(aggregation_pipeline)
-    print("\nAggregation Framework Output:", agg_results)
-
-    # 6. Distribute elements down onto structural data cluster partitions safely
-    db.shard_collection("users", shard_key="name")
-    
-    for shard in db.shards:
-        allocated = shard.collections.get("users", [])
-        print(f"Cluster Shard #{shard.shard_id} local document count: {len(allocated)}")
 
 def test_intent_matching_engine():
     # Instantiate engine cleanly parsing external mapping values
@@ -172,30 +100,6 @@ def test_intent_matching_engine():
 
         except (KeyboardInterrupt, SystemExit):
             print("\nSession killed via hardware interrupt signal.")
-            break
-
-def test_realtime_redis_engine():
-    engine = RealtimeRedisEngine()
-    print("\n=== Multi-Type Mock Redis Cluster Interface Engaged ===")
-    print("Execute core commands [SET, GET, DEL, INCR, EXPIRE, TTL]. Type 'exit' to halt.")
-
-    while True:
-        try:
-            print("\nredis-cli> ", end="", flush=True)
-            input_line = sys.stdin.readline().strip()
-
-            if input_line.lower() in ('exist', 'quit'):
-                print("Halting server instance engine state cleanly.")
-                break
-
-            if not input_line:
-                continue
-
-            execution_output = engine.execute_command_string(input_line)
-            print(execution_output)
-
-        except (KeyboardInterrupt, SystemExit):
-            print("\nTerminated via supervisor hardware signal line.")
             break
 
 
@@ -309,11 +213,17 @@ def test_modules():
             TestContainerManagerServer().test_container_manager_server()
 
         # Databases
-        case "scalable_index": test_scalable_index()
-        case "distributed_no_sql_database": test_distributed_no_sql_database()
+        case "scalable_index": 
+            from ai_system_design.modules.scalable_index import TestScalableIndex
+            TestScalableIndex().test_scalable_index()
+        case "distributed_no_sql_database": 
+            from ai_system_design.modules.distributed_no_sql_database import TestDistributedNoSQLDatabase
+            TestDistributedNoSQLDatabase().test_distributed_no_sql_database()
         
         # Caching
-        case "realtime_redis_engine": test_realtime_redis_engine()
+        case "realtime_redis_engine": 
+            from ai_system_design.modules.realtime_redis_engine import TestRealtimeRedisEngine
+            TestRealtimeRedisEngine().test_realtime_redis_engine()
 
         # AI - Intent matching enging
         case "intent_matching_engine": test_intent_matching_engine()
