@@ -774,3 +774,6 @@ Unified protocols define the machine's true reach.
 
 Would you like to implement an **SSE (Server-Sent Events) Bridge** that allows your platform to push live system updates directly to connected AI assistants?
 
+# 21.                     snapshot[full_path] = os.path.getmtime(full_path)
+
+# 22. Funny bug: def __init__(self): self.__init__() RecursionError: maximum recursion depth exceeded

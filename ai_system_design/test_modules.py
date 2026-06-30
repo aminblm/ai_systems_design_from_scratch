@@ -107,5 +107,10 @@ class TestModules(TestMixin):
                 from ai_system_design.kernel.debugger import TestDebugger
                 TestDebugger().test()
 
+            # File System Watcher
+            case "file_system_watcher":
+                from ai_system_design.modules.file_system_watcher import TestFileSystemWatcher
+                TestFileSystemWatcher().test()
+
             # Edge-cases
             case _: self.logger.warning("Enter a valid test case.") 
