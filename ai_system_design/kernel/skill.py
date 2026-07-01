@@ -1,3 +1,7 @@
+# skill.py
+
+"""Universal contract for an executable capability."""
+
 from abc import ABC, abstractmethod
 from typing import Any, Dict
 
@@ -16,6 +20,9 @@ class Skill(ABC):
 # Example of a specialized Skill implementation
 class DataFetchSkill(Skill):
     def execute(self, params: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Example Execute
+        """
         try:
             # 1. Validation logic
             if "query" not in params:

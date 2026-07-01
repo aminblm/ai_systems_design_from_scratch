@@ -243,20 +243,20 @@
 
 ## File: `file_system_watcher.py`
 
-> Upcoming documentation
+> A recursive, zero-dependency file system monitor.
 
 ### `TestFileSystemWatcher`
 
-> Upcoming documentation
+> TestFileSystemWatcher Class.
 ### `FileSystemWatcher`
 
 > A recursive, zero-dependency file system monitor.
 **`__init__`**
 
-> Upcoming documentation
+> TestFileSystemWatcher Constructor.
 **`test`**
 
-> Upcoming documentation
+> TestFileSystemWatcher Test.
 **`__init__`**
 
 > Upcoming documentation
@@ -439,20 +439,20 @@
 
 ## File: `pipeline_manager.py`
 
-> Upcoming documentation
+> The central orchestrator for system rebuilds.
 
 ### `TestPipelineManager`
 
-> Upcoming documentation
+> TestPipelineManager Class.
 ### `PipelineManager`
 
 > The central orchestrator for system rebuilds.
 **`__init__`**
 
-> Upcoming documentation
+> TestPipelineManager Constructor.
 **`test`**
 
-> Upcoming documentation
+> TestPipelineManager Test.
 **`__init__`**
 
 > Upcoming documentation
@@ -465,27 +465,27 @@
 
 ## File: `pre_flight_linter.py`
 
-> Upcoming documentation
+> Blocks code that violates architectural standards.
 
 ### `TestPreFlightLinter`
 
-> Upcoming documentation
+> TestPreFlightLinter Class.
 ### `PreFlightLinter`
 
 > Blocks code that violates architectural standards.
 **`__init__`**
 
-> Upcoming documentation
+> TestPreFlightLinter Constructor.
 **`test`**
 
-> Upcoming documentation
+> TestPreFlightLinter Test.
 **`check_file`**
 
 > Upcoming documentation
 
 ## File: `self_health_monitor.py`
 
-> Upcoming documentation
+> "Monitors system health and auto-restarts failed modules.
 
 ### `TestSelfHealthService`
 
@@ -495,10 +495,10 @@
 > "Monitors system health and auto-restarts failed modules.
 **`__init__`**
 
-> Upcoming documentation
+> TestSelfHealthService Constructor.
 **`test`**
 
-> Upcoming documentation
+> TestSelfHealthService Test.
 **`__init__`**
 
 > Upcoming documentation
@@ -508,7 +508,7 @@
 
 ## File: `skill.py`
 
-> Upcoming documentation
+> Universal contract for an executable capability.
 
 ### `Skill`
 
@@ -522,11 +522,11 @@
 Must always return a status and result payload.
 **`execute`**
 
-> Upcoming documentation
+> Example Execute
 
 ## File: `socket_client.py`
 
-> Upcoming documentation
+> A defensive wrapper around client-side sockets ensuring deterministic lifecycle cleanup.
 
 ### `TestSocketClient`
 
@@ -536,13 +536,13 @@ Must always return a status and result payload.
 > A defensive wrapper around client-side sockets ensuring deterministic lifecycle cleanup.
 **`__init__`**
 
-> Upcoming documentation
+> TestSocketClient Constructor.
 **`test`**
 
-> Upcoming documentation
+> TestSocketClient Test.
 **`__init__`**
 
-> Upcoming documentation
+> SocketClient Constructor.
 **`connect_to_socket_server`**
 
 > Establishes an active network pipe line link connection out to a target remote host.
@@ -564,7 +564,7 @@ Must always return a status and result payload.
 
 ## File: `socket_server.py`
 
-> Upcoming documentation
+> Test the socket_server module functionality.
 
 ### `TestSocketServer`
 
@@ -574,10 +574,10 @@ Must always return a status and result payload.
 > A robust, concurrent TCP server that safely manages multi-client connection Lifecycles.
 **`__init__`**
 
-> Upcoming documentation
+> TestSocketServer Constructor.
 **`test`**
 
-> Upcoming documentation
+> TestSocketServer Test.
 **`__init__`**
 
 > Upcoming documentation
@@ -589,13 +589,13 @@ Must always return a status and result payload.
 > Binds the underlying socket and enters the concurrent client acceptance loop.
 **`start_socket_server`**
 
-> Upcoming documentation
+> TestSocketServer method.
 **`add_middleware`**
 
 > Adds middlewares to the server
 **`process_request`**
 
-> Upcoming documentation
+> TestSocketServer method.
 **`_handle_client_lifecycle`**
 
 > Manages the read/write streaming transactions for a single isolated connection.
@@ -639,17 +639,17 @@ Must always return a status and result payload.
 
 ## File: `utils.py`
 
-> Upcoming documentation
+> Provides atomic, type-safe filesystem I/O operations with explicit encoding safeguards.
 
 ### `IOUtility`
 
 > Provides atomic, type-safe filesystem I/O operations with explicit encoding safeguards.
 **`__init__`**
 
-> Upcoming documentation
+> IOUtility Constructor.
 **`text_to_lines_generator`**
 
-> Upcoming documentation
+> IOUtility Method.
 **`read_decoded`**
 
 > Reads a filesystem file safely, handling decoding anomalies with fallback flags.

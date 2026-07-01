@@ -1,5 +1,7 @@
 # pre_flight_linter.py
 
+"""Blocks code that violates architectural standards."""
+
 
 import ast
 
@@ -7,11 +9,15 @@ from ai_system_design.kernel.mixins import TestMixin
 
 
 class TestPreFlightLinter(TestMixin):
+    """TestPreFlightLinter Class."""
+
     def __init__(self):
+        """TestPreFlightLinter Constructor."""
         super().__init__()
         self.logger.info("TestPreFlightLinter initialized.")
 
     def test(self):
+        """TestPreFlightLinter Test."""
         super().test()
         MODULE_PATH = "ai_system_design/kernel/test_mixin.py"
 

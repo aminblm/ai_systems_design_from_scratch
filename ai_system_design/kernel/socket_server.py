@@ -1,4 +1,7 @@
 # socket_server.py
+
+"""Test the socket_server module functionality."""
+
 import socket, threading
 from typing import Tuple, Callable, List
 
@@ -9,10 +12,12 @@ class TestSocketServer(TestMixin):
     """Test the socket_server module functionality."""
 
     def __init__(self) -> None:
+        """TestSocketServer Constructor."""
         super().__init__()
         self.logger.info("TestSocketServer initialized.")
 
     def test(self):
+        """TestSocketServer Test."""
         super().test()
         SERVER_HOST = "127.0.0.1"
         SOCKET_SERVER_PORT = 8080
@@ -95,6 +100,7 @@ class SocketServer(LoggableMixin):
             self.logger.info("Master server socket dropped cleanly.")
 
     def start_socket_server(self):
+        """TestSocketServer method."""
         self.start_server(self._process_socket_transaction)
 
     def add_middleware(self, middleware: Callable[[str], bytes]) -> None:
@@ -102,6 +108,7 @@ class SocketServer(LoggableMixin):
         self._middlewares.append(middleware)
 
     def process_request(self, request_text: str, process_socket_transaction: Callable[[str], bytes]) -> bytes:
+        """TestSocketServer method."""
         for middleware in self._middlewares:
             request_text = middleware(request_text).decode('utf-8')
 

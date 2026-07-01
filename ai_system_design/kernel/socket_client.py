@@ -1,4 +1,8 @@
 # socket_client.py
+
+"""A defensive wrapper around client-side sockets ensuring deterministic lifecycle cleanup."""
+
+
 import socket, sys 
 from types import TracebackType
 from typing import Optional, Type, Any
@@ -10,10 +14,12 @@ class TestSocketClient(TestMixin):
     """Test the socket_client module functionality."""
 
     def __init__(self) -> None:
+        """TestSocketClient Constructor."""
         super().__init__()
         self.logger.info("TestSocketClient initialized.")
     
     def test(self):
+        """TestSocketClient Test."""
         super().test()
         SERVER_HOST = "127.0.0.1"
         SOCKET_SERVER_PORT = 8080
@@ -42,6 +48,7 @@ class SocketClient(LoggableMixin):
     """A defensive wrapper around client-side sockets ensuring deterministic lifecycle cleanup."""
 
     def __init__(self, host: str, port: int, context: str = "Client Socket", timeout_seconds: float = 10.0) -> None:
+        """SocketClient Constructor."""
         super().__init__()
         self.host = host
         self.port = port

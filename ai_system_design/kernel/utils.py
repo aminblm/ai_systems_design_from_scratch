@@ -1,4 +1,7 @@
 # utils.py
+
+"""Provides atomic, type-safe filesystem I/O operations with explicit encoding safeguards."""
+
 from typing import Generator
 from pathlib import Path 
 
@@ -8,11 +11,13 @@ class IOUtility(LoggableMixin):
     """Provides atomic, type-safe filesystem I/O operations with explicit encoding safeguards."""
 
     def __init__(self) -> None:
+        """IOUtility Constructor."""
         super().__init__()
         self.logger.info("IOUtility initialized.")
 
 
     def text_to_lines_generator(self, text: str, strip=True) -> Generator[str, None, None]:
+        """IOUtility Method."""
         if strip:
             for line in iter(text.splitlines()): yield line.strip()
         else: 

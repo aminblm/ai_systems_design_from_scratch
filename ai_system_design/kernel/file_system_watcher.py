@@ -1,4 +1,7 @@
 # file_watcher.py
+
+"""A recursive, zero-dependency file system monitor."""
+
 import os, time
 from typing import Dict, Callable
 
@@ -6,11 +9,14 @@ from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
 
 
 class TestFileSystemWatcher(TestMixin):
+    """TestFileSystemWatcher Class."""
     def __init__(self):
+        """TestFileSystemWatcher Constructor."""
         super().__init__()
         self.logger.info("TestFileSystemWatcher initialized.")
 
     def test(self):
+        """TestFileSystemWatcher Test."""
         super().test()
         PATH_TO_WATCH = "ai_system_design/kernel"
         def on_change(file_path):
