@@ -1,20 +1,23 @@
 # rest_api_server.py
-import json
+
+"""Test the rest_api_server module functionality."""
+
 from typing import Callable, Dict, Tuple, List
-from functools import wraps
 
 from ai_system_design.kernel.socket_server import SocketServer
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
+from ai_system_design.kernel.mixins import TestMixin, LoggableMixin, JSONSerializableMixin
 
 
 class TestRESTAPIServer(TestMixin):
     """Test the rest_api_server module functionality."""
 
     def __init__(self) -> None:
+        """TestRESTAPIServer Constructor."""
         super().__init__()
         self.logger.info("TestRESTAPIServer initialized.")
 
     def test(self):
+        """TestRESTAPIServer Test."""
         super().test()
         SERVER_HOST = "127.0.0.1"
         REST_API_PORT = 8083
@@ -29,8 +32,10 @@ class TestRESTAPIServer(TestMixin):
         app.start_http_server()
 
 
-class RESTAPIServer(SocketServer, LoggableMixin):
+class RESTAPIServer(SocketServer, JSONSerializableMixin, LoggableMixin):
+    """RESTAPIServer Class"""
     def __init__(self, host, port, context="REST API") -> None:
+        """RESTAPIServer Constructor"""
         super().__init__(host, port, context)
         # Explicit route mapping tree structure
         # Layout: self._routes[HTTP_METHOD][URL_PATH] = Handler_Callback
@@ -41,12 +46,15 @@ class RESTAPIServer(SocketServer, LoggableMixin):
         self.logger.info("RESTAPIServer initialized.")
 
     def register_endpoint(self, method: str, path: str, status: int, content_type: str, content: str) -> None:
+        """RESTAPIServer Method."""
         self._routes[method][path] = lambda body: (status, content_type, content)
 
     def get_endpoints(self) -> Dict[str, Dict[str, Callable[[str], Tuple[int, str, str]]]]:
+        """RESTAPIServer Method."""
         return self._routes.copy()
     
     def get_endpoints_documentation(self) -> Dict[str, List[str]]:
+        """RESTAPIServer Method."""
         doc: Dict[str, List[str]] = {}
         for k, v in self._routes.items():
             doc[k] = list(v.keys())
@@ -71,7 +79,7 @@ class RESTAPIServer(SocketServer, LoggableMixin):
     def _register_core_endpoints(self) -> None:
         """Decouples application routing configuration definitions away from raw transport IO."""
         self._routes["GET"]["/"] = lambda body: (200, "text/plain", "Welcome to the AI System Design from First Principle Repository")
-        self._routes["GET"]["/get-endpoints-documentation"] = lambda body: (200, "application/json", json.dumps(self.get_endpoints_documentation()))
+        self._routes["GET"]["/get-endpoints-documentation"] = lambda body: (200, "application/json", self.dumps(self.get_endpoints_documentation()))
 
     def start_http_server(self):
         """Spins up the master bound socket loop, isolating active connections to worker threads."""

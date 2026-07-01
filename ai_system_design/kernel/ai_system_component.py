@@ -15,7 +15,7 @@ class AISystemComponent(ABC):
         pass
 
     @abstractmethod
-    def execute(self, task_id: str, data: Dict[str, Any]) -> Dict[str, Any]:
+    def execute(self, task_id: str, params: Dict[str, Any]) -> Dict[str, Any]:
         """Performs the core capability of the module."""
         pass
 

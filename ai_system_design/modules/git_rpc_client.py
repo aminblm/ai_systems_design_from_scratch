@@ -1,19 +1,23 @@
 # git_rpc_client.py
-import json
+
+"""A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames."""
+
 from typing import Dict, Any
 
 from ai_system_design.kernel.socket_client import SocketClient
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
+from ai_system_design.kernel.mixins import TestMixin, LoggableMixin, JSONSerializableMixin
 
 
 class TestGitRPCClient(TestMixin):
     """Test the git_rpc_client module functionality."""
 
     def __init__(self) -> None:
+        """TestGitRPCClient Constructor."""
         super().__init__()
         self.logger.info("TestGitRPCClient initialized.")
 
     def test(self):
+        """TestGitRPCClient Test."""
         super().test()
         SERVER_HOST = "127.0.0.1"
         GIT_RPC_SERVER_PORT = 8084
@@ -29,14 +33,16 @@ class TestGitRPCClient(TestMixin):
             self.logger.critical(f"Abrupt termination handling repository pipeline sequence tasks: {fatal_error}")
         
         
-class GitRPCClient(SocketClient, LoggableMixin):
+class GitRPCClient(SocketClient, JSONSerializableMixin, LoggableMixin):
     """A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames."""
 
     def __init__(self, host: str, port: int) -> None:
+        """GitRPCClient Constructor."""
         super().__init__(host, port)
         self.logger.info("GitRPCClient initialized.")
 
     def __enter__(self) -> GitRPCClient:
+        """GitRPCClient Context __enter__."""
         self.context = "Git RPC Client"
         return super().__enter__()
 
@@ -46,7 +52,7 @@ class GitRPCClient(SocketClient, LoggableMixin):
             raise RuntimeError("Cannot communicate over a disconnected network socket pipeline.")
 
         # Adding a trailing newline character provides a clear frame marker for the server's buffer reader
-        serialized_frame = f"{json.dumps(payload_dict)}\n"
+        serialized_frame = f"{self.dumps(payload_dict)}\n"
         self._socket.sendall(serialized_frame.encode('utf-8'))
 
     def _receive_frame(self, max_bytes: int = 4096) -> str:

@@ -1,19 +1,23 @@
 # git_rpc_server.py
-import json
+
+"""A safe, multi-threaded RPC server for orchestrating remote Git workflow operations."""
+
 from typing import Any, Dict
 
 from ai_system_design.kernel.socket_server import SocketServer
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
+from ai_system_design.kernel.mixins import TestMixin, LoggableMixin, JSONSerializableMixin
 
 
 class TestGitRPCServer(TestMixin):
     """Test the git_rpc_server module functionality."""
 
     def __init__(self) -> None:
+        """TestGitRPCServer Constructor"""
         super().__init__()
         self.logger.info("TestGitRPCServer initialized.")
 
     def test(self):
+        """TestGitRPCServer Test."""
         super().test()
         SERVER_HOST = "127.0.0.1"
         GIT_RPC_SERVER_PORT = 8084
@@ -21,10 +25,11 @@ class TestGitRPCServer(TestMixin):
         git_server.start_git_rpc_server()
 
         
-class GitRPCServer(SocketServer, LoggableMixin):
+class GitRPCServer(SocketServer, JSONSerializableMixin, LoggableMixin):
     """A safe, multi-threaded RPC server for orchestrating remote Git workflow operations."""
     
     def __init__(self, host: str, port: int, context: str = "Git RPC Server") -> None:
+        """GitRPCServer Constructor"""
         super().__init__(host, port, context)
         self.logger.info("GitRPCServer initialized.")
 
@@ -44,14 +49,14 @@ class GitRPCServer(SocketServer, LoggableMixin):
             response_dict = self._route_rpc_request(payload)
             
             # Send responding frame followed by a clear delimiter boundary
-            serialized_response = f"{json.dumps(response_dict)}\n"
+            serialized_response = f"{self.dumps(response_dict)}\n"
             return f"{serialized_response}".encode('utf-8')
 
     def _route_rpc_request(self, raw_payload: str) -> Dict[str, Any]:
         """Parses json strings and handles business logic routing defensively."""
         try:
-            request_data = json.loads(raw_payload)
-        except json.JSONDecodeError:
+            request_data = self.loads(raw_payload)
+        except self.get_JSONDecodeError():
             return {"status": "error", "message": "Malformed application framing. Invalid JSON structure."}
         
         # Validate base command schema properties

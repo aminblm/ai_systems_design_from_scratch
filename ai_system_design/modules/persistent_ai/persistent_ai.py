@@ -1,24 +1,27 @@
 # persistent_ai.py
-import json, os, uuid
+import os, uuid
 from typing import Callable, Dict, Any
+
+from ai_system_design.kernel.mixins import JSONSerializableMixin
 
 BASE_PATH = "ai_system_design/modules/persistent_ai/"
 
-class PersistentScheduler:
+class PersistentScheduler(JSONSerializableMixin):
     """Ensures task state survives system reboots."""
     def __init__(self, state_file=f"{BASE_PATH}system_state.json") -> None:
+        super().__init__()
         self.state_file = state_file
         self.tasks = self._load_state()
 
     def _load_state(self) -> Dict[str, Any]:
         if os.path.exists(self.state_file):
             with open(self.state_file, 'r') as f:
-                return json.load(f)
+                return self.load(f)
         return {}
     
     def _save_state(self) -> None:
         with open(self.state_file, 'w') as f:
-            json.dump(self.tasks, f)
+            self.dump(self.tasks, f)
 
     def schedule_task(self, model_id: str, payload: Any) -> str:
         task_id = str(uuid.uuid4())

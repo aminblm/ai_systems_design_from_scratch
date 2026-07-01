@@ -12,8 +12,10 @@ class TestModules(TestMixin):
 
     def test(self):
         super().test()
-        """Example testing module: 
-        python test.py --test slug_generator"""
+        """
+        Example testing module: 
+        python test.py --test slug_generator
+        """
 
         parser = argparse.ArgumentParser(description="Test AI Systems Design")
         parser.add_argument("--test", required=True)

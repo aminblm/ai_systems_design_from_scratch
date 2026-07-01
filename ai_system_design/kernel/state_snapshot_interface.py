@@ -2,9 +2,7 @@
 
 """The State Snapshot Interface Formal Contract for system transparency."""
 
-import json
-
-from ai_system_design.kernel.mixins import LoggableMixin
+from ai_system_design.kernel.mixins import LoggableMixin, JSONSerializableMixin
 
 
 class StateSnapshotInterface:
@@ -17,17 +15,19 @@ class StateSnapshotInterface:
         return {"module": self.__class__.__name__, "state": state}
     
 
-class DeepFeatureProcessor(StateSnapshotInterface, LoggableMixin):
+class DeepFeatureProcessor(StateSnapshotInterface, JSONSerializableMixin, LoggableMixin):
+    """DeepFeatureProcessor Class."""
     def __init__(self, context_data):
+        """DeepFeatureProcessor Constructor."""
         super().__init__()
         self.context = context_data
         self.step_counter = 0
 
         # Transparency entry point
-        self.logger.debug(f"Pre-logic snapshot: {json.dumps(self.state_snapshot(), indent=2)}")
+        self.logger.debug(f"Pre-logic snapshot: {self.dumps(self.state_snapshot())}")
 
         # Deep recursive or complex operations...
         self.step_counter += 1
 
         # Transparency exit point
-        self.logger.debug(f"Post-logic snapshot: {json.dumps(self.state_snapshot(), indent=2)}")
+        self.logger.debug(f"Post-logic snapshot: {self.dumps(self.state_snapshot())}")

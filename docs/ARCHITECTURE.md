@@ -8,8 +8,6 @@
 - [`__main__.py`](##-file-__main__.py)
 - [`agent_runner.py`](##-file-agent_runner.py)
 - [`ai_system_component.py`](##-file-ai_system_component.py)
-- [`base_tool.py`](##-file-base_tool.py)
-- [`cli_mixin.py`](##-file-cli_mixin.py)
 - [`datastructures.py`](##-file-datastructures.py)
 - [`debugger.py`](##-file-debugger.py)
 - [`deep_feature_engine.py`](##-file-deep_feature_engine.py)
@@ -22,9 +20,6 @@
 - [`intent_matching_engine.py`](##-file-intent_matching_engine.py)
 - [`intent_provider.py`](##-file-intent_provider.py)
 - [`interface.py`](##-file-interface.py)
-- [`json_serializable_mixin.py`](##-file-json_serializable_mixin.py)
-- [`loggable_mixin.py`](##-file-loggable_mixin.py)
-- [`logger.py`](##-file-logger.py)
 - [`mcp_adapter.py`](##-file-mcp_adapter.py)
 - [`mcp_server.py`](##-file-mcp_server.py)
 - [`pipeline_manager.py`](##-file-pipeline_manager.py)
@@ -34,9 +29,13 @@
 - [`socket_client.py`](##-file-socket_client.py)
 - [`socket_server.py`](##-file-socket_server.py)
 - [`state_snapshot_interface.py`](##-file-state_snapshot_interface.py)
-- [`test_mixin.py`](##-file-test_mixin.py)
 - [`tool_registry.py`](##-file-tool_registry.py)
 - [`utils.py`](##-file-utils.py)
+- [`cli_mixin.py`](##-file-cli_mixin.py)
+- [`json_serializable_mixin.py`](##-file-json_serializable_mixin.py)
+- [`loggable_mixin.py`](##-file-loggable_mixin.py)
+- [`test_mixin.py`](##-file-test_mixin.py)
+- [`__init__.py`](##-file-__init__.py)
 - [`architecture_renderer.py`](##-file-architecture_renderer.py)
 - [`container_manager_client.py`](##-file-container_manager_client.py)
 - [`container_manager_server.py`](##-file-container_manager_server.py)
@@ -130,34 +129,6 @@
 **`status`**
 
 > Returns the operational state of the module.
-
-## File: `base_tool.py`
-
-> Upcoming documentation
-
-### `BaseTool`
-
-> Standardized interface for all platform modules.
-**`execute`**
-
-> Upcoming documentation
-
-## File: `cli_mixin.py`
-
-> TextMixin class to be inherited as a contract for the CLI classe interfaces of the modules.
-
-### `CLIMixin`
-
-> Test Mixin Contract class for all module testing.
-**`__init__`**
-
-> CLIMixin `__init__(self) -> None` Constructor to initialize the test states.
-**`cli`**
-
-> CLI `cli(self) -> None` method for all CLI Interface classes.
-**`__repr__`**
-
-> A representation `__repr__(self) -> str` of the CLIMixin class.
 
 ## File: `datastructures.py`
 
@@ -420,36 +391,6 @@
 
 > Upcoming documentation
 
-## File: `json_serializable_mixin.py`
-
-> Upcoming documentation
-
-### `JSONSerializableMixin`
-
-> Provides uniform JSON conversion.
-**`__init__`**
-
-> Upcoming documentation
-**`to_json`**
-
-> Upcoming documentation
-
-## File: `loggable_mixin.py`
-
-> Upcoming documentation
-
-### `LoggableMixin`
-
-> Provides instant logger capability.
-**`__init__`**
-
-> Upcoming documentation
-
-## File: `logger.py`
-
-> Upcoming documentation
-
-
 ## File: `mcp_adapter.py`
 
 > Upcoming documentation
@@ -671,30 +612,13 @@ Must always return a status and result payload.
 > The State Snapshot Interface Formal Contract for system transparency.
 ### `DeepFeatureProcessor`
 
-> Upcoming documentation
+> DeepFeatureProcessor Class.
 **`state_snapshot`**
 
 > Returns the current internal state of the module.
 **`__init__`**
 
-> Upcoming documentation
-
-## File: `test_mixin.py`
-
-> TextMixin class to be inherited as a contract for the testing classes testing the modules.
-
-### `TestMixin`
-
-> Test Mixin Contract class for all module testing.
-**`__init__`**
-
-> TestMixin Constructor to initialize the test states.
-**`test`**
-
-> Test method for all testing classes.
-**`__repr__`**
-
-> A representation of the TestMixin class.
+> DeepFeatureProcessor Constructor.
 
 ## File: `tool_registry.py`
 
@@ -732,6 +656,85 @@ Must always return a status and result payload.
 **`write_encoded`**
 
 > Writes text strings directly to disk storage volumes using strict encoding formats.
+
+## File: `cli_mixin.py`
+
+> TextMixin class to be inherited as a contract for the CLI classe interfaces of the modules.
+
+### `CLIMixin`
+
+> Test Mixin Contract class for all module testing.
+**`__init__`**
+
+> CLIMixin `__init__(self) -> None` Constructor to initialize the test states.
+**`cli`**
+
+> CLI `cli(self) -> None` method for all CLI Interface classes.
+**`__repr__`**
+
+> A representation `__repr__(self) -> str` of the CLIMixin class.
+
+## File: `json_serializable_mixin.py`
+
+> Provides uniform JSON conversion.
+
+### `JSONSerializableMixin`
+
+> Provides uniform JSON conversion.
+**`__init__`**
+
+> JSONSerializableMixin Constructor.
+**`to_json`**
+
+> JSONSerializableMixin Method.
+**`dumps`**
+
+> JSONSerializableMixin Method.
+**`loads`**
+
+> JSONSerializableMixin Method.
+**`load`**
+
+> JSONSerializableMixin Method.
+**`dump`**
+
+> JSONSerializableMixin Method.
+**`get_JSONDecodeError`**
+
+> JSONSerializableMixin Method.
+
+## File: `loggable_mixin.py`
+
+> Upcoming documentation
+
+### `LoggableMixin`
+
+> Provides instant logger capability.
+**`__init__`**
+
+> Upcoming documentation
+
+## File: `test_mixin.py`
+
+> TextMixin class to be inherited as a contract for the testing classes testing the modules.
+
+### `TestMixin`
+
+> Test Mixin Contract class for all module testing.
+**`__init__`**
+
+> TestMixin Constructor to initialize the test states.
+**`test`**
+
+> Test method for all testing classes.
+**`__repr__`**
+
+> A representation of the TestMixin class.
+
+## File: `__init__.py`
+
+> AI System Design Mixins.
+
 
 ## File: `architecture_renderer.py`
 
@@ -949,7 +952,7 @@ Must always return a status and result payload.
 
 ## File: `git_rpc_client.py`
 
-> Upcoming documentation
+> A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames.
 
 ### `TestGitRPCClient`
 
@@ -959,16 +962,16 @@ Must always return a status and result payload.
 > A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames.
 **`__init__`**
 
-> Upcoming documentation
+> TestGitRPCClient Constructor.
 **`test`**
 
-> Upcoming documentation
+> TestGitRPCClient Test.
 **`__init__`**
 
-> Upcoming documentation
+> GitRPCClient Constructor.
 **`__enter__`**
 
-> Upcoming documentation
+> GitRPCClient Context __enter__.
 **`_send_frame`**
 
 > Serializes payload to JSON and transmits it with a clear newline delimiter boundary.
@@ -981,7 +984,7 @@ Must always return a status and result payload.
 
 ## File: `git_rpc_server.py`
 
-> Upcoming documentation
+> A safe, multi-threaded RPC server for orchestrating remote Git workflow operations.
 
 ### `TestGitRPCServer`
 
@@ -991,13 +994,13 @@ Must always return a status and result payload.
 > A safe, multi-threaded RPC server for orchestrating remote Git workflow operations.
 **`__init__`**
 
-> Upcoming documentation
+> TestGitRPCServer Constructor
 **`test`**
 
-> Upcoming documentation
+> TestGitRPCServer Test.
 **`__init__`**
 
-> Upcoming documentation
+> GitRPCServer Constructor
 **`start_git_rpc_server`**
 
 > Initializes listener interfaces and delegates incoming connections to workers.
@@ -1263,32 +1266,32 @@ Must always return a status and result payload.
 
 ## File: `rest_api_server.py`
 
-> Upcoming documentation
+> Test the rest_api_server module functionality.
 
 ### `TestRESTAPIServer`
 
 > Test the rest_api_server module functionality.
 ### `RESTAPIServer`
 
-> Upcoming documentation
+> RESTAPIServer Class
 **`__init__`**
 
-> Upcoming documentation
+> TestRESTAPIServer Constructor.
 **`test`**
 
-> Upcoming documentation
+> TestRESTAPIServer Test.
 **`__init__`**
 
-> Upcoming documentation
+> RESTAPIServer Constructor
 **`register_endpoint`**
 
-> Upcoming documentation
+> RESTAPIServer Method.
 **`get_endpoints`**
 
-> Upcoming documentation
+> RESTAPIServer Method.
 **`get_endpoints_documentation`**
 
-> Upcoming documentation
+> RESTAPIServer Method.
 **`get`**
 
 > Register a GET Endpoint.

@@ -4,7 +4,7 @@
 
 from abc import ABC, abstractmethod
 
-from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.mixins import LoggableMixin
 
 
 class TestMixin(LoggableMixin, ABC):
