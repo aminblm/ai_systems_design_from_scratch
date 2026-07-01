@@ -1,4 +1,7 @@
 # site_generator.py
+
+"""Generate HTML website from markdown files directory."""
+
 import traceback
 from pathlib import Path
 from typing import Dict, Tuple, Generator
@@ -9,25 +12,62 @@ from ai_system_design.kernel.utils import IOUtility
 
 from ai_system_design.kernel.loggable_mixin import LoggableMixin
 from ai_system_design.kernel.test_mixin import TestMixin
+from ai_system_design.kernel.cli_mixin import CLIMixin
+
+
+class GenerateSiteCLI(CLIMixin):
+    """GenerateSiteCLI Class."""
+
+    def __init__(self) -> None:
+        """GenerateSiteCLI `__init__(self) -> None` Constructor."""
+        super().__init__()
+        self.parser.add_argument("--input-directory", required=True)
+        self.parser.add_argument("--layout", required=False)
+        self.parser.add_argument("--config", required=False)
+        self.logger.info("GenerateSiteCLI initialized.")
+    
+    def cli(self):
+        """Usage: `cli.py [-h] --input-directory INPUT_DIRECTORY [--layout LAYOUT] [--config CONFIG]`"""
+        super().cli()
+        args = self.parser.parse_args()
+        BASE_PATH = 'ai_system_design/modules/site_generator/'
+        DEFAULT_LAYOUT = f'{BASE_PATH}layout.html'
+        DEFAULT_CONFIG = f'{BASE_PATH}config.yaml'
+        if not args.layout and not args.config:
+            SiteGenerator(DEFAULT_LAYOUT, DEFAULT_CONFIG).generate_site(args.input_directory)
+        elif not args.layout and args.config:
+            SiteGenerator(args.layout, DEFAULT_CONFIG).generate_site(args.input_directory)
+        elif args.layout and not args.config:
+            SiteGenerator(DEFAULT_LAYOUT, args.config).generate_site(args.input_directory)
+        else:
+            SiteGenerator(args.layout, args.config).generate_site(args.input_directory)
+
 
 class TestGenerateSite(TestMixin):
     """Test the site_generator module functionality."""
 
     def __init__(self) -> None:
+        """TestGenerateSite `__init__(self) -> None` Constructor."""
         super().__init__()
         self.logger.info("TestGenerateSite initialized.")
     
-    def test(self):
+    def test(self) -> None:
+        """TestGenerateSite `test(self) -> None` test."""
         super().test()
-        base_path = 'ai_system_design/modules/site_generator/'
-        test_path = 'test/'
-        SiteGenerator(f'{base_path}layout.html', f'{base_path}config.yaml').generate_site(f'{test_path}sg_input')
+
+        BASE_PATH = 'ai_system_design/modules/site_generator/'
+        DEFAULT_LAYOUT = f'{BASE_PATH}layout.html'
+        DEFAULT_CONFIG = f'{BASE_PATH}config.yaml'
+        TEST_INPUT_PATH = 'test/sg_input'
+
+        SiteGenerator(DEFAULT_LAYOUT, DEFAULT_CONFIG).generate_site(TEST_INPUT_PATH)
 
 
 class SiteGenerator(LoggableMixin):
     """Coordinater class to orchestrate the Markdown to Template-bound HTML building process"""
 
     def __init__(self, layout_path: str | Path, config_file_path: str | Path) -> None:
+        """SiteGenerator `__init__(self, layout_path: str | Path, config_file_path: str | Path) -> None` Constructor."""
         super().__init__()
         self.layout_path = Path(layout_path)
         self.config_file_path = Path(config_file_path)
@@ -40,15 +80,19 @@ class SiteGenerator(LoggableMixin):
     #TODO
     # Possible copy of the styles file to the output folder for dynamic styling
     def _copy_styles(self) -> None:
+        """SiteGenerator `_copy_styles(self) -> None` private method."""
         return None
     
     def _load_layout(self) -> str:
+        """SiteGenerator `_load_layout(self) -> str` private method."""
         return IOUtility().read_decoded(self.layout_path)
     
     def _load_config(self) -> Dict[str, str]:
+        """SiteGenerator ` _load_config(self) -> Dict[str, str]` private method."""
         return ConfigurationBuilder().from_file(self.config_file_path).build().to_dict()
     
     def _get_header_lines(self, html_generator: Generator[str, None, None]) -> Generator[str, None, None]:
+        """SiteGenerator ` _get_header_lines(self, html_generator: Generator[str, None, None]) -> Generator[str, None, None]` private method."""
         for line in html_generator:
             if line.strip() == "<head>":
                 for closed_line in html_generator:
@@ -58,6 +102,7 @@ class SiteGenerator(LoggableMixin):
                         yield closed_line.strip()
 
     def _clean_header_lines(self, html_generator: Generator[str, None, None]) -> Generator[str, None, None]:
+        """SiteGenerator `_clean_header_lines(self, html_generator: Generator[str, None, None]) -> Generator[str, None, None]` private method."""
         for line in html_generator:
             if line.strip() == "<head>":
                 for closed_line in html_generator:

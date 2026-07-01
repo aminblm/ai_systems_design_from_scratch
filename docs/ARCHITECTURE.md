@@ -67,9 +67,12 @@
 
 ## File: `cli.py`
 
-> Upcoming documentation
+> Main CLI Controller for the AI System Design CLI Modules. 
 
 **`doc_engine_cli`**
+
+> Upcoming documentation
+**`site_generator_cli`**
 
 > Upcoming documentation
 
@@ -148,13 +151,13 @@
 > Test Mixin Contract class for all module testing.
 **`__init__`**
 
-> CLIMixin Constructor to initialize the test states.
+> CLIMixin `__init__(self) -> None` Constructor to initialize the test states.
 **`cli`**
 
-> CLI method for all CLI Interface classes.
+> CLI `cli(self) -> None` method for all CLI Interface classes.
 **`__repr__`**
 
-> A representation of the CLIMixin class.
+> A representation `__repr__(self) -> str` of the CLIMixin class.
 
 ## File: `datastructures.py`
 
@@ -1561,8 +1564,11 @@ Must always return a status and result payload.
 
 ## File: `site_generator.py`
 
-> Upcoming documentation
+> Generate HTML website from markdown files directory.
 
+### `GenerateSiteCLI`
+
+> GenerateSiteCLI Class.
 ### `TestGenerateSite`
 
 > Test the site_generator module functionality.
@@ -1571,28 +1577,34 @@ Must always return a status and result payload.
 > Coordinater class to orchestrate the Markdown to Template-bound HTML building process
 **`__init__`**
 
-> Upcoming documentation
-**`test`**
+> GenerateSiteCLI `__init__(self) -> None` Constructor.
+**`cli`**
 
-> Upcoming documentation
+> Usage: `cli.py [-h] --input-directory INPUT_DIRECTORY [--layout LAYOUT] [--config CONFIG]`
 **`__init__`**
 
-> Upcoming documentation
+> TestGenerateSite `__init__(self) -> None` Constructor.
+**`test`**
+
+> TestGenerateSite `test(self) -> None` test.
+**`__init__`**
+
+> SiteGenerator `__init__(self, layout_path: str | Path, config_file_path: str | Path) -> None` Constructor.
 **`_copy_styles`**
 
-> Upcoming documentation
+> SiteGenerator `_copy_styles(self) -> None` private method.
 **`_load_layout`**
 
-> Upcoming documentation
+> SiteGenerator `_load_layout(self) -> str` private method.
 **`_load_config`**
 
-> Upcoming documentation
+> SiteGenerator ` _load_config(self) -> Dict[str, str]` private method.
 **`_get_header_lines`**
 
-> Upcoming documentation
+> SiteGenerator ` _get_header_lines(self, html_generator: Generator[str, None, None]) -> Generator[str, None, None]` private method.
 **`_clean_header_lines`**
 
-> Upcoming documentation
+> SiteGenerator `_clean_header_lines(self, html_generator: Generator[str, None, None]) -> Generator[str, None, None]` private method.
 **`_render_html`**
 
 > Injects compiled markdown content and config mappings into the layout

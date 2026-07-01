@@ -12,16 +12,16 @@ class CLIMixin(LoggableMixin, ABC):
     """Test Mixin Contract class for all module testing."""
 
     def __init__(self) -> None:
-        """CLIMixin Constructor to initialize the test states."""
+        """CLIMixin `__init__(self) -> None` Constructor to initialize the test states."""
         super().__init__()
-        self.parser = argparse.ArgumentParser(description="Test AI Systems Design")
+        self.parser = argparse.ArgumentParser(description="CLI Interface for AI Systems Design")
         self.logger.info("CLIMixin initialized.")
 
     @abstractmethod
     def cli(self) -> None:
-        """CLI method for all CLI Interface classes."""
+        """CLI `cli(self) -> None` method for all CLI Interface classes."""
         self.logger.info(f"[{self.__class__.__name__}] CLI Interface started.")
 
     def __repr__(self) -> str:
-        """A representation of the CLIMixin class."""
+        """A representation `__repr__(self) -> str` of the CLIMixin class."""
         return str(self.__dict__)
