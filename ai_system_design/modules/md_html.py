@@ -181,6 +181,8 @@ class MarkdownParser(LoggableMixin):
         # Default paragraph
         return f"<p>{self._parse_inline_elements(line)}</p>"
     
+        #TODO Header wrapped within a link pattern
+    
     def to_html(self, markdown_generator: Generator[str, None, None]) -> Generator[str, None, None]:
         """Converts an entire markdown document string into an HTML string."""
         cleaned_lines_generator = self._parse_tables(

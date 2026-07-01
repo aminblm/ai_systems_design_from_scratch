@@ -33,6 +33,12 @@ class DocEngine:
                 if file.endswith(".py"):
                     output += self._parse_file(os.path.join(root, file))
 
+        index = "\n".join(["- [{}]({})".format(line.replace("## File: ", ''), line.lower().replace(":", '').replace("`", '').replace(' ', '-')) for line in output.splitlines() if line.startswith("##")])
+        
+        # Debugger().debug('index', index)
+
+        output = output.replace("# System Architecture\n\n", '# System Architecture\n\n## Table of Contents\n\n' + index + '\n\n')
+
         with open(docs_path, "w") as f:
             f.write(output)
 
