@@ -5,7 +5,6 @@ from typing import Generator, Optional
 from pathlib import Path
 
 from ai_system_design.kernel.utils import IOUtility
-from ai_system_design.modules.safe_yaml_parser import SafeYAMLParser
 from ai_system_design.kernel.loggable_mixin import LoggableMixin
 
 

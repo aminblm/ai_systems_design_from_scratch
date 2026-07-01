@@ -4,10 +4,9 @@
 
 from ai_system_design.kernel.loggable_mixin import LoggableMixin
 from ai_system_design.kernel.test_mixin import TestMixin
-from ai_system_design.kernel.debugger import Debugger
 
 
-class TestStateSketcher(TestMixin, LoggableMixin):
+class TestStateSketcher(TestMixin):
     """Test the state_sketcher module functionality."""
 
     def __init__(self) -> None:

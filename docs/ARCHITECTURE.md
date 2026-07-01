@@ -9,6 +9,7 @@
 - [`agent_runner.py`](##-file-agent_runner.py)
 - [`ai_system_component.py`](##-file-ai_system_component.py)
 - [`base_tool.py`](##-file-base_tool.py)
+- [`cli_mixin.py`](##-file-cli_mixin.py)
 - [`datastructures.py`](##-file-datastructures.py)
 - [`debugger.py`](##-file-debugger.py)
 - [`deep_feature_engine.py`](##-file-deep_feature_engine.py)
@@ -68,86 +69,7 @@
 
 > Upcoming documentation
 
-**`generate_site`**
-
-> Upcoming documentation
-**`slug_generator`**
-
-> Upcoming documentation
-**`engine_scheduler`**
-
-> Upcoming documentation
-**`socket_client`**
-
-> Upcoming documentation
-**`container_manager_client`**
-
-> Upcoming documentation
-**`container_manager_server`**
-
-> Upcoming documentation
-**`scalable_index`**
-
-> Upcoming documentation
-**`reactive_frontend`**
-
-> Upcoming documentation
-**`git_rpc_client`**
-
-> Upcoming documentation
-**`git_rpc_server`**
-
-> Upcoming documentation
-**`round_robin_load_balancer`**
-
-> Upcoming documentation
-**`distributed_no_sql_database`**
-
-> Upcoming documentation
-**`intent_matching_engine`**
-
-> Upcoming documentation
-**`realtime_redis_engine`**
-
-> Upcoming documentation
-**`rest_api_client`**
-
-> Upcoming documentation
-**`rest_api_server`**
-
-> Upcoming documentation
-**`socket_server`**
-
-> Upcoming documentation
-**`safe_yaml_parser`**
-
-> Upcoming documentation
-**`architecture_renderer`**
-
-> Upcoming documentation
-**`process_posts`**
-
-> Upcoming documentation
-**`cli`**
-
-> Example module usage: 
-python main.py --module slug_generator
-**`extract`**
-
-> Upcoming documentation
-**`transform`**
-
-> Upcoming documentation
-**`load`**
-
-> Upcoming documentation
-**`log_click_telemetry`**
-
-> Upcoming documentation
-**`play_sound_effect`**
-
-> Upcoming documentation
-**`render_button`**
+**`doc_engine_cli`**
 
 > Upcoming documentation
 
@@ -155,6 +77,9 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `TestModules`
+
+> Test all modules implemented.
 **`__init__`**
 
 > Upcoming documentation
@@ -176,6 +101,9 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `AgentRunner`
+
+> The orchestration loop that binds thought to action.
 **`__init__`**
 
 > Upcoming documentation
@@ -187,6 +115,9 @@ python main.py --module slug_generator
 
 > The formal AI System Component contract for all platform modules.
 
+### `AISystemComponent`
+
+> The formal contract for all platform modules.
 **`initialize`**
 
 > Sets up internal state before execution.
@@ -201,14 +132,40 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `BaseTool`
+
+> Standardized interface for all platform modules.
 **`execute`**
 
 > Upcoming documentation
+
+## File: `cli_mixin.py`
+
+> TextMixin class to be inherited as a contract for the CLI classe interfaces of the modules.
+
+### `CLIMixin`
+
+> Test Mixin Contract class for all module testing.
+**`__init__`**
+
+> CLIMixin Constructor to initialize the test states.
+**`cli`**
+
+> CLI method for all CLI Interface classes.
+**`__repr__`**
+
+> A representation of the CLIMixin class.
 
 ## File: `datastructures.py`
 
 > Upcoming documentation
 
+### `Tensor`
+
+> Class for the Tensor Data Structure
+### `Array`
+
+> Class for the Array Data Structure
 **`__init__`**
 
 > Upcoming documentation
@@ -220,6 +177,12 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `TestDebugger`
+
+> Test the debugger module functionality.
+### `Debugger`
+
+> Upcoming documentation
 **`__init__`**
 
 > Upcoming documentation
@@ -240,6 +203,9 @@ python main.py --module slug_generator
 
 > Decompose deep functions following the Rule of Three
 
+### `DeepFeatureEngine`
+
+> Decomposes complex logic into a chain of shallow primitives.
 **`process`**
 
 > Transformation pipeline (The Rule of Three)
@@ -260,30 +226,57 @@ python main.py --module slug_generator
 
 ## File: `doc_engine.py`
 
-> Generates documentation automatically.
+> Documentation Engine to Generate documentation automatically.
 
+### `DocEngineCLI`
+
+> DocEngineCLI Class.
+### `TestDocEngine`
+
+> TestDocEngine Class.
+### `DocEngine`
+
+> Extracts metadata from source to build automated docs.
 **`__init__`**
 
-> Upcoming documentation
+> DocEngineCLI `__init__(self) -> None` Constructor.
+**`cli`**
+
+> Usage: `cli.py [-h] --source SOURCE --output-path OUTPUT_PATH [--secondary-output-path SECONDARY_OUTPUT_PATH]`
+**`__init__`**
+
+> TestDocEngine `__init__(self) -> None` Constructor.
 **`test`**
 
-> Upcoming documentation
+> TestDocEngine `test(self) -> None` test method.
+**`__init__`**
+
+> DocEngine `__init__(self) -> None` Constructor.
 **`generate_manifest`**
 
-> Upcoming documentation
+> DocEngine `generate_manifest(self, folder_path: str, docs_path: str) -> None` method.
 **`_parse_file`**
 
-> Upcoming documentation
+> DocEngine `_parse_file(file_path: str) -> str` internal method.
 
 ## File: `exceptions.py`
 
 > Define the hierarchy of AI System Design Exceptions.
 
+### `AISystemDesignException`
+
+> Base class for all exceptions defined by ai_system_design.
 
 ## File: `file_system_watcher.py`
 
 > Upcoming documentation
 
+### `TestFileSystemWatcher`
+
+> Upcoming documentation
+### `FileSystemWatcher`
+
+> A recursive, zero-dependency file system monitor.
 **`__init__`**
 
 > Upcoming documentation
@@ -307,6 +300,9 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `InferenceEngine`
+
+> The formal contract for any ML/math model.
 **`preprocess`**
 
 > Converts raw data to mathematical tensors/arrays.
@@ -324,6 +320,9 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `InfrastructureAsCode`
+
+> Upcoming documentation
 **`__init__`**
 
 > Upcoming documentation
@@ -341,6 +340,12 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `TestIntentMatchingEngine`
+
+> Test the intent_matching_engine module functionality.
+### `IntentMatchingEngine`
+
+> A normalized text processing system that maps raw inputs to structured intents.
 **`__init__`**
 
 > Upcoming documentation
@@ -361,6 +366,15 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `IntentProvider`
+
+> The modular contract for AI providers.
+### `IntentMatchingEngine`
+
+> Orchestrator is now decoupled from the AI.
+### `LocalLLMProvider`
+
+> Upcoming documentation
 **`classify`**
 
 > Upcoming documentation
@@ -378,6 +392,12 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `ModuleInterface`
+
+> The central contract for all system modules.
+### `EventBusModule`
+
+> Upcoming documentation
 **`start`**
 
 > Initializes resources.
@@ -401,6 +421,9 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `JSONSerializableMixin`
+
+> Provides uniform JSON conversion.
 **`__init__`**
 
 > Upcoming documentation
@@ -412,6 +435,9 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `LoggableMixin`
+
+> Provides instant logger capability.
 **`__init__`**
 
 > Upcoming documentation
@@ -425,6 +451,9 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `MCPAdapter`
+
+> Adapts existing Registry tools to MCP Specification.
 **`__init__`**
 
 > Upcoming documentation
@@ -448,6 +477,9 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `MCPServer`
+
+> Exposes internal modules as discoverable MCP tools.
 **`__init__`**
 
 > Upcoming documentation
@@ -465,6 +497,12 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `TestPipelineManager`
+
+> Upcoming documentation
+### `PipelineManager`
+
+> The central orchestrator for system rebuilds.
 **`__init__`**
 
 > Upcoming documentation
@@ -485,6 +523,12 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `TestPreFlightLinter`
+
+> Upcoming documentation
+### `PreFlightLinter`
+
+> Blocks code that violates architectural standards.
 **`__init__`**
 
 > Upcoming documentation
@@ -499,6 +543,12 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `TestSelfHealthService`
+
+> Test the self_health_monitor module functionality.
+### `SelfHealthService`
+
+> "Monitors system health and auto-restarts failed modules.
 **`__init__`**
 
 > Upcoming documentation
@@ -516,6 +566,12 @@ python main.py --module slug_generator
 
 > Upcoming documentation
 
+### `Skill`
+
+> Universal contract for an executable capability.
+### `DataFetchSkill`
+
+> Upcoming documentation
 **`execute`**
 
 > Standardized skill execution.
@@ -528,6 +584,12 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestSocketClient`
+
+> Test the socket_client module functionality.
+### `SocketClient`
+
+> A defensive wrapper around client-side sockets ensuring deterministic lifecycle cleanup.
 **`__init__`**
 
 > Upcoming documentation
@@ -560,6 +622,12 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestSocketServer`
+
+> Test the socket_server module functionality.
+### `SocketServer`
+
+> A robust, concurrent TCP server that safely manages multi-client connection Lifecycles.
 **`__init__`**
 
 > Upcoming documentation
@@ -595,6 +663,12 @@ Must always return a status and result payload.
 
 > The State Snapshot Interface Formal Contract for system transparency.
 
+### `StateSnapshotInterface`
+
+> The State Snapshot Interface Formal Contract for system transparency.
+### `DeepFeatureProcessor`
+
+> Upcoming documentation
 **`state_snapshot`**
 
 > Returns the current internal state of the module.
@@ -606,6 +680,9 @@ Must always return a status and result payload.
 
 > TextMixin class to be inherited as a contract for the testing classes testing the modules.
 
+### `TestMixin`
+
+> Test Mixin Contract class for all module testing.
 **`__init__`**
 
 > TestMixin Constructor to initialize the test states.
@@ -620,6 +697,9 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `ToolRegistry`
+
+> Central store for all exposed system capabilities.
 **`register`**
 
 > Upcoming documentation
@@ -634,6 +714,9 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `IOUtility`
+
+> Provides atomic, type-safe filesystem I/O operations with explicit encoding safeguards.
 **`__init__`**
 
 > Upcoming documentation
@@ -651,6 +734,15 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestArchitectureRenderer`
+
+> Test the architecture_renderer module functionality.
+### `ArchComponent`
+
+> Represents a structural node in the architecture graph.
+### `ArchitectureRenderer`
+
+> Translates high-level component graphs into rendered HTML/CSS media.
 **`__init__`**
 
 > Upcoming documentation
@@ -674,6 +766,12 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestContainerManagerClient`
+
+> Test the container_manager_client module functionality.
+### `ContainerManagerClient`
+
+> A clean, defencive CLI client for interacting with a remote container management service.
 **`__init__`**
 
 > Upcoming documentation
@@ -700,6 +798,12 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestContainerManagerServer`
+
+> Test the container_manager_server module functionality.
+### `ContainerManagerServer`
+
+> A thread-safe, concurrent TCP daemon for managing mock container environment.
 **`__init__`**
 
 > Upcoming documentation
@@ -732,6 +836,18 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestDistributedNoSQLDatabase`
+
+> Test the distributed_no_sql_database module functionality.
+### `Collection`
+
+> Manages an isolated namespace of document structures and index maps.
+### `DatabasePartition`
+
+> Represents a distributed database shard grouping targeted record allocations.
+### `DistributedDatabase`
+
+> Master controller managing global schemas and orchestrating horizontal shards.
 **`__init__`**
 
 > Upcoming documentation
@@ -770,6 +886,18 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestEngineScheduler`
+
+> Test the engine_scheduler module functionality.
+### `Task`
+
+> Task classe to instanciate classes.
+### `DAG`
+
+> Represents a Directed Acyclic Graph of tasks and enforces structural integrity.
+### `EngineScheduler`
+
+> Orchestrates DAG tasks using non-blocking structural evaluations.
 **`__init__`**
 
 > Upcoming documentation
@@ -820,6 +948,12 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestGitRPCClient`
+
+> Test the git_rpc_client module functionality.
+### `GitRPCClient`
+
+> A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames.
 **`__init__`**
 
 > Upcoming documentation
@@ -846,6 +980,12 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestGitRPCServer`
+
+> Test the git_rpc_server module functionality.
+### `GitRPCServer`
+
+> A safe, multi-threaded RPC server for orchestrating remote Git workflow operations.
 **`__init__`**
 
 > Upcoming documentation
@@ -869,6 +1009,15 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `MDSpecialCases`
+
+> Upcoming documentation
+### `MarkdownParser`
+
+> Handles the transformation of Markdown text strings into structured HTML.
+### `MarkdownConverterFacade`
+
+> Clean operational interface for client applications.
 **`__init__`**
 
 > Upcoming documentation
@@ -925,6 +1074,9 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestProcessPosts`
+
+> Test the process_posts module functionality.
 **`wrap_html_component`**
 
 > Upcoming documentation
@@ -945,6 +1097,24 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestReactiveFrontent`
+
+> Test the reactive_frontend module functionality.
+### `ReactiveState`
+
+> A descriptor that intercepts mutations to enforce property-level reactivity cascades.
+### `Component`
+
+> An isolated UI block that tracks its own reactive state variables.
+### `ButtonComponent`
+
+> Example of an explicit, strong-type reactive component subclass.
+### `EventDispatcher`
+
+> An event broker implementating a standard multicast Observer pattern.
+### `ReconcileUI`
+
+> The master runtime shell holding layout bindings and event loops.
 **`__init__`**
 
 > Upcoming documentation
@@ -1007,6 +1177,15 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestRealtimeRedisEngine`
+
+> Test the realtime_redis_engine module functionality.
+### `RedisObject`
+
+> An internal storage wrapper holding an explicit data payload and its eviction metadata.
+### `RealtimeRedisEngine`
+
+> A type-safe, resilient in-memory data store replacing key Redis operations.
 **`__init__`**
 
 > Upcoming documentation
@@ -1051,6 +1230,12 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestRESTAPIClient`
+
+> Test the rest_api_client module functionality.
+### `RESTAPIClient`
+
+> A clean raw-socket HTTP client implementating defensive parsing frames over TCP streams.
 **`__init__`**
 
 > Upcoming documentation
@@ -1077,6 +1262,12 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestRESTAPIServer`
+
+> Test the rest_api_server module functionality.
+### `RESTAPIServer`
+
+> Upcoming documentation
 **`__init__`**
 
 > Upcoming documentation
@@ -1124,6 +1315,12 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestRoundRobinLoadBalancer`
+
+> Test the round_robin_load_balancer module functionality.
+### `RoundRobinLoadBalancer`
+
+> A thread-safe, programmatic load balancer distributing homogeneous traffic evenly.
 **`web_node_alpha`**
 
 > Upcoming documentation
@@ -1150,6 +1347,18 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestSafeYAMLParser`
+
+> Test the safe_yaml_parser module functionality.
+### `SafeYAMLParser`
+
+> A safe textual scanner utilizing regular expressions to process configuration properties.
+### `ConfigurationEngine`
+
+> An immutable data container holding fully parsed application config properties.
+### `ConfigurationBuilder`
+
+> A fluent builder interface ensuring valid construction sequences for configuration engines.
 **`__init__`**
 
 > Upcoming documentation
@@ -1191,6 +1400,15 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestScalableIndex`
+
+> Test the scalable_index module functionality.
+### `Shard`
+
+> An independent data partition inside an Index containing localized segment sheets.
+### `ScalableIndex`
+
+> A resilient, schema-driven mock index utilizing linear data lookups and shard routing.
 **`__init__`**
 
 > Upcoming documentation
@@ -1226,6 +1444,15 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestSlugGenerator`
+
+> Test the slug_generator module functionality.
+### `SlugGenerator`
+
+> Handles the transformation of raw text titles into clean, web-safe SEO slugs.
+### `JekyllFilenameController`
+
+> Orchestrates interactive terminal interfaces and handles dynamic filesystem name routing.
 **`__init__`**
 
 > Upcoming documentation
@@ -1263,6 +1490,12 @@ Must always return a status and result payload.
 
 > State Sketcher Tracks and records state transitions for visualization.
 
+### `TestStateSketcher`
+
+> Test the state_sketcher module functionality.
+### `StateSketcher`
+
+> Tracks and records state transitions for visualization.
 **`sketch`**
 
 > Upcoming documentation
@@ -1289,6 +1522,15 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `PersistentScheduler`
+
+> Ensures task state survives system reboots.
+### `DurableStorage`
+
+> Ensures binary data survives ephemeral AI runs.
+### `AIHost`
+
+> Upcoming documentation
 **`__init__`**
 
 > Upcoming documentation
@@ -1321,6 +1563,12 @@ Must always return a status and result payload.
 
 > Upcoming documentation
 
+### `TestGenerateSite`
+
+> Test the site_generator module functionality.
+### `SiteGenerator`
+
+> Coordinater class to orchestrate the Markdown to Template-bound HTML building process
 **`__init__`**
 
 > Upcoming documentation
@@ -1370,6 +1618,9 @@ Must always return a status and result payload.
 **`append_log`**
 
 > Appends data to local system log.
+### `HelloWorldAgent`
+
+> Upcoming documentation
 **`__init__`**
 
 > Upcoming documentation
@@ -1381,6 +1632,12 @@ Must always return a status and result payload.
 
 > Financial Ledger Immutable source of truth for all financial state.
 
+### `LedgerEntry`
+
+> Upcoming documentation
+### `FinancialLedger`
+
+> Immutable source of truth for all financial state.
 **`__init__`**
 
 > Upcoming documentation
@@ -1398,6 +1655,9 @@ Must always return a status and result payload.
 
 > Idempotent Runner Orchestrator that ensures task idempotency via status tracking.
 
+### `IdempotentRunner`
+
+> Orchestrator that ensures task idempotency via status tracking.
 **`__init__`**
 
 > Upcoming documentation
