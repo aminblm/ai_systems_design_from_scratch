@@ -1,4 +1,7 @@
 # test_modules.py
+
+"""Test all modules implemented."""
+
 import argparse
 from ai_system_design.kernel.mixins import TestMixin
 
@@ -10,7 +13,7 @@ class TestModules(TestMixin):
         super().__init__()
         self.logger.info("TestModules initialized.")
 
-    def test(self):
+    async def test(self):
         super().test()
         """
         Example testing module: 
@@ -35,7 +38,7 @@ class TestModules(TestMixin):
             # Sockets
             case "socket_server": 
                 from ai_system_design.kernel.socket_server import TestSocketServer
-                TestSocketServer().test()
+                await TestSocketServer().test()
             case "socket_client": 
                 from ai_system_design.kernel.socket_client import TestSocketClient
                 TestSocketClient().test()

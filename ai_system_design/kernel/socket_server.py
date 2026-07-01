@@ -2,8 +2,8 @@
 
 """Test the socket_server module functionality."""
 
-import socket, threading
-from typing import Tuple, Callable, List
+import socket, threading, asyncio
+from typing import Tuple, Callable, List, Coroutine
 
 from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
 
@@ -16,7 +16,7 @@ class TestSocketServer(TestMixin):
         super().__init__()
         self.logger.info("TestSocketServer initialized.")
 
-    def test(self):
+    async def test(self):
         """TestSocketServer Test."""
         super().test()
         SERVER_HOST = "127.0.0.1"
@@ -27,7 +27,7 @@ class TestSocketServer(TestMixin):
         server.add_middleware(lambda text: f"Middleware: {text}".encode("utf-8"))
         server.add_middleware(lambda text: f"Another Middleware: {text}".encode("utf-8"))
 
-        server.start_socket_server()
+        await server.start_socket_server()
 
         
 class SocketServer(LoggableMixin):
@@ -61,18 +61,19 @@ class SocketServer(LoggableMixin):
             self.logger.critical(f"Failed to bind socket network server interface down on {self.host}:{self.port} -> {net_err}")
             raise
 
-    def start_server(self, process_socket_transaction: Callable[[str], bytes]) -> None:
+    async def start_server(self, process_socket_transaction: Callable[[str], bytes]) -> None:
         """Binds the underlying socket and enters the concurrent client acceptance loop."""
         # Create and bind the socket server safely using utility helpers
         server_socket = self.create_socket_server()
         self._is_running = True
         self.logger.info(f"[{self.context.upper()}] Server successfully running on {self.host}:{self.port}")
+        loop = asyncio.get_event_loop()
 
         try:
             while self._is_running:
                 try:
                     # Await new incoming TCP connection streams
-                    client_socket, client_address = server_socket.accept()
+                    client_socket, client_address = await loop.sock_accept(server_socket)
                     self.logger.info(f"Accepted inbound network pipe connection from: {client_address}")
                     
                     # Spun off connection to an independent thread to prevent blocking loops
@@ -82,26 +83,27 @@ class SocketServer(LoggableMixin):
                         daemon=True
                     )
                     client_thread.start()
-                    
+                
+                except asyncio.CancelledError:
+                    self.logger.info("Intercepted termination signal. Shutting down system interfaces...")
+                    break  
+
                 except socket.error as sock_err:
                     if self._is_running:
                         self.logger.error(f"Socket acceptance pipeline exception: {sock_err}")
                     break
                 
-                #TODO Server not interuppting on System exit
-                except KeyboardInterrupt, SystemExit:
-                    self.logger.info("Intercepted termination signal. Shutting down system interfaces...")
-                    server_socket.close()
-                    self._is_running = False
-                    break   
+                except Exception as e:
+                    self.logger.error(f"Unexpected error in server loop: {e}")
+                    break
         finally:
             self._is_running = False
             server_socket.close()
             self.logger.info("Master server socket dropped cleanly.")
 
-    def start_socket_server(self):
+    async def start_socket_server(self):
         """TestSocketServer method."""
-        self.start_server(self._process_socket_transaction)
+        await self.start_server(self._process_socket_transaction)
 
     def add_middleware(self, middleware: Callable[[str], bytes]) -> None:
         """Adds middlewares to the server"""

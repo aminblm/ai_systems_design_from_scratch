@@ -3,6 +3,7 @@
 """TextMixin class to be inherited as a contract for the testing classes testing the modules."""
 
 from abc import ABC, abstractmethod
+from typing import Coroutine, Any
 
 from ai_system_design.kernel.mixins import LoggableMixin
 
@@ -16,7 +17,7 @@ class TestMixin(LoggableMixin, ABC):
         self.logger.info("TestMixin initialized.")
 
     @abstractmethod
-    def test(self) -> None:
+    def test(self) -> None | Coroutine[Any, Any, None]:
         """Test method for all testing classes."""
         self.logger.info(f"Running {self.__class__.__name__} Tests ...")
 

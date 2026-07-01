@@ -1,4 +1,6 @@
 # intent_provider.py
+"""The modular contract for AI providers."""
+
 from abc import ABC, abstractmethod
 from typing import Any
 

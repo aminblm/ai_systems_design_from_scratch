@@ -62,7 +62,7 @@ class RESTAPIServer(SocketServer, JSONSerializableMixin, LoggableMixin):
 
     def get(self, path: str, content: str) -> None:
         """Register a GET Endpoint."""
-        self._routes["GET"][path] = lambda body: (200, "text/plain", content)
+        self._routes["GET"][path] = lambda body: (200, "application/json", content)
 
     def post(self, path: str, content: str) -> None:
         """Register a POST Endpoint."""
@@ -74,16 +74,16 @@ class RESTAPIServer(SocketServer, JSONSerializableMixin, LoggableMixin):
 
     def delete(self, path: str, content: str) -> None:
         """Register a DELETE Endpoint."""
-        self._routes["DELETE"][path] = lambda body: (200, "text/plain", content)
+        self._routes["DELETE"][path] = lambda body: (200, "application/json", content)
 
     def _register_core_endpoints(self) -> None:
         """Decouples application routing configuration definitions away from raw transport IO."""
         self._routes["GET"]["/"] = lambda body: (200, "text/plain", "Welcome to the AI System Design from First Principle Repository")
         self._routes["GET"]["/get-endpoints-documentation"] = lambda body: (200, "application/json", self.dumps(self.get_endpoints_documentation()))
 
-    def start_http_server(self):
+    async def start_http_server(self):
         """Spins up the master bound socket loop, isolating active connections to worker threads."""
-        self.start_server(self._process_http_transaction)
+        await self.start_server(self._process_http_transaction)
 
     def _process_http_transaction(self, request_text: str) -> bytes:
         """Parses raw text frames and constructs fully compliant HTTP/1.1 response bytes."""

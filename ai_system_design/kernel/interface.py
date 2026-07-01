@@ -1,3 +1,7 @@
+#interface.py
+
+"""The central contract for all system modules."""
+
 from abc import ABC, abstractmethod
 from typing import Dict
 
