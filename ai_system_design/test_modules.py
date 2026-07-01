@@ -1,6 +1,6 @@
 # test_modules.py
 import argparse
-from ai_system_design.kernel.test_mixin import TestMixin
+from ai_system_design.kernel.mixins import TestMixin
 
 
 class TestModules(TestMixin):

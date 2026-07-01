@@ -3,8 +3,7 @@ from typing import Any
 from pprint import pprint
 import pdb 
 
-from ai_system_design.kernel.loggable_mixin import LoggableMixin
-from ai_system_design.kernel.test_mixin import TestMixin
+from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
 
 
 class TestDebugger(TestMixin):

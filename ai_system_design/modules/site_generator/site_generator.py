@@ -10,9 +10,7 @@ from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.modules.md_html import MarkdownConverterFacade
 from ai_system_design.kernel.utils import IOUtility
 
-from ai_system_design.kernel.loggable_mixin import LoggableMixin
-from ai_system_design.kernel.test_mixin import TestMixin
-from ai_system_design.kernel.cli_mixin import CLIMixin
+from ai_system_design.kernel.mixins import TestMixin, LoggableMixin, CLIMixin
 
 
 class GenerateSiteCLI(CLIMixin):

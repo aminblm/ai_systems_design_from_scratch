@@ -1,6 +1,6 @@
 # infrastructure_as_code.py
 from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
-from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.mixins import LoggableMixin
 
 
 class InfrastructureAsCode(LoggableMixin):

@@ -1,5 +1,4 @@
 # mcp_adapter.py
-import json
 from typing import Dict
 
 class MCPAdapter:

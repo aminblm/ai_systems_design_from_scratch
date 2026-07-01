@@ -1,8 +1,5 @@
 # mcp_server.py
-import json
 from typing import Dict, Any
-
-from ai_system_design.kernel.base_tool import BaseTool
 
 class MCPServer:
     """Exposes internal modules as discoverable MCP tools."""

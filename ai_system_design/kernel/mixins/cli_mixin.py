@@ -5,7 +5,7 @@
 from abc import ABC, abstractmethod
 import argparse
 
-from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.mixins.loggable_mixin import LoggableMixin
 
 
 class CLIMixin(LoggableMixin, ABC):

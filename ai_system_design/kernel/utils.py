@@ -2,7 +2,7 @@
 from typing import Generator
 from pathlib import Path 
 
-from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.mixins import LoggableMixin
 
 class IOUtility(LoggableMixin):
     """Provides atomic, type-safe filesystem I/O operations with explicit encoding safeguards."""

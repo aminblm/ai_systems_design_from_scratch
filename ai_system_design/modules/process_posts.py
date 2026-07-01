@@ -4,7 +4,7 @@ import argparse
 import shutil
 from pathlib import Path
 
-from ai_system_design.kernel.test_mixin import TestMixin
+from ai_system_design.kernel.mixins import TestMixin
 
 
 class TestProcessPosts(TestMixin):

@@ -1,11 +1,11 @@
 # md_html.py
-from enum import Enum 
 import re
-from typing import Generator, Optional
+from enum import Enum 
 from pathlib import Path
+from typing import Generator, Optional
 
 from ai_system_design.kernel.utils import IOUtility
-from ai_system_design.kernel.loggable_mixin import LoggableMixin
+from ai_system_design.kernel.mixins import LoggableMixin
 
 
 class MDSpecialCases(Enum):

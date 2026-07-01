@@ -1,8 +1,8 @@
 # slug_generator.py
 import datetime, re, sys, unicodedata
 
-from ai_system_design.kernel.loggable_mixin import LoggableMixin
-from ai_system_design.kernel.test_mixin import TestMixin
+from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
+
 
 class TestSlugGenerator(TestMixin):
     """Test the slug_generator module functionality."""
