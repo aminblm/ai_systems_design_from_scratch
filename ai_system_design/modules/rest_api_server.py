@@ -16,7 +16,7 @@ class TestRESTAPIServer(TestMixin):
         super().__init__()
         self.logger.info("TestRESTAPIServer initialized.")
 
-    def test(self):
+    async def test(self):
         """TestRESTAPIServer Test."""
         super().test()
         SERVER_HOST = "127.0.0.1"
@@ -29,7 +29,7 @@ class TestRESTAPIServer(TestMixin):
         app.put("/test-put", '{"put": "PUT Test Path Registered Successfully."}')
         app.delete("/test-delete", 'DELETE Test Path Registred Successfully.')
 
-        app.start_http_server()
+        await app.start_http_server()
 
 
 class RESTAPIServer(SocketServer, JSONSerializableMixin, LoggableMixin):

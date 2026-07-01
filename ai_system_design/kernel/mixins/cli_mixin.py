@@ -1,6 +1,6 @@
-# test_mixin.py
+# cli_mixin.py
 
-"""TextMixin class to be inherited as a contract for the CLI classe interfaces of the modules."""
+"""CLIMixin class to be inherited as a contract for the CLI classe interfaces of the modules."""
 
 from abc import ABC, abstractmethod
 import argparse
@@ -9,10 +9,10 @@ from ai_system_design.kernel.mixins.loggable_mixin import LoggableMixin
 
 
 class CLIMixin(LoggableMixin, ABC):
-    """Test Mixin Contract class for all module testing."""
+    """CLI Mixin Contract class for all module testing."""
 
     def __init__(self) -> None:
-        """CLIMixin `__init__(self) -> None` Constructor to initialize the test states."""
+        """CLIMixin `__init__(self) -> None` Constructor to initialize the cli states."""
         super().__init__()
         self.parser = argparse.ArgumentParser(description="CLI Interface for AI Systems Design")
         self.logger.info("CLIMixin initialized.")

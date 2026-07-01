@@ -13,13 +13,13 @@ class TestContainerManagerServer(TestMixin):
         super().__init__()
         self.logger.info("ContainerManagerServer initialized.")
 
-    def test(self):
+    async def test(self):
         super().test()
         SERVER_HOST = "127.0.0.1"
         CONTAINER_MANAGER_PORT = 8082
 
         manager = ContainerManagerServer(SERVER_HOST, CONTAINER_MANAGER_PORT)
-        manager.start_container_manager_server()
+        await manager.start_container_manager_server()
 
 
 class ContainerManagerServer(SocketServer, LoggableMixin):
@@ -32,9 +32,9 @@ class ContainerManagerServer(SocketServer, LoggableMixin):
         self._lock = threading.Lock()
         self.containers: Dict[str, Dict[str, str]] = {}
 
-    def start_container_manager_server(self):
+    async def start_container_manager_server(self):
         """Launch the master connection listener loop."""
-        self.start_server(self.handle_client_session) 
+        await self.start_server(self.handle_client_session) 
 
     def handle_client_session(self, request: str) -> bytes:
         """Processes transactional command lines sequentially for an isolated client socket thread."""

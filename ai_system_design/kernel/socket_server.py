@@ -64,10 +64,10 @@ class SocketServer(LoggableMixin):
     async def start_server(self, process_socket_transaction: Callable[[str], bytes]) -> None:
         """Binds the underlying socket and enters the concurrent client acceptance loop."""
         # Create and bind the socket server safely using utility helpers
+        loop = asyncio.get_event_loop()
         server_socket = self.create_socket_server()
         self._is_running = True
         self.logger.info(f"[{self.context.upper()}] Server successfully running on {self.host}:{self.port}")
-        loop = asyncio.get_event_loop()
 
         try:
             while self._is_running:
@@ -98,6 +98,7 @@ class SocketServer(LoggableMixin):
                     break
         finally:
             self._is_running = False
+            loop.close()
             server_socket.close()
             self.logger.info("Master server socket dropped cleanly.")
 

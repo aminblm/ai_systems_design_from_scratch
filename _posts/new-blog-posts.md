@@ -1640,4 +1640,10 @@ class CLIMixin(LoggableMixin, ABC):
         """A representation of the CLIMixin class."""
         return str(self.__dict__)
 
-44. CLI arguments parsers between modules
+# 44. CLI arguments parsers between modules
+
+# 45. asyncio is too good to be true, coroutines, tasks, event loops
+
+# 46. Async mixin design
+
+# 47. How Asyncio solved my socket issue on not exiting on SystemExit

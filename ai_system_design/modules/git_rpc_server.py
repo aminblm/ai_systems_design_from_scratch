@@ -16,13 +16,13 @@ class TestGitRPCServer(TestMixin):
         super().__init__()
         self.logger.info("TestGitRPCServer initialized.")
 
-    def test(self):
+    async def test(self):
         """TestGitRPCServer Test."""
         super().test()
         SERVER_HOST = "127.0.0.1"
         GIT_RPC_SERVER_PORT = 8084
         git_server = GitRPCServer(SERVER_HOST, GIT_RPC_SERVER_PORT)
-        git_server.start_git_rpc_server()
+        await git_server.start_git_rpc_server()
 
         
 class GitRPCServer(SocketServer, JSONSerializableMixin, LoggableMixin):
@@ -33,9 +33,9 @@ class GitRPCServer(SocketServer, JSONSerializableMixin, LoggableMixin):
         super().__init__(host, port, context)
         self.logger.info("GitRPCServer initialized.")
 
-    def start_git_rpc_server(self):
+    async def start_git_rpc_server(self):
         """Initializes listener interfaces and delegates incoming connections to workers."""
-        self.start_server(self._process_client_stream)
+        await self.start_server(self._process_client_stream)
 
     def _process_client_stream(self, request) -> bytes:
         """Reads frames and pushes payloads out to internal logic handlers."""

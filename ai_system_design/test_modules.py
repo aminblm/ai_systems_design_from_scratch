@@ -49,7 +49,7 @@ class TestModules(TestMixin):
                 TestRESTAPIClient().test()
             case "rest_api_server": 
                 from ai_system_design.modules.rest_api_server import TestRESTAPIServer
-                TestRESTAPIServer().test()
+                await TestRESTAPIServer().test()
 
             # Git RPC
             case "git_rpc_client": 
@@ -57,7 +57,7 @@ class TestModules(TestMixin):
                 TestGitRPCClient().test()
             case "git_rpc_server": 
                 from ai_system_design.modules.git_rpc_server import TestGitRPCServer
-                TestGitRPCServer().test()
+                await TestGitRPCServer().test()
 
             # Container Management
             case "container_manager_client": 
@@ -65,7 +65,7 @@ class TestModules(TestMixin):
                 TestContainerManagerClient().test()
             case "container_manager_server": 
                 from ai_system_design.modules.container_manager_server import TestContainerManagerServer
-                TestContainerManagerServer().test()
+                await TestContainerManagerServer().test()
 
             # Databases
             case "scalable_index": 
