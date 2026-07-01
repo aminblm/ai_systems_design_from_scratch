@@ -1,14 +1,15 @@
 # agent_runner.py
 from typing import Dict, Any
-from ai_system_design.kernel.base_tool import BaseTool
+
+from ai_system_design.kernel.skill import Skill
 
 class AgentRunner:
     """The orchestration loop that binds thought to action."""
 
-    def __init__(self, engine, scheduler, tools: Dict[str, BaseTool]) -> None:
+    def __init__(self, engine, scheduler, tools: Dict[str, Skill]) -> None:
         self.engine = engine            # IntentMatchingEngine
         self.scheduler = scheduler      # EngineScheduler
-        self.tools = tools              # {tool_name: BaseTool}
+        self.tools = tools              # {tool_name: Skill}
 
     def step(self, observation: str) -> Any:
         # 1. Think: Determine Intent

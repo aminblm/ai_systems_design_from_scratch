@@ -2,7 +2,6 @@
 
 """The formal AI System Component contract for all platform modules."""
 
-
 from abc import ABC, abstractmethod
 from typing import Dict, Any
 

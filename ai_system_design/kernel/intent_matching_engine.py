@@ -1,4 +1,7 @@
 # intent_matching_engine.py
+
+"""A normalized text processing system that maps raw inputs to structured intents."""
+
 import re, sys
 from typing import Dict, Optional, Any
 
@@ -9,15 +12,17 @@ class TestIntentMatchingEngine(TestMixin):
     """Test the intent_matching_engine module functionality."""
 
     def __init__(self) -> None:
+        """TestIntentMatchingEngine Constructor."""
         super().__init__()
         self.logger.info("TestIntentMatchingEngine initialized.")
 
     def test(self):
+        """TestIntentMatchingEngine Test."""
         super().test()
         INTENT_DATA_REPOS = {
             "greetings": {
                 "keywords": ["hello", "hi", "hey", "greetings", "good day"],
-                "response": "Hello! How can I assist you today? 👋"
+                "response": "Hello! How can I assist you today?"
             },
             "state_of_being": {
                 "keywords": ["how are you", "hows it going", "how are things"],
@@ -66,6 +71,7 @@ class IntentMatchingEngine(LoggableMixin):
     """A normalized text processing system that maps raw inputs to structured intents."""
 
     def __init__(self, intents: Dict[str, Dict[str, Any]]) -> None:
+        """IntentMatchingEngine Constructor."""
         super().__init__()
         self.intents = intents
         self.logger.info("IntentMatchingEngine initialized.")

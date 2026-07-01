@@ -1,16 +1,23 @@
 # infrastructure_as_code.py
+
+"""InfrastructureAsCode Class."""
+
 from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.kernel.mixins import LoggableMixin
 
 
 class InfrastructureAsCode(LoggableMixin):
+    """InfrastructureAsCode Class."""
+
     def __init__(self, manifest_path):
+        """InfrastructureAsCode Constructor."""
         super().__init__()
         self.config = self._load_manifest(manifest_path)
         self.registry = {}
         self.logger.info("InfrastructureAsCode initialized.")
     
     def _load_manifest(self, path):
+        """InfrastructureAsCode Method."""
         return ConfigurationBuilder().from_file(path).build().to_dict()
     
     def bootstrap(self):

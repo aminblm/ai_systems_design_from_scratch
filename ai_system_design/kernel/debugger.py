@@ -1,4 +1,7 @@
 # debugger.py
+
+"""Debugger Class."""
+
 from typing import Any
 from pprint import pprint
 import pdb 
@@ -20,11 +23,13 @@ class TestDebugger(TestMixin):
           
 
 class Debugger(LoggableMixin):
+    """Debugger Class."""
     def __init__(self) -> None:
         super().__init__()
         self.logger.info("Debugger initialized.")
 
     def __repr__(self) -> str:
+        """Debugger method."""
         return str(self.__dict__)
 
     def debug(self, arg_name: str, arg: Any) -> None:

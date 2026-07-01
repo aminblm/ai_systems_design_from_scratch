@@ -1,3 +1,5 @@
+"""Provides instant logger capability."""
+
 import logging
 
 class LoggableMixin:

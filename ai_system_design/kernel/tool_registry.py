@@ -1,4 +1,7 @@
 # tool_registry.py
+
+"""Central store for all exposed system capabilities."""
+
 import functools, inspect
 
 
@@ -8,6 +11,7 @@ class ToolRegistry:
 
     @classmethod
     def register(cls, func):
+        """ToolRegistry method."""
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             return func(*args, **kwargs)
