@@ -6,6 +6,7 @@
 import socket, sys 
 from types import TracebackType
 from typing import Optional, Type, Any
+import asyncio
 
 from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
 

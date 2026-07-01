@@ -98,8 +98,10 @@ class SocketServer(LoggableMixin):
                     break
         finally:
             self._is_running = False
-            loop.close()
             server_socket.close()
+            #TODO
+            #ISSUE #1 loop not closing on asyncio.CancelledError when working with the RESTAPI (can be tested for other importing libraries)
+            loop.close()
             self.logger.info("Master server socket dropped cleanly.")
 
     async def start_socket_server(self):
