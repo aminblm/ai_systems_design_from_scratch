@@ -138,8 +138,6 @@ To enforce genuine first-principles learning, this repository maintains a strict
 
 Here is the updated, comprehensive list of all **71 distinct technologies, tools, and concepts** explicitly called out in your repository roadmap.
 
-They are organized by operational domain so that you can easily copy and paste this block directly into your `README.md` or architectural planning documents.
-
 ---
 
 ### Complete Technology Implementation Registry

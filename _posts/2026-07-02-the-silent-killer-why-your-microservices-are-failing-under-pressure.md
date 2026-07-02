@@ -6,8 +6,9 @@ description: "Stop building brittle systems. Learn how to implement backpressure
 
 # The Silent Killer: Why Your Microservices Are Failing Under Pressure
 
-- **Author: Amin Boulouma**, *Software Engineer*
+- Author: **Amin Boulouma**, *Software Engineer*
 - **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)
+- **Engineering Blog**: [https://aminblm.github.io/ai_systems_design_from_scratch/blog/](https://aminblm.github.io/ai_systems_design_from_scratch/blog/)
 
 Most engineers believe their services fail because of bugs. In reality, the most catastrophic outages are caused by **uncontrolled throughput**. When an upstream service overwhelms a downstream worker, you don't get a graceful slowdown—you get a cascading death spiral. 
 

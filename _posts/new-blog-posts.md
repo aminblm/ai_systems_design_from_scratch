@@ -1246,3 +1246,4 @@ Always follow community and established principles from the beginning
 
 # 66. Enforce Abstractions and encapsulations everywhere and let the clients consume the module components through the module interface only
 
+# 67. that's a common pattern across the stdlib, the standard module foo is Python written, and core of it will be in _foo, which is a native module
