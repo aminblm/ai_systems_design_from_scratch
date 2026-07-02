@@ -3,10 +3,20 @@
 Main CLI Controller for the AI System Design CLI Modules. 
 """
 
-def doc_engine_cli():
+from typing import Final
+
+def doc_engine():
     from ai_system_design.kernel.doc_engine import DocEngineCLI
     DocEngineCLI().cli()
 
-def site_generator_cli():
+def site_generator():
     from ai_system_design.modules.site_generator.site_generator import GenerateSiteCLI
     GenerateSiteCLI().cli()
+
+def cli():
+    arg = Final[str]
+
+    match arg:
+        case "doc_engine": doc_engine()
+        case "site_generator": site_generator()
+        case _: print(f"Enter a valid CLI command.")

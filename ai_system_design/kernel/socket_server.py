@@ -18,7 +18,6 @@ class SocketServer(LoggableMixin):
         self._is_running = False
         self.context = context
         self._middlewares: List[Callable[[str], bytes]] = [] 
-        self.logger.info("SocketServer initialized.")
 
     def create_socket_server(self, backlog: int = 128) -> socket.socket:
         """Generates a bound TCP master socket server with non-blocking address reuse capabilities."""
@@ -39,20 +38,16 @@ class SocketServer(LoggableMixin):
             self.logger.critical(f"Failed to bind socket network server interface down on {self.host}:{self.port} -> {net_err}")
             raise
 
-    async def stop_server(self):
-        loop = asyncio.get_event_loop()
-        loop.close()
-
     async def start_server(self, process_socket_transaction: Callable[[str], bytes]) -> None:
         """Binds the underlying socket and enters the concurrent client acceptance loop."""
         # Create and bind the socket server safely using utility helpers
-        loop = asyncio.get_event_loop()
         server_socket = self.create_socket_server()
         self._is_running = True
         self.logger.info(f"[{self.context.upper()}] Server successfully running on {self.host}:{self.port}")
 
         try:
             while self._is_running:
+                loop = asyncio.get_event_loop()
                 try:
                     # Await new incoming TCP connection streams
                     client_socket, client_address = await loop.sock_accept(server_socket)
@@ -68,6 +63,8 @@ class SocketServer(LoggableMixin):
                 
                 except asyncio.CancelledError:
                     self.logger.info("Intercepted termination signal. Shutting down system interfaces...")
+                    #TODO #ISSUE #1 loop not closing on asyncio.CancelledError when working with the RESTAPI (can be tested for other importing libraries)
+                    loop.close()
                     break  
 
                 except socket.error as sock_err:
@@ -81,9 +78,6 @@ class SocketServer(LoggableMixin):
         finally:
             self._is_running = False
             server_socket.close()
-            #TODO
-            #ISSUE #1 loop not closing on asyncio.CancelledError when working with the RESTAPI (can be tested for other importing libraries)
-            loop.close()
             self.logger.info("Master server socket dropped cleanly.")
 
     async def start_socket_server(self):

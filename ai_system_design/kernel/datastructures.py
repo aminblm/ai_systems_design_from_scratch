@@ -1,6 +1,6 @@
 # datastructures.py
 
-#TODO #ISSUE #3 Move datastructures to this file (i.e. shard, etc.)
+#TODO #ISSUE #2 Move datastructures to this file (i.e. shard, etc.)
 
 from ai_system_design.kernel.mixins import LoggableMixin
 

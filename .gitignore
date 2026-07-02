@@ -4,9 +4,10 @@ src/__pycache__
 md_to_html.html
 .venv
 ai_systems_design/py_jekyll/output
-tests/ar_output
-tests/sg_output
-tests/sg_input
+tests/ar_output/*
+tests/sg_output/*
+tests/sg_input/*
 ai_system_design/modules/persistent_ai/data
 ai_system_design/modules/persistent_ai/system_state.json
 *.txt
+dev

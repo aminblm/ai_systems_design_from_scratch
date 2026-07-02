@@ -1768,6 +1768,7 @@ This understanding is foundational for working with network programming in Pytho
 # 62. Code with this principle in mind: If I will remove this code in future updates: Do not write it
 
 Always ask yourself, will I be removing this code from future updates?
+Always follow community and established principles from the beginning
 
 # 63. Always be prioritizing Python primitives over typing ones (i.e. dict over Dict)
 
