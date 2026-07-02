@@ -1,17 +1,4 @@
 
-# 44. CLI arguments parsers between modules
-
-# 45. asyncio is too good to be true, coroutines, tasks, event loops
-
-# 46. Async mixin design
-
-# 47. How Asyncio solved my socket issue on not exiting on SystemExit
-
-# 48. ASGI Servers
-
-# 49. Await method
-
-# 50. when looking up a codebase to learn from, look up the test suitecase where you can see actual data and usecases to relate to
 
 # 51. I analysed the starlette codebase and found:
 
