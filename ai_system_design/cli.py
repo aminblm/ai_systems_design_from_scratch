@@ -14,7 +14,7 @@ def site_generator():
     GenerateSiteCLI().cli()
 
 def cli():
-    arg = Final[str]
+    arg: str = "#TODO wainting for nested CLI args parsing."
 
     match arg:
         case "doc_engine": doc_engine()

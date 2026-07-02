@@ -1,10 +1,12 @@
-from _typeshed import ReadableBuffer
 from typing import Final, Any, SupportsIndex
 from typing_extensions import disjoint_base, TypeAlias
 
+from ai_system_design import ReadableBuffer
+
+
 Address: TypeAlias = tuple[Any, ...] | str | ReadableBuffer
 
-INET_ADDRESS: Final[int]
+ADDRESS_FAMILY_INET: Final[int]
 SOCKET_STREAM: Final[int]
 
 # ---- Classes ----

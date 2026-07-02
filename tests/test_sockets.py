@@ -10,7 +10,7 @@ class TestSockets(TestMixin):
     def test(self):
         super().test()
         # Create a socket
-        socket = sockets.Socket(sockets.INET_ADDRESS, sockets.SOCKET_STREAM)
+        socket = sockets.Socket(sockets.ADDRESS_FAMILY_INET, sockets.SOCKET_STREAM)
         # Connect to a server
         server_address = (("localhost", 8080))
         socket.connect(server_address)

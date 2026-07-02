@@ -130,6 +130,11 @@ class TestModules(TestMixin):
                 from tests.test_state_sketcher import TestStateSketcher
                 TestStateSketcher().test()
 
+            # Sockets
+            case "sockets":
+                from tests.test_sockets import TestSockets
+                TestSockets().test()
+
             # Edge-cases
             case _: self.logger.warning("Enter a valid test case.") 
 

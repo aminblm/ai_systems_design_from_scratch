@@ -12,4 +12,4 @@ class LoggableMixin:
         else:
             logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
         self.logger = logging.getLogger(self.__class__.__name__)
-        self.logger.info(f"[LOGGER][{self.__class__.__name__}] initialized.")
+        self.logger.info(f"[{self.__class__.__name__}] Logger initialized.")
