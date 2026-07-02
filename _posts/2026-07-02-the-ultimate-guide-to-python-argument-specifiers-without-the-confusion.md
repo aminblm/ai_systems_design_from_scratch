@@ -68,7 +68,7 @@ class ConnectionManager:
 | Symbol | Meaning | Best Use Case |
 | --- | --- | --- |
 | **/** | Positional-Only | Internal library arguments that may change. |
-| ***** | Keyword-Only | Boolean flags or optional configuration. |
+| * | Keyword-Only | Boolean flags or optional configuration. |
 | **...** | Ellipsis (Stub) | Interfaces/Protocols where logic is not implemented. |
 
 
