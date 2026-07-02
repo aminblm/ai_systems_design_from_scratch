@@ -27,6 +27,7 @@ The `datetime` module provides classes for manipulating dates and times. The mos
 
 ***
 
+
 ### Why We Choose Datetime over String-Based Time
 We choose `datetime` objects because they support **native arithmetic**. Subtracting two strings is impossible, but subtracting two `datetime` objects returns a `timedelta`, allowing you to calculate durations, expiration windows, or latency metrics instantly.
 
