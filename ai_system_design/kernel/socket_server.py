@@ -61,6 +61,10 @@ class SocketServer(LoggableMixin):
             self.logger.critical(f"Failed to bind socket network server interface down on {self.host}:{self.port} -> {net_err}")
             raise
 
+    async def stop_server(self):
+        loop = asyncio.get_event_loop()
+        loop.close()
+
     async def start_server(self, process_socket_transaction: Callable[[str], bytes]) -> None:
         """Binds the underlying socket and enters the concurrent client acceptance loop."""
         # Create and bind the socket server safely using utility helpers

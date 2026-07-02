@@ -2,6 +2,7 @@
 
 """Test the rest_api_server module functionality."""
 
+import asyncio
 from typing import Callable, Dict, Tuple, List
 
 from ai_system_design.kernel.socket_server import SocketServer
