@@ -83,6 +83,5 @@ print(generator.generate())
 * **Agility:** Swap implementations (e.g., switching from a `FileLogger` to a `CloudWatchLogger`) by updating a single configuration point in the kernel.
 * **Cleaner Code:** Your business logic focuses entirely on its domain, not on how to initialize its supporting infrastructure.
 
-
-**Author: Amin Boulouma, Software Engineer**
-**Github source code: https://github.com/aminblm/ai_systems_design_from_scratch**
+- **Author: Amin Boulouma**, *Software Engineer*
+- **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)

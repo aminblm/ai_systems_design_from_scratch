@@ -79,5 +79,5 @@ class TestModules(TestMixin):
 By adopting this structure, you transform your test suite from a series of manual scripts into a robust, extensible platform.
 
 
-**Author: Amin Boulouma, Software Engineer**
-**Github source code: https://github.com/aminblm/ai_systems_design_from_scratch**
+- **Author: Amin Boulouma**, *Software Engineer*
+- **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)

@@ -72,6 +72,5 @@ except Exception as e:
 * **Circuit Breakers:** High-frequency inference requires fail-safes. If latency exceeds defined SLAs, the engine must fall back to a "light" model or return a cached result to ensure system stability.
 * **Hardware Agnostic:** By separating the `predict()` call from the hardware execution, you enable the system to dynamically route tasks to either CPU or GPU based on current load and model complexity.
 
-
-**Author: Amin Boulouma, Software Engineer**
-**Github source code: https://github.com/aminblm/ai_systems_design_from_scratch**
+- **Author: Amin Boulouma**, *Software Engineer*
+- **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)

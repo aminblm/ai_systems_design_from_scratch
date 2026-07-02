@@ -73,6 +73,5 @@ with DatabaseConnection("postgresql://prod-db:5432") as db:
     # An error here would still trigger the cleanup in __exit__
 
 ```
-
-**Author: Amin Boulouma, Software Engineer**
-**Github source code: https://github.com/aminblm/ai_systems_design_from_scratch**
+- **Author: Amin Boulouma**, *Software Engineer*
+- **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)

@@ -78,6 +78,5 @@ class AIHost:
 2. **Blob Storage Integration:** As scale increases, transition `DurableStorage` from a local disk path to a cloud object store (like S3), using the same interface.
 3. **Task Versioning:** Include model version hashes in the state registry to ensure auditability—knowing exactly which model generated which result is vital for debugging model drift.
 
-
-**Author: Amin Boulouma, Software Engineer**
-**Github source code: https://github.com/aminblm/ai_systems_design_from_scratch**
+- **Author: Amin Boulouma**, *Software Engineer*
+- **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)

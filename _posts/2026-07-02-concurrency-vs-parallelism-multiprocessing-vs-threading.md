@@ -73,6 +73,5 @@ if __name__ == "__main__":
 
 When designing your next system, prioritize **Threading** for responsiveness in network-heavy applications, and reserve **Multiprocessing** for scaling compute-heavy pipelines across physical CPU cores.
 
-
-**Author: Amin Boulouma, Software Engineer**
-**Github source code: https://github.com/aminblm/ai_systems_design_from_scratch**
+- **Author: Amin Boulouma**, *Software Engineer*
+- **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)

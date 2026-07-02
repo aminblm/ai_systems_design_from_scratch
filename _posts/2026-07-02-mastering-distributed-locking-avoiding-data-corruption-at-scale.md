@@ -4,10 +4,10 @@ title: "Mastering Distributed Locking: Avoiding Data Corruption at Scale"
 description: "A deep dive into implementing reliable distributed locks to prevent race conditions in high-concurrency microservice architectures using pure Python primitives."
 ---
 
-- Author: **Amin Boulouma**, *Software Engineer*
-- Github source code: https://github.com/aminblm/ai_systems_design_from_scratch
-
 # Mastering Distributed Locking: Avoiding Data Corruption at Scale
+
+- **Author: Amin Boulouma**, *Software Engineer*
+- **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)
 
 In any distributed enterprise system, the "lost update" problem is a recurring nightmare. When multiple service instances attempt to modify a shared resource—such as a database row or a state file—simultaneously, data corruption is inevitable without proper synchronization. While developers often reach for complex external tools like Redis or Zookeeper, understanding the mechanics of a distributed lock is critical for architecting resilient systems.
 

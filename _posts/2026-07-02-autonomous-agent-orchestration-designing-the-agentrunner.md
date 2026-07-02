@@ -75,6 +75,5 @@ class AgentRunner:
 2. **Recursive Planning (Chain-of-Thought):** For high-complexity tasks, implement a recursive loop where the agent breaks a single large `intent` into a sequence of sub-tasks (a DAG) and executes them as a pipeline.
 3. **Auditability:** Every tool invocation should be logged with the agent's internal reasoning. This "Decision Trace" is critical for debugging why an agent chose a specific path in production.
 
-
-**Author: Amin Boulouma, Software Engineer**
-**Github source code: https://github.com/aminblm/ai_systems_design_from_scratch**
+- **Author: Amin Boulouma**, *Software Engineer*
+- **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)

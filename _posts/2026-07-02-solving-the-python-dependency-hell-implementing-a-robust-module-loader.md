@@ -6,6 +6,9 @@ description: "Stop relying on chaotic imports. Learn how to architect a modular,
 
 # Solving the Python Dependency Hell: Implementing a Robust Module Loader
 
+- **Author: Amin Boulouma**, *Software Engineer*
+- **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)
+
 In complex Python ecosystems, one of the most frustrating recurring issues is "dependency circularity" and bloated monolithic `__init__.py` files. When your application grows, the classic approach of importing everything at the top level leads to slow startup times, tight coupling, and nightmare-inducing circular import errors.
 
 As systems scale, you need a dynamic, late-binding module loader that treats your modules as pluggable components rather than hard-coded imports.

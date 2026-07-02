@@ -75,6 +75,5 @@ def monitor_system(services: list[Orchestratable]):
 
 Adopting this protocol-first approach transforms a collection of scripts into a unified, enterprise-grade architecture.
 
-
-**Author: Amin Boulouma, Software Engineer**
-**Github source code: https://github.com/aminblm/ai_systems_design_from_scratch**
+- **Author: Amin Boulouma**, *Software Engineer*
+- **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)

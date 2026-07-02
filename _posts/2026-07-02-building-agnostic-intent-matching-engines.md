@@ -68,6 +68,5 @@ class CompositeProvider(IntentProvider):
 
 To achieve true modularity, standardize the output schema. Ensure all providers return a consistent JSON structure—including confidence scores—so that your downstream services (like a database or an automation engine) can reliably act on the model's output regardless of the specific provider used.
 
-
-**Author: Amin Boulouma, Software Engineer**
-**Github source code: https://github.com/aminblm/ai_systems_design_from_scratch**
+- **Author: Amin Boulouma**, *Software Engineer*
+- **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)

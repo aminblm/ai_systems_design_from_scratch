@@ -4,10 +4,10 @@ title: "The Silent Killer: Why Your Microservices Are Failing Under Pressure"
 description: "Stop building brittle systems. Learn how to implement backpressure using pure Python to prevent cascading failures in your distributed architecture."
 ---
 
-- Author: **Amin Boulouma**, *Software Engineer*
-- Github source code: https://github.com/aminblm/ai_systems_design_from_scratch
-
 # The Silent Killer: Why Your Microservices Are Failing Under Pressure
+
+- **Author: Amin Boulouma**, *Software Engineer*
+- **Github source code**: [https://github.com/aminblm/ai_systems_design_from_scratch](https://github.com/aminblm/ai_systems_design_from_scratch)
 
 Most engineers believe their services fail because of bugs. In reality, the most catastrophic outages are caused by **uncontrolled throughput**. When an upstream service overwhelms a downstream worker, you don't get a graceful slowdown—you get a cascading death spiral. 
 
