@@ -1,5 +1,3 @@
-# test_modules.py
-
 """Test all modules implemented."""
 
 import argparse, asyncio

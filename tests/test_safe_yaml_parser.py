@@ -1,5 +1,3 @@
-# test_safe_yaml_parser.pyh
-
 from ai_system_design.kernel.mixins import TestMixin
 from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
 

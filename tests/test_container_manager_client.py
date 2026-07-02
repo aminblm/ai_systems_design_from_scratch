@@ -1,4 +1,3 @@
-# test_container_manager_client.py
 from ai_system_design.modules.container_manager_client import ContainerManagerClient
 from ai_system_design.kernel.mixins import TestMixin
 

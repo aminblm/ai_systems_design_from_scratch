@@ -1,4 +1,3 @@
-# test_round_robin_load_balancer.py
 import sys
 from typing import Any
 from ai_system_design.kernel.mixins import TestMixin

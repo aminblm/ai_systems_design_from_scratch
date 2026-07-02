@@ -1,5 +1,3 @@
-# test_process_posts.py
-
 import argparse
 
 from ai_system_design.kernel.mixins import TestMixin

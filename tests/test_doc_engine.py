@@ -1,5 +1,3 @@
-# test_doc_engine.py
-
 from ai_system_design.kernel.mixins import TestMixin
 from ai_system_design.kernel.doc_engine import DocEngine
 

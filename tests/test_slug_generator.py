@@ -1,5 +1,3 @@
-# test_slug_generator.py
-
 from ai_system_design.kernel.mixins import TestMixin
 from ai_system_design.modules.slug_generator import JekyllFilenameController
 

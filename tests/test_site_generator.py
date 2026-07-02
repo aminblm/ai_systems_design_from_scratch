@@ -1,5 +1,3 @@
-# test_site_generator.py
-
 from ai_system_design.kernel.mixins import TestMixin
 from ai_system_design.modules.site_generator.site_generator import SiteGenerator
 

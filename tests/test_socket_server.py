@@ -1,5 +1,3 @@
-# test_socket_server.py
-
 from ai_system_design.kernel.mixins import TestMixin
 from ai_system_design.kernel.socket_server import SocketServer
 

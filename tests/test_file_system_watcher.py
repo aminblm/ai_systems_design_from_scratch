@@ -1,5 +1,3 @@
-# test_file_watcher.py
-
 from ai_system_design.kernel.mixins import TestMixin
 from ai_system_design.kernel.file_system_watcher import FileSystemWatcher
 

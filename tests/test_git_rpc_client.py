@@ -1,5 +1,3 @@
-# test_git_rpc_client.py
-
 from ai_system_design.kernel.mixins import TestMixin
 from ai_system_design.modules.git_rpc_client import GitRPCClient
 

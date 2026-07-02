@@ -1,5 +1,3 @@
-# test_self_health_monitor.py
-
 """"Monitors system health and auto-restarts failed modules."""
 
 import threading

@@ -1,5 +1,3 @@
-# test_debugger.py
-
 from ai_system_design.kernel.mixins import TestMixin
 from ai_system_design.kernel.debugger import Debugger
 

@@ -1,7 +1,3 @@
-# test_intent_matching_engine.py
-
-"""A normalized text processing system that maps raw inputs to structured intents."""
-
 import sys
 
 from ai_system_design.kernel.mixins import TestMixin

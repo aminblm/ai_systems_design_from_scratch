@@ -1,5 +1,3 @@
-# test_realtime_redis_engine.py
-
 import sys
 
 from ai_system_design.kernel.mixins import TestMixin

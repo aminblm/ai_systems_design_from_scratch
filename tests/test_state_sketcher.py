@@ -1,5 +1,3 @@
-# test_state_sketcher.py
-
 from ai_system_design.kernel.mixins import TestMixin
 
 

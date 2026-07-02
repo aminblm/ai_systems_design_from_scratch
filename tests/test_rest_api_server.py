@@ -1,5 +1,3 @@
-# test_rest_api_server.py
-
 """Test the rest_api_server module functionality."""
 
 

@@ -1,4 +1,3 @@
-# rest_api_client.py
 from ai_system_design.modules.rest_api_client import RESTAPIClient
 from ai_system_design.kernel.mixins import TestMixin
 

@@ -1,5 +1,3 @@
-# test_socket_client.py
-
 import sys 
 
 from ai_system_design.kernel.mixins import TestMixin

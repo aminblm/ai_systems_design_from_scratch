@@ -1,5 +1,3 @@
-# test_reactive_frontend.py
-
 from ai_system_design.kernel.mixins import TestMixin
 from ai_system_design.modules.reactive_frontend import ReconcileUI, ButtonComponent
 

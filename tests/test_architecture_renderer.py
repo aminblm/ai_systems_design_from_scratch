@@ -1,5 +1,3 @@
-# test_architecture_renderer.py
-
 from ai_system_design.kernel.mixins import TestMixin
 from ai_system_design.modules.architecture_renderer import ArchComponent, ArchitectureRenderer
 

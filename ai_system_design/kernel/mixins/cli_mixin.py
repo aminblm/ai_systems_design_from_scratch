@@ -1,5 +1,3 @@
-# cli_mixin.py
-
 """CLIMixin class to be inherited as a contract for the CLI classe interfaces of the modules."""
 
 from abc import ABC, abstractmethod

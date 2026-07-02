@@ -1,5 +1,3 @@
-# test_scalable_index.py
-
 from ai_system_design.kernel.mixins import TestMixin
 from ai_system_design.modules.scalable_index import ScalableIndex
 

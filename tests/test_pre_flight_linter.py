@@ -1,5 +1,3 @@
-# test_pre_flight_linter.py
-
 from ai_system_design.kernel.mixins import TestMixin
 from ai_system_design.kernel.pre_flight_linter import PreFlightLinter
 
