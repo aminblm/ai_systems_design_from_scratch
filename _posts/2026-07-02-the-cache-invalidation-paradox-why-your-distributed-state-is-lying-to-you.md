@@ -98,5 +98,5 @@ class EnterpriseCacheManager:
 * [ ] Does your application logic handle a "Cache Miss" as a normal state, not an error?
 * [ ] Have you implemented a circuit breaker for your cache provider?
 
-> **Tweetable Takeaway:** "If you can't handle stale data, you shouldn't be using a cache. Performance is a trade-off, not a free lunch."
+> **Takeaway:** "If you can't handle stale data, you shouldn't be using a cache. Performance is a trade-off, not a free lunch."
 
