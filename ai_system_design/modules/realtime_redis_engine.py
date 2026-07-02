@@ -1,53 +1,16 @@
 # realtime_redis_engine.py
-import time, sys
+
+import time
 from dataclasses import dataclass
 from typing import Dict, Any, List, Optional, Callable
 
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
-
-
-class TestRealtimeRedisEngine(TestMixin):
-    """Test the realtime_redis_engine module functionality."""
-
-    def __init__(self) -> None:
-        super().__init__()
-        self.logger.info("TestRealtimeRedisEngine initialized.")
-
-    def test(self):
-        super().test()
-        engine = RealtimeRedisEngine()
-        print("\n=== Multi-Type Mock Redis Cluster Interface Engaged ===")
-        print("Execute core commands [SET, GET, DEL, INCR, EXPIRE, TTL]. Type 'exit' to halt.")
-
-        while True:
-            try:
-                print("\nredis-cli> ", end="", flush=True)
-                input_line = sys.stdin.readline().strip()
-
-                if input_line.lower() in ('exist', 'quit'):
-                    print("Halting server instance engine state cleanly.")
-                    break
-
-                if not input_line:
-                    continue
-
-                execution_output = engine.execute_command_string(input_line)
-                print(execution_output)
-
-            except (KeyboardInterrupt, SystemExit):
-                print("\nTerminated via supervisor hardware signal line.")
-                break
-        
+from ai_system_design.kernel.mixins import LoggableMixin     
 
 @dataclass
-class RedisObject(LoggableMixin):
+class RedisObject:
     """An internal storage wrapper holding an explicit data payload and its eviction metadata."""
     value: Any
     expires_at: Optional[float] = None # Epoch timestamp representing absolute death boundary
-
-    def __init__(self) -> None:
-        super().__init__()
-        self.logger.info("RedisObject initialized.")
 
     def is_expired(self) -> bool:
         """Determines if the instance has surpassed its chronological survival window."""
@@ -63,7 +26,6 @@ class RealtimeRedisEngine(LoggableMixin):
         super().__init__()
         # A flat unified namespace map matches Redis's core architecture
         self._db: Dict[str, RedisObject] = {}
-        self.logger.info("RealtimeRedisEngine initialized.")
 
     def _get_valid_obj(self, key: str) -> Optional[RedisObject]:
         """Fetches a record dynamically while perfoming passive lazy eviction pruning."""

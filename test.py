@@ -7,7 +7,7 @@ import argparse
 from ai_system_design.kernel.mixins import TestMixin
 
 
-class TestModules(TestMixin):
+class Test(TestMixin):
     """Test all modules implemented."""
 
     def __init__(self) -> None:
@@ -144,4 +144,4 @@ class TestModules(TestMixin):
 
 
 if __name__ == "__main__":
-    asyncio.run(TestModules().test())
+    asyncio.run(Test().test())

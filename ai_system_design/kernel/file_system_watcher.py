@@ -5,26 +5,8 @@
 import os, time
 from typing import Dict, Callable
 
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
-
-
-class TestFileSystemWatcher(TestMixin):
-    """TestFileSystemWatcher Class."""
-    def __init__(self):
-        """TestFileSystemWatcher Constructor."""
-        super().__init__()
-        self.logger.info("TestFileSystemWatcher initialized.")
-
-    def test(self):
-        """TestFileSystemWatcher Test."""
-        super().test()
-        PATH_TO_WATCH = "ai_system_design/kernel"
-        def on_change(file_path):
-            self.logger.info(f"Change detected: {file_path}. Triggering build...")
-
-        watcher = FileSystemWatcher(PATH_TO_WATCH)
-        watcher.watch(on_change)
-        
+from ai_system_design.kernel.mixins import LoggableMixin
+     
 
 class FileSystemWatcher(LoggableMixin):
     """A recursive, zero-dependency file system monitor."""
@@ -33,7 +15,6 @@ class FileSystemWatcher(LoggableMixin):
         self.path = path_to_watch
         self.interval = interval
         self._state = self._scan()
-        self.logger.info("FileSystemWatcher initialized.")
 
     def _scan(self) -> Dict:
         """Build a snapshot of files and their modification time."""

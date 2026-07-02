@@ -1,48 +1,10 @@
 # reactive_frontend.py
+
 from typing import Callable, Any, Dict, List
 
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
+from ai_system_design.kernel.mixins import LoggableMixin
 
         
-class TestReactiveFrontent(TestMixin):
-    """Test the reactive_frontend module functionality."""
-
-    def __init__(self) -> None:
-        super().__init__()
-        self.logger.info("TestReactiveFrontent initialized.")
-
-    def test(self):
-        super().test()
-        # 1. Initialise the framework container shell
-        app = ReconcileUI()
-
-        # 2. Wire up shared event bus global listeners
-        def log_click_telemetry(data): self.logger.info(f"[Metrics App] Tracked user interaction click event. Metadata: {data}")
-        def play_sound_effect(data): self.logger.info(f"[Audio App] Playing click.wav asset...")
-
-        # 3. Instantiate a strongly-typed component passing structural layout patterns
-        def render_button(comp: ButtonComponent) -> str:
-            disable_attr = " disabled" if comp.is_disabled else ""
-            return f"<button id='{comp.name}'{disable_attr}>{comp.text}</button>"
-        
-        submit_button = ButtonComponent(name="submit-primary", render_fn=render_button)
-        app.register_component(submit_button)
-
-        # 4. Initial state display pass
-        app.display()
-
-        # 5. Perform runtime state mutations. Mutating directly triggers target reactivity loops!
-        submit_button.text = "Processing Request..."
-        submit_button.is_disabled = True
-
-        # 6. Displaying the viez tree updates immediately reflecting the underlying changes
-        app.display()
-
-        # 7. Fire runtime event hooks
-        self.logger.info("Simulating hardware user mouse click action targeting the component...")
-        app.event.dispatch("btn_click", event_data={"cursor_x": 142, "cursor_y": 80})
-
-
 class ReactiveState(LoggableMixin):
     """A descriptor that intercepts mutations to enforce property-level reactivity cascades."""
 
@@ -50,7 +12,6 @@ class ReactiveState(LoggableMixin):
         super().__init__()
         self._private_name = ""
         self.default_value = default_value
-        self.logger.info("ReactiveState initialized.")
 
     def __set_name__(self, owner: Any, name: str) -> None:
         self._private_name = f"_{name}"
@@ -110,7 +71,6 @@ class EventDispatcher(LoggableMixin):
     def __init__(self) -> None:
         super().__init__()
         self._listeners: Dict[str, List[Callable[[Any], None]]] = {}
-        self.logger.info("EventDispatcher initialized.")
 
     def subscribe(self, event_type: str, handler: Callable[[Any], None]) -> None:
         """Appends a subscriber function without flattening existing tracking keys."""
@@ -140,7 +100,6 @@ class ReconcileUI(LoggableMixin):
         super().__init__()
         self.components: List[Component] = []
         self.event = EventDispatcher()
-        self.logger.info("ReconcileUI initialized.")
 
     def register_component(self, component: Component) -> Component:
         self.components.append(component)

@@ -2,19 +2,7 @@
 
 """State Sketcher Tracks and records state transitions for visualization."""
 
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
-
-
-class TestStateSketcher(TestMixin):
-    """Test the state_sketcher module functionality."""
-
-    def __init__(self) -> None:
-        super().__init__()
-        self.logger.info("TestStateSketcher initialized.")
-    
-    def test(self):
-        super().test()
-        #TODO Test State Sketcher
+from ai_system_design.kernel.mixins import LoggableMixin
 
 
 class StateSketcher(LoggableMixin):

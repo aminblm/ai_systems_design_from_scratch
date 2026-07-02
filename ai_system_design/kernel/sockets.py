@@ -1,27 +1,11 @@
-from ai_system_design.kernel._sockets import *
-from ai_system_design.kernel.mixins import TestMixin
+# sockets.py
 
-class TestSockets(TestMixin):
-    def __init__(self):
-        super().__init__()
-    
-    def test(self):
-        super().test()
-        # Create a socket
-        socket = Socket(Socket.INET_ADDRESS, Socket.SOCKET_STREAM)
-        # Connect to a server
-        server_address = (("localhost", 8080))
-        socket.connect(server_address)
-        # Send data
-        message = "Hello Server!"
-        socket.sendall(message)
-        # Receive data
-        data = socket.receive(4096)
-        self.logger.info(f"Received: {data}")
-        # Close the connection
-        socket.close()
+import ai_system_design.kernel._sockets as _sockets
+from _sockets import * # type: ignore 
 
 
 class Socket(_sockets.Socket):
-    pass
-
+    def __init__(self, socket_family: int = -1, socket_type: int = -1):
+        self.socket_family = socket_family
+        self.socket_type = socket_type
+        

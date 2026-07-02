@@ -1,39 +1,8 @@
 # architecture_renderer.py
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import List
 
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
-
-
-class TestArchitectureRenderer(TestMixin):
-    """Test the architecture_renderer module functionality."""
-
-    def __init__(self) -> None:
-        super().__init__()
-        self.logger.info("TestArchitectureRenderer initialized.")
-
-    def test(self):
-        super().test()
-        # Define system topology declaratively
-        topology = ArchComponent("Load Balancer", "lb", [
-            ArchComponent("API Service", "service", [
-                ArchComponent("User Database", "database"),
-                ArchComponent("Cache Layer", "service")
-            ]),
-            ArchComponent("API Service", "service", [
-                ArchComponent("User Database", "database"),
-                ArchComponent("Cache Layer", "service")
-            ])
-        ])
-
-        renderer = ArchitectureRenderer()
-        html_output = renderer.generate_html(topology)
-        
-        with open("test/ar_output/arch_diagram.html", "w") as f:
-            f.write(html_output)
-        
-        self.logger.info("Artifact generation successful: 'arch_diagram.html' created.")    
-
+from ai_system_design.kernel.mixins import LoggableMixin
         
 @dataclass
 class ArchComponent(LoggableMixin):
@@ -44,7 +13,6 @@ class ArchComponent(LoggableMixin):
         self.name = name
         self.component_type = component_type
         self.children = children
-        self.logger.info("ArchComponent initialized.")
     
 
 class ArchitectureRenderer(LoggableMixin):
@@ -60,7 +28,6 @@ class ArchitectureRenderer(LoggableMixin):
 
     def __init__(self) -> None:
         super().__init__()
-        self.logger.info("ArchitectureRenderer initialized.")
 
     def generate_html(self, root: ArchComponent) -> str:
         return f"""

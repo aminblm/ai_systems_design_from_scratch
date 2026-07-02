@@ -1,5 +1,7 @@
 # datastructures.py
 
+#TODO #ISSUE #3 Move datastructures to this file (i.e. shard, etc.)
+
 from ai_system_design.kernel.mixins import LoggableMixin
 
 
@@ -8,11 +10,9 @@ class Tensor(LoggableMixin):
     
     def __init__(self) -> None:
         super().__init__()
-        self.logger.info("Tensor initialized.")
 
 class Array(LoggableMixin):
     """Class for the Array Data Structure"""
 
     def __init__(self) -> None:
         super().__init__()
-        self.logger.info("Array initialized.")

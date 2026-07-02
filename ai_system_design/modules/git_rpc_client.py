@@ -5,33 +5,8 @@
 from typing import Dict, Any
 
 from ai_system_design.kernel.socket_client import SocketClient
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin, JSONSerializableMixin
+from ai_system_design.kernel.mixins import LoggableMixin, JSONSerializableMixin
 
-
-class TestGitRPCClient(TestMixin):
-    """Test the git_rpc_client module functionality."""
-
-    def __init__(self) -> None:
-        """TestGitRPCClient Constructor."""
-        super().__init__()
-        self.logger.info("TestGitRPCClient initialized.")
-
-    def test(self):
-        """TestGitRPCClient Test."""
-        super().test()
-        SERVER_HOST = "127.0.0.1"
-        GIT_RPC_SERVER_PORT = 8084
-        TARGET_REPO = "https://github.com/aminblm/ai_systems_design_from_scratch.git"
-
-        # Context manager implementation replaces sequential manual channel closes entirely
-        try:
-            with GitRPCClient(SERVER_HOST, GIT_RPC_SERVER_PORT) as git_agent:
-                server_feedback = git_agent.dispatch_clone(repository_url=TARGET_REPO)
-                print(f"\n[Execution Worker Response]: {server_feedback}")
-                
-        except Exception as fatal_error:
-            self.logger.critical(f"Abrupt termination handling repository pipeline sequence tasks: {fatal_error}")
-        
         
 class GitRPCClient(SocketClient, JSONSerializableMixin, LoggableMixin):
     """A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames."""
@@ -39,7 +14,6 @@ class GitRPCClient(SocketClient, JSONSerializableMixin, LoggableMixin):
     def __init__(self, host: str, port: int) -> None:
         """GitRPCClient Constructor."""
         super().__init__(host, port)
-        self.logger.info("GitRPCClient initialized.")
 
     def __enter__(self) -> GitRPCClient:
         """GitRPCClient Context __enter__."""

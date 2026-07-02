@@ -3,30 +3,13 @@ import threading, json
 from typing import Dict, List
 
 from ai_system_design.kernel.socket_server import SocketServer
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
-
-
-class TestContainerManagerServer(TestMixin):
-    """Test the container_manager_server module functionality."""
-
-    def __init__(self) -> None:
-        super().__init__()
-        self.logger.info("ContainerManagerServer initialized.")
-
-    async def test(self):
-        super().test()
-        SERVER_HOST = "127.0.0.1"
-        CONTAINER_MANAGER_PORT = 8082
-
-        manager = ContainerManagerServer(SERVER_HOST, CONTAINER_MANAGER_PORT)
-        await manager.start_container_manager_server()
+from ai_system_design.kernel.mixins import LoggableMixin
 
 
 class ContainerManagerServer(SocketServer, LoggableMixin):
     """A thread-safe, concurrent TCP daemon for managing mock container environment."""
     def __init__(self, host: str, port: int, context: str = "Container Manager") -> None:
         super().__init__(host, port, context)
-        self.logger.info("ContainerManagerServer initialized.")
 
         # Enforce thread-safety since multiple client threads will read/write to memory storage
         self._lock = threading.Lock()

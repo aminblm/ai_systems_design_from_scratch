@@ -1,19 +1,8 @@
 # slug_generator.py
 import datetime, re, sys, unicodedata
 
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
+from ai_system_design.kernel.mixins import LoggableMixin
 
-
-class TestSlugGenerator(TestMixin):
-    """Test the slug_generator module functionality."""
-
-    def __init__(self) -> None:
-        super().__init__()
-        self.logger.info("TestSlugGenerator initialized.")
-
-    def test(self):
-        super().test()
-        JekyllFilenameController().start_generator_interface()
 
 class SlugGenerator(LoggableMixin):
     """Handles the transformation of raw text titles into clean, web-safe SEO slugs."""

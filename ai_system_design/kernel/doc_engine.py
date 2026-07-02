@@ -4,8 +4,7 @@
 
 import ast, os 
 
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin, CLIMixin
-from ai_system_design.kernel.debugger import Debugger
+from ai_system_design.kernel.mixins import LoggableMixin, CLIMixin
 
 
 class DocEngineCLI(CLIMixin):
@@ -27,25 +26,6 @@ class DocEngineCLI(CLIMixin):
         DocEngine().generate_manifest(args.source, args.output_path)
         if args.secondary_output_path:
             DocEngine().generate_manifest(args.source,  args.secondary_output_path)
-
-
-class TestDocEngine(TestMixin):
-    """TestDocEngine Class."""
-
-    def __init__(self) -> None:
-        """TestDocEngine `__init__(self) -> None` Constructor."""
-        super().__init__()
-        self.logger.info("TestDocEngine initialized.")
-
-    def test(self) -> None:
-        """TestDocEngine `test(self) -> None` test method."""
-        super().test()
-        SRC_PATH = "ai_system_design"
-        DOCUMENTATION_PATH = "docs/ARCHITECTURE.md"
-        DOCUMENTATION_PATH_TEST = "test/sg_input/ARCHITECTURE.md"
-
-        DocEngine().generate_manifest(SRC_PATH, DOCUMENTATION_PATH)
-        DocEngine().generate_manifest(SRC_PATH, DOCUMENTATION_PATH_TEST)
 
 
 class DocEngine(LoggableMixin):
@@ -89,6 +69,6 @@ class DocEngine(LoggableMixin):
                         summary += f"**`{node.name}`**\n\n"
                         summary += f"> {ast.get_docstring(node) or 'Upcoming documentation'}\n"
             except Exception:
-                Debugger().debug('file_path', file_path)
+                self.logger.debug(f'Issue generating documentation for: {file_path}')
         
         return summary

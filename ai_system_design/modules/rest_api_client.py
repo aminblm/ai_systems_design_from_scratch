@@ -1,28 +1,10 @@
 # rest_api_client.py
+
 import sys
 from typing import Optional
 
 from ai_system_design.kernel.socket_client import SocketClient
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin
-
-
-class TestRESTAPIClient(TestMixin):
-    """Test the rest_api_client module functionality."""
-
-    def __init__(self) -> None:
-        super().__init__()
-        self.logger.info("TestRESTAPIClient initialized.")
-
-    def test(self):
-        super().test()
-        SERVER_HOST = "127.0.0.1"
-        REST_API_PORT = 8083
-        # Context manager pattern ensures explicit teardown safeguards apply uniformly
-        try:
-            RESTAPIClient(SERVER_HOST, REST_API_PORT).start_repl_loop()
-        except Exception as initialization_failure:
-            self.logger.critical(f"Failed to engage network testing suite system execution nodes: {initialization_failure}")
-
+from ai_system_design.kernel.mixins import LoggableMixin
         
         
 class RESTAPIClient(SocketClient, LoggableMixin):
@@ -30,7 +12,6 @@ class RESTAPIClient(SocketClient, LoggableMixin):
 
     def init__(self, host: str, port: int) -> None:
         super().__init__(host, port)
-        self.logger.info("RESTAPIClient initialized.")
 
     def __enter__(self) -> RESTAPIClient:
         self.context = "REST API Client"

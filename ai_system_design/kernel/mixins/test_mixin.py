@@ -14,7 +14,6 @@ class TestMixin(LoggableMixin, ABC):
     def __init__(self) -> None:
         """TestMixin Constructor to initialize the test states."""
         super().__init__()
-        self.logger.info(f"{self.__class__.__name__} initialized.")
 
     @abstractmethod
     def test(self) -> None | Coroutine[Any, Any, None]:

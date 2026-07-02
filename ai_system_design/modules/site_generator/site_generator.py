@@ -10,7 +10,7 @@ from ai_system_design.modules.safe_yaml_parser import ConfigurationBuilder
 from ai_system_design.modules.md_html import MarkdownConverterFacade
 from ai_system_design.kernel.utils import IOUtility
 
-from ai_system_design.kernel.mixins import TestMixin, LoggableMixin, CLIMixin
+from ai_system_design.kernel.mixins import LoggableMixin, CLIMixin
 
 
 class GenerateSiteCLI(CLIMixin):
@@ -39,26 +39,6 @@ class GenerateSiteCLI(CLIMixin):
             SiteGenerator(DEFAULT_LAYOUT, args.config).generate_site(args.input_directory)
         else:
             SiteGenerator(args.layout, args.config).generate_site(args.input_directory)
-
-
-class TestGenerateSite(TestMixin):
-    """Test the site_generator module functionality."""
-
-    def __init__(self) -> None:
-        """TestGenerateSite `__init__(self) -> None` Constructor."""
-        super().__init__()
-        self.logger.info("TestGenerateSite initialized.")
-    
-    def test(self) -> None:
-        """TestGenerateSite `test(self) -> None` test."""
-        super().test()
-
-        BASE_PATH = 'ai_system_design/modules/site_generator/'
-        DEFAULT_LAYOUT = f'{BASE_PATH}layout.html'
-        DEFAULT_CONFIG = f'{BASE_PATH}config.yaml'
-        TEST_INPUT_PATH = 'test/sg_input'
-
-        SiteGenerator(DEFAULT_LAYOUT, DEFAULT_CONFIG).generate_site(TEST_INPUT_PATH)
 
 
 class SiteGenerator(LoggableMixin):
