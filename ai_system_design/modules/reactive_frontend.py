@@ -1,4 +1,3 @@
-# reactive_frontend.py
 
 from typing import Callable, Any, Dict, List
 

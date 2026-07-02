@@ -1,4 +1,3 @@
-# json_serializable_mixin.py
 
 """Provides uniform JSON conversion."""
 

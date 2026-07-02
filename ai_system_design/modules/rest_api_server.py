@@ -1,4 +1,3 @@
-# rest_api_server.py
 
 from typing import Callable, Dict, Tuple, List
 

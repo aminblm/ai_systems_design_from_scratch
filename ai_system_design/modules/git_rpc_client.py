@@ -1,4 +1,3 @@
-# git_rpc_client.py
 
 """A resilient Remote Procedure Call (RPC) client for conveying Git tasks over safe TCP frames."""
 

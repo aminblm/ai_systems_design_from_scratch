@@ -1,4 +1,3 @@
-# persistent_ai.py
 import os, uuid
 from typing import Callable, Dict, Any
 

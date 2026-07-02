@@ -1,5 +1,3 @@
-# site_generator.py
-
 """Generate HTML website from markdown files directory."""
 
 import traceback

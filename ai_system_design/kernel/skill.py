@@ -1,4 +1,3 @@
-# skill.py
 
 """Universal contract for an executable capability."""
 

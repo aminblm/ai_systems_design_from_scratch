@@ -1,4 +1,3 @@
-# distributed_no_sql_database.py
 from typing import Dict, Any, List, Optional
 
 from ai_system_design.kernel.mixins import LoggableMixin

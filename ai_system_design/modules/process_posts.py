@@ -1,4 +1,3 @@
-# process_posts.py
 
 import re, shutil
 from pathlib import Path

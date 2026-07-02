@@ -1,4 +1,3 @@
-# test.py
 
 """Test all modules implemented."""
 

@@ -1,4 +1,3 @@
-# agent_runner.py
 from typing import Dict, Any
 
 from ai_system_design.kernel.skill import Skill

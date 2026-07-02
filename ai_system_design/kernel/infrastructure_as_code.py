@@ -1,4 +1,3 @@
-# infrastructure_as_code.py
 
 """InfrastructureAsCode Class."""
 

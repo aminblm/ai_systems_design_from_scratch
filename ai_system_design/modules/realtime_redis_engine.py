@@ -1,4 +1,3 @@
-# realtime_redis_engine.py
 
 import time
 from dataclasses import dataclass

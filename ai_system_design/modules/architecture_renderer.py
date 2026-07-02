@@ -1,4 +1,3 @@
-# architecture_renderer.py
 from dataclasses import dataclass
 from typing import List
 

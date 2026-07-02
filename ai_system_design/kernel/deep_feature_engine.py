@@ -1,4 +1,3 @@
-# deep_feature_engine.py
 
 """Decompose deep functions following the Rule of Three"""
 

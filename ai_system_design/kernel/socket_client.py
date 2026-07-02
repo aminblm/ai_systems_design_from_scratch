@@ -1,4 +1,3 @@
-# socket_client.py
 
 """A defensive wrapper around client-side sockets ensuring deterministic lifecycle cleanup."""
 

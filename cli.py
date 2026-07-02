@@ -1,5 +1,3 @@
-# cli.py
-
 """Global CLI entry point."""
 
 from ai_system_design.cli import cli

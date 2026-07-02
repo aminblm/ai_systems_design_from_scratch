@@ -1,4 +1,3 @@
-# container_manager_client.py
 import sys
 from typing import Optional
 

@@ -1,4 +1,3 @@
-# slug_generator.py
 import datetime, re, sys, unicodedata
 
 from ai_system_design.kernel.mixins import LoggableMixin

@@ -1,4 +1,3 @@
-# mcp_adapter.py
 """Adapts existing Registry tools to MCP Specification."""
 
 from typing import Dict

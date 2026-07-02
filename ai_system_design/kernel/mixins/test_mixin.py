@@ -1,4 +1,3 @@
-# test_mixin.py
 
 """TextMixin class to be inherited as a contract for the testing classes testing the modules."""
 

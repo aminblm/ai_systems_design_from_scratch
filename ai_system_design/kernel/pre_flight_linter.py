@@ -1,4 +1,3 @@
-# pre_flight_linter.py
 
 """Blocks code that violates architectural standards."""
 

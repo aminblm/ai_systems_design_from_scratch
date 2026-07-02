@@ -1,4 +1,3 @@
-# exceptions.py
 
 """Define the hierarchy of AI System Design Exceptions."""
 

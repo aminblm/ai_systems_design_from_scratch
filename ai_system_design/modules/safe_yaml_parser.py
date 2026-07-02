@@ -1,4 +1,3 @@
-# safe_yaml_parser.py
 
 import re
 from typing import Dict, Any, Optional, Generator, Any

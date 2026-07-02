@@ -1,4 +1,3 @@
-# financial_ledger.py
 
 """Financial Ledger Immutable source of truth for all financial state."""
 

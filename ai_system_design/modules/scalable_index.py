@@ -1,4 +1,3 @@
-# scalable_index.py
 
 import collections
 from typing import Dict, Any, List

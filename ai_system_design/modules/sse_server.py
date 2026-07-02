@@ -1,4 +1,3 @@
-# sse_server.py
 
 #TODO
 

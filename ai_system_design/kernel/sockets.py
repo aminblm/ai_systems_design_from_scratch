@@ -1,5 +1,3 @@
-# sockets.py
-
 from enum import IntEnum
 
 import ai_system_design.kernel._sockets as _sockets

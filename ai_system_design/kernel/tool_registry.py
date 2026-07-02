@@ -1,5 +1,3 @@
-# tool_registry.py
-
 """Central store for all exposed system capabilities."""
 
 import functools, inspect

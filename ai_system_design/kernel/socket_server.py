@@ -1,4 +1,3 @@
-# socket_server.py
 
 """Test the socket_server module functionality."""
 

@@ -1,4 +1,3 @@
-# file_watcher.py
 
 """A recursive, zero-dependency file system monitor."""
 

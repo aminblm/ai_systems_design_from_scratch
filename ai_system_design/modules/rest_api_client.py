@@ -1,4 +1,3 @@
-# rest_api_client.py
 
 import sys
 from typing import Optional

@@ -1,4 +1,3 @@
-# datastructures.py
 
 #TODO #ISSUE #2 Move datastructures to this file (i.e. shard, etc.)
 

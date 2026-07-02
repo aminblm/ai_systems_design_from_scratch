@@ -1,5 +1,3 @@
-# utils.py
-
 """Provides atomic, type-safe filesystem I/O operations with explicit encoding safeguards."""
 
 from typing import Generator

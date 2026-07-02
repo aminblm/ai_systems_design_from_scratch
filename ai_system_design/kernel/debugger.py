@@ -1,4 +1,3 @@
-# debugger.py
 
 """Debugger Class."""
 

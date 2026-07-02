@@ -1,4 +1,3 @@
-# pipeline_manager.py
 
 """The central orchestrator for system rebuilds."""
 

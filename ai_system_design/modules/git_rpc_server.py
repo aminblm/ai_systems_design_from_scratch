@@ -1,4 +1,3 @@
-# git_rpc_server.py
 
 """A safe, multi-threaded RPC server for orchestrating remote Git workflow operations."""
 

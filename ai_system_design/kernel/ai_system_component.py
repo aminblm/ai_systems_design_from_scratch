@@ -1,4 +1,3 @@
-# ai_system_component.py
 
 """The formal AI System Component contract for all platform modules."""
 

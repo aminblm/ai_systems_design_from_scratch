@@ -1,5 +1,3 @@
-# state_snapshot_interface.py
-
 """The State Snapshot Interface Formal Contract for system transparency."""
 
 from ai_system_design.kernel.mixins import LoggableMixin, JSONSerializableMixin

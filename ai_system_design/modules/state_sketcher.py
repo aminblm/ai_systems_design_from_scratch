@@ -1,4 +1,3 @@
-# state_sketcher.py
 
 """State Sketcher Tracks and records state transitions for visualization."""
 

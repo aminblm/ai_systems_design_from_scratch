@@ -1,4 +1,3 @@
-# mcp_server.py
 """Exposes internal modules as discoverable MCP tools."""
 
 from typing import Dict, Any

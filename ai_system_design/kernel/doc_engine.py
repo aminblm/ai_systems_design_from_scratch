@@ -1,4 +1,3 @@
-# doc_engine.py
 
 """Documentation Engine to Generate documentation automatically."""
 
